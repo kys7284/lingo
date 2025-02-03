@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+     
+     
+<mapper namespace="test.team.team_pj_lingo.member.MemberDAO">
+
+	<!-- 회원가입처리  -->
+	<insert id="JoinAction" parameterType="test.team.team_pj_lingo.member.MemberDTO">
+		INSERT INTO member_tbl (mem_no,mem_id,mem_pwd,mem_name,mem_country,mem_birthday,mem_address
+   		 ,mem_hp,mem_email,mem_comment,mem_regdate)
+		VALUES ((SELECT NVL(MAX(mem_no)+1, 1)FROM member_tbl),#{mem_id},#{mem_pwd},#{mem_name},#{mem_country},#{mem_birthday},#{mem_address}
+   		 ,#{mem_hp},#{mem_email},#{mem_comment},sysdate)
+	
+	
+	</insert>
+	
+	<!-- id중복확인  -->
+	<select id="IdCheckAction" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM member_tbl 
+		WHERE mem_id = #{mem_id}
+	
+	</select>
+	
+	<!--  로그인 처리 (ID와 비밀번호 확인)  -->
+	<select id="idPasswordChk" parameterType="map" resultType="int">
+		 SELECT COUNT(*) FROM member_tbl
+		 WHERE mem_id = #{mem_id}
+		 AND mem_pwd = #{mem_pwd} 
+	 </select>
+	 
+	 <!-- 마이페이지  -->
+	<select id="mypage" parameterType="String" resultType="test.team.team_pj_lingo.member.MemberDTO">
+		SELECT * FROM member_tbl
+		WHERE mem_id = #{mem_id}
+	
+	</select>
+
+
+
+</mapper>     
