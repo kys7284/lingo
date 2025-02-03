@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+     
+     
+<mapper namespace="test.team.team_pj_lingo.freeBoard.FreeBoardDAO">
+
+	<!-- 게시글목록 -->
+	<select id="freeBoardList" parameterType="java.util.Map" resultType="test.team.team_pj_lingo.freeBoard.FreeBoardDTO">
+		
+		<![CDATA[
+		SELECT FB_NUM, FB_TITLE, FB_CONTENT, FB_WRITER, FB_PASSWORD, FB_READCNT, FB_REGDATE, 
+		(SELECT COUNT(*) FROM FB_COMMENT_TBL WHERE FB_BOARD_NUM = FB_NUM) AS FB_COMMENT_COUNT, FB_SHOW, FB_IMG, rn
+			FROM
+    		(SELECT A.*,
+   				 rownum AS rn
+  			   FROM
+        			(SELECT * FROM FREE_BOARD_TBL
+        			  WHERE FB_SHOW = 'Y'
+        			  ORDER BY FB_NUM DESC)A
+     			    )
+        WHERE rn >= #{start} 
+		  AND rn <= #{end}
+		]]>	
+			  
+	</select>
+	
+	<!-- 게시글 갯수 구하기 -->
+	<select id="boardCnt" resultType="int">
+		SELECT COUNT(*) AS cnt
+ 		  FROM FREE_BOARD_TBL
+ 		 WHERE FB_SHOW = 'Y'
+	</select>
+	
+	<!-- 게시판 조회수 -->
+	<update id="plusReadCnt" parameterType="int">
+		UPDATE FREE_BOARD_TBL
+  		   SET FB_READCNT = FB_READCNT +1
+ 		 WHERE FB_NUM = #{FB_NUM}
+	</update>
+	
+	<!-- 게시판 상세페이지 -->
+	<select id="freeBoardDetail" parameterType="int" resultType="test.team.team_pj_lingo.freeBoard.FreeBoardDTO">
+		SELECT * FROM FREE_BOARD_TBL
+ 		 WHERE FB_NUM = #{FB_NUM}
+	</select>
+	
+	<!-- 게시글 작성처리 -->
+	<insert id="insertFreeBoard" parameterType="test.team.team_pj_lingo.freeBoard.FreeBoardDTO">
+		INSERT INTO FREE_BOARD_TBL (fb_num, fb_title, fb_content, fb_writer, fb_password, fb_readCnt, fb_regDate, fb_comment_count, fb_img)
+		VALUES((SELECT NVL(MAX(fb_num)+1, 1)FROM FREE_BOARD_TBL),#{fb_title} ,#{fb_content} ,#{fb_writer}, #{fb_password}, 0, sysdate, 0, #{fb_img})
+	</insert>
+	
+</mapper>

@@ -1,0 +1,94 @@
+@charset "UTF-8";
+
+#container {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #F6F6F6;
+	font-family: 'Arial', sans-serif;
+}
+
+#contents {
+	max-width: 900px;
+	min-width: 900px;
+	width: 100%;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+#section1, #section2 {
+	padding: 20px;
+	border-bottom: 5px solid #06BBCC; 
+	background-color: #FFFFFF;
+	border-radius: 10px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#s2_inner {
+	width: 100%;
+}
+
+.join {
+	display: flex;
+	justify-content: center; /* 유연한 정렬 */
+	align-items: center;
+	max-width: 900px;
+	margin: 40px auto;
+	padding: 20px;
+	background-color: #FFFFFF;
+	border-radius: 10px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	border: 1px solid #DDD;
+}
+
+.join th {
+	font-size: 16px;
+	font-weight: bold;
+	width: 140px;
+	height: 60px;
+	text-align: center; 
+	padding: 10px 20px;
+	border-bottom: 2px solid #DDD;
+	background-color: #F3F3F3;
+	border-radius: 5px;
+}
+
+.join td {
+	padding: 10px 20px;
+	border-bottom: 2px solid #DDD;
+	background-color: #FFFFFF;
+}
+
+.input {
+	width: 320px;
+	height: 45px;
+	border: 1px solid #CCC;
+	box-sizing: border-box;
+	padding: 0 10px;
+	border-radius: 5px;
+	font-size: 14px;
+}
+
+.input:focus {
+	border-color: #0056A4; 
+	outline: none;
+	box-shadow: 0 0 5px rgba(0, 86, 164, 0.5);
+}
+
+.inputButton {
+	background-color: #06BBCC;
+	font-size: 15px;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	color: #333;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.inputButton:hover {
+	background-color: #05d3e4; 
+}
+
+.inputButton:active {
+	background-color: #0de7f9;
+}
