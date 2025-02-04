@@ -35,13 +35,11 @@
 	<select id="mypage" parameterType="String" resultType="test.team.team_pj_lingo.member.MemberDTO">
 		SELECT * FROM member_tbl
 		WHERE mem_id = #{mem_id}
-	
 	</select>
 
 	<!-- 회원정보수정 처리 -->
 	<update id="mypageUpdateAction" parameterType="test.team.team_pj_lingo.member.MemberDTO">
-		
-		UPDATE  member_tbl
+	   UPDATE  member_tbl
 	   SET  mem_pwd = #{mem_pwd}
 	     ,  mem_name = #{mem_name}
 	     ,  mem_country = #{mem_country}
@@ -51,10 +49,15 @@
 	     ,  mem_email = #{mem_email}
 	     ,  mem_address = #{mem_address}
 		WHERE mem_id = #{mem_id}
-	
-	
 	</update>
-
+	
+	<!-- 회원탈퇴처리 -->
+	<delete id="memberDeleteAction" parameterType="map">
+		DELETE FROM member_tbl
+		WHERE mem_id = #{mem_id}
+		AND mem_pwd = #{mem_pwd}
+	
+	</delete>
 
 
 

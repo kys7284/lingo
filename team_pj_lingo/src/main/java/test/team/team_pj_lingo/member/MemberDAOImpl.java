@@ -64,4 +64,15 @@ public class MemberDAOImpl implements MemberDAO {
 		return updateCnt;
 	}
 
+	// 회원탈퇴처리
+	@Override
+	public int memberDeleteAction(Map<String, Object> map) {
+		System.out.println("DAO - memberDeleteAction"); 
+		
+		int deleteCnt = sqlSession.delete("test.team.team_pj_lingo.member.MemberDAO.memberDeleteAction", map);
+		System.out.println("DAO deleteCnt :" +deleteCnt);
+		
+		return deleteCnt;
+	}
+
 }

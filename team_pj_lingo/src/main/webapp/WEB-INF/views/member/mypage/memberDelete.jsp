@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file="/WEB-INF/views/common/setting.jsp" %>     
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@include file="/WEB-INF/views/common/setting.jsp" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,8 +9,9 @@
 <!-- 반응형 웹  -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>loginAction</title>
+<title>memberDelete</title>
 
+<!-- css  -->
 <!-- 기존설정 그대로 -->
 	    <meta charset="utf-8">
 	    <title>Lingo</title>
@@ -44,15 +46,19 @@
 <script src="${path}/resources/js/member/join.js" defer></script> 
 
 	<link rel="stylesheet" href="${path}/resources/css/member/login.css">
+<script type="text/javascript">
+	$(function() {
+		$("#mainBtn").click(function() {
+			location.href = "${path}/main.do";
+		});
+	});
+</script>	
 
 </head>
-
 <body>
 <div class="wrap">
    <!-- header 시작 -->
-   <%@include file="/WEB-INF/views/common/header.jsp" %> <!-- customer/webapp/common/header.jsp  -->
-   <%-- <jsp:include page="./header.jsp"/> 아님 --%>
-   
+   <%@include file="/WEB-INF/views/common/header.jsp" %> 
    <!-- header 끝    -->
 
    <!-- 컨텐츠 시작 -->
@@ -60,33 +66,24 @@
       <div id="contents">
          <!-- 상단 중앙1 시작  -->
          <div id="section1">
-            <h1 align="center"> 로그인 처리 </h1>
+            <h1 align="center"> 본인확인 </h1>
          </div>
          <!-- 상단 중앙2 시작  -->
          <div id="section2">
             <div id="s2_inner">
                <div class="join">
-                 
-                  <form name="loginform" action="loginAction.do" method="post">
-                     <!-- 세션이 없는 경우 : 로그인 실패 -->
-                     
-                  <%-- <c:if test="${sessionScope.sessionID == null}"> --%>
-                     <c:if test="${selectCnt == 0}">
-                     <script type="text/javascript">
-                     	alert("아이디와 비밀번호가 일치하지 않습니다~~~");                     	
-                     	</script>
-                     	
-                     	<table>
+                  <form name="loginform" action="memberDeleteAction.do" method="post">
+                     <table>
                         <tr>
                            <th> * 아이디 </th>
                            <td>
-                              <input type="text" class="input" name="mem_id" size="30" placeholder="공백없이 20자 이내로 작성" required autofocus>
+                              <input type="text" class="input" name="mem_id" size="30" value="${sessionScope.sessionId}" readonly>
                            </td>
                         </tr>
                         <tr>
                            <th> * 비밀번호 </th>
                            <td>
-                              <input type="password" class="input" name="mem_pwd" size="20" placeholder="공백없이 20자 이내로 작성" required>
+                              <input type="password" class="input" name="mem_pwd" size="20" placeholder="본인확인을 위한 비밀번호를 입력해주세요"  required>
                            </td>
                         </tr>
                         
@@ -94,41 +91,12 @@
                            <td colspan="2" style="border-bottom: none">
                            <br>
                            <div align="right">
-                              <input class="inputButton" type="submit" value="로그인">
-                              <input class="inputButton" type="reset" value="초기화">
-                              <input class="inputButton" type="button" value="회원가입" onclick="window.location='${path}/join.do'">
+                              <input class="inputButton" type="submit" value="회원탈퇴">
+                              <input class="inputButton" type="button" id="mainBtn" value="메인으로">
                            </div>
                            </td>
                         </tr>   
                      </table>
-                  </c:if>
-                     	
-				<%-- <c:if test="${sessionScope.sessionID != null}"> --%>
-				 <c:if test="${selectCnt == 1}">		
-						<table>
-                        <tr>
-                           <th colspan="2" align="center"> 
-								<span style="color : 026892"><b>${sessionId}</b></span>님 환영합니다
-                        	</th>
-                        </tr>
-                        
-                        <tr>
-                           <td colspan="2" style="border-bottom: none">
-                           <br>
-                           <div align="right">
-                              <input class="inputButton" type="button" value="메인으로" onclick="window.location='${path}/main.do'">
-                              <input class="inputButton" type="button" value="회원수정" onclick="window.location='${path}/mypageUpdate.do'">
-                              <input class="inputButton" type="button" value="회원탈퇴" onclick="window.location='${path}/memberDelete.do'">
-                              <input class="inputButton" type="button" value="로그아웃" onclick="window.location='${path}/logout.do'">
-                             <c:if test="${sessionScope.sessionID == 'admin' }">
-								<a href="${path}/board_list.bc" style="color: black; background: lightblue; font-size: 15px; padding: 5px 10px 5px 10px;">관리자</a>
-                           	</c:if>
-                           </div>
-                           </td>
-                        </tr>   
-                     </table>
-				</c:if>
-                     
                   </form>
                </div>
             </div>
@@ -141,6 +109,20 @@
       <!-- footer 시작 -->
       <%@include file="/WEB-INF/views/common/footer.jsp" %>
       <!-- footer 끝 -->
+      
+      	<!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="${path}/resources/css/common/lib/wow/wow.min.js"></script>
+    <script src="${path}/resources/css/common/lib/easing/easing.min.js"></script>
+    <script src="${path}/resources/css/common/lib/waypoints/waypoints.min.js"></script>
+    <script src="${path}/resources/css/common/lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="${path}/resources/js/main.js"></script>
    </div>
 </body>
 </html>

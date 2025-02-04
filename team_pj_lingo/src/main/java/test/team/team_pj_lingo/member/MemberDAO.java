@@ -20,6 +20,8 @@ public interface MemberDAO {
     // 회원정보수정 처리
     public int mypageUpdateAction(MemberDTO dto);
     
+    // 회원탈퇴 처리
+    public int memberDeleteAction(Map<String, Object> map);
     
 	
 }

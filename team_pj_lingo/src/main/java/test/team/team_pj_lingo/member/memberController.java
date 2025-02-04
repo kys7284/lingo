@@ -109,8 +109,25 @@ public class memberController {
 		return "member/mypage/mypageUpdateAction";
 	}
 	
+	// 회원탈퇴화면
+	@RequestMapping("/memberDelete.do")
+	public String memberDelete(HttpServletRequest request, HttpServletResponse response, Model model) 
+		throws ServletException, IOException {
+		logger.info("<<< url ==>  /memberDelete.do >>>");
+		
+		return "member/mypage/memberDelete";
+	}
 	
-	
+	// 회원탈퇴처리
+	@RequestMapping("/memberDeleteAction.do")
+	public String memberDeleteAction(HttpServletRequest request, HttpServletResponse response, Model model) 
+		throws ServletException, IOException {
+		logger.info("<<< url ==>  /memberDeleteAction.do >>>");
+		
+		service.memberDeleteAction(request, response, model);
+		
+		return "member/mypage/memberDeleteAction";
+	}
 	
 	
 
