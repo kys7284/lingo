@@ -17,6 +17,9 @@ public interface MemberDAO {
 	// 마이페이지
     public MemberDTO mypage(String mem_id);
     
+    // 회원정보수정 처리
+    public int mypageUpdateAction(MemberDTO dto);
+    
     
 	
 }

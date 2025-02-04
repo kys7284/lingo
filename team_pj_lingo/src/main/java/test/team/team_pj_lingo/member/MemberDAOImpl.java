@@ -54,4 +54,14 @@ public class MemberDAOImpl implements MemberDAO {
 		return dto;
 	}
 
+	// 회원정보수정 처리
+	@Override
+	public int mypageUpdateAction(MemberDTO dto) {
+		System.out.println("DAO - mypageUpdateAction"); 
+		
+		int updateCnt = sqlSession.update("test.team.team_pj_lingo.member.MemberDAO.mypageUpdateAction", dto);
+		
+		return updateCnt;
+	}
+
 }

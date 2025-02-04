@@ -24,8 +24,13 @@ public interface MemberService {
 			throws ServletException, IOException;
 	
 	// 마이페이지
-		public void mypage(HttpServletRequest request, HttpServletResponse response, Model model) 
-				throws ServletException, IOException;
+	public void mypage(HttpServletRequest request, HttpServletResponse response, Model model) 
+			throws ServletException, IOException;
+		
+	// 회원정보 수정처리	
+	public void mypageUpdateAction(HttpServletRequest request, HttpServletResponse response, Model model) 
+			throws ServletException, IOException;
+	
 	
 
 	
