@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="${path }/resources/css/common/header.css">
 <link rel="stylesheet" href="${path }/resources/css/common/footer.css">
 <link rel="stylesheet" href="${path }/resources/css/member/join.css">
+<link rel="stylesheet" href="${path }/resources/css/member/login.css">
 
 <!-- js -->
 <script src="${path}/resources/js/member/join.js" defer></script>
@@ -47,7 +48,7 @@
 					<div id="s2_inner">
 						<div class="join">
 							
-							<form name="inputform" action="joinAction.do" method="post"
+							<form name="inputform" action="${path}/mypageUpdateAction.do" method="post"
 								onsubmit="return signInCheck()">
 								
 								
@@ -77,19 +78,19 @@
 									<tr>
 										<th> * 이름 </th>
 										<td> 
-											<input type="text" class="input" name="mem_name" size="50" value="${dto.mem_name}" readonly >
+											<input type="text" class="input" name="mem_name" size="50" value="${dto.mem_name}" >
 										</td>
 									</tr>
 									
 									<tr>
 										<th> * 국적</th>
 											<td>
-												<img src="resources/images/korea.jpg" width="20" height="15" > <input type="radio" name="mem_country" value="KOR" style="margin:0px 13px 0px 0px;" checked>
-												<img src="resources/images/us.jpg" width="20" height="15" > <input type="radio" name="mem_country" value="USA" style="margin:0px 13px 0px 0px;">
-												<img src="resources/images/vietnam.jpg" width="20" height="15"> <input type="radio" name="mem_country" value="VIET" style="margin:0px 13px 0px 0px;">
-												<img src="resources/images/china.jpg" width="20" height="15"> <input type="radio" name="mem_country" value="CHI" style="margin:0px 13px 0px 0px;">
-												<img src="resources/images/thai.jpg" width="20" height="15"> <input type="radio" name="mem_country" value="THAI" style="margin:0px 13px 0px 0px;">
-												<img src="resources/images/japan.jpg" width="20" height="15"> <input type="radio" name="mem_country" value="JAP" style="margin:0px 13px 0px 0px;">
+												<img src="resources/images/korea.jpg" width="20" height="15" > <input type="radio" <c:if test="${dto.mem_country == 'KOR'}" >checked</c:if> name="mem_country" value="KOR" style="margin:0px 13px 0px 0px;">
+												<img src="resources/images/us.jpg" width="20" height="15" > <input type="radio" <c:if test="${dto.mem_country == 'USA'}" >checked</c:if> name="mem_country" value="USA" style="margin:0px 13px 0px 0px;">
+												<img src="resources/images/vietnam.jpg" width="20" height="15"> <input type="radio" <c:if test="${dto.mem_country == 'VIET'}" >checked</c:if> name="mem_country" value="VIET" style="margin:0px 13px 0px 0px;">
+												<img src="resources/images/china.jpg" width="20" height="15"> <input type="radio" <c:if test="${dto.mem_country == 'CHI'}" >checked</c:if> name="mem_country" value="CHI" style="margin:0px 13px 0px 0px;">
+												<img src="resources/images/thai.jpg" width="20" height="15"> <input type="radio" <c:if test="${dto.mem_country == 'THAI'}" >checked</c:if> name="mem_country" value="THAI" style="margin:0px 13px 0px 0px;">
+												<img src="resources/images/japan.jpg" width="20" height="15"> <input type="radio" <c:if test="${dto.mem_country == 'JAP'}" >checked</c:if> name="mem_country" value="JAP" style="margin:0px 13px 0px 0px;">
 											</td>
 									</tr>
 									
@@ -153,9 +154,9 @@
 										<td colspan="2" style="border-bottom:none">
 											<br>
 											<div align="right">
-												<input class="inputButton" type="submit" value="회원가입">
+												<input class="inputButton" type="submit" value="회원정보수정">
 												<input class="inputButton" type="reset" value="초기화">
-												<input class="inputButton" type="button" value="가입취소" onclick="window.location='${path}/main.do'">
+												<input class="inputButton" type="button" value="메인으로" onclick="window.location='${path}/main.do'">
 											</div>
 										</td>	
 									</tr>
