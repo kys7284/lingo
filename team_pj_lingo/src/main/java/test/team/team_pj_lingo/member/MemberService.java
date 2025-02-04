@@ -31,7 +31,8 @@ public interface MemberService {
 	public void mypageUpdateAction(HttpServletRequest request, HttpServletResponse response, Model model) 
 			throws ServletException, IOException;
 	
-	
-
+	// 회원탈퇴 처리
+	public void memberDeleteAction(HttpServletRequest request, HttpServletResponse response, Model model) 
+			throws ServletException, IOException;
 	
 }

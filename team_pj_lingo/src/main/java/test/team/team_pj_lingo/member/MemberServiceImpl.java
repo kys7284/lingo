@@ -151,6 +151,33 @@ public class MemberServiceImpl implements MemberService {
 		
 	}
 
+	// 회원탈퇴처리
+	@Override
+	public void memberDeleteAction(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException {
+			
+		System.out.println("서비스 - memberDeleteAction ");
+		
+		String mem_id = request.getParameter("mem_id");
+		String mem_pwd = request.getParameter("mem_pwd");
+		int deleteCnt = 0;
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("mem_id", mem_id);
+		map.put("mem_pwd", mem_pwd);
+		
+		int selectCnt = dao.idPasswordChk(map);
+		
+		if(selectCnt == 1) {
+			deleteCnt = dao.memberDeleteAction(map);
+			request.getSession().invalidate();
+		}
+	
+		
+		model.addAttribute("deleteCnt", deleteCnt);
+		
+	}
+
 
 
 }
