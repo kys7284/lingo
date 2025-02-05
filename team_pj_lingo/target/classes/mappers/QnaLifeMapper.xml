@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+     
+     
+<mapper namespace="test.team.team_pj_lingo.qnaBoard.QnaDAO">
+
+	<!-- 게시글 목록 -->
+<resultMap id="BoardResultMap" type="test.team.team_pj_lingo.qnaBoard.QnaDTO">
+    <result property="b_num" column="b_num"/>
+    <result property="b_title" column="b_title"/>
+    <result property="b_content" column="b_content"/>
+    <result property="b_comment_count" column="comment_count"/>
+</resultMap>
+
+<select id="qnaList" parameterType="java.util.Map" resultMap="BoardResultMap">
+    SELECT A.*,
+           NVL(
+               (SELECT COUNT(*)
+                FROM qnaComment_life_tbl c
+                WHERE c.c_board_num = A.b_num), 0) AS comment_count
+    FROM
+        (SELECT A.*, 
+                rownum AS rn
+        FROM
+            (SELECT *
+             FROM qna_life_tbl
+             WHERE b_show = 'Y'
+             ORDER BY b_num DESC) A
+        ) A
+    WHERE A.rn BETWEEN #{start} AND #{end}
+</select>
+
+<!-- 게시글 갯수 구하기 -->   
+<select id="qnaCnt" resultType="int" >
+      SELECT COUNT(*) AS cnt
+         FROM qna_life_tbl
+         WHERE b_show = 'Y'
+</select>   
+
+
+<!-- 조회수 증가 -->   
+<update id="plusReadCnt" parameterType="int" >
+      UPDATE qna_life_tbl
+        SET b_readCnt = b_readCnt + 1
+        WHERE b_num = #{b_num}
+</update>
+
+<!-- 댓글 작성처리 -->   
+<insert id="insertComment" parameterType="test.team.team_pj_lingo.qnaBoard.QnaCommentDTO" >
+      INSERT INTO qnaComment_life_tbl(c_comment_num, c_board_num, c_writer, c_content, c_regDate)
+        VALUES((SELECT NVL(MAX(c_comment_num)+1, 1) FROM qnaComment_life_tbl), #{c_board_num}, #{c_writer}, #{c_content}, sysdate)
+</insert>
+
+<!-- 댓글목록 -->   
+<select id="commentList" parameterType="int" resultType="test.team.team_pj_lingo.qnaBoard.QnaCommentDTO">
+SELECT *
+  FROM
+    (SELECT A.*,
+           rownum As rn
+      FROM 
+            (SELECT * FROM qnaComment_life_tbl c,
+                           qna_life_tbl b 
+                WHERE b.b_num = c.c_board_num
+                  AND b_num = #{board_num} 
+             ORDER BY c_comment_num DESC) A 
+    ) 
+ORDER BY rn DESC
+</select>
+
+<!-- 게시글 상세페이지 -->   
+<select id="getQnaDetail" parameterType="int" resultType="test.team.team_pj_lingo.qnaBoard.QnaDTO">
+      SELECT * FROM qna_life_tbl
+         WHERE b_num = #{b_num}
+</select>
+
+<!-- 게시글 수정 삭제시 비밀번호 인증 -->   
+<select id="password_chk" parameterType="java.util.Map" resultType="int">
+      SELECT COUNT(*) AS cnt 
+       FROM qna_life_tbl 
+       WHERE b_num = #{b_num}  AND b_password = #{b_password}
+</select>
+
+<!-- 게시글 수정처리 -->   
+<update id="updateQna" parameterType="test.team.team_pj_lingo.qnaBoard.QnaDTO" >
+      UPDATE qna_life_tbl
+       SET b_password = #{b_password},
+        b_title = #{b_title},
+        b_content = #{b_content}
+        WHERE b_num = #{b_num}
+</update>
+
+<!-- 게시글 삭제처리 -->   
+<update id="deleteQna" parameterType="int" >
+      UPDATE qna_life_tbl 
+       SET b_show = 'N' 
+       WHERE b_num = #{b_num}
+</update>
+
+<!-- 게시글 작성처리 -->   
+<insert id="insertQna" parameterType="test.team.team_pj_lingo.qnaBoard.QnaDTO" >
+      INSERT INTO qna_life_tbl(b_num, b_title, b_content, b_writer, b_password, b_readCnt, b_regDate, b_comment_count) 
+       VALUES((SELECT NVL(MAX(b_num)+1, 1) FROM qna_life_tbl), #{b_title}, #{b_content}, #{b_writer}, #{b_password}, 0, sysdate, 0)
+</insert>
+	
+</mapper>
