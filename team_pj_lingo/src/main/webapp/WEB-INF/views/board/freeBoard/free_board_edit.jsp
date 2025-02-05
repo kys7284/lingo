@@ -149,6 +149,14 @@
 										</tr>
 										
 										<tr>
+											<th>이미지</th>
+												<td colspan="2" style="120px"> 
+												<img src="${dto.fb_img}" style="width:200px"><br>
+												<input type="file" class="input" id="fbImg" name="fbImg" accept="image/*">
+												</td>
+										</tr>
+										
+										<tr>
 											<th style="width: 200px">작성일</th>
 											<td colspan="3" style="text-align:center">${dto.fb_regDate}</td>
 											

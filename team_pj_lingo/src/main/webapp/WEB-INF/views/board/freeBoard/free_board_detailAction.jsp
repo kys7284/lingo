@@ -57,7 +57,7 @@
 			free_comment_add();
 		});
 		
-		 //[게시글 수정삭제 버튼] 클릭시 [게시글 수정/삭제 화면]으로 이동 (컨트롤러에서 패스워드 체크 후)
+		 //[게시글 수정/삭제 버튼] 클릭시 [게시글 수정/삭제 화면]으로 이동 (컨트롤러에서 패스워드 체크 후)
 		$("#btnEdit").click(function() {
 			document.detailForm.action="${path}/password_chkAction.fb";
 			document.detailForm.submit();
@@ -137,6 +137,12 @@
 							<div class="table_div">
 								<form name="detailForm" method="post">
 									<table>
+									
+									<!-- hidden : 직접 input박스에서 입력받지 못한 값들을 전달할 때 사용 -->
+									<input type="hidden" name="hiddenPageNum" value="${pageNum}">
+									<input type="hidden" name="hidden_fb_num" value="${dto.fb_num}">
+									<input type="hidden" name="hidden_fb_img" value="${dto.fb_img}">
+									
 										<tr>
 											<th style="width: 200px">글번호</th>
 											<td style="width: 200px" style="text-align:center"> ${dto.fb_num} </td>
@@ -152,7 +158,7 @@
 											<th style="width: 200px">비밀번호</th>
 											<td style="width: 200px" style="text-align:center"> 
 												<input style="width: 200px" type="password" class="input" name="fb_password" 
-													id="b_password" size="30" placeholder="비밀번호 입력" required autofocus> 
+													id="fb_password" size="30" placeholder="비밀번호 입력" required autofocus> 
 												<c:if test="${param.message == 'error'}">
 													<br><span style="color:red">비밀번호 불일치 ! !</span> 
 												</c:if>
@@ -174,7 +180,6 @@
 											<th>이미지</th>
 											<td colspan="2" style="120px"> 
 												<img src="${dto.fb_img}" style="width:200px"><br>
-												<input type="file" class="input" id="fbImg" name="fbImg" accept="image/*">
 											</td>
 										</tr>
 										

@@ -140,11 +140,11 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 			throws ServletException, IOException {
 		System.out.println("FreeBoardServiceImpl - freeUpdateAction()");
 		int hiddenPageNum = Integer.parseInt(request.getParameter("hiddenPageNum"));
-		int hiddenFb_num = Integer.parseInt(request.getParameter("hiddenFb_num"));
-		String hiddenFb_img = request.getParameter("hiddenFb_img");
+		int hidden_fb_num = Integer.parseInt(request.getParameter("hidden_fb_num"));
+		String hidden_fb_img = request.getParameter("hidden_fb_img");
 	
-		System.out.println("hiddenFb_num" + hiddenFb_num);
-		System.out.println("hiddenFb_img" + hiddenFb_img);
+		System.out.println("hidden_fb_num" + hidden_fb_num);
+		System.out.println("hidden_fb_img" + hidden_fb_img);
 		
 		MultipartFile file = request.getFile("fb_img");
 		System.out.println("file" + file);
@@ -189,7 +189,7 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		//----------------------- 추가 --------------------------------------------
 		else {
 			// 기존 이미지 사용(이미지 수정 안할 경우)
-			fb_img1 = hiddenFb_img;
+			fb_img1 = hidden_fb_img;
 			System.out.println("fb_img1" + fb_img1);
 		}
 		
@@ -197,7 +197,7 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		
 		// dto 생성후 setter로 값을 담는다.
 		FreeBoardDTO dto = new FreeBoardDTO();
-		dto.setFb_num(hiddenFb_num);	// ※누락 주의※
+		dto.setFb_num(hidden_fb_num);	// ※누락 주의※
 		dto.setFb_writer(request.getParameter("fb_writer"));
 		dto.setFb_title(request.getParameter("fb_title"));
 		dto.setFb_img(fb_img1)	;	// ※누락 주의※
@@ -212,7 +212,7 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		// 6단계. jsp로 결과넘기기
 		model.addAttribute("updateCnt", updateCnt);
 		model.addAttribute("hiddenPageNum", hiddenPageNum);
-		model.addAttribute("hiddenPdNo", hiddenFb_num);
+		model.addAttribute("hidden_fb_num", hidden_fb_num);
 	}
 
 	//게시글 삭제처리

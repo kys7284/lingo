@@ -85,24 +85,21 @@ public class FreeBoardController {
 	}
 	
 	// [게시글 수정/삭제 버튼] 클릭시 비밀번호 인증처리
-	@RequestMapping("/password_chkAction.bc")
+	@RequestMapping("/password_chkAction.fb")
 	public String password_chkAction(HttpServletRequest request, HttpServletResponse response, Model model) 
 			throws ServletException, IOException{
-		logger.info("<<url = /password_chkAction.bc>>");
+		logger.info("<<url = /password_chkAction.fb>>");
 		int result = service.password_chkAction(request, response, model);
 		
-		if(result != 0) {
-			return "board/freeBoard/free_board_edit";
-		}
-		else {
+		if(result == 0) {
 			logger.info("비밀번호 불일치 !");
 			int fb_num = Integer.parseInt(request.getParameter("hidden_fb_num"));
 			
 			viewPage = request.getContextPath() + "/free_board_detailAction.fb?fb_num=" + fb_num + "&message=error";
 			response.sendRedirect(viewPage);
 			
-			return null;	
 		}
+		return "board/freeBoard/free_board_edit";
 	}
 	
 	// 게시글 수정 처리
