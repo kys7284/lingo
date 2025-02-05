@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/setting.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +10,7 @@ integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" 
 integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 <meta charset="UTF-8">
+
 <script type="text/javascript">
 	$(function () {
 		$("#mainBtn").click(function() {
@@ -17,7 +19,15 @@ integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqrupt
 		
 		$("#updateBtn").click(function() {
 			location.href = "${path}/mypageUpdate.do"
-		})
+		});
+		
+		$(document).ready(function() { // DOMContentLoaded 이벤트 발생 후 실행
+			  $("#deleteBtn").click(function() { // ID가 "deleteBtn"인 요소에 대한 클릭 이벤트 핸들러
+			    if (confirm("회원탈퇴 하시겠습니까?")) {
+			      window.location.href = "${path}/memberDelete.do";
+			    } 
+			  });
+			});
 		
 		
 	});
@@ -61,7 +71,16 @@ integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqrupt
 				<td style="width: 30%">${dto.mem_hp}</td>
 				
 				<th style="width: 20%">활동등급</th>
-				<td style="width: 30%">${dto.mem_rank}</td>
+				<td style="width: 30%">
+					<c:choose>
+						<c:when test="${dto.mem_rank >= 100}">VIP</c:when>
+						<c:when test="${dto.mem_rank >= 50}">Gold</c:when>
+						<c:when test="${dto.mem_rank >= 30}">Silver</c:when>
+						<c:when test="${dto.mem_rank >= 10}">Bronze</c:when>
+						<c:otherwise>Unrank</c:otherwise>
+					</c:choose>
+				</td>
+				
 			</tr>
 			
 			<tr align="center">
@@ -85,6 +104,7 @@ integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqrupt
 			<tr align="center">
 				<td colspan="4">
 					<input type="button" class="btn btn-outline-info" id="updateBtn" value="회원정보 수정"/>
+					<input type="button" class="btn btn-outline-info" id="deleteBtn" value="회원탈퇴"/>
 					<input type="button" class="btn btn-outline-info" id="mainBtn" value="메인으로" />
 				</td>
 			</tr>

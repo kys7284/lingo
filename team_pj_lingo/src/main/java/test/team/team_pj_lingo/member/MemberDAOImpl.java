@@ -54,4 +54,25 @@ public class MemberDAOImpl implements MemberDAO {
 		return dto;
 	}
 
+	// 회원정보수정 처리
+	@Override
+	public int mypageUpdateAction(MemberDTO dto) {
+		System.out.println("DAO - mypageUpdateAction"); 
+		
+		int updateCnt = sqlSession.update("test.team.team_pj_lingo.member.MemberDAO.mypageUpdateAction", dto);
+		
+		return updateCnt;
+	}
+
+	// 회원탈퇴처리
+	@Override
+	public int memberDeleteAction(Map<String, Object> map) {
+		System.out.println("DAO - memberDeleteAction"); 
+		
+		int deleteCnt = sqlSession.delete("test.team.team_pj_lingo.member.MemberDAO.memberDeleteAction", map);
+		System.out.println("DAO deleteCnt :" +deleteCnt);
+		
+		return deleteCnt;
+	}
+
 }

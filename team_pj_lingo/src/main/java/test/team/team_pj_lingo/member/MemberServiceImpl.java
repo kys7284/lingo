@@ -113,6 +113,71 @@ public class MemberServiceImpl implements MemberService {
 		
 	}
 
+	// 회원정보수정 처리
+	@Override
+	public void mypageUpdateAction(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException {
+	
+		System.out.println("서비스 - mypageUpdateAction ");
+		
+		MemberDTO dto = new MemberDTO();
+		dto.setMem_id(request.getParameter("mem_id"));
+		dto.setMem_pwd(request.getParameter("mem_pwd"));
+		dto.setMem_name(request.getParameter("mem_name"));
+		dto.setMem_country(request.getParameter("mem_country"));
+		dto.setMem_birthday(Date.valueOf(request.getParameter("mem_birthday")));
+		dto.setMem_comment(request.getParameter("mem_comment"));
+		
+		String hp1 = request.getParameter("mem_hp1");
+		String hp2 = request.getParameter("mem_hp2");
+		String hp3 = request.getParameter("mem_hp3");
+		String mem_hp = hp1+'-'+hp2+'-'+hp3;
+		dto.setMem_hp(mem_hp);
+		
+		String email1 = request.getParameter("mem_email1");
+		String email2 = request.getParameter("mem_email2");
+		String mem_email = email1 + "@" + email2;
+		dto.setMem_email(mem_email);
+		
+		String address1 = request.getParameter("sample6_address");
+		String address2 = request.getParameter("sample6_extraAddress");
+		String address3 = request.getParameter("sample6_detailAddress");
+		String mem_address = address1+"-"+address2+"-"+address3;
+		dto.setMem_address(mem_address);
+		
+		int updateCnt = dao.mypageUpdateAction(dto);
+		
+		model.addAttribute("updateCnt", updateCnt);
+		
+	}
+
+	// 회원탈퇴처리
+	@Override
+	public void memberDeleteAction(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException {
+			
+		System.out.println("서비스 - memberDeleteAction ");
+		
+		String mem_id = request.getParameter("mem_id");
+		String mem_pwd = request.getParameter("mem_pwd");
+		int deleteCnt = 0;
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("mem_id", mem_id);
+		map.put("mem_pwd", mem_pwd);
+		
+		int selectCnt = dao.idPasswordChk(map);
+		
+		if(selectCnt == 1) {
+			deleteCnt = dao.memberDeleteAction(map);
+			request.getSession().invalidate();
+		}
+	
+		
+		model.addAttribute("deleteCnt", deleteCnt);
+		
+	}
+
 
 
 }

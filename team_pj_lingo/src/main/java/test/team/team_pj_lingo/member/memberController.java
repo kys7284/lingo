@@ -97,6 +97,39 @@ public class memberController {
 		
 		return "member/mypage/mypageUpdate";
 	}
+	
+	// 회원정보수정 처리
+	@RequestMapping("/mypageUpdateAction.do")
+	public String mypageUpdateAction(HttpServletRequest request, HttpServletResponse response, Model model) 
+		throws ServletException, IOException {
+		logger.info("<<< url ==>  /mypageUpdateAction.do >>>");
+		
+		service.mypageUpdateAction(request, response, model);
+		
+		return "member/mypage/mypageUpdateAction";
+	}
+	
+	// 회원탈퇴화면
+	@RequestMapping("/memberDelete.do")
+	public String memberDelete(HttpServletRequest request, HttpServletResponse response, Model model) 
+		throws ServletException, IOException {
+		logger.info("<<< url ==>  /memberDelete.do >>>");
+		
+		return "member/mypage/memberDelete";
+	}
+	
+	// 회원탈퇴처리
+	@RequestMapping("/memberDeleteAction.do")
+	public String memberDeleteAction(HttpServletRequest request, HttpServletResponse response, Model model) 
+		throws ServletException, IOException {
+		logger.info("<<< url ==>  /memberDeleteAction.do >>>");
+		
+		service.memberDeleteAction(request, response, model);
+		
+		return "member/mypage/memberDeleteAction";
+	}
+	
+	
 
 	// 로그아웃
 	@RequestMapping("/logout.do")
