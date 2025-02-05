@@ -46,11 +46,11 @@
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-white mb-3">관련기관 및 단체</h4>
-                    <a class="btn btn-link" href="https://www.kihf.or.kr/web/index.do">한국건강가정진흥원</a>
-                    <a class="btn btn-link" href="https://www.korean.go.kr/">국립국어원</a>
-                    <a class="btn btn-link" href="https://www.korea.net/">코리아넷</a>
-                    <a class="btn btn-link" href="https://danurischool.kr/portal/home/mainViewAction.do">다누리 배움터</a>
-                    <a class="btn btn-link" href="https://www.ffsb.kr/">가족친화지원사업</a>
+                    <a class="btn btn-link" href="https://www.kihf.or.kr/web/index.do" target="_blank">한국건강가정진흥원</a>
+                    <a class="btn btn-link" href="https://www.korean.go.kr/" target="_blank">국립국어원</a>
+                    <a class="btn btn-link" href="https://www.korea.net/" target="_blank">코리아넷</a>
+                    <a class="btn btn-link" href="https://danurischool.kr/portal/home/mainViewAction.do" target="_blank">다누리 배움터</a>
+                    <a class="btn btn-link" href="https://www.ffsb.kr/" target="_blank">가족친화지원사업</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-white mb-3">연락처</h4>
@@ -58,9 +58,9 @@
                     <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>다누리 콜센터 1577-1366</p>
                     <p class="mb-2"><i class="fa fa-envelope me-3"></i>이메일 office@gbfamily.net</p>
                     <div class="d-flex pt-2">
-                        <a class="btn btn-outline-light btn-social" href="https://x.com/i/flow/login?redirect_after_login=%2Fdanurilove"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social" href="https://www.facebook.com/cardanuri/"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social" href="https://www.youtube.com/@%EB%8B%A4%EB%AC%B8%ED%99%94%EA%B0%80%EC%A1%B1%EC%A7%80%EC%9B%90%ED%8F%AC%ED%84%B8%EB%8B%A4/videos"><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="https://x.com/i/flow/login?redirect_after_login=%2Fdanurilove" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="https://www.facebook.com/cardanuri/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="https://www.youtube.com/@%EB%8B%A4%EB%AC%B8%ED%99%94%EA%B0%80%EC%A1%B1%EC%A7%80%EC%9B%90%ED%8F%AC%ED%84%B8%EB%8B%A4/videos" target="_blank"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 

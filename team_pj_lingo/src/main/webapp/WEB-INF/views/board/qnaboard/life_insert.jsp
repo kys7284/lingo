@@ -78,7 +78,8 @@ $(function(){ // 상세페이지가 로딩되면 실행
     		$("#b_content").focus();
     		return false;
     	}
-
+		
+    	alert("게시글 작성완료~");
     	document.insertForm.action="${path}/life_insertAction.eq";
 		document.insertForm.submit();
     	
@@ -106,11 +107,11 @@ $(function(){ // 상세페이지가 로딩되면 실행
    <!-- 우측 화면 시작 -->
 	                  <div id="right">
 	                       <div class="table_div">
-	                            <form name="insertForm" method="post">
+	                            <form name="insertForm" method="post" action="life_insertAction.eq">
 	                                 <table>
 	                                      <tr>
 	                                           <th style="width: 200px"> 작성자 </th>
-	                                           <td style="width: 200px; text-align:center"> ${sessionScope.sessionID} </td>
+	                                           <td style="width : 200px; text-align:center"> ${sessionScope.sessionId} </td>
 	                                           
 	                                           <th style="width: 200px"> 비밀번호 </th>
 	                                           <td style="width: 200px; text-align:center"> 

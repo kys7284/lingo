@@ -55,7 +55,7 @@
                                 <h4 class="text-primary text-uppercase mb-3 animated slideInDown">언어로 인한 불편함 없이</h4>
                                 <h3 class="display-3 text-white animated slideInDown">다문화가족을 위한 쉽고 빠른 번역서비스</h3>
                                 <h4 class="text-light text-uppercase mb-3 animated slideInDown">언제든지 도움을 드립니다!</h4>
-                                <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">가입하기<i class="fa fa-arrow-right ms-3"></i></a>
+                                <a href="${path}/join.do" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">가입하기<i class="fa fa-arrow-right ms-3"></i></a>
                             </div>
                         </div>
                     </div>
@@ -88,7 +88,7 @@
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
-                           <a href="#">
+                           <a href="javascript:alert('생활정보 개발중입니다.');" onfocus="this.blur()">
                               <i class="fab fa-3x fa-slideshare text-primary mb-4"></i>
                                <h5 class="mb-3">생활정보</h5>
                                <p>생활에 유용한 다양한 정보를 쉽게 확인해보세요.</p>
@@ -99,7 +99,7 @@
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
-                          <a href="#">  
+                          <a href="javascript:alert('여행정보 개발중입니다.');" onfocus="this.blur()">  
                             <i class="fas fa-3x fa-suitcase-rolling text-primary mb-4"></i>
                             <h5 class="mb-3">여행정보</h5>
                             <p>국내명소, 맛집, 여행지 정보를 한 곳에서 쉽게 찾아보세요.</p>
@@ -110,7 +110,7 @@
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
-                          <a href="#">
+                          <a href="javascript:alert('의료정보 개발중입니다.');" onfocus="this.blur()">
                             <i class="fas fa-3x fa-hand-holding-medical text-primary mb-4"></i>
                             <h5 class="mb-3">의료정보</h5>
                             <p>의료,건강등 유용한 정보를 한 곳에서 확인할 수 있습니다.</p>
@@ -121,7 +121,7 @@
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
-                          <a href="#">  
+                          <a href="javascript:alert('법률정보 개발중입니다.');" onfocus="this.blur()">  
                             <i class="fa fa-3x fa-book-open text-primary mb-4"></i>
                             <h5 class="mb-3">법률정보</h5>
                             <p>다문화 가정을 위한 법적 상담과 필요한 정보를 찾아보세요.</p>
@@ -168,7 +168,7 @@
                             <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>취업 및 경제활동 지원 문서 번역</p>
                         </div>
                     </div>
-                    <a class="btn btn-primary py-3 px-5 mt-2" href="https://translate.google.com/?hl=ko&sl=en&tl=ko&op=translate">자세히 알아보기<i class="fa fa-arrow-right ms-3"></i></a>
+                    <a class="btn btn-primary py-3 px-5 mt-2" href="https://translate.google.com/?hl=ko&sl=en&tl=ko&op=translate" target="_blank">자세히 알아보기<i class="fa fa-arrow-right ms-3"></i></a>
                 </div>
             </div>
         </div>
@@ -230,11 +230,11 @@
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-white mb-3">관련기관 및 단체</h4>
-                    <a class="btn btn-link" href="https://www.kihf.or.kr/web/index.do">한국건강가정진흥원</a>
-                    <a class="btn btn-link" href="https://www.korean.go.kr/">국립국어원</a>
-                    <a class="btn btn-link" href="https://www.korea.net/">코리아넷</a>
-                    <a class="btn btn-link" href="https://danurischool.kr/portal/home/mainViewAction.do">다누리 배움터</a>
-                    <a class="btn btn-link" href="https://www.ffsb.kr/">가족친화지원사업</a>
+                    <a class="btn btn-link" href="https://www.kihf.or.kr/web/index.do" target="_blank">한국건강가정진흥원</a>
+                    <a class="btn btn-link" href="https://www.korean.go.kr/" target="_blank">국립국어원</a>
+                    <a class="btn btn-link" href="https://www.korea.net/" target="_blank">코리아넷</a>
+                    <a class="btn btn-link" href="https://danurischool.kr/portal/home/mainViewAction.do" target="_blank">다누리 배움터</a>
+                    <a class="btn btn-link" href="https://www.ffsb.kr/" target="_blank">가족친화지원사업</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-white mb-3">연락처</h4>
@@ -242,9 +242,9 @@
                     <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>다누리 콜센터 1577-1366</p>
                     <p class="mb-2"><i class="fa fa-envelope me-3"></i>이메일 office@gbfamily.net</p>
                     <div class="d-flex pt-2">
-                        <a class="btn btn-outline-light btn-social" href="https://x.com/i/flow/login?redirect_after_login=%2Fdanurilove"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social" href="https://www.facebook.com/cardanuri/"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social" href="https://www.youtube.com/@%EB%8B%A4%EB%AC%B8%ED%99%94%EA%B0%80%EC%A1%B1%EC%A7%80%EC%9B%90%ED%8F%AC%ED%84%B8%EB%8B%A4/videos"><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="https://x.com/i/flow/login?redirect_after_login=%2Fdanurilove" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="https://www.facebook.com/cardanuri/"><i class="fab fa-facebook-f" target="_blank"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="https://www.youtube.com/@%EB%8B%A4%EB%AC%B8%ED%99%94%EA%B0%80%EC%A1%B1%EC%A7%80%EC%9B%90%ED%8F%AC%ED%84%B8%EB%8B%A4/videos" target="_blank"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 
