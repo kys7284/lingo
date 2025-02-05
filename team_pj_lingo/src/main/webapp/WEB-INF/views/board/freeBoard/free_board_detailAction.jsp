@@ -54,8 +54,24 @@
 	
 		//[댓글쓰기 버튼 클릭(1)]
 		$('#btnCommentSave').click(function() {
-			free_comment_add();
-		});
+				<%
+					if(session.getAttribute("sessionId") == null)	{
+				%>
+					alert("로그인이 필요합니다 !");
+					location.href="${path}/login.do"
+				
+				<%
+					}	else	{
+				%>
+				
+						free_comment_add();
+				
+				<%
+						}
+				%>
+				
+			});
+		
 		
 		 //[게시글 수정/삭제 버튼] 클릭시 [게시글 수정/삭제 화면]으로 이동 (컨트롤러에서 패스워드 체크 후)
 		$("#btnEdit").click(function() {
@@ -89,7 +105,7 @@
 				free_comment_list();		//댓글목록 새로고침(7)
 			},
 			error:function() {
-				alert('free_comment_add() error');
+				alert('댓글 내용을 입력하세요 !');
 			}
 		});
 	}

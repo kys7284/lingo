@@ -91,11 +91,12 @@ public class FreeBoardController {
 		logger.info("<<url = /password_chkAction.fb>>");
 		int result = service.password_chkAction(request, response, model);
 		
+		System.out.println(result);
 		if(result == 0) {
 			logger.info("비밀번호 불일치 !");
 			int fb_num = Integer.parseInt(request.getParameter("hidden_fb_num"));
 			
-			viewPage = request.getContextPath() + "/free_board_detailAction.fb?fb_num=" + fb_num + "&message=error";
+			viewPage = request.getContextPath() + "/freeDetailAction.fb?fb_num=" + fb_num + "&message=error";
 			response.sendRedirect(viewPage);
 			
 		}

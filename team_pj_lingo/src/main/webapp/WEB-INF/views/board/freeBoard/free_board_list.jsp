@@ -50,7 +50,22 @@
 <script type="text/javascript">
 	$(function(){
 		$("#btnInsert").click(function(){
-			location.href="${path}/free_board_insert.fb"	
+			<%
+				if(session.getAttribute("sessionId") == null)	{
+			%>
+				alert("로그인이 필요합니다 !");
+				location.href="${path}/login.do"
+			
+			<%
+				}	else {
+			%>
+			
+				location.href="${path}/free_board_insert.fb"	
+			
+			<%
+				}
+			%>
+			
 		});
 	});
 </script>
