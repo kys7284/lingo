@@ -109,7 +109,7 @@
 											<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
 											<input type="text" id="sample6_address" name="sample6_address" value="${addressArr[0]}" placeholder="주소" readonly><br>
 											<input type="text" id="sample6_extraAddress" name="sample6_extraAddress" value="${addressArr[1]}" readonly>
-											<input type="text" id="sample6_detailAddress" name="sample6_detailAddress" value="${addressArr[2]}" required>
+											<input type="text" id="sample6_detailAddress" name="sample6_detailAddress" value="${addressArr[2]}" >
 										</td>
 									</tr>
 									
