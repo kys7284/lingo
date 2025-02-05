@@ -9,7 +9,7 @@
 <!-- 반응형 웹  -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>login</title>
+<title>memberDelete</title>
 
 <!-- css  -->
 <!-- 기존설정 그대로 -->
@@ -47,17 +47,13 @@
 
 	<link rel="stylesheet" href="${path}/resources/css/member/login.css">
 <script type="text/javascript">
-$(function(){
-	
+	$(function() {
+		$("#mainBtn").click(function() {
+			location.href = "${path}/main.do";
+		});
+	});
+</script>	
 
-	 $("#btnInsert").click(function(){
- 		  location.href="${path}/life_insert.eq";
-	 });
-	
-});
-
-
-</script>
 </head>
 <body>
 <div class="wrap">
@@ -70,66 +66,36 @@ $(function(){
       <div id="contents">
          <!-- 상단 중앙1 시작  -->
          <div id="section1">
-            <h1 align="center"> 생활정보 </h1>
+            <h1 align="center"> 본인확인 </h1>
          </div>
          <!-- 상단 중앙2 시작  -->
          <div id="section2">
             <div id="s2_inner">
                <div class="join">
-                  <form name="loginform" action="loginAction.do" method="post">
+                  <form name="loginform" action="memberDeleteAction.do" method="post">
                      <table>
                         <tr>
-                           <td>No</td>
-                           <td>작성자</td>
-                           <td>문의내용</td>
-                           <td>작성일</td>
-                           <td>조회수</td>
+                           <th> * 아이디 </th>
+                           <td>
+                              <input type="text" class="input" name="mem_id" size="30" value="${sessionScope.sessionId}" readonly>
+                           </td>
                         </tr>
-                                                        
-                                        <c:forEach var="dto" items="${list}">
-                                         <tr>
-                                             <td>${dto.b_num}</td>
-                                             <td>${dto.b_writer}</td>
-                                             <td>
-                                             
-                                             <a href="${path}/life_detailAction.eq?b_num=${dto.b_num}">${dto.b_title} <span style="color: red">[${dto.b_comment_count}]</span></a>
-                                             
-                                             </td>
-                                             <td>${dto.b_regDate}</td>
-                                             <td>${dto.b_readCnt}</td>
-                                          </tr>
-                                          
-                                        
-                                        </c:forEach>
-                                        <tr>
-                                             <td colspan ="5" align="center">
-                                                  <!-- 페이징 처리 -->
-                                                  <!-- 이전 버튼 활성화 -->
-                                                  <c:if test="${paging.startPage > 10}">
-                                                        <a href="${path}/life.eq?pageNum=${paging.prev}">[이전]</a>                                                  
-                                                  </c:if>
-                                                 
-                                                  <!-- 페이지 번호 처리 -->
-                                                  <c:forEach var="num" begin="${paging.startPage}" end="${paging.endPage}">
-                                                        <a href="${path}/life.eq?pageNum=${num}">${num}</a>
-                                                  </c:forEach>
-                                                  <c:if test="${paging.endPage < paging.pageCount}">
-                                                        <a href="${path}/life.eq?pageNum=${paging.next}">[다음]</a>                                                  
-                                                  </c:if>
-                                                  
-                                                  <!-- 다음 버튼 활성화 -->
-                                                  
-                                             </td>
-                                        </tr>     
-                                        
-                                        <tr>
-                                             <td colspan="5" align="center">
-                                                 <input type="button" class="inputButton" value="글쓰기" id="btnInsert">
-                                             </td>
-                                        </tr>
+                        <tr>
+                           <th> * 비밀번호 </th>
+                           <td>
+                              <input type="password" class="input" name="mem_pwd" size="20" placeholder="본인확인을 위한 비밀번호를 입력해주세요"  required>
+                           </td>
+                        </tr>
                         
-                        
-                        
+                        <tr>
+                           <td colspan="2" style="border-bottom: none">
+                           <br>
+                           <div align="right">
+                              <input class="inputButton" type="submit" value="회원탈퇴">
+                              <input class="inputButton" type="button" id="mainBtn" value="메인으로">
+                           </div>
+                           </td>
+                        </tr>   
                      </table>
                   </form>
                </div>

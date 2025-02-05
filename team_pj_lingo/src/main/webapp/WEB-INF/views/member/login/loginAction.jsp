@@ -118,7 +118,7 @@
                            <div align="right">
                               <input class="inputButton" type="button" value="메인으로" onclick="window.location='${path}/main.do'">
                               <input class="inputButton" type="button" value="회원수정" onclick="window.location='${path}/mypageUpdate.do'">
-                              <input class="inputButton" type="button" value="회원탈퇴" onclick="window.location='${path}/deleteMember.do'">
+                              <input class="inputButton" type="button" value="회원탈퇴" onclick="window.location='${path}/memberDelete.do'">
                               <input class="inputButton" type="button" value="로그아웃" onclick="window.location='${path}/logout.do'">
                              <c:if test="${sessionScope.sessionID == 'admin' }">
 								<a href="${path}/board_list.bc" style="color: black; background: lightblue; font-size: 15px; padding: 5px 10px 5px 10px;">관리자</a>

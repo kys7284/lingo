@@ -14,6 +14,19 @@ local.properties
 .loadpath
 .recommenders
 
+# Spring 관련 폴더, 파일
+target
+/target/
+.springBeans
+pom.properties
+MANIFEST.MF
+*.log
+.factorypath
+settings.json
+
+# SpringBoot 관련 파일
+config.properties
+
 # External tool builders
 .externalToolBuilders/
 

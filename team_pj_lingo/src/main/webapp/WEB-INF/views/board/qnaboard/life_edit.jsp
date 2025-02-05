@@ -80,9 +80,10 @@ $(function(){ // 상세페이지가 로딩되면 실행
     		$("#b_content").focus();
     		return false;
     	}
-    	
 
-   		
+    	else{
+    		alert("게시글 수정성공~");
+    	}
    		
 		document.editForm.action="${path}/life_updateAction.eq";
 		document.editForm.submit();
@@ -91,6 +92,7 @@ $(function(){ // 상세페이지가 로딩되면 실행
   
   // 게시글 삭제버튼 클릭시
     $(btnDelete).click(function(){
+    	alert("게시글 삭제성공~");
     	document.editForm.action="${path}/life_deleteAction.eq";
 		document.editForm.submit();
     	

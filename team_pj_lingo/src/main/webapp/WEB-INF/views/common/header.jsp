@@ -98,8 +98,8 @@
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">게시판</a>
                     <div class="dropdown-menu fade-down m-0">
                         <a href="${path}/free_board_list.fb" class="dropdown-item">자유게시판</a>
-                        <a href="#" class="dropdown-item">엔터테이먼트</a>
-                        <a href="#" class="dropdown-item">친구찾기</a>
+                        <a href="javascript:alert('엔터테이먼트 개발중입니다.');" onfocus="this.blur()" class="dropdown-item">엔터테이먼트</a>
+                        <a href="javascript:alert('친구찾기 개발중입니다.');" onfocus="this.blur()" class="dropdown-item">친구찾기</a>
                     </div>
                 </div>
                 
@@ -107,9 +107,9 @@
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Q&A</a>
                     <div class="dropdown-menu fade-down m-0">
                         <a href="${path}/life.eq" class="dropdown-item">생활정보</a>
-                        <a href="${path}/travle.eq" class="dropdown-item">여행정보</a>
-                        <a href="${path}/medical.eq" class="dropdown-item">의료정보</a>
-                        <a href="${path}/law.eq" class="dropdown-item">법률정보</a>
+                        <a href="javascript:alert('여행정보 개발중입니다.');" onfocus="this.blur()" class="dropdown-item">여행정보</a>
+                        <a href="javascript:alert('의료정보 개발중입니다.');" onfocus="this.blur()" class="dropdown-item">의료정보</a>
+                        <a href="javascript:alert('법률정보 개발중입니다.');" onfocus="this.blur()" class="dropdown-item">법률정보</a>
                     </div>
                 </div>
                 
@@ -117,8 +117,7 @@
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">번역서비스</a>
                     <div class="dropdown-menu fade-down m-0">
                         <a href="${path}/textTranslate.do" class="dropdown-item">텍스트번역</a>
-                        <a href="${path}/fileTranslate.do" class="dropdown-item">문서번역</a>
-                        <a href="#" class="dropdown-item">영상번역</a>
+                        <a href="${path}/fileTranslate.do" class="dropdown-item">문서번역</a>                      
                     </div>
                 </div>
                 <c:if test="${sessionScope.sessionId == null}">
