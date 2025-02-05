@@ -9,6 +9,7 @@ public class QnaCommentDTO {
 	private String c_writer;   // 작성자
 	private String c_content;  // 글내용
 	private Date c_regDate;    // 작성일
+	
 	public QnaCommentDTO() {
 		super();
 		
