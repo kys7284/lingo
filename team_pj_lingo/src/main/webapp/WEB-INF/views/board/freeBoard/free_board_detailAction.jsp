@@ -50,14 +50,30 @@
 <script type="text/javascript">
 	$(function(){	//(jQuery)상세페이지가 로딩되면
 		//(jQuery)상세페이지가 로딩되면 자동으로 댓글목록 호출
-		comment_list();
+		free_comment_list();
 	
 		//[댓글쓰기 버튼 클릭(1)]
 		$('#btnCommentSave').click(function() {
-			comment_add();
-		});
+				<%
+					if(session.getAttribute("sessionId") == null)	{
+				%>
+					alert("로그인이 필요합니다 !");
+					location.href="${path}/login.do"
+				
+				<%
+					}	else	{
+				%>
+				
+						free_comment_add();
+				
+				<%
+						}
+				%>
+				
+			});
 		
-		 //[게시글 수정삭제 버튼] 클릭시 [게시글 수정/삭제 화면]으로 이동 (컨트롤러에서 패스워드 체크 후)
+		
+		 //[게시글 수정/삭제 버튼] 클릭시 [게시글 수정/삭제 화면]으로 이동 (컨트롤러에서 패스워드 체크 후)
 		$("#btnEdit").click(function() {
 			document.detailForm.action="${path}/password_chkAction.fb";
 			document.detailForm.submit();
@@ -69,41 +85,42 @@
 	});
 	
 	// 댓글쓰기 버튼 클릭(2)
-	function comment_add(){
-		// alert('comment_add()');
+	function free_comment_add(){
+		// alert('free_comment_add()');
 		
 		//게시글번호, 댓글작성자,댓글 내용 파라미터로 넘김
 		let param = {
-				"board_num" : ${dto.fb_num},	//key:value => 댓글번호: 게시글번호
+				"freeboard_num" : ${dto.fb_num},	// key:value => 댓글번호: 게시글번호
 				"writer": $('#fb_writer').val(),
 				"content": $('#fb_content').val()
 		}
 		
 		$.ajax({
-			url:'${path}/comment_insert.fb',	//컨트롤러로 이동(3)
+			url:'${path}/insertComment.fb',	//컨트롤러로 이동(3)
 			type:'POST',
 			data: param,
 			success:function(){		//콜백함수(6)=> 댓글쓰기가 완료되면 서버에서 콜백함수 호출
 				$('#fb_writer').val("");
 				$('#fb_content').val("");
-				comment_list();		//댓글목록 새로고침(7)
+				free_comment_list();		//댓글목록 새로고침(7)
 			},
 			error:function() {
-				alert('comment_add() error');
+				alert('댓글 내용을 입력하세요 !');
 			}
 		});
 	}
 	
 	//댓글 목록
-	function comment_list(){	//(8)
-		//alert('comment_list()');
+	function free_comment_list(){	//(8)
+		//alert('free_comment_list()');
+	
 		$.ajax({
-			url: '${path}/comment_list.fb', //컨트롤러로 이동(9)
+			url: '${path}/free_comment_list.fb', //컨트롤러로 이동(9)
 			type: 'POST',
-			data: 'board_num=${dto.fb_num}',
+			data: 'freeboard_num=${dto.fb_num}',
 			
 			success:function(result){	//콜백함수(13)=> result는 comment_list.jsp(컨트롤러에서 넘긴)	
-				$('#commentList').html(result);	// div id가 commnetList인 자리에 댓글 리스트페이지 출력
+				$('#freeCommentList').html(result);	// div id가 free_commentList인 자리에 댓글 리스트페이지 출력
 			},
 			error:function() {
 				alert('error');
@@ -136,6 +153,12 @@
 							<div class="table_div">
 								<form name="detailForm" method="post">
 									<table>
+									
+									<!-- hidden : 직접 input박스에서 입력받지 못한 값들을 전달할 때 사용 -->
+									<input type="hidden" name="hiddenPageNum" value="${pageNum}">
+									<input type="hidden" name="hidden_fb_num" value="${dto.fb_num}">
+									<input type="hidden" name="hidden_fb_img" value="${dto.fb_img}">
+									
 										<tr>
 											<th style="width: 200px">글번호</th>
 											<td style="width: 200px" style="text-align:center"> ${dto.fb_num} </td>
@@ -151,7 +174,7 @@
 											<th style="width: 200px">비밀번호</th>
 											<td style="width: 200px" style="text-align:center"> 
 												<input style="width: 200px" type="password" class="input" name="fb_password" 
-													id="b_password" size="30" placeholder="비밀번호 입력" required autofocus> 
+													id="fb_password" size="30" placeholder="비밀번호 입력" required autofocus> 
 												<c:if test="${param.message == 'error'}">
 													<br><span style="color:red">비밀번호 불일치 ! !</span> 
 												</c:if>
@@ -173,7 +196,6 @@
 											<th>이미지</th>
 											<td colspan="2" style="120px"> 
 												<img src="${dto.fb_img}" style="width:200px"><br>
-												<input type="file" class="input" id="fbImg" name="fbImg" accept="image/*">
 											</td>
 										</tr>
 										

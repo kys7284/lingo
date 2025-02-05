@@ -46,19 +46,38 @@ public class FreeBoardDAOImpl implements FreeBoardDAO{
 		FreeBoardDTO dto = sqlSession.selectOne("test.team.team_pj_lingo.freeBoard.FreeBoardDAO.freeBoardDetail", fb_num);
 		return dto;
 	}
+	
+	// 댓글 목록 화면
+	@Override
+	public List<FreeBoardCommentDTO> freeCommentList(int fb_num) {
+		System.out.println("FreeBoardDAOImpl - freeCommentList()");
+		List<FreeBoardCommentDTO> list = sqlSession.selectList("test.team.team_pj_lingo.freeBoard.FreeBoardDAO.freeCommentList", fb_num);
+		return list;
+	}
+
+	// 댓글 작성 처리
+	@Override
+	public int insertComment(FreeBoardCommentDTO dto) {
+		System.out.println("FreeBoardDAOImpl - insertComment()");
+		int insertCnt = sqlSession.insert("test.team.team_pj_lingo.freeBoard.FreeBoardDAO.insertComment", dto);
+		return insertCnt;
+	}
 
 	// 게시글 수정 삭제시 비밀번호 인증
 	@Override
 	public int password_chk(Map<String, Object> map) {
 		System.out.println("FreeBoardDAOImpl - password_chk()");
-		return 0;
+		int selectCnt = sqlSession.selectOne("test.team.team_pj_lingo.freeBoard.FreeBoardDAO.password_chk", map);
+		return selectCnt;
 	}
 
 	// 게시글 수정처리
 	@Override
 	public int updateFreeBoard(FreeBoardDTO dto) {
 		System.out.println("FreeBoardDAOImpl - updateFreeBoard()");
-		return 0;
+		
+		int updateCnt = sqlSession.update("test.team.team_pj_lingo.freeBoard.FreeBoardDAO.updateFreeBoard", dto);
+		return updateCnt;
 	}
 
 	// 게시글 삭제처리
@@ -75,20 +94,6 @@ public class FreeBoardDAOImpl implements FreeBoardDAO{
 		
 		int insertCnt = sqlSession.insert("test.team.team_pj_lingo.freeBoard.FreeBoardDAO.insertFreeBoard", dto);
 		return insertCnt;
-	}
-
-	// 댓글 목록
-	@Override
-	public List<FreeBoardCommentDTO> freeCommentList(int fb_num) {
-		System.out.println("FreeBoardDAOImpl - freeCommentList()");
-		return null;
-	}
-
-	// 댓글 작성 처리
-	@Override
-	public int insertComment(FreeBoardCommentDTO dto) {
-		System.out.println("FreeBoardDAOImpl - insertComment()");
-		return 0;
 	}
 
 }
