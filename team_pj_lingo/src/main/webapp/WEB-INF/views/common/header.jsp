@@ -7,6 +7,8 @@
 
 <head>
 
+
+
 	<!-- 기존설정 그대로 -->
 	    <meta charset="utf-8">
 	    <title>Lingo</title>
@@ -66,20 +68,21 @@
 		</script>
         
     <!-- 검색창 시작 -->
-            <div class="search-container">
+         <!--    <div class="search-container">
             <input style="width: 400px; height: auto; margin-right: 30px;"
                text" placeholder="다문화가족 지원포털" aria-label="Search"
                class="search-input" />
             <button type="submit" class="search-button">
                <i class="fa-solid fa-magnifying-glass"></i>
             </button>
-         </div>
+         </div> -->
       <!-- 검색창 끝 -->        
         
         <div class="collapse navbar-collapse" id="navbarCollapse">
             
             <div class="navbar-nav ms-auto p-4 p-lg-0">
             
+
                <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-globe-americas  mb-4"></i></a>
                     <div class="dropdown-menu fade-down m-0">
@@ -94,22 +97,29 @@
                 
                 <a href="${path}/main.do" class="nav-item nav-link active">Home</a>
                 
+                <c:if test="${sessionId == 'admin'}">
+                	<a href="#" class="nav-item nav-link">관리자</a>
+                	<a href="${path}/logout.do" class="nav-item nav-link">로그아웃</a>
+                </c:if> 
+                
+   				   <c:if test="${sessionId != 'admin'}">      
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">게시판</a>
                     <div class="dropdown-menu fade-down m-0">
                         <a href="${path}/free_board_list.fb" class="dropdown-item">자유게시판</a>
-                        <a href="javascript:alert('엔터테이먼트 개발중입니다.');" onfocus="this.blur()" class="dropdown-item">엔터테이먼트</a>
-                        <a href="javascript:alert('친구찾기 개발중입니다.');" onfocus="this.blur()" class="dropdown-item">친구찾기</a>
-                    </div>
-                </div>
-                
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Q&A</a>
-                    <div class="dropdown-menu fade-down m-0">
                         <a href="${path}/life.eq" class="dropdown-item">생활정보</a>
                         <a href="javascript:alert('여행정보 개발중입니다.');" onfocus="this.blur()" class="dropdown-item">여행정보</a>
                         <a href="javascript:alert('의료정보 개발중입니다.');" onfocus="this.blur()" class="dropdown-item">의료정보</a>
                         <a href="javascript:alert('법률정보 개발중입니다.');" onfocus="this.blur()" class="dropdown-item">법률정보</a>
+                    </div>
+                </div>
+                
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">알림마당</a>
+                    <div class="dropdown-menu fade-down m-0">                   
+                        <a href="javascript:alert('공지사항 개발중입니다.');" onfocus="this.blur()" class="dropdown-item">공지사항</a>
+                        <a href="javascript:alert('자주하는질문 개발중입니다.');" onfocus="this.blur()" class="dropdown-item">자주하는질문</a>
+                        <a href="javascript:alert('꽌련기사 개발중입니다.');" onfocus="this.blur()" class="dropdown-item">관련기사</a>
                     </div>
                 </div>
                 
@@ -120,13 +130,28 @@
                         <a href="${path}/fileTranslate.do" class="dropdown-item">문서번역</a>                      
                     </div>
                 </div>
+            
+                
                 <c:if test="${sessionScope.sessionId == null}">
                 	<a href="${path}/login.do" class="nav-item nav-link">로그인</a>
                 </c:if>
+                
                 <c:if test="${sessionScope.sessionId != null}">
                 	<a href="${path}/mypage.do" class="nav-item nav-link">마이페이지</a>
                 	<a href="${path}/logout.do" class="nav-item nav-link">로그아웃</a>
-                </c:if>	
+                </c:if> 
+                
+   
+                
+                
+          </c:if>        
+          
+          		
+  
+  
+                
+                
+               
             </div>
             <a href="${path}/join.do" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">회원가입<i class="fa fa-arrow-right ms-3"></i></a>
         </div>
