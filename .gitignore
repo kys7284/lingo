@@ -24,6 +24,7 @@ MANIFEST.MF
 .factorypath
 settings.json
 
+
 # SpringBoot 관련 파일
 config.properties
 
