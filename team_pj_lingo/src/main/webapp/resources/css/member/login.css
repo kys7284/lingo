@@ -1,94 +1,249 @@
 @charset "UTF-8";
 
+/* side menu start */
+#side_menu {
+    float: inline-start;
+    padding: 20px;
+    width: 300px; 
+    text-align: center;
+    border-top: 5px solid #06BBCC;
+    border-bottom: 5px solid #06BBCC;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 670px;
+    list-style: none;
+}
+
+/* 화면 너비가 1646px 이하일 때 #side_menu 숨기기 */
+@media (max-width: 1646px) {
+    #side_menu {
+        display: none;
+    }
+}
+
+#side_menu > ul > li {
+	
+    list-style: none;
+    padding: 10px 0; /* 상하 패딩 조정 */
+    width: 100%; /* 너비를 100%로 설정 */
+}
+
+#side_menu > ul > li > a {
+	font-weight: bold;
+    display: block;
+    padding: 15px; /* 패딩 조정 */
+    border-bottom: 1px solid #06BBCC;
+    background-color: #f8f9fa; /* 배경색 조정 */
+    color: #333; /* 글자색 조정 */
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+    margin-bottom: 10px;
+}
+
+#side_menu > ul > li > a:hover {
+    background-color: #06BBCC; /* 호버 시 배경색 변경 */
+    color: #FFFFFF; /* 호버 시 글자색 변경 */
+}
+/* side menu end */
+
+
+/* menu 클래스 스타일 */
+.menu {
+    display: flex;
+    justify-content: space-between; /* 박스 사이의 간격을 균등하게 분배 */
+    width: 100%; /* 전체 너비를 아래의 박스와 일치시킴 */
+    height: 80px;
+    background-color: #f8f8f8; /* 메뉴바 배경색 */
+    border-bottom: 1px solid #c2c2c2; /* 메뉴바 아래 경계선 */
+    border-top: 1px solid #c2c2c2; 
+    border-left: 1px solid #c2c2c2; 
+    border-right: 1px solid #c2c2c2; 
+    align-items: center; /* 수직 가운데 정렬 */
+  	justify-content: center; /* 수평 가운데 정렬 */
+  	font-size: 20px;
+}
+
+.menu a {
+    flex: 1; /* 모든 링크가 동일한 너비를 가지도록 설정 */
+    padding: 22px 0; /* 상하 패딩 추가 */
+    text-decoration: none;
+    color: #333;
+    background-color: #f8f9fa;
+    border-right: 1px solid #c2c2c2; /* 박스 사이의 경계선 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+    transition: background-color 0.3s;
+    font-weight: bold; /* 글자 두께 */
+    
+}
+
+.menu a:last-child {
+    border-right: none; /* 마지막 박스의 오른쪽 경계선 제거 */
+}
+
+.menu a:hover {
+    background-color: #06BBCC; /* 호버 시 배경색 변경 */
+    color: #ffffff; /* 호버 시 글자색 변경 */
+}
+/* menu 클래스 스타일 끝*/
+
+
+
+/* HTML 폰드 스타일 시작 */
+.content {
+        margin: 0 auto;
+        max-width: 1000px;
+        background-color: #ffffff;
+        border-radius: 8px;
+    }
+
+
+    .content h5 {
+        font-size: 1.5em;
+        color: #059ba7;
+        margin-bottom: 8px;
+    }
+
+    .content h2 {
+        font-size: 1.5em;
+        color: #059ba7;
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+
+    .content h3 {
+        font-size: 1.2em;
+        color: #333;
+        margin-top: 20px;
+    }
+
+    .content ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .content ul li {
+        margin: 10px 0;
+        line-height: 1.6;
+    }
+
+    .content ul li:before {
+        content: "\2022";
+        color: #059ba7;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+    }
+
+    .content .section {
+        margin-bottom: 30px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .content .sub-section {
+        margin-bottom: 20px;
+    }
+
+    .content .highlight {
+        color: #006600;
+        font-weight: bold;
+    }
+    
+/* HTML 폰드 스타일 끝 */
+
 #container {
-	width: 100%;
-	margin: 0 auto;
-	background-color: #F6F6F6;
-	font-family: 'Arial', sans-serif;
+   width: 100%;
+    height: 100vh;
+   margin: 0 auto;
+   background-color: #F6F6F6;
+   font-family: 'Arial', sans-serif;
 }
 
 #contents {
-	max-width: 900px;
-	min-width: 900px;
-	width: 100%;
-	margin: 0 auto;
-	padding: 20px;
+   max-width: auto;
+   min-width: auto;
+   width: 100%;
+   margin: 0 auto;
+   padding: 20px;
 }
 
 #section1, #section2 {
-	padding: 20px;
-	border-bottom: 5px solid #06BBCC; 
-	background-color: #FFFFFF;
-	border-radius: 10px;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+   padding: 80px;
+   border-bottom: 5px solid #06BBCC; 
+   background-color: #FFFFFF;
+   border-radius: 10px;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 #s2_inner {
-	width: 100%;
+   width: 100%;
 }
 
 .join {
-	display: flex;
-	justify-content: center; /* 유연한 정렬 */
-	align-items: center;
-	max-width: 900px;
-	margin: 40px auto;
-	padding: 20px;
-	background-color: #FFFFFF;
-	border-radius: 10px;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-	border: 1px solid #DDD;
+   display: flex;
+   justify-content: center; /* 유연한 정렬 */
+   align-items: center;
+   max-width: 1500px;
+   margin: 40px auto;
+   padding: 20px;
+   background-color: #FFFFFF;
+   border-radius: 10px;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+   border: 1px solid #DDD;
 }
 
 .join th {
-	font-size: 16px;
-	font-weight: bold;
-	width: 140px;
-	height: 60px;
-	text-align: center; 
-	padding: 10px 20px;
-	border-bottom: 2px solid #DDD;
-	background-color: #F3F3F3;
-	border-radius: 5px;
+   font-size: 16px;
+   font-weight: bold;
+   width: 140px;
+   height: 60px;
+   text-align: center; 
+   padding: 10px 20px;
+   border-bottom: 2px solid #DDD;
+   background-color: #F3F3F3;
+   border-radius: 5px;
 }
 
 .join td {
-	padding: 10px 20px;
-	border-bottom: 2px solid #DDD;
-	background-color: #FFFFFF;
+   padding: 10px 20px;
+   border-bottom: 2px solid #DDD;
+   background-color: #FFFFFF;
 }
 
 .input {
-	width: 320px;
-	height: 45px;
-	border: 1px solid #CCC;
-	box-sizing: border-box;
-	padding: 0 10px;
-	border-radius: 5px;
-	font-size: 14px;
+   width: 320px;
+   height: 45px;
+   border: 1px solid #CCC;
+   box-sizing: border-box;
+   padding: 0 10px;
+   border-radius: 5px;
+   font-size: 14px;
 }
 
 .input:focus {
-	border-color: #0056A4; 
-	outline: none;
-	box-shadow: 0 0 5px rgba(0, 86, 164, 0.5);
+   border-color: #0056A4; 
+   outline: none;
+   box-shadow: 0 0 5px rgba(0, 86, 164, 0.5);
 }
 
 .inputButton {
-	background-color: #06BBCC;
-	font-size: 15px;
-	padding: 10px 20px;
-	border: none;
-	border-radius: 5px;
-	color: #333;
-	cursor: pointer;
-	transition: background-color 0.3s;
+   background-color: #06BBCC;
+   font-size: 15px;
+   padding: 10px 20px;
+   border: none;
+   border-radius: 5px;
+   color: #333;
+   cursor: pointer;
+   transition: background-color 0.3s;
 }
 
 .inputButton:hover {
-	background-color: #05d3e4; 
+   background-color: #05d3e4; 
 }
 
 .inputButton:active {
-	background-color: #0de7f9;
+   background-color: #0de7f9;
 }
