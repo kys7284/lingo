@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="test.team.team_pj_lingo.admin.AdminDAO">
+ 
+ <!-- 회원수 -->
+ <select id="memberCnt" resultType="int">
+ 	SELECT  count(*) 
+ 	FROM 	member_tbl
+ 	WHERE	mem_status = 'member'	
+ </select>
+ 
+ <!-- 회원목록  -->
+ <select id="memberList" parameterType="java.util.Map" resultType="test.team.team_pj_lingo.member.MemberDTO">
+ 	<![CDATA[
+		SELECT mem_no, mem_id, mem_name, mem_country, mem_birthday, mem_address, mem_hp 
+		, mem_rank, mem_email, mem_regdate, rn
+			FROM
+    		(SELECT A.*,
+   				 rownum AS rn
+  			   FROM
+        			(SELECT * FROM member_tbl
+        			  WHERE mem_status = 'member'
+        			  ORDER BY mem_no )A
+     			    )
+        WHERE rn >= #{start} 
+		  AND rn <= #{end}
+		]]>	
+ 
+ </select>
+ 
+ <!-- 회원탈퇴처리 -->
+ <delete id="adminMemberDelete" parameterType="int">
+ 	DELETE FROM member_tbl
+ 	WHERE mem_no = #{mem_no}
+ </delete>
+ 
+ </mapper>
