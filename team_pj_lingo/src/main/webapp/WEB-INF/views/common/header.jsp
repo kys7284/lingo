@@ -98,15 +98,17 @@
                 <a href="${path}/main.do" class="nav-item nav-link active">Home</a>
                 
                 <c:if test="${sessionId == 'admin'}">
-                	<a href="#" class="nav-item nav-link">관리자</a>
+                	<a href="${path}/adminAction.ad" class="nav-item nav-link">관리자</a>
                 	<a href="${path}/logout.do" class="nav-item nav-link">로그아웃</a>
                 </c:if> 
                 
    				   <c:if test="${sessionId != 'admin'}">      
+   				   
+   				   <a href="${path}/free_board_list.fb" class="nav-item nav-link">커뮤니티</a>
+   				   
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">게시판</a>
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">정보나눔</a>
                     <div class="dropdown-menu fade-down m-0">
-                        <a href="${path}/free_board_list.fb" class="dropdown-item">자유게시판</a>
                         <a href="${path}/life.eq" class="dropdown-item">생활정보</a>
                         <a href="javascript:alert('여행정보 개발중입니다.');" onfocus="this.blur()" class="dropdown-item">여행정보</a>
                         <a href="javascript:alert('의료정보 개발중입니다.');" onfocus="this.blur()" class="dropdown-item">의료정보</a>
