@@ -38,7 +38,7 @@
 		<br><br>
 		<!-- 컨텐츠 시작 -->
 		<div id="container">
-			<div id="contents">
+			<div id="contents"> 
 				<!-- 상단 중앙1 시작 -->
 				<div id="section1">
 					<h1 align="center"> 회원정보 수정 </h1>
