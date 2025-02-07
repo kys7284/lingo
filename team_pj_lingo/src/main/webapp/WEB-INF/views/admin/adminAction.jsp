@@ -12,24 +12,9 @@ integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqrupt
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title> 관리자 페이지 </title>
 <link rel="stylesheet" href="${path}/resources/css/admin/adminList.css">
+<link rel="stylesheet" href="${path}/resources/css/admin/admin.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-$(document).ready(function() {
-  $("#memberBtn").click(function() {
-    $.ajax({
-      url: "${path}/adminMemberList.ad", // 불러올 JSP 파일 경로
-      type: "GET", // 요청 방식 (GET 또는 POST)
-      dataType: "html", // 응답 데이터 형식 (html, xml, json 등)
-      success: function(data) {
-        $("#adminView").html(data); // 불러온 내용을 원하는 영역에 표시
-      },
-      error: function(xhr, status, error) {
-        console.error("AJAX 요청 실패: " + status + " - " + error);
-      }
-    });
-  });
-});
-</script>
+<script src="${path}/resources/js/admin/adminAction.js" defer></script>
 </head>
 <body>
 	<%@ include file = "../common/header.jsp" %>
@@ -38,9 +23,10 @@ $(document).ready(function() {
 	
 	<div class="btn-group btn-group-lg" role="group" aria-label="Large button group" id="adminBtn">
 	  <button type="button" id="memberBtn" class="btn btn-outline-primary">회원목록</button>
+	  <button type="button" id="adminBtn" class="btn btn-outline-primary">관리자목록</button>
+	  <button type="button" id="insertBtn" class="btn btn-outline-primary">관리자등록</button>
 	  <button type="button" id="boardBtn" class="btn btn-outline-primary">게시판목록</button>
 	  <button type="button" id="noticeBtn" class="btn btn-outline-primary">공지사항</button>
-	  <button type="button" id="insertBtn" class="btn btn-outline-primary">관리자등록</button>
 	</div>
 	
 	<br><br><br><hr><br>

@@ -34,6 +34,7 @@ public class AdminDAOImpl implements AdminDAO {
 		return total;
 	}
 
+	// 회원추방
 	@Override
 	public int adminMemberDelete(int mem_no) {
 		
@@ -42,7 +43,41 @@ public class AdminDAOImpl implements AdminDAO {
 		return deleteCnt;
 	}
 
+	// 관리자 등록
+	@Override
+	public int adminInsert(MemberDTO dto) {
+
+		int insertCnt = sql.insert("test.team.team_pj_lingo.admin.AdminDAO.adminInsert", dto);
+		
+		return insertCnt;
+	}
+
+	// ID 중복확인
+	@Override
+	public int IdCheckAction(String mem_id) {
+		
+		int selectCnt = sql.selectOne("test.team.team_pj_lingo.member.MemberDAO.IdCheckAction", mem_id);
+		
+		return selectCnt;
+	}
+
+	// 관리자목록
+	@Override
+	public List<MemberDTO> adminList(Map<String, Object> map) {
+
+		List<MemberDTO> list = sql.selectList("test.team.team_pj_lingo.admin.AdminDAO.adminList", map);
+		
+		return list;
+	}
+
+	// 전체 관리자 수
+	@Override
+	public int adminCount() {
 	
+		int selectCnt = sql.selectOne("test.team.team_pj_lingo.admin.AdminDAO.adminCount");
+		
+		return selectCnt;
+	}
 	
 	
 }

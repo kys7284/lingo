@@ -51,6 +51,34 @@ public class AdminContoroller {
 		return "admin/adminMemberDeleteAction";
 	}
 	
+	// 관리자 등록화면
+	@RequestMapping("insertAdmin.ad")
+	public String insertAdmin(HttpServletRequest reqeust, HttpServletResponse response, Model model) 
+		throws ServletException, IOException{
+		
+		
+		return "admin/adminInsert";
+	}
+	
+	// 관리자 등록화면
+	@RequestMapping("insertAdminAction.ad")
+	public String insertAdminAction(HttpServletRequest reqeust, HttpServletResponse response, Model model) 
+		throws ServletException, IOException{
+		
+		service.insertAdminAction(reqeust, response, model);
+		
+		return "admin/adminInsertAction";
+	}
+	
+	// 관리자 목록
+	@RequestMapping("adminList.ad")
+	public String adminList(HttpServletRequest reqeust, HttpServletResponse response, Model model) 
+		throws ServletException, IOException{
+		
+		service.adminList(reqeust, response, model);
+		
+		return "admin/adminList";
+	}
 	
 	
 	
