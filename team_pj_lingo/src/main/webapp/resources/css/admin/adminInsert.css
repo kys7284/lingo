@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 fieldset{
-	width:60%;
+	width:30%;
 	text-align: center;
 	
 }
@@ -23,21 +23,18 @@ table{
 
 }
 
-thead,tbody{
-	border: 1px solid #ccc;
-	
-}
 
-thead{
-	background-color:#66BBCB;
 }
-
 th,td{
 	border: 1px solid #ccc;
 	padding: 10px;
 	white-space: nowrap;
+
 }
 
-
+table td{
+	text-align: left;
+	
+}
 
 

@@ -16,8 +16,17 @@ public interface AdminDAO {
 	// 회원탈퇴처리
 	public int adminMemberDelete(int mem_no);
 	
+	// 관리자 등록
+	public int adminInsert(MemberDTO dto);
 	
+	// id 중복확인
+	public int IdCheckAction(String mem_id);
 	
+	// 관리자 목록
+	public List<MemberDTO>adminList(Map<String, Object>map); 
+	
+	// 전체 관리자수
+	public int adminCount();
 	
 	
 	

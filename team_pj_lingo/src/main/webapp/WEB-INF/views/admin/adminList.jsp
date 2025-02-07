@@ -10,13 +10,13 @@ integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" 
 integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 <meta charset="UTF-8">
-<title> 회원목록 </title>
+<title> 관리자목록 </title>
 <link rel="stylesheet" href="${path}/resources/css/admin/admin.css">
 
 </head>
 <body>
 	<fieldset>
-		<legend>회원목록</legend>
+		<legend>관리자목록</legend>
 			<div >
 				<table class="table table-bordered" id="member_table">
 				  <thead>
@@ -27,7 +27,6 @@ integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqrupt
 				      <th scope="col">국적</th>
 				      <th scope="col">생년월일</th>
 				      <th scope="col">주소</th>
-				      <th scope="col">등급</th>
 				      <th scope="col">이메일</th>
 				      <th scope="col">가입일</th>
 				      <th scope="col">관리</th>
@@ -45,15 +44,6 @@ integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqrupt
 				      <td>${list.mem_country }</td>
 				      <td>${list.mem_birthday }</td>
 				      <td>${list.mem_address }</td>
-				      <td>
-				      	<c:choose>
-						<c:when test="${list.mem_rank >= 100}">VIP</c:when>
-						<c:when test="${list.mem_rank >= 50}">Gold</c:when>
-						<c:when test="${list.mem_rank >= 30}">Silver</c:when>
-						<c:when test="${list.mem_rank >= 10}">Bronze</c:when>
-						<c:otherwise>Unrank</c:otherwise>
-					</c:choose>
-				      </td>
 				      <td>${list.mem_email }</td>
 				      <td>${list.mem_regdate }</td>
 				      <td><input type="button" id="deleteBtn"  class="btn btn-outline-primary" value="탈퇴" onclick="location.href='${path}/adminMemberDelete.ad?mem_no='+${list.mem_no }"></td>
