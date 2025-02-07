@@ -27,24 +27,25 @@ public class QnaDAOImpl implements QnaDAO{
      @Autowired
 	 private SqlSessionTemplate sqlSession;   
 
-	@Override
+
+     // 게시글 목록
+     @Override
 	public List<QnaDTO> qnaList(Map<String, Object> map) {
 			
 		System.out.println("QnaDAOImpl - qnaList");
 		
-		List<QnaDTO> list = sqlSession.selectList("test.team.team_pj_lingo.dao.QnaDAO.qnaList", map);
+		List<QnaDTO> list = sqlSession.selectList("test.team.team_pj_lingo.qnaBoard.QnaDAO.qnaList", map);
 		return list;
  
 		
 	}
 		
 	
-
-    // 게시글 목록
+  // 게시글 갯수 구하기
 	@Override
 	public int qnaCnt() {
-		
-	    int total = sqlSession.selectOne("test.team.team_pj_lingo.dao.QnaDAO.qnaCnt");					   
+		System.out.println("QnaDAOImpl - qnaCnt()");
+		int total = sqlSession.selectOne("test.team.team_pj_lingo.qnaBoard.QnaDAO.qnaCnt");					   
 	
 		return total;
 	}
@@ -54,7 +55,7 @@ public class QnaDAOImpl implements QnaDAO{
 	public void plusReadCnt(int b_num) {
 		System.out.println("QnaDAOImpl - plusReadCnt");
 	
-		int updateCnt = sqlSession.update("test.team.team_pj_lingo.dao.QnaDAO.plusReadCnt", b_num);	
+		int updateCnt = sqlSession.update("test.team.team_pj_lingo.qnaBoard.QnaDAO.plusReadCnt", b_num);	
 		
 		
 	}	
@@ -64,7 +65,7 @@ public class QnaDAOImpl implements QnaDAO{
 	public QnaDTO getQnaDetail(int b_num) {
 		System.out.println("QnaDAOImpl - getQnaDetail");
 	 	
-	    QnaDTO dto = sqlSession.selectOne("test.team.team_pj_lingo.dao.QnaDAO.getQnaDetail", b_num);
+	    QnaDTO dto = sqlSession.selectOne("test.team.team_pj_lingo.qnaBoard.QnaDAO.getQnaDetail", b_num);
 			
 			return dto;
 		}
@@ -76,7 +77,7 @@ public class QnaDAOImpl implements QnaDAO{
 		System.out.println("QnaDAOImpl - password_chk");
 	
 
-		int selectCnt = sqlSession.selectOne("test.team.team_pj_lingo.dao.QnaDAO.password_chk", map);
+		int selectCnt = sqlSession.selectOne("test.team.team_pj_lingo.qnaBoard.QnaDAO.password_chk", map);
 		
 		return selectCnt;
 	}
@@ -89,7 +90,7 @@ public class QnaDAOImpl implements QnaDAO{
 	public int updateQna(QnaDTO dto) {
 		System.out.println("QnaDAOImpl - updateQna");
 		
-		int updateCnt = sqlSession.update("test.team.team_pj_lingo.dao.QnaDAO.updateQna", dto);
+		int updateCnt = sqlSession.update("test.team.team_pj_lingo.qnaBoard.QnaDAO.updateQna", dto);
 		
 		return updateCnt;
 	
@@ -102,7 +103,7 @@ public class QnaDAOImpl implements QnaDAO{
 	public int deleteQna(int b_num) {
 		System.out.println("QnaDAOImpl - deleteQna");
 		
-	     int deleteCnt = sqlSession.update("test.team.team_pj_lingo.dao.QnaDAO.deleteQna", b_num);
+	     int deleteCnt = sqlSession.update("test.team.team_pj_lingo.qnaBoard.QnaDAO.deleteQna", b_num);
 	
 		return deleteCnt;
 	}
@@ -114,7 +115,7 @@ public class QnaDAOImpl implements QnaDAO{
 	public int insertQna(QnaDTO dto) {
 		System.out.println("QnaDAOImpl - insertQna");
 		
-		int insertCnt = sqlSession.insert("test.team.team_pj_lingo.dao.QnaDAO.insertQna", dto);
+		int insertCnt = sqlSession.insert("test.team.team_pj_lingo.qnaBoard.QnaDAO.insertQna", dto);
 				
 		return insertCnt;
 	}
@@ -124,10 +125,12 @@ public class QnaDAOImpl implements QnaDAO{
 	@Override
 	public int insertComment(QnaCommentDTO dto) {
 		System.out.println("QnaDAOImpl - insertComment");
-         
-		int insertCnt = sqlSession.insert("test.team.team_pj_lingo.dao.QnaDAO.insertComment", dto);
-	
+		
+		int insertCnt = sqlSession.insert("test.team.team_pj_lingo.qnaBoard.QnaDAO.insertComment", dto);
+		System.out.println("insertCnt" + insertCnt);
 		return insertCnt;
+		
+		
 	}
 	
     
@@ -136,14 +139,10 @@ public class QnaDAOImpl implements QnaDAO{
 	public List<QnaCommentDTO> commentList(int board_num) {
 		System.out.println("QnaDAOImpl - commentList");
 
-       List<QnaCommentDTO> list = sqlSession.selectList("test.team.team_pj_lingo.dao.QnaDAO.commentList", board_num);
+       List<QnaCommentDTO> list = sqlSession.selectList("test.team.team_pj_lingo.qnaBoard.QnaDAO.commentList", board_num);
        
        return list;
 	}
-	
-	
-
-
 
 	
 }

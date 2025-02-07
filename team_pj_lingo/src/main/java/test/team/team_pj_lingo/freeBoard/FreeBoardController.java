@@ -64,5 +64,55 @@ public class FreeBoardController {
 		return "board/freeBoard/free_board_insertAction";
 	}
 	
+	// 댓글 목록 화면
+	@RequestMapping("/free_comment_list.fb") 
+	public String free_comment_list(HttpServletRequest request, HttpServletResponse response, Model model) 
+			throws ServletException, IOException{
+		logger.info("<<url = /free_comment_list.fb>>");
+		service.freeCommentListAction(request, response, model);
+		
+		return "board/freeBoard/free_comment_list";
+	}
+	
+	// 댓글 작성처리
+	@RequestMapping("/insertComment.fb") 
+	public String insertComment(HttpServletRequest request, HttpServletResponse response, Model model) 
+			throws ServletException, IOException{
+		logger.info("<<url = /insertComment.fb>>");
+		service.freeCommentAddAction(request, response, model);
+		
+		return "board/freeBoard/free_comment_list";
+	}
+	
+	// [게시글 수정/삭제 버튼] 클릭시 비밀번호 인증처리
+	@RequestMapping("/password_chkAction.fb")
+	public String password_chkAction(HttpServletRequest request, HttpServletResponse response, Model model) 
+			throws ServletException, IOException{
+		logger.info("<<url = /password_chkAction.fb>>");
+		int result = service.password_chkAction(request, response, model);
+		
+		System.out.println(result);
+		if(result == 0) {
+			logger.info("비밀번호 불일치 !");
+			int fb_num = Integer.parseInt(request.getParameter("hidden_fb_num"));
+			
+			viewPage = request.getContextPath() + "/freeDetailAction.fb?fb_num=" + fb_num + "&message=error";
+			response.sendRedirect(viewPage);
+			
+		}
+		return "board/freeBoard/free_board_edit";
+	}
+	
+	// 게시글 수정 처리
+	@RequestMapping("/updateFreeBoard.fb") 
+	public String updateFreeBoard(MultipartHttpServletRequest request, HttpServletResponse response, Model model) 
+			throws ServletException, IOException{
+		logger.info("<<url = /updateFreeBoard.fb>>");
+		service.freeUpdateAction(request, response, model);
+		
+		return "board/freeBoard/free_board_updateAction";
+	}
+	
+	
 
 }

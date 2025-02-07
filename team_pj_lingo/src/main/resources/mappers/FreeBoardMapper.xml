@@ -52,4 +52,35 @@
 		VALUES((SELECT NVL(MAX(fb_num)+1, 1)FROM FREE_BOARD_TBL),#{fb_title} ,#{fb_content} ,#{fb_writer}, #{fb_password}, 0, sysdate, 0, #{fb_img})
 	</insert>
 	
+	<!-- 댓글 목록 -->
+	<select id="freeCommentList" parameterType="int" resultType="test.team.team_pj_lingo.freeBoard.FreeBoardCommentDTO">
+		 SELECT * 
+		   FROM (
+   				 SELECT A.*, 
+          		 ROW_NUMBER() OVER (ORDER BY A.fb_comment_num DESC) AS rn
+   				  FROM (
+       				    SELECT c.*, b.fb_num
+      					  FROM fb_comment_tbl c
+       					  JOIN free_board_tbl b 
+        					ON b.fb_num = c.fb_board_num
+        				 WHERE b.fb_num = #{fb_num} 
+   						 ) A
+				) 
+		  ORDER BY rn DESC
+	</select>
+	
+	<!-- 댓글 작성 -->
+	<insert id="insertComment" parameterType="test.team.team_pj_lingo.freeBoard.FreeBoardCommentDTO">
+		INSERT INTO fb_comment_tbl(fb_comment_num, fb_board_num, fb_writer, fb_content, fb_regDate) 
+		VALUES((SELECT NVL(MAX(fb_comment_num)+1, 1) FROM fb_comment_tbl), #{fb_board_num}, #{fb_writer}, #{fb_content}, sysdate)
+	</insert> 
+	
+	<!-- 게시글 수정 삭제시 비밀번호 인증 -->
+	<select id="password_chk" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*) AS cnt
+		FROM free_board_tbl
+		WHERE fb_num = #{fb_num}
+		AND fb_password = #{fb_password}
+	</select>
+	
 </mapper>

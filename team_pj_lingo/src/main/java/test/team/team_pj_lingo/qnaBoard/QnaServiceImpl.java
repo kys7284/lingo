@@ -173,7 +173,7 @@ public class QnaServiceImpl implements QnaService{
 		QnaDTO dto = new QnaDTO();
 		
 		// 3단계. 화면에서 입력받은 값을 가져와서 DTO에 담기
-		dto.setB_writer((String)request.getSession().getAttribute("sessionID"));
+		dto.setB_writer((String)request.getSession().getAttribute("sessionId"));
 		dto.setB_title(request.getParameter("b_title"));
 		dto.setB_content(request.getParameter("b_content"));
 		dto.setB_password(request.getParameter("b_password"));
@@ -210,12 +210,6 @@ public class QnaServiceImpl implements QnaService{
 		  // 5단계. 댓글작성 처리 후 컨트롤러에서 list로 이동
 		  
 		  dao.insertComment(dto);
-		 
-		
-	
-		
-
-		
 	}
 	
 	// 댓글목록 처리

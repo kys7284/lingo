@@ -29,26 +29,44 @@ public class QndboardController {
 	
 		// 생활정보
 		@RequestMapping("/life.eq")
-		public String life(){
+		public String life(HttpServletRequest request,  HttpServletResponse response, Model model)
+				throws ServletException, IOException{
 			logger.info("<<< url ==>  /life.eq >>>");
+			
+			service.qnaListAction(request, response, model);
 			
 			return "board/qnaboard/life";
 		}
 			
 
-			// 생활정보 목록
+		// 생활정보 문의 상세페이지
+		
+		@RequestMapping("/life_detailAction.eq")
+		public String life_detailAction(HttpServletRequest request,  HttpServletResponse response, Model model)
+				throws ServletException, IOException{
 			
-			@RequestMapping("/life_list.eq")
-			public String life_list(HttpServletRequest request,  HttpServletResponse response, Model model)
-					throws ServletException, IOException{
-				
-				logger.info("<<<< url ==> /life_list.eq  >>>>");
+			logger.info("<<<< url ==> /life_detailAction.eq  >>>>");
+			
+			service.qnaDetailAction(request, response, model);
 
-				service.qnaListAction(request, response, model);
+			return "board/qnaboard/life_detailAction";
+		}
+					
+					
+//			// 생활정보 목록
+//			
+//			@RequestMapping("/life_list.eq")
+//			public String life_list(HttpServletRequest request,  HttpServletResponse response, Model model)
+//					throws ServletException, IOException{
+//				
+//				logger.info("<<<< url ==> /life_list.eq  >>>>");
+//
+//				
+//			
+//				return "board/qnaboard/life";
+//			}
 			
-				return "board/qnaboard/life";
-			}
-			// 생활정보 답글 목록
+			 //생활정보 답글 목록
 			
 			@RequestMapping("/comment_list.eq")
 			public String comment_list(HttpServletRequest request,  HttpServletResponse response, Model model)
@@ -58,7 +76,7 @@ public class QndboardController {
 				
 				service.commentListAction(request, response, model);
 	
-				return "board/qnaboard/life";
+				return "board/qnaboard/comment_list";
 			}
 			
 			// 생활정보 답글 처리
@@ -75,18 +93,6 @@ public class QndboardController {
 			
 			
 			
-			// 생활정보 문의 상세페이지
-			
-			@RequestMapping("/life_detailAction.eq")
-			public String life_detailAction(HttpServletRequest request,  HttpServletResponse response, Model model)
-					throws ServletException, IOException{
-				
-				logger.info("<<<< url ==> /life_detailAction.eq  >>>>");
-				
-				service.qnaDetailAction(request, response, model);
-
-				return "board/qnaboard/life_detailAction";
-			}
 			
 			// 비밀번호 체크
 			@RequestMapping("/password_chkAction.eq")
@@ -98,14 +104,14 @@ public class QndboardController {
 				int result = service.password_chkAction(request, response, model);
 				
 				if(result != 0) {
-					return "board/qnaboard/life__edit";
+					return "board/qnaboard/life_edit";
 					
 				}else {
 					System.out.println("비밀번호 불일치");
 					
 					int b_num = Integer.parseInt(request.getParameter("hidden_b_num"));
 					
-					viewPage = request.getContextPath()+ "/life_detailAction.bc?b_num=" + b_num + "&message=error";
+					viewPage = request.getContextPath()+ "/life_detailAction.eq?b_num=" + b_num + "&message=error";
 					response.sendRedirect(viewPage);
 					return null;
 				}
@@ -123,7 +129,7 @@ public class QndboardController {
 					service.qnaUpdateAction(request, response, model);
 					
 					
-					viewPage = request.getContextPath()+ "/life_list.eq";
+					viewPage = request.getContextPath()+ "/life.eq";
 					response.sendRedirect(viewPage);
 					return null;
 				}		
@@ -152,7 +158,7 @@ public class QndboardController {
 					
 					logger.info("<<<< url ==> /life_insert.eq  >>>>");
 					
-
+					
 					return "board/qnaboard/life_insert";
 				}		
 				
@@ -166,7 +172,7 @@ public class QndboardController {
 					
 					service.qnaInsertAction(request, response, model);
 					
-					viewPage = request.getContextPath()+ "/life.bc";
+					viewPage = request.getContextPath()+ "/life.eq";
 					response.sendRedirect(viewPage);
 					return null;
 				}		

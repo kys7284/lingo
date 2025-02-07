@@ -30,7 +30,7 @@ public class memberController {
 		return "common/main";
 	}
 	
-	// 첫페이지
+	// 회원가입
 		@RequestMapping("/join.do")
 		public String join(){
 			logger.info("<<< url ==>  /join.do >>>");
@@ -67,7 +67,7 @@ public class memberController {
         return "member/login/login";
     }
     
-    
+   
     @RequestMapping("/loginAction.do")
     public String loginAction(HttpServletRequest request, HttpServletResponse response,  Model model) 
     		throws ServletException, IOException {
@@ -142,7 +142,7 @@ public class memberController {
 	}
 	
 	
-	// 텍스트 번역
+	// 텍스트 번역 . 진행중
 	@RequestMapping("/textTranslate.do")
 	public String textTranslate(){
 		logger.info("<<< url ==>  /textTranslate.do >>>");
@@ -150,7 +150,7 @@ public class memberController {
 		return "tslService/textTranslate";
 	}
 	
-	// 서류번역
+	// 서류번역 . 진행중
 	@RequestMapping("/fileTranslate.do")
 	public String fileTranslate(){
 		logger.info("<<< url ==>  /fileTranslate.do >>>");

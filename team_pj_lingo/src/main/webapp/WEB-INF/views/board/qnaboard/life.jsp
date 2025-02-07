@@ -80,8 +80,8 @@ $(function(){
                      <table>
                         <tr>
                            <td>No</td>
-                           <td>문의내용</td>
                            <td>작성자</td>
+                           <td>문의내용</td>
                            <td>작성일</td>
                            <td>조회수</td>
                         </tr>
@@ -92,7 +92,7 @@ $(function(){
                                              <td>${dto.b_writer}</td>
                                              <td>
                                              
-                                             <a href="${path}/board_detailAction.bc?b_num=${dto.b_num}">${dto.b_title}[${dto.b_comment_count}]</a>
+                                             <a href="${path}/life_detailAction.eq?b_num=${dto.b_num}">${dto.b_title} <span style="color: red">[${dto.b_comment_count}]</span></a>
                                              
                                              </td>
                                              <td>${dto.b_regDate}</td>
@@ -106,7 +106,7 @@ $(function(){
                                                   <!-- 페이징 처리 -->
                                                   <!-- 이전 버튼 활성화 -->
                                                   <c:if test="${paging.startPage > 10}">
-                                                        <a href="${path}/board_list.bc?pageNum=${paging.prev}">[이전]</a>                                                  
+                                                        <a href="${path}/life.eq?pageNum=${paging.prev}">[이전]</a>                                                  
                                                   </c:if>
                                                  
                                                   <!-- 페이지 번호 처리 -->
