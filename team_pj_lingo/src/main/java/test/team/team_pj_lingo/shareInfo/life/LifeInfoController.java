@@ -18,7 +18,7 @@ public class LifeInfoController {
 	
 	String viewPage = "";
 	
-	// 생활정보-집구하기
+	// 생활정보페이지
 	@RequestMapping("/life.eq")
 	public String life(HttpServletRequest request,  HttpServletResponse response, Model model)
 			throws ServletException, IOException{
@@ -65,5 +65,41 @@ public class LifeInfoController {
 		
 		
 		return "board/shareInfo/lifeInfo/home/recycling";
+	}
+	
+	// 취업정보페이지
+	@RequestMapping("/employment.eq")
+	public String employment(HttpServletRequest request,  HttpServletResponse response, Model model)
+			throws ServletException, IOException{
+		logger.info("<<< url ==>  /employment.eq >>>");
+		
+		return "board/shareInfo/lifeInfo/employment/employment";
+	}
+	
+	// 취업정보-취업
+	@RequestMapping("/job.eq")
+	public String job(HttpServletRequest request,  HttpServletResponse response, Model model)
+			throws ServletException, IOException{
+		logger.info("<<< url ==>  /job.eq >>>");
+		
+		return "board/shareInfo/lifeInfo/employment/job";
+	}
+	
+	// 취업정보-고용보험
+	@RequestMapping("/employInsurance.eq")
+	public String employInsurance(HttpServletRequest request,  HttpServletResponse response, Model model)
+			throws ServletException, IOException{
+		logger.info("<<< url ==>  /employInsurance.eq >>>");
+		
+		return "board/shareInfo/lifeInfo/employment/employInsurance";
+	}
+	
+	// 취업정보-산업재해보험
+	@RequestMapping("/accidentInsurance.eq")
+	public String accidentInsurance(HttpServletRequest request,  HttpServletResponse response, Model model)
+			throws ServletException, IOException{
+		logger.info("<<< url ==>  /accidentInsurance.eq >>>");
+		
+		return "board/shareInfo/lifeInfo/employment/accidentInsurance";
 	}
 }
