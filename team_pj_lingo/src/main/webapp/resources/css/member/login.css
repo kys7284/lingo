@@ -247,3 +247,17 @@
 .inputButton:active {
    background-color: #0de7f9;
 }
+
+.board_table th{
+	border-radius: 5px;
+	font-size: 16px;
+   font-weight: bold;
+   width: 50%;
+}
+
+.board_table td{
+	border-radius: 5px;
+	width: 50%;
+    text-decoration: underline #06BBCC;
+    
+}

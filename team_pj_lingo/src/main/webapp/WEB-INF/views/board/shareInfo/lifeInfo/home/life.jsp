@@ -174,7 +174,7 @@
 						<li><a href="#"> 경제생활 </a></li>
 					</ul>
 					<ul>
-						<li><a href="#"> 공공기관 이용 </a></li>
+						<li><a href="${path}/employment.eq"> 취업 </a></li>
 					</ul>
 				</div>
 			<!-- 왼쪽메뉴 끝 -->
