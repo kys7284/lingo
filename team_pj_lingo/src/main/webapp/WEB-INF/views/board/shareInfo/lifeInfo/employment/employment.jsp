@@ -146,7 +146,7 @@ $(document).ready(function() {
 						<li><a href="${path}/life.eq"> 주거생활 </a></li>
 					</ul>
 					<ul>
-						<li><a href="#"> 경제생활 </a></li>
+						<li><a href="${path}/culture.eq"> 한국의 문화·관습 </a></li>
 					</ul>
 					<ul>
 						<li><a href="${path}/employment.eq"> 취업 </a></li>
