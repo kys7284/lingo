@@ -50,12 +50,41 @@
 
 </script>
 
-<!-- <style>
-footer {
-    position: relative;
-    margin-top: auto;  
-}
-</style> -->
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        line-height: 1.6;
+        color: #333;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        text-align: center;
+    }
+    
+    th {
+        background-color: #a7deeb;
+        font-weight: bold;
+        padding: 15px;
+        border: 1px solid #2a97b5;
+    }
+    
+    td {
+        background-color: #a4dfe9;
+        padding: 15px;
+        border: 1px solid #2a97b5;
+    }
+    
+    tr:first-child th {
+        border-top: 2px solid #3992a2;
+    }
+    td:first-child {
+        background-color: #d7f3f8;
+        font-weight: bold;
+    }
+</style>
 
 </head>
 <body>
@@ -91,7 +120,70 @@ footer {
 					<ul>
 						<li>일반적으로 종이류, 유리류, 플라스틱류, 금속캔류 등으로 구분하여, 매주 지정된 날짜에 집 앞에 배출하면 된다.</li>
 					</ul>
-					<img src="${path}/resources/images/recycling1.png"width="1000px;" alt="">
+					
+					<!-- 표 시작 -->
+						      <table>
+						        <thead>
+						            <tr>
+						                <th>구분</th>
+						                <th>재활용 가능</th>
+						                <th>재활용 불가능</th>
+						            </tr>
+						        </thead>
+						        <tbody>
+						            <tr>
+						                <td>종이류</td>
+						                <td>신문지, 책, 공책, 포장지, 골판지, 종이백, 종이상자, 종이 또는 종이팩 표기가 있는 것</td>
+						                <td>비닐코팅된 종이백, 비닐코팅된 종이컵</td>
+						            </tr>
+						            <tr>
+						                <td>유리류</td>
+						                <td>맥주병, 소주병, 탄산 음료병, 유리 표시가 있는 것</td>
+						                <td>판유리, 거울, 내열 처리된 식기, 유백색(우유빛색) 병, 화장품 용기, 사기접시</td>
+						            </tr>
+						            <tr>
+						                <td>고철류</td>
+						                <td>음료수캔, 스프레이 캔, 부탄가스통, 알루미늄, 스테인레스 식기, 공구, 철사 철 또는 철사 표시가 있는 것</td>
+						                <td>페인트 통, 기름통 또는 유해물 포장용기</td>
+						            </tr>
+						        </tbody>
+						        <thead>
+						            <tr>
+						                <th>구분</th>
+						                <th>재활용 가능</th>
+						                <th>재활용 불가능</th>
+						            </tr>
+						        </thead>
+						        <tbody>
+						            <tr>
+						                <td>스티로폼</td>
+						                <td>가전제품 등의 충격완화를 위한 포장용기, 생산이나 과일 운반을 위한 용기, 깨끗한 컬러만 용기</td>
+						                <td>일회용접시</td>
+						            </tr>
+						            <tr>
+						                <td>플라스틱</td>
+						                <td>PET, HIPE, LDPE, PP, PS, PVC, OT 표시가 있는 것</td>
+						                <td>필기구, 단추, 소켓, 장난감, 유아용 보행기, 전화기, 일회용 카메라, 전기난로</td>
+						            </tr>
+						            <tr>
+						                <td>비닐봉투</td>
+						                <td>라면, 과자봉지 등</td>
+						                <td>오염된 비닐봉투</td>
+						            </tr>
+						            <tr>
+						                <td>형광등</td>
+						                <td>깨지지 않은 형광등</td>
+						                <td>깨진 형광등, 전구</td>
+						            </tr>
+						            <tr>
+						                <td>폐건전지</td>
+						                <td>폐건전지 수거함에 배출</td>
+						                <td>-</td>
+						            </tr>
+						        </tbody>
+						    </table>
+					<!-- 표 끝 -->
+					
 					<br>
 					<br>
 

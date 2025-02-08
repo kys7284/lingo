@@ -66,6 +66,7 @@ public class LifeInfoController {
 		
 		return "board/shareInfo/lifeInfo/home/recycling";
 	}
+//--------------------------------------------------------------------------
 	
 	// 취업정보페이지
 	@RequestMapping("/employment.eq")
@@ -102,4 +103,36 @@ public class LifeInfoController {
 		
 		return "board/shareInfo/lifeInfo/employment/accidentInsurance";
 	}
+
+//--------------------------------------------------------------------------
+	
+	// 한국인의 문화/관습 페이지		
+	@RequestMapping("/culture.eq")
+		public String culture(HttpServletRequest request,  HttpServletResponse response, Model model)
+				throws ServletException, IOException{
+			logger.info("<<< url ==>  /culture.eq >>>");
+			
+			
+			return "board/shareInfo/lifeInfo/culture/culture";
+		}
+	
+	// 한국인의 문화		
+	@RequestMapping("/findCulture.eq")
+		public String findCulture(HttpServletRequest request,  HttpServletResponse response, Model model)
+				throws ServletException, IOException{
+			logger.info("<<< url ==>  /findCulture.eq >>>");
+			
+			
+			return "board/shareInfo/lifeInfo/culture/findCulture";
+		}
+	
+	// 한국인의 관습		
+	@RequestMapping("/findCustom.eq")
+		public String custom(HttpServletRequest request,  HttpServletResponse response, Model model)
+				throws ServletException, IOException{
+			logger.info("<<< url ==>  /findCustom.eq >>>");
+			
+			
+			return "board/shareInfo/lifeInfo/culture/findCustom";
+		}
 }
