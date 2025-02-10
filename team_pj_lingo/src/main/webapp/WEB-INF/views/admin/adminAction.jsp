@@ -15,18 +15,20 @@ integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqrupt
 <link rel="stylesheet" href="${path}/resources/css/admin/admin.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="${path}/resources/js/admin/adminAction.js" defer></script>
+<script src="${path}/resources/js/admin/adminNotice.js" defer></script>
 </head>
 <body>
 	<%@ include file = "../common/header.jsp" %>
 	<br><br><br><br><br>
 	
 	
-	<div class="btn-group btn-group-lg" role="group" aria-label="Large button group" id="adminBtn">
+	<div class="btn-group btn-group-lg" role="group" aria-label="Large button group" id="admin">
 	  <button type="button" id="memberBtn" class="btn btn-outline-primary">회원목록</button>
 	  <button type="button" id="adminBtn" class="btn btn-outline-primary">관리자목록</button>
 	  <button type="button" id="insertBtn" class="btn btn-outline-primary">관리자등록</button>
 	  <button type="button" id="boardBtn" class="btn btn-outline-primary">게시판목록</button>
-	  <button type="button" id="noticeBtn" class="btn btn-outline-primary">공지사항</button>
+	  <button type="button" id="noticeBtn" class="btn btn-outline-primary">공지사항목록</button>
+	  <button type="button" id="noticeInsertBtn" class="btn btn-outline-primary">공지사항작성</button>
 	</div>
 	
 	<br><br><br><hr><br>

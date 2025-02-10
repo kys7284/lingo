@@ -23,5 +23,7 @@ public interface MemberDAO {
     // 회원탈퇴 처리
     public int memberDeleteAction(Map<String, Object> map);
     
+    // 사용자권한 체크
+    public String statusCheck(String mem_id);
 	
 }
