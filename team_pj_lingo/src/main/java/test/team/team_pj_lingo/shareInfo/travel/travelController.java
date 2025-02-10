@@ -23,12 +23,45 @@ public class travelController {
 	
 	// 여행정보공유 리스트
 	@RequestMapping("travelInfo.tc")
-	public String adminAction(HttpServletRequest reqeust, HttpServletResponse response, Model model) 
+	public String travelInfo(HttpServletRequest reqeust, HttpServletResponse response, Model model) 
 		throws ServletException, IOException{
 		
 		logger.info("Controller - travleInfo.tc");
 		service.travelListAction(reqeust, response, model);
 		
 		return "board/shareInfo/travelInfo/travelBoard/travelShareList";
+	}
+	
+	// 여행정보공유 상세페이지
+	@RequestMapping("travelDetailAction.fb")
+	public String travelDetailAction(HttpServletRequest reqeust, HttpServletResponse response, Model model) 
+		throws ServletException, IOException{
+		
+		logger.info("Controller - travelDetailAction.tc");
+		service.travelDetailAction(reqeust, response, model);
+		
+		return "board/shareInfo/travelInfo/travelBoard/travelShareDetail";
+	}
+	
+	// 여행정보공유 댓글목록페이지
+	@RequestMapping("travel_comment_list.fb")
+	public String travel_comment_list(HttpServletRequest reqeust, HttpServletResponse response, Model model) 
+		throws ServletException, IOException{
+		
+		logger.info("Controller - travel_comment_list.tc");
+		service.travelCommentListAction(reqeust, response, model);
+		
+		return "board/shareInfo/travelInfo/travelBoard/travel_comment_list";
+	}
+	
+	// 여행정보공유 댓글작성
+	@RequestMapping("insertComment.tc")
+	public String insertComment(HttpServletRequest reqeust, HttpServletResponse response, Model model) 
+		throws ServletException, IOException{
+		
+		logger.info("Controller - insertComment.tc");
+		service.travelCommentAddAction(reqeust, response, model);
+		
+		return "board/shareInfo/travelInfo/travelBoard/travel_comment_list";
 	}
 }

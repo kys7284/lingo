@@ -3,70 +3,70 @@ package test.team.team_pj_lingo.shareInfo.travel;
 import java.sql.Date;
 
 public class travelBoardCommentDTO {
-	private int TB_COMMENT_NUM;
-	private int TB_BOARD_NUM;
-	private String TB_WRITER;
-	private String TB_CONTENT;
-	private Date TB_REGDATE;
+	private int tb_comment_num;
+	private int tb_board_num;
+	private String tb_writer;
+	private String tb_content;
+	private Date tb_regDate;
 	
 	public travelBoardCommentDTO() {
 		super();
 	}
 
-	public travelBoardCommentDTO(int tB_COMMENT_NUM, int tB_BOARD_NUM, String tB_WRITER, String tB_CONTENT,
-			Date tB_REGDATE) {
+	public travelBoardCommentDTO(int tb_comment_num, int tb_board_num, String tb_writer, String tb_content,
+			Date tb_regDate) {
 		super();
-		TB_COMMENT_NUM = tB_COMMENT_NUM;
-		TB_BOARD_NUM = tB_BOARD_NUM;
-		TB_WRITER = tB_WRITER;
-		TB_CONTENT = tB_CONTENT;
-		TB_REGDATE = tB_REGDATE;
+		this.tb_comment_num = tb_comment_num;
+		this.tb_board_num = tb_board_num;
+		this.tb_writer = tb_writer;
+		this.tb_content = tb_content;
+		this.tb_regDate = tb_regDate;
 	}
 
-	public int getTB_COMMENT_NUM() {
-		return TB_COMMENT_NUM;
+	public int getTb_comment_num() {
+		return tb_comment_num;
 	}
 
-	public void setTB_COMMENT_NUM(int tB_COMMENT_NUM) {
-		TB_COMMENT_NUM = tB_COMMENT_NUM;
+	public void setTb_comment_num(int tb_comment_num) {
+		this.tb_comment_num = tb_comment_num;
 	}
 
-	public int getTB_BOARD_NUM() {
-		return TB_BOARD_NUM;
+	public int getTb_board_num() {
+		return tb_board_num;
 	}
 
-	public void setTB_BOARD_NUM(int tB_BOARD_NUM) {
-		TB_BOARD_NUM = tB_BOARD_NUM;
+	public void setTb_board_num(int tb_board_num) {
+		this.tb_board_num = tb_board_num;
 	}
 
-	public String getTB_WRITER() {
-		return TB_WRITER;
+	public String getTb_writer() {
+		return tb_writer;
 	}
 
-	public void setTB_WRITER(String tB_WRITER) {
-		TB_WRITER = tB_WRITER;
+	public void setTb_writer(String tb_writer) {
+		this.tb_writer = tb_writer;
 	}
 
-	public String getTB_CONTENT() {
-		return TB_CONTENT;
+	public String getTb_content() {
+		return tb_content;
 	}
 
-	public void setTB_CONTENT(String tB_CONTENT) {
-		TB_CONTENT = tB_CONTENT;
+	public void setTb_content(String tb_content) {
+		this.tb_content = tb_content;
 	}
 
-	public Date getTB_REGDATE() {
-		return TB_REGDATE;
+	public Date getTb_regDate() {
+		return tb_regDate;
 	}
 
-	public void setTB_REGDATE(Date tB_REGDATE) {
-		TB_REGDATE = tB_REGDATE;
+	public void setTb_regDate(Date tb_regDate) {
+		this.tb_regDate = tb_regDate;
 	}
 
 	@Override
 	public String toString() {
-		return "travelBoardCommentDTO [TB_COMMENT_NUM=" + TB_COMMENT_NUM + ", TB_BOARD_NUM=" + TB_BOARD_NUM
-				+ ", TB_WRITER=" + TB_WRITER + ", TB_CONTENT=" + TB_CONTENT + ", TB_REGDATE=" + TB_REGDATE + "]";
+		return "travelBoardCommentDTO [tb_comment_num=" + tb_comment_num + ", tb_board_num=" + tb_board_num
+				+ ", tb_writer=" + tb_writer + ", tb_content=" + tb_content + ", tb_regDate=" + tb_regDate + "]";
 	}
 }
 //TB_COMMENT_NUM NUMBER(7) PRIMARY KEY,				

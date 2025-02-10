@@ -47,7 +47,26 @@
 
 	<link rel="stylesheet" href="${path}/resources/css/board/board.css">
 <script type="text/javascript">
-
+	$(function (){
+		$("#btnInsert").click(function() {
+			<%
+			if(session.getAttribute("sessionId") == null)	{
+		%>
+			alert("로그인이 필요합니다 !");
+			location.href="${path}/login.do"
+		
+		<%
+			}	else {
+		%>
+		
+			location.href="${path}/travel_board_insert.tc"	
+		
+		<%
+			}
+		%>
+		
+		});
+	});
 </script>
 
 
@@ -59,14 +78,12 @@
 		<!-- header 끝    -->
 
 		<!-- 컨텐츠 시작 -->
-
 		<div id="container">
-
 			<div id="contents">
 				<!-- 상단 중앙1 시작  -->
 				
 				<div id="section1"
-					style="background-image: url('${path}/resources/images/house.jpg'); background-size: cover; background-position: center; height: 300px;">
+					style="background-image: url('${path}/resources/images/travel.jpg'); background-size: cover; background-position: center; height: 300px;">
 					<br> 
 					<br>
 					<h1 align="center" style="padding-bottom: 50px;">여행정보</h1>
@@ -181,8 +198,7 @@
 
 		<!-- Template Javascript -->
 		<script src="${path}/resources/js/main.js"></script>
+		</div>
 	</div>
-
-
 </body>
 </html>

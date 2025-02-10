@@ -41,7 +41,7 @@ public class travelBoardServiceImpl implements travelBoardService{
 		map.put("end", end);
 		
 		List<travelBoardDTO> list = dao.travelBoardList(map);
-		System.out.println("list = " + model);
+		System.out.println("list = " + list);
 		
 		model.addAttribute("travelList", list);
 		model.addAttribute("paging", paging);
@@ -50,19 +50,45 @@ public class travelBoardServiceImpl implements travelBoardService{
 	//게시글 상세페이지
 	@Override
 	public void travelDetailAction(HttpServletRequest request, HttpServletResponse response, Model model) {
+		System.out.println("travelBoardService - travelDetailAction");
 		
+		int tb_num = Integer.parseInt(request.getParameter("tb_num"));
+		String pageNum = request.getParameter("pageNum");
+		
+		//조회수 상승
+		dao.plusReadCnt(tb_num);
+		
+		travelBoardDTO dto = dao.travelBoardDetail(tb_num);
+		
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("dto", dto);
 	}
 	
 	//게시글 댓글목록 처리
 	@Override
 	public void travelCommentListAction(HttpServletRequest request, HttpServletResponse response, Model model) {
 		
+		System.out.println("travelBoardService - travelCommentListAction");
+		
+		int tb_num = Integer.parseInt(request.getParameter("tb_num"));
+		
+		List<travelBoardCommentDTO> list = dao.travelCommentList(tb_num);
+		
+		model.addAttribute("list", list);
+		
 	}
 	
 	//게시글 댓글작성 처리
 	@Override
 	public void travelCommentAddAction(HttpServletRequest request, HttpServletResponse response, Model model) {
+		System.out.println("travelBoardService - travelCommentAddAction");
 		
+		travelBoardCommentDTO dto = new travelBoardCommentDTO();
+		dto.setTb_board_num(Integer.parseInt(request.getParameter("travelboard_num")));
+		dto.setTb_writer(request.getParameter("writer"));
+		dto.setTb_content(request.getParameter("content"));
+		
+		dao.insertComment(dto);
 	}
 
 	//게시글 수정&삭제시 비밀번호 인증

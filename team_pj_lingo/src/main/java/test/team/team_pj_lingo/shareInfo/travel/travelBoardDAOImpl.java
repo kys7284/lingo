@@ -16,34 +16,38 @@ public class travelBoardDAOImpl implements travelBoardDAO{
 	//게시글목록
 	@Override
 	public List<travelBoardDTO> travelBoardList(Map<String, Object> map) {
-		System.out.println("service - travelBoardList");
+		System.out.println("DAO - travelBoardList");
 		return sqlSession.selectList("test.team.team_pj_lingo.shareInfo.travel.travelBoardDAO.travelBoardList",map);
 	}
 	//게시글 갯수 구하기
 	@Override
 	public int boardCnt() {
-		System.out.println("service - boardCnt");
+		System.out.println("DAO - boardCnt");
 		return sqlSession.selectOne("test.team.team_pj_lingo.shareInfo.travel.travelBoardDAO.boardCnt");
 	}
 	//조회수 증가
 	@Override
 	public void plusReadCnt(int tb_num) {
-		
+		System.out.println("DAO - plusReadCnt");
+		sqlSession.update("test.team.team_pj_lingo.shareInfo.travel.travelBoardDAO.plusReadCnt",tb_num);
 	}
 	//게시글 상세페이지
 	@Override
 	public travelBoardDTO travelBoardDetail(int tb_num) {
-		return null;
+		System.out.println("DAO - travelBoardDetail");
+		return sqlSession.selectOne("test.team.team_pj_lingo.shareInfo.travel.travelBoardDAO.travelBoardDetail", tb_num);
 	}
 	//댓글목록처리
 	@Override
 	public List<travelBoardCommentDTO> travelCommentList(int tb_num) {
-		return null;
+		System.out.println("DAO - travelCommentList");
+		return sqlSession.selectList("test.team.team_pj_lingo.shareInfo.travel.travelBoardDAO.travelCommentList", tb_num);
 	}
 	//댓글작성처리
 	@Override
 	public int insertComment(travelBoardCommentDTO dto) {
-		return 0;
+		System.out.println("DAO - insertComment");
+		return sqlSession.insert("test.team.team_pj_lingo.shareInfo.travel.travelBoardDAO.insertComment", dto);
 	}
 	//게시글 비밀번호 인증
 	@Override

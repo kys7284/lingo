@@ -1,8 +1,6 @@
 @charset "UTF-8";
 
-.table_div{
-	align-content: center;
-}
+
 
 /* side menu start */
 #side_menu {
@@ -57,19 +55,37 @@
 	width: 50%; /* 원하는 너비 설정 */
 	margin: 0 auto; /* 수평 가운데 정렬 */
 	padding-top: 50px;
+	border: 1px solid;
 }
 
-/* .List th{
-	border-radius: 5px;
-	font-size: 16px;
-    font-weight: bold;
-    width: 50%;
-    border: 1px;
-} */
+#freeCommentList > th{
+	width:200px;
+}
+.table_div{
+	
+	margin-right:350px; 
+	
+}
+table{
+	margin-left:auto; 
+    margin-right:auto;
+}
 
-/* #restaurant_boardList td{
-	border-radius: 5px;
-	width: 50%;
-    text-decoration: underline #06BBCC;
- */}
+
+table, td, th {
+    border-collapse : collapse;
+    border : 1px solid black;
+}
+
+th {
+  background-color: #06BBCC;
+  color: white;
+  border-right: 1px solid;
+}
 /* 테이블끝 */
+
+/* 댓글목록시작테이블 */
+#travelCommentList {
+	margin-left:300px; 
+}
+/* 댓글목록 끝 */
