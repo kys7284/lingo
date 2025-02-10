@@ -69,7 +69,9 @@
 					style="background-image: url('${path}/resources/images/house.jpg'); background-size: cover; background-position: center; height: 300px;">
 					<br> 
 					<br>
-					<h1 align="center">여행정보</h1>
+					<h1 align="center" style="padding-bottom: 50px;">여행정보</h1>
+					
+					<span style="display: flex; justify-content: center; font-weight: bold;">여러분의 여행을 공유해주세요</span>
 				</div>
 				<!-- 상단 중앙2 시작 -->
 				
@@ -78,100 +80,74 @@
 					<div id="side_menu">
 	
 						<h2>여행정보</h2>
+
 						<br><br>
+
 						<ul>
-							<li><a href="${path}/restaurantInfo.tc"> 맛집 공유 </a></li>
+							<li><a href="${path}/travelInfo.tc"> 나의 여행 </a></li>
 						</ul>
+	
 						<ul>
 							<li><a href="#"> 여행지 찾기 </a></li>
 						</ul>
-						<ul>
-							<li><a href="#"> 숙소 공유 </a></li>
-						</ul>
+						
 					</div>
 					<!-- 왼쪽메뉴 끝 -->
 					<!-- 우측 메뉴 시작 -->
 						<div id="right">
 							<div class="board_list">
 								
-								<form name="restaurant_boardList">
-									<div class="restaurant_boardList">
+								<form name="travel_boardList">
+									<div class="travel_boardList">
 									<table>
 
 										<tr>
-											<th style="width:10%">글번호</th>
 											<th style="width:10%">작성자</th>
-											<th style="width:15%">글제목 [댓글수]</th>
-											<th style="width:10%">이미지</th>
+											<th style="width:15%">[카테고리] 글제목 [댓글수]</th>
 											<th style="width:10%">작성일</th>
 											<th style="width:5%">조회수</th>
 										</tr>
 										
 										<!-- 게시글이 있으면  -->
 										
-										<%-- <c:forEach var="dto" items= "${freeBoardList}"> --%>											
-										<tr>
-											<td>1</td>
-											<td>우유</td>
-											<td>
-												<a href="${path}/freeDetailAction.fb?fb_num=${dto.fb_num}"> 맛집을 소개합니다! <span style="color: red">[ 1 ]</span></a>
-											</td>
-											<td>
-												이미지
-											</td>
-											<td>작성일</td>
-											<td>조회수</td>
-										</tr>
+										<c:forEach var="dto" items= "${travelList}">									
 										
 										<tr>
-											<td>2</td>
-											<td>우유</td>
+											<td>${dto.tb_writer}</td>
 											<td>
-												<a href="${path}/freeDetailAction.fb?fb_num=${dto.fb_num}"> 맛집을 소개합니다! <span style="color: red">[ 1 ]</span></a>
+												<a href="${path}/travelDetailAction.fb?tb_num=${dto.tb_num}"><span style="color:black">[${dto.tb_category}]</span> ${dto.tb_title} <span style="color: red">[${dto.tb_comment_count}]</span></a>
 											</td>
-											<td>
-												이미지
-											</td>
-											<td>작성일</td>
-											<td>조회수</td>
+											<td>${dto.tb_regDate}</td>
+											<td>${dto.tb_readCnt}</td>
 										</tr>
 										
-										<tr>
-											<td>3</td>
-											<td>우유</td>
-											<td>
-												<a href="${path}/freeDetailAction.fb?fb_num=${dto.fb_num}"> 맛집을 소개합니다! <span style="color: red">[ 1 ]</span></a>
-											</td>
-											<td>
-												이미지
-											</td>
-											<td>작성일</td>
-											<td>조회수</td>
-										</tr>
-										<%-- </c:forEach> --%>
+										</c:forEach>
+										
 										<tr>
 											<td colspan="6" align="center">
 												<!-- 페이징처리 -->
 												<!-- 이전 버튼 활성화 -->
 												<c:if test="${paging.startPage > 10}">
-													<a href="${path}/restauRaboard_list.fb?pageNum=${paging.prev}">[이전]</a>
+													<a href="${path}/travelInfo.tc?pageNum=${paging.prev}">[이전]</a>
 												</c:if>
 												
 												<!-- 페이지 번호 처리 -->
 												<c:forEach var="num" begin="${paging.startPage}" end="${paging.endPage}">
-													<a href="${path}/free_board_list.fb?pageNum=${num}">${num}</a>
+													<a href="${path}/travelInfo.tc?pageNum=${num}">${num}</a>
 												</c:forEach>
 												<!-- 다음 버튼 활성화 -->
 												<c:if test="${paging.endPage < paging.pageCount}">
-													<a href="${path}/free_board_list.fb?pageNum=${paging.next}">[다음]</a>
+													<a href="${path}/travelInfo.tc?pageNum=${paging.next}">[다음]</a>
 												</c:if>
 											</td>
 										</tr>
+										
 										<tr>
 											<td colspan="6" align="center">
 												<input type="button" class="inputButton" value="글쓰기" id="btnInsert">
 											</td>
 										</tr>
+										
 									</table>
 									</div>
 								</form>

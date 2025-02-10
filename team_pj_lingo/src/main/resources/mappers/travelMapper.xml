@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+     
+<mapper namespace="test.team.team_pj_lingo.shareInfo.travel.travelBoardDAO">
+	<!-- 게시판목록 -->
+	<select id="travelBoardList" parameterType="java.util.Map" resultType="test.team.team_pj_lingo.shareInfo.travel.travelBoardDTO">
+		<![CDATA[
+		SELECT TB_NUM, TB_TITLE, TB_CONTENT, TB_WRITER, TB_PASSWORD, TB_READCNT, TB_REGDATE, 
+		(SELECT COUNT(*) FROM TB_COMMENT_TBL WHERE TB_BOARD_NUM = TB_NUM) AS TB_COMMENT_COUNT, TB_SHOW, TB_IMG,TB_CATEGORY, rn
+			FROM
+    		(SELECT A.*,
+   				 rownum AS rn
+  			   FROM
+        			(SELECT * FROM TRAVEL_BOARD_TBL
+        			  WHERE TB_SHOW = 'Y'
+        			  ORDER BY TB_NUM DESC)A
+     			    )
+        WHERE rn >= #{start} 
+		  AND rn <= #{end}
+		]]>
+	</select>
+	
+	<!-- 게시글 갯수 구하기 -->
+	<select id="boardCnt" resultType="int">
+		SELECT COUNT(*) AS cnt
+ 		  FROM TRAVEL_BOARD_TBL
+ 		 WHERE TB_SHOW = 'Y'
+	</select>
+</mapper>     

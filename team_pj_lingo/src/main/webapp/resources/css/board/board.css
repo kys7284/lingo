@@ -53,23 +53,23 @@
 /* side menu end */
 
 /* 테이블시작 */
-.restaurant_boardList{
+.travel_boardList{
 	width: 50%; /* 원하는 너비 설정 */
 	margin: 0 auto; /* 수평 가운데 정렬 */
 	padding-top: 50px;
 }
-.List th{
+
+/* .List th{
 	border-radius: 5px;
 	font-size: 16px;
     font-weight: bold;
     width: 50%;
     border: 1px;
-}
+} */
 
-#restaurant_boardList td{
+/* #restaurant_boardList td{
 	border-radius: 5px;
 	width: 50%;
     text-decoration: underline #06BBCC;
-    
-}
+ */}
 /* 테이블끝 */
