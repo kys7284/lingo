@@ -45,7 +45,7 @@
     <link href="${path}/resources/css/common/style.css" rel="stylesheet">
 <script src="${path}/resources/js/member/join.js" defer></script> 
 
-	<link rel="stylesheet" href="${path}/resources/css/member/login.css">
+	<link rel="stylesheet" href="${path}/resources/css/common/board.css">
 
 <script type="text/javascript">
 	$(function(){	//(jQuery)상세페이지가 로딩되면

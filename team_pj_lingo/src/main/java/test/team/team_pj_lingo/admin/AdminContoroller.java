@@ -13,12 +13,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import test.team.team_pj_lingo.freeBoard.FreeBoardService;
+import test.team.team_pj_lingo.notice.NoticeService;
+
 
 @Controller
 public class AdminContoroller {
 	
 	@Autowired
 	private AdminService service;
+	
+	@Autowired
+	private FreeBoardService freeService;
+	
+	@Autowired
+	private NoticeService noticeService;
 
 	private static final Logger logger = LoggerFactory.getLogger(AdminContoroller.class);
 	
@@ -80,17 +89,47 @@ public class AdminContoroller {
 		return "admin/adminList";
 	}
 	
-	
-	
 	// 게시판목록 페이지
+	@RequestMapping("adminBoardList.ad")
+	public String adminBoardList(HttpServletRequest reqeust, HttpServletResponse response, Model model) 
+		throws ServletException, IOException{
+		
+		freeService.freeListAction(reqeust, response, model);
+		
+		return "admin/adminBoardList";
+	}
+	
 	
 	// 게시글 삭제처리
 	
 	
 	// 공지사항목록 페이지
+	@RequestMapping("adminNoticeList.ad")
+	public String adminNoticeList(HttpServletRequest reqeust, HttpServletResponse response, Model model) 
+		throws ServletException, IOException{
+		
+		noticeService.noticeListAction(reqeust, response, model);
+		
+		return "admin/adminNoticeList";
+	}
 	
+	// 공지사항 작성화면
+	@RequestMapping("adminNoticeInsert.ad")
+	public String adminNoticeInsert(HttpServletRequest reqeust, HttpServletResponse response, Model model) 
+		throws ServletException, IOException{
+		
+		return "admin/adminNoticeInsert";
+	}
 	
-	// 공지사항 추가
+	// 공지사항 작성처리
+	@RequestMapping("adminNoticeInsertAction.ad")
+	public String adminNoticeInsertAction(HttpServletRequest reqeust, HttpServletResponse response, Model model) 
+		throws ServletException, IOException{
+		
+		noticeService.noticeInsertAction(reqeust, response, model);
+		
+		return "admin/adminNoticeInsertAction";
+	}
 	
 	// 공지사항 수정
 	

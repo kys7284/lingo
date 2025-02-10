@@ -13,7 +13,6 @@
 <link rel="stylesheet" href="${path }/resources/css/common/header.css">
 <link rel="stylesheet" href="${path }/resources/css/common/footer.css">
 <link rel="stylesheet" href="${path }/resources/css/member/join.css">
-<link rel="stylesheet" href="${path }/resources/css/member/login.css">
 
 <!-- js -->
 <script src="${path}/resources/js/member/join.js" defer></script>
