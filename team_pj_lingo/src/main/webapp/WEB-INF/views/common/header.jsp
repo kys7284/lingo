@@ -119,8 +119,8 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">알림마당</a>
                     <div class="dropdown-menu fade-down m-0">                   
-                        <a href="javascript:alert('공지사항 개발중입니다.');" onfocus="this.blur()" class="dropdown-item">공지사항</a>
-                        <a href="javascript:alert('자주하는질문 개발중입니다.');" onfocus="this.blur()" class="dropdown-item">자주하는질문</a>
+                        <a href="${path}/notice_list.no" onfocus="this.blur()" class="dropdown-item">공지사항</a>
+                        <a href="${path}/faq_list.faq" onfocus="this.blur()" class="dropdown-item">자주하는질문</a>
                         <a href="javascript:alert('꽌련기사 개발중입니다.');" onfocus="this.blur()" class="dropdown-item">관련기사</a>
                     </div>
                 </div>
