@@ -52,4 +52,75 @@
 		VALUES((SELECT NVL(MAX(fb_num)+1, 1)FROM FREE_BOARD_TBL),#{fb_title} ,#{fb_content} ,#{fb_writer}, #{fb_password}, 0, sysdate, 0, #{fb_img})
 	</insert>
 	
+	<!--   게시글 수정  -->
+	<update id="updateFreeBoard" parameterType="test.team.team_pj_lingo.freeBoard.FreeBoardDTO">	 
+	 UPDATE FREE_BOARD_TBL	 
+	    SET FB_TITLE = #{fb_title},
+	        FB_IMG =#{fb_img},
+	        FB_CONTENT = #{fb_content}
+	 WHERE FB_NUM = #{fb_num}
+	 </update>
+	
+	<!-- 댓글 목록 -->
+	<select id="freeCommentList" parameterType="int" resultType="test.team.team_pj_lingo.freeBoard.FreeBoardCommentDTO">
+		 SELECT * 
+		   FROM (
+   				 SELECT A.*, 
+          		 ROW_NUMBER() OVER (ORDER BY A.fb_comment_num DESC) AS rn
+   				  FROM (
+       				    SELECT c.*, b.fb_num
+      					  FROM fb_comment_tbl c
+       					  JOIN free_board_tbl b 
+        					ON b.fb_num = c.fb_board_num
+        				 WHERE b.fb_num = #{fb_num} 
+   						 ) A
+				) 
+		  ORDER BY rn DESC
+	</select>
+	
+	
+	
+	
+	
+	<!-- 댓글 작성 -->
+	<insert id="insertComment" parameterType="test.team.team_pj_lingo.freeBoard.FreeBoardCommentDTO">
+		INSERT INTO fb_comment_tbl(fb_comment_num, fb_board_num, fb_writer, fb_content, fb_regDate) 
+		VALUES((SELECT NVL(MAX(fb_comment_num)+1, 1) FROM fb_comment_tbl), #{fb_board_num}, #{fb_writer}, #{fb_content}, sysdate)
+	</insert> 
+	
+	<!-- 게시글 수정 삭제시 비밀번호 인증 -->
+	<select id="password_chk" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*) AS cnt
+		FROM free_board_tbl
+		WHERE fb_num = #{fb_num}
+		AND fb_password = #{fb_password}
+	</select>
+	
+	<!-- 20250207 검색기능 추가 -->
+	<select id="search" parameterType="hashMap" resultType="test.team.team_pj_lingo.freeBoard.FreeBoardDTO">
+	     		<![CDATA[
+		SELECT FB_NUM, FB_TITLE, FB_CONTENT, FB_WRITER, FB_PASSWORD, FB_READCNT, FB_REGDATE, 
+		(SELECT COUNT(*) FROM FB_COMMENT_TBL WHERE FB_BOARD_NUM = FB_NUM) AS FB_COMMENT_COUNT, FB_SHOW, FB_IMG, rn
+			FROM
+    		(SELECT A.*,
+   				 rownum AS rn
+  			   FROM
+        			(SELECT * FROM FREE_BOARD_TBL
+        			  WHERE FB_SHOW = 'Y'
+        			  ORDER BY FB_NUM DESC)A
+     			    )
+        WHERE rn >= #{start} 
+		  AND rn <= #{end}
+		]]>
+		
+		<if test='searchType.equals("fb_writer")'>
+		      and fb_writer like '%#{keyword}%'
+		</if>	 
+		
+		<if test='searchType.equals("fb_title")'>
+		      and fb_title like '%#{keyword}%'
+		</if>	 
+
+	</select>
+	
 </mapper>

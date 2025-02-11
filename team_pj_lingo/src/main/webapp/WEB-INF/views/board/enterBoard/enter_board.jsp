@@ -45,16 +45,7 @@
     <link href="${path}/resources/css/common/style.css" rel="stylesheet">
 <script src="${path}/resources/js/member/join.js" defer></script> 
 
-	<link rel="stylesheet" href="${path}/resources/css/member/login.css">
-
-<script type="text/javascript">
-	$(function(){
-		$("#btnInsert").click(function(){
-			location.href="${path}/free_board_insert.bc"	
-		});
-	});
-</script>
-
+	<link rel="stylesheet" href="${path}/resources/css/common/board.css">
 </head>
 <body>
 <div class="wrap">
@@ -67,7 +58,7 @@
 			<div id="contents">
 				<!-- 상단 중앙1 시작 -->
 				<div>
-					<h1 align="center">게시판 목록</h1>
+					<h1 align="center">게시글 수정 처리 </h1>
 				</div>				
 				<!-- 상단 중앙1 종료 -->
 
@@ -75,60 +66,24 @@
 				<div id="section2">
 					
 					<!-- 우측 메뉴 시작 -->
-						<div id="right">
-							<div class="table_div">
-								
-								<form name="boardList">
-									<table>
-
-										<tr>
-											<th style="width:5%">글번호</th>
-											<th style="width:10%">작성자</th>
-											<th style="width:15%">글제목 [댓글수]</th>
-											<th style="width:10%">작성일</th>
-											<th style="width:10%">조회수</th>
-										</tr>
-										
-										<!-- 게시글이 있으면  -->
-										
-											<c:forEach var="dto" items= "${boardlist}">											
-												<tr>
-													<td>${dto.b_num}</td>
-													<td>${dto.b_writer}</td>
-													<td>
-														<a href="${path}/board_detailAction.bc?b_num=${dto.b_num}">${dto.b_title} <span style="color: red">[ ${dto.b_comment_count} ]</span></a>
-													</td>
-													<td>${dto.b_regDate}</td>
-													<td>${dto.b_readCnt}</td>
-												</tr>
-											</c:forEach>
-											<tr>
-												<td colspan="6" align="center">
-													<!-- 페이징처리 -->
-													<!-- 이전 버튼 활성화 -->
-													<c:if test="${paging.startPage > 10}">
-														<a href="${path}/board_list.bc?pageNum=${paging.prev}">[이전]</a>
-													</c:if>
-													
-													<!-- 페이지 번호 처리 -->
-													<c:forEach var="num" begin="${paging.startPage}" end="${paging.endPage}">
-														<a href="${path}/board_list.bc?pageNum=${num}">${num}</a>
-													</c:forEach>
-													<!-- 다음 버튼 활성화 -->
-													<c:if test="${paging.endPage < paging.pageCount}">
-														<a href="${path}/board_list.bc?pageNum=${paging.next}">[다음]</a>
-													</c:if>
-												</td>
-											</tr>
-											<tr>
-												<td colspan="6" align="center">
-													<input type="button" class="inputButton" value="글쓰기" id="btnInsert">
-												</td>
-											</tr>
-									</table>
-								</form>
-							</div>
-						</div>
+					<c:if test="${updateCnt == 1}">
+						<script type="text/javascript">
+							setTimeout(function() {
+								alert("게시글 수정 성공");
+								window.location="${path}/free_board_list.fb?pageNum=${hiddenPageNum}";														
+							}, 1000);
+							
+						</script>	
+					</c:if>
+		
+					<c:if test="${updateCnt != 1}">
+						<script type="text/javascript">
+							setTimeout(function() {
+							alert("게시글 수정 실패");
+							window.location="${path}/free_board_detailAction.fb?fb_num=${hiddenFb_num}&pageNum=${hiddenPageNum}";
+							}, 1000);
+						</script>
+					</c:if>		
 					<!-- 우측 메뉴 종료 -->
 				</div>
 				<!-- 상단 중앙2 종료 -->

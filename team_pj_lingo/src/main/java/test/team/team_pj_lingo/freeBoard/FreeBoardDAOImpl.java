@@ -1,8 +1,10 @@
 package test.team.team_pj_lingo.freeBoard;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.jdbc.SQL;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -76,6 +78,18 @@ public class FreeBoardDAOImpl implements FreeBoardDAO{
 		int insertCnt = sqlSession.insert("test.team.team_pj_lingo.freeBoard.FreeBoardDAO.insertFreeBoard", dto);
 		return insertCnt;
 	}
+	
+	// 2025 02 07 금요일 검색기능 추가
+	@Override
+	public List<FreeBoardDTO> search(String searchType, String keyword) throws Exception {
+		
+		System.out.println("FreeBoardDAOImpl - search()");
+		HashMap<String, Object> data = new HashMap<String, Object>();
+		data.put("searchType", searchType);
+		data.put("keyword", keyword);
+		
+		return sqlSession.selectList("test.team.team_pj_lingo.freeBoard.FreeBoardDAO.insertFreeBoard" + ".search", data);
+				}
 
 	// 댓글 목록
 	@Override

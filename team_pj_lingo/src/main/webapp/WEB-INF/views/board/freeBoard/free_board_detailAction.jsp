@@ -45,7 +45,7 @@
     <link href="${path}/resources/css/common/style.css" rel="stylesheet">
 <script src="${path}/resources/js/member/join.js" defer></script> 
 
-	<link rel="stylesheet" href="${path}/resources/css/member/login.css">
+	<link rel="stylesheet" href="${path}/resources/css/common/board.css">
 
 <script type="text/javascript">
 	$(function(){	//(jQuery)상세페이지가 로딩되면
@@ -57,9 +57,11 @@
 			comment_add();
 		});
 		
-		 //[게시글 수정삭제 버튼] 클릭시 [게시글 수정/삭제 화면]으로 이동 (컨트롤러에서 패스워드 체크 후)
-		$("#btnEdit").click(function() {
-			document.detailForm.action="${path}/password_chkAction.fb";
+		
+		 //[게시글 수정/삭제 버튼] 클릭시 [게시글 수정/삭제 화면]으로 이동 (컨트롤러에서 패스워드 체크 후)
+		$("#btnEdit").click(function() {		
+			
+			document.detailForm.action="${path}/password_chkAction.fb";		
 			document.detailForm.submit();
 		});
 		//[게시글 목록 버튼] 클릭시 컨트롤러의 목록으로 이동 
@@ -134,8 +136,11 @@
 					<!-- 우측 메뉴 시작 -->
 						<div id="right">
 							<div class="table_div">
-								<form name="detailForm" method="post">
+								<form name="detailForm" method="post" >
 									<table>
+									
+									
+									
 										<tr>
 											<th style="width: 200px">글번호</th>
 											<td style="width: 200px" style="text-align:center"> ${dto.fb_num} </td>
@@ -153,7 +158,7 @@
 												<input style="width: 200px" type="password" class="input" name="fb_password" 
 													id="b_password" size="30" placeholder="비밀번호 입력" required autofocus> 
 												<c:if test="${param.message == 'error'}">
-													<br><span style="color:red">비밀번호 불일치 ! !</span> 
+													<br><span style="color:red">비밀번호 불일치 ! !</span> 													
 												</c:if>
 													
 											</td>
@@ -179,12 +184,15 @@
 										
 										<tr>
 											<th style="width: 200px">작성일</th>
-											<td colspan="3"  style="text-align:center"> ${dto.fb_regDate} </td>
+											<td colspan="3"  style="text-align:center"> ${dto.fb_regDate} </td>								
 										</tr>
+										
 										<tr>
 											<td colspan="4" align="center">
 												<!-- 게시글번호 hidden 추가 : input이 없으므로(게시글번호는 입력받지않는다 input 없음) -->
-												<input type="hidden" name="hidden_fb_num" value="${dto.fb_num}">  
+												<input type="hidden" name="hidden_fb_num" value="${dto.fb_num}">
+												<input type="hidden" name="hiddenPageNum" value="${pageNum}">
+												<input type="hidden" name="hidden_fb_img" value="${dto.fb_img}">  												
 												<input type="button" class="inputButton" value="수정/삭제" id="btnEdit">
 												<input type="button" class="inputButton" value="목록" id="btnList">
 											</td>

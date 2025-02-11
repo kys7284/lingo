@@ -35,10 +35,14 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		// 화면에서 입력값 가져오기
 		String pageNum = request.getParameter("pageNum");
 		
+		System.out.println("pageNum" + pageNum);
+		
 		// 전체 게시글 갯수 카운트
-		Paging paging = new Paging(pageNum);
 		int total = dao.boardCnt();
 		System.out.println("total=> " + total);
+		
+		
+		Paging paging = new Paging(pageNum);
 		paging.setTotalCount(total);
 		
 		// 게시글목록 조회
@@ -52,6 +56,7 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		
 		List<FreeBoardDTO> list = dao.freeBoardList(map);
 		System.out.println("list: " + list);
+		
 		
 		// jsp로 처리결과 전달
 		model.addAttribute("freeBoardList", list);
@@ -67,11 +72,15 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		// get방식으로 넘긴 값 가져오기
 		int fb_num = Integer.parseInt(request.getParameter("fb_num"));
 		
+		String pageNum = request.getParameter("pageNum");
+		
 		// 조회수 증가
 		dao.plusReadCnt(fb_num);
 		
 		// 게시글 상세페이지
 		FreeBoardDTO dto = dao.freeBoardDetail(fb_num);
+		
+	
 		
 		// jsp로 처리결과 전달
 		model.addAttribute("dto", dto);
@@ -82,7 +91,27 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 	public int password_chkAction(HttpServletRequest request, HttpServletResponse response, Model model)
 			throws ServletException, IOException {
 		System.out.println("FreeBoardServiceImpl - password_chkAction()");
-		return 0;
+		
+		
+		int fb_num = Integer.parseInt(request.getParameter("hidden_fb_num"));
+		String fb_password = request.getParameter("fb_password");
+		
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("fb_num", fb_num);
+		map.put("fb_password", fb_password);
+		
+		int result = dao.password_chk(map);
+		
+		FreeBoardDTO dto = null;
+		
+		if(result != 0) {
+			dto = dao.freeBoardDetail(fb_num);
+		}
+		
+		model.addAttribute("dto", dto);
+		
+		return result;
 	}
 
 	//게시글 수정처리
@@ -91,6 +120,81 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 			throws ServletException, IOException {
 		System.out.println("FreeBoardServiceImpl - freeUpdateAction()");
 		
+		String hiddenPageNum = request.getParameter("hiddenPageNum");
+		int hidden_fb_num = Integer.parseInt(request.getParameter("hidden_fb_num"));
+		String hidden_fb_img = request.getParameter("hidden_fb_img");
+		
+		
+		System.out.println("hiddenPageNum" + hiddenPageNum);
+		System.out.println("hidden_fb_num" + hidden_fb_num);
+	    System.out.println("hidden_fb_img" + hidden_fb_img);
+		
+		MultipartFile file = request.getFile("fb_Img");
+		System.out.println("file" + file);
+	
+		//input 경로
+		String saveDir = request.getSession().getServletContext().getRealPath("/resources/fb_upload/");
+		System.out.println("saveDir :" + saveDir);
+		
+		//이미지추가를위한 샘플이미지 경로(upload 폴더 생성후 우클릭 > properties > location 정보 복사후 붙여넣기),맨뒤\\추가
+		String realDir="D:\\DEV\\workspace_spring_ict04\\git\\lingo_ict04\\team_pj_lingo\\src\\main\\webapp\\resources\\fb_upload\\";	
+		System.out.println("realDir : " + realDir);
+		
+		FileInputStream fis = null;
+		FileOutputStream fos = null;
+		
+		String fb_img1 = "";	// 추가한 부분
+		
+		// 상세페이지에 있는 이미지를 수정할 경우
+		if(file.getOriginalFilename() != null & file.getOriginalFilename() != "") {   // 추가
+			
+
+			try {
+				file.transferTo(new File(saveDir + file.getOriginalFilename()));	//import java.io.File
+				fis = new FileInputStream(saveDir + file.getOriginalFilename());
+				fos = new FileOutputStream(realDir + file.getOriginalFilename());
+				
+				int data = 0;
+				while((data = fis.read()) != -1) {
+					fos.write(data);
+				}
+				
+				// 이미지 가져오기
+				fb_img1 = "/team_pj_lingo/resources/fb_upload/"+ file.getOriginalFilename();
+				System.out.println("fb_img1 : " + fb_img1);
+				
+				} catch(IOException e) {
+					e.printStackTrace();
+				} finally {
+					if(fis!=null)fis.close();
+					if(fos!=null)fos.close();
+				}
+			} 
+
+		//----------------------- 추가 --------------------------------------------
+		else {
+			// 기존 이미지 사용(이미지 수정 안할 경우)
+			fb_img1 = hidden_fb_img;
+			System.out.println("fb_img1" + fb_img1);
+		}
+		
+		//----------------------- 추가 --------------------------------------------
+		
+		// dto 생성후 setter로 값을 담는다.
+		FreeBoardDTO dto = new FreeBoardDTO();
+		dto.setFb_num(hidden_fb_num);	// ※누락 주의※
+		dto.setFb_title(request.getParameter("fb_title"));
+		dto.setFb_img(fb_img1)	;	// ※누락 주의※
+		dto.setFb_content(request.getParameter("fb_content"));
+		
+		// 4단계. 싱글톤 방식으로 DAO 객체 생성, 다형성 적용=annotation으로 대체
+		// 5단계 상품수정 update
+		int updateCnt = dao.updateFreeBoard(dto);
+		
+		// 6단계. jsp로 결과넘기기
+		model.addAttribute("updateCnt", updateCnt);
+		model.addAttribute("hiddenPageNum", hiddenPageNum);
+		model.addAttribute("hidden_fb_num", hidden_fb_num);
 	}
 
 	//게시글 삭제처리
@@ -153,13 +257,14 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		}
 	}
 	
-	//댓글목록 처리
+	// 2025 02 07 금요일 검색기능 추가
 	@Override
-	public void freeCommentListAction(HttpServletRequest request, HttpServletResponse response, Model model)
-			throws ServletException, IOException {
-		System.out.println("FreeBoardServiceImpl - freeCommentListAction()");
+	public List<FreeBoardDTO> search(String searchType, String keyword) throws Exception{
+		return dao.search(searchType, keyword);
+
 		
 	}
+	
 
 	//댓글작성 처리
 	@Override

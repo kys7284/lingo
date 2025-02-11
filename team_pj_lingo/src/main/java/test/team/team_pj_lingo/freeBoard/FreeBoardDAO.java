@@ -34,4 +34,7 @@ public interface FreeBoardDAO {
 	
 	//댓글작성 처리
 	public int insertComment(FreeBoardCommentDTO dto);
+	
+	// 20250207 금요일 검색 기능 추가
+	public List<FreeBoardDTO> search(String searchType, String keyword) throws Exception;
 }
