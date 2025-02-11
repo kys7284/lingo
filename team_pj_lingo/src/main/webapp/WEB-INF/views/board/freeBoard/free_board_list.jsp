@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri ="http://java.sun.com/jsp/jstl/fmt" %>
 <%@include file="/WEB-INF/views/common/setting.jsp" %>    
 <!DOCTYPE html>
 <html>
@@ -45,7 +46,7 @@
     <link href="${path}/resources/css/common/style.css" rel="stylesheet">
 <script src="${path}/resources/js/member/join.js" defer></script> 
 
-	<link rel="stylesheet" href="${path}/resources/css/member/login.css">
+	<link rel="stylesheet" href="${path}/resources/css/common/board.css">
 
 <script type="text/javascript">
 	$(function(){
@@ -69,6 +70,20 @@
 		});
 	});
 </script>
+<script>
+$(function(){
+	
+    $("#searchbtn").click(function(){
+    	let searchType = document.getElementsByName("searchType")[0].value;
+    	let keyword = document.getElementsByName("keyword")[0].value;
+    	
+    	let url = "freeboard/search?searchType=" + searchType + "&keyword=" + keyword;
+    	location.href = encodeURI(url);
+    	
+    });
+    
+});
+</script>
 
 </head>
 <body>
@@ -84,18 +99,13 @@
 				<div>
 					<h1 align="center">게시판 목록</h1>
 				</div>				
-				<!-- 상단 중앙1 종료 -->
-
-				<!-- 상단 중앙2 시작 -->
-				<div id="section2">
-					
+				<div id="section2">					
 					<!-- 우측 메뉴 시작 -->
 						<div id="right">
-							<div class="table_div">
-								
+							<div class="table_div">								
 								<form name="free_boardList">
 									<table>
-
+									  <thead>
 										<tr>
 											<th style="width:10%">글번호</th>
 											<th style="width:10%">작성자</th>
@@ -103,16 +113,14 @@
 											<th style="width:10%">이미지</th>
 											<th style="width:10%">작성일</th>
 											<th style="width:5%">조회수</th>
-										</tr>
-										
-										<!-- 게시글이 있으면  -->
-										
+										</tr>									
+										<!-- 게시글이 있으면  -->										
 											<c:forEach var="dto" items= "${freeBoardList}">											
 												<tr>
 													<td>${dto.fb_num}</td>
 													<td>${dto.fb_writer}</td>
 													<td>
-														<a href="${path}/freeDetailAction.fb?fb_num=${dto.fb_num}">${dto.fb_title} <span style="color: red">[ ${dto.fb_comment_count} ]</span></a>
+														<a href="${path}/freeDetailAction.fb?fb_num=${dto.fb_num}&pageNum=${paging.pageNum}">${dto.fb_title} <span style="color: red">[ ${dto.fb_comment_count} ]</span></a>
 													</td>
 													<td>
 														<img src="${dto.fb_img}" width="100px"> 
@@ -133,7 +141,7 @@
 													<c:forEach var="num" begin="${paging.startPage}" end="${paging.endPage}">
 														<a href="${path}/free_board_list.fb?pageNum=${num}">${num}</a>
 													</c:forEach>
-													<!-- 다음 버튼 활성화 -->
+													<!-- 다음 버튼 활성화 -->	
 													<c:if test="${paging.endPage < paging.pageCount}">
 														<a href="${path}/free_board_list.fb?pageNum=${paging.next}">[다음]</a>
 													</c:if>
@@ -144,6 +152,20 @@
 													<input type="button" class="inputButton" value="글쓰기" id="btnInsert">
 												</td>
 											</tr>
+											
+											<div>
+											    <select name="searchType">
+											          <option value="fb_writer"<c:if test="${searchType eq 'fb_writer'}"></c:if>>작성자</option>
+											          <option value="fb_title"<c:if test="${searchType eq 'fb_title'}"></c:if>>글제목</option>											    								
+											    </select>
+											    
+											    <input type="text" name="keyword"/>
+											    
+											    <button type="button" id="searchbtn">검색</button>			
+											    
+											    								    											
+											</div>				
+												
 									</table>
 								</form>
 							</div>

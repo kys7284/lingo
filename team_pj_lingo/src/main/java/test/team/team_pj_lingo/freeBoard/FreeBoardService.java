@@ -1,11 +1,14 @@
 package test.team.team_pj_lingo.freeBoard;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -42,4 +45,13 @@ public interface FreeBoardService {
 	//댓글작성 처리
 	public void freeCommentAddAction(HttpServletRequest request, HttpServletResponse response, Model model)
 			throws ServletException, IOException;
+	
+	// 2025 02 07 금요일 검색기능
+	public List<FreeBoardDTO> search(String searchType, String keyword) throws Exception;
+
+	
+
+	
+
+	
 }

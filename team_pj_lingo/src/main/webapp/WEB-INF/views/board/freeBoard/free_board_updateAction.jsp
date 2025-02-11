@@ -45,7 +45,7 @@
     <link href="${path}/resources/css/common/style.css" rel="stylesheet">
 <script src="${path}/resources/js/member/join.js" defer></script> 
 
-	<link rel="stylesheet" href="${path}/resources/css/member/login.css">
+	<link rel="stylesheet" href="${path}/resources/css/common/board.css">
 </head>
 <body>
 	<div class="wrap">
@@ -58,7 +58,7 @@
 			<div id="contents">
 				<!-- 상단 중앙1 시작 -->
 				<div>
-					<h1 align="center">게시글 등록</h1>
+					<h1 align="center">게시글 수정 처리 </h1>
 				</div>				
 				<!-- 상단 중앙1 종료 -->
 
@@ -69,7 +69,7 @@
 						<script type="text/javascript">
 							setTimeout(function() {
 								alert("게시글 수정 성공");
-								window.location="${path}/free_board_list.fb?pageNum=${hiddenPageNum}";
+								window.location="${path}/free_board_list.fb?pageNum=${hiddenPageNum}";														
 							}, 1000);
 							
 						</script>	

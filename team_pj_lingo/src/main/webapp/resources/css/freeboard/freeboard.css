@@ -1,75 +1,5 @@
 @charset "UTF-8";
 
-#container {
-    width: 100%;
-    margin: 0 auto;
-    background-color: #F6F6F6;
-}
-
-#contents {
-    max-width: 1100px;
-    min-width: 1100px;
-    width: 100%;
-    margin: 0 auto;
-    min-height: 800px;
-    background-color: #FFFFFF;
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-#section2 {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: nowrap;
-    gap: 30px;
-}
-
-#left {
-    width: 20%;
-    margin-top: 20px;
-    height: 100%;
-    border-radius: 10px;
-    margin-right: 30px;
-    background-color: #F3F3F3;
-    padding: 20px;
-}
-
-.left_inside {
-    background: #FFFFFF;
-    margin: 0;
-    border-radius: 10px;
-    padding: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.left_menubar {
-    list-style: none;
-    padding: 0;
-}
-
-.left_menubar li {
-    margin: 15px 0;
-}
-
-.left_menubar li a {
-    color: #333;
-    font-size: 16px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.left_menubar li a:hover {
-    color: #0056A4;
-}
-
-#right {
-    width: 100%;
-    padding: 0 20px;
-    margin-top: 20px;
-}
-
 .table_div {
     margin-top: 30px;
     
@@ -137,6 +67,3 @@
 .inputButton:active {
 	background-color: #0de7f9;
 }
-
-
-
