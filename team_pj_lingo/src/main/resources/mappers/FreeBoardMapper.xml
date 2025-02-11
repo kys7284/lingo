@@ -60,6 +60,13 @@
 	        FB_CONTENT = #{fb_content}
 	 WHERE FB_NUM = #{fb_num}
 	 </update>
+	 
+	<!-- 게시글 삭제 처리 -->
+	<update id="deleteFreeBoard" parameterType="int">
+		UPDATE free_board_tbl
+ 	  	   SET fb_show = 'N'
+ 		 WHERE fb_num = #{fb_num}
+	</update>
 	
 	<!-- 댓글 목록 -->
 	<select id="freeCommentList" parameterType="int" resultType="test.team.team_pj_lingo.freeBoard.FreeBoardCommentDTO">
@@ -77,10 +84,6 @@
 				) 
 		  ORDER BY rn DESC
 	</select>
-	
-	
-	
-	
 	
 	<!-- 댓글 작성 -->
 	<insert id="insertComment" parameterType="test.team.team_pj_lingo.freeBoard.FreeBoardCommentDTO">

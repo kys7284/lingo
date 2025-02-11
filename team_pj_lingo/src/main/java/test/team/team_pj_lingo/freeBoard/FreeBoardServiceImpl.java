@@ -74,7 +74,6 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		int fb_num = Integer.parseInt(request.getParameter("fb_num"));
 		String pageNum = request.getParameter("pageNum");
 		
-		String pageNum = request.getParameter("pageNum");
 		
 		// 조회수 증가
 		dao.plusReadCnt(fb_num);
@@ -154,14 +153,6 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		int hidden_fb_num = Integer.parseInt(request.getParameter("hidden_fb_num"));
 		String hidden_fb_img = request.getParameter("hidden_fb_img");
 	
-		System.out.println("hidden_fb_num" + hidden_fb_num);
-		System.out.println("hidden_fb_img" + hidden_fb_img);
-		
-		String hiddenPageNum = request.getParameter("hiddenPageNum");
-		int hidden_fb_num = Integer.parseInt(request.getParameter("hidden_fb_num"));
-		String hidden_fb_img = request.getParameter("hidden_fb_img");
-		
-		
 		System.out.println("hiddenPageNum" + hiddenPageNum);
 		System.out.println("hidden_fb_num" + hidden_fb_num);
 	    System.out.println("hidden_fb_img" + hidden_fb_img);
@@ -174,7 +165,7 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		System.out.println("saveDir :" + saveDir);
 		
 		//이미지추가를위한 샘플이미지 경로(upload 폴더 생성후 우클릭 > properties > location 정보 복사후 붙여넣기),맨뒤\\추가
-		String realDir="D:\\DEV\\workspace_spring_ict04\\git\\lingo_ict04\\team_pj_lingo\\src\\main\\webapp\\resources\\fb_upload\\";	
+		String realDir="D:\\DEV\\workspace_lingo\\lingo\\team_pj_lingo\\src\\main\\webapp\\resources\\fb_upload\\";	
 		System.out.println("realDir : " + realDir);
 		
 		FileInputStream fis = null;
@@ -240,6 +231,10 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 			throws ServletException, IOException {
 		System.out.println("FreeBoardServiceImpl - freeDeleteAction()");
 		
+		int fb_num = Integer.parseInt(request.getParameter("hidden_fb_num"));
+		
+		dao.deleteFreeBoard(fb_num);
+		
 	}
 
 	//게시글 작성처리
@@ -255,7 +250,7 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		System.out.println("saveDir :" + saveDir);
 		
 		//이미지추가를위한 샘플이미지 경로(upload 폴더 생성후 우클릭 > properties > location 정보 복사후 붙여넣기),맨뒤\\추가
-		String realDir="D:\\dev\\workspace_spring_ict04\\Git\\lingo_ict04\\team_pj_lingo\\src\\main\\webapp\\resources\\fb_upload\\";
+		String realDir="D:\\DEV\\workspace_lingo\\lingo\\team_pj_lingo\\src\\main\\webapp\\resources\\fb_upload\\";
 		System.out.println("realDir : " + realDir);
 		
 		FileInputStream fis = null;

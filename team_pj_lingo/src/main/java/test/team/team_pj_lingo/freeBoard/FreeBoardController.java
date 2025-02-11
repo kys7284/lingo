@@ -119,13 +119,24 @@ public class FreeBoardController {
 		
 		logger.info("<<<< url ==> /free_board_updateAction.fb  >>>>");
 		
-		
-		
 		service.freeUpdateAction(request, response, model);
 
 		return "board/freeBoard/free_board_updateAction";
 	}
 	
+	// 게시글 삭제처리
+	@RequestMapping("/free_board_deleteAction.fb")
+	public String free_board_deleteAction(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException{
+		
+		logger.info("<<<< url ==> /free_board_deleteAction.fb  >>>>");
+		
+		service.freeDeleteAction(request, response, model);
+		viewPage = request.getContextPath() + "/free_board_list.fb";
+		response.sendRedirect(viewPage);
+		
+		return null;
+	}
 	
 	
 	// 2025 02 07 금요일 검색기능 추가

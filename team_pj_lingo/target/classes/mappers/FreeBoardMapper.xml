@@ -52,8 +52,6 @@
 		VALUES((SELECT NVL(MAX(fb_num)+1, 1)FROM FREE_BOARD_TBL),#{fb_title} ,#{fb_content} ,#{fb_writer}, #{fb_password}, 0, sysdate, 0, #{fb_img})
 	</insert>
 	
-<<<<<<< Updated upstream
-=======
 	<!--   게시글 수정  -->
 	<update id="updateFreeBoard" parameterType="test.team.team_pj_lingo.freeBoard.FreeBoardDTO">	 
 	 UPDATE FREE_BOARD_TBL	 
@@ -62,6 +60,13 @@
 	        FB_CONTENT = #{fb_content}
 	 WHERE FB_NUM = #{fb_num}
 	 </update>
+	 
+	<!-- 게시글 삭제 처리 -->
+	<update id="deleteFreeBoard" parameterType="int">
+		UPDATE free_board_tbl
+ 	  	   SET fb_show = 'N'
+ 		 WHERE fb_num = #{fb_num}
+	</update>
 	
 	<!-- 댓글 목록 -->
 	<select id="freeCommentList" parameterType="int" resultType="test.team.team_pj_lingo.freeBoard.FreeBoardCommentDTO">
@@ -79,10 +84,6 @@
 				) 
 		  ORDER BY rn DESC
 	</select>
-	
-	
-	
-	
 	
 	<!-- 댓글 작성 -->
 	<insert id="insertComment" parameterType="test.team.team_pj_lingo.freeBoard.FreeBoardCommentDTO">
@@ -125,5 +126,4 @@
 
 	</select>
 	
->>>>>>> Stashed changes
 </mapper>
