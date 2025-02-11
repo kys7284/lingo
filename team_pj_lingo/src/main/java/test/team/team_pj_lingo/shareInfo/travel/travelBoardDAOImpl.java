@@ -49,6 +49,14 @@ public class travelBoardDAOImpl implements travelBoardDAO{
 		System.out.println("DAO - insertComment");
 		return sqlSession.insert("test.team.team_pj_lingo.shareInfo.travel.travelBoardDAO.insertComment", dto);
 	}
+	
+	//게시글 작성처리
+	@Override
+	public int insertTravelBoard(travelBoardDTO dto) {
+		System.out.println("DAO - insertTravelBoard");
+		return sqlSession.insert("test.team.team_pj_lingo.shareInfo.travel.travelBoardDAO.insertTravelBoard", dto);
+	}
+	
 	//게시글 비밀번호 인증
 	@Override
 	public int password_chk(Map<String, Object> map) {
@@ -64,10 +72,6 @@ public class travelBoardDAOImpl implements travelBoardDAO{
 	public int deleteTravelBoard(Map<String, Object> map) {
 		return 0;
 	}
-	//게시글 작성처리
-	@Override
-	public int insertTravelBoard(travelBoardDTO dto) {
-		return 0;
-	}
+	
 
 }

@@ -1,15 +1,22 @@
 package test.team.team_pj_lingo.shareInfo.travel;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import test.team.team_pj_lingo.page.Paging;
 
@@ -91,6 +98,59 @@ public class travelBoardServiceImpl implements travelBoardService{
 		dao.insertComment(dto);
 	}
 
+	//게시글 작성처리
+	@Override
+	public void travelInsertAction(MultipartHttpServletRequest request, HttpServletResponse response, Model model) 
+			throws ServletException,IOException {
+		System.out.println("travelBoardService - travelInsertAction");
+		
+		MultipartFile file = request.getFile("tb_img");
+		System.out.println("file :" + file);
+		
+		//input 경로
+		String saveDir = request.getSession().getServletContext().getRealPath("/resources/tb_upload/");
+		System.out.println("saveDir :" + saveDir);
+		
+		//이미지추가를위한 샘플이미지 경로(upload 폴더 생성후 우클릭 > properties > location 정보 복사후 붙여넣기),맨뒤\\추가
+		String realDir="D:\\DEV\\workspace_lingo\\lingo\\team_pj_lingo\\src\\main\\webapp\\resources\\tb_upload\\";
+		System.out.println("realDir : " + realDir);
+		
+		FileInputStream fis = null;
+		FileOutputStream fos = null;
+		
+		try {
+			file.transferTo(new File(saveDir + file.getOriginalFilename()));	//import java.io.File
+			fis = new FileInputStream(saveDir + file.getOriginalFilename());
+			fos = new FileOutputStream(realDir + file.getOriginalFilename());
+			
+			int data = 0;
+			while((data = fis.read()) != -1) {
+				fos.write(data);
+			}
+			// 화면에서 입력받은 값 가져오기
+			// dto 생성후 setter로 값을 담는다.
+			travelBoardDTO dto = new travelBoardDTO(); 
+			dto.setTb_writer((String)request.getSession().getAttribute("sessionId"));
+			dto.setTb_password(request.getParameter("tb_password"));
+			dto.setTb_title(request.getParameter("tb_title"));
+			
+			// 이미지 가져오기
+			String tb_img = "/team_pj_lingo/resources/tb_upload/"+ file.getOriginalFilename();
+			System.out.println("tb_img : " + tb_img);
+			dto.setTb_img(tb_img);
+			
+			dto.setTb_content(request.getParameter("tb_content"));
+			dto.setTb_category(request.getParameter("tb_category"));
+			int insertCnt = dao.insertTravelBoard(dto);
+			model.addAttribute("insertCnt", insertCnt);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}finally {
+			if(fis!=null)fis.close();
+			if(fos!=null)fos.close();
+		}
+	}
+		
 	//게시글 수정&삭제시 비밀번호 인증
 	@Override
 	public int password_chkAction(HttpServletRequest request, HttpServletResponse response, Model model) {
@@ -109,10 +169,6 @@ public class travelBoardServiceImpl implements travelBoardService{
 		
 	}
 
-	//게시글 작성처리
-	@Override
-	public void travelInsertAction(HttpServletRequest request, HttpServletResponse response, Model model) {
-		
-	}
+	
 
 }

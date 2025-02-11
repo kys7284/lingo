@@ -1,7 +1,4 @@
 @charset "UTF-8";
-
-
-
 /* side menu start */
 #side_menu {
     float: inline-start;
@@ -58,11 +55,8 @@
 	border: 1px solid;
 }
 
-#freeCommentList > th{
-	width:200px;
-}
 .table_div{
-	
+	margin-top:100px;
 	margin-right:350px; 
 	
 }

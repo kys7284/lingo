@@ -49,8 +49,8 @@
 <script type="text/javascript">
 	$(function (){
 		$("#btnInsert").click(function() {
-			<%
-			if(session.getAttribute("sessionId") == null)	{
+		<%
+		if(session.getAttribute("sessionId") == null)	{
 		%>
 			alert("로그인이 필요합니다 !");
 			location.href="${path}/login.do"
@@ -81,7 +81,6 @@
 		<div id="container">
 			<div id="contents">
 				<!-- 상단 중앙1 시작  -->
-				
 				<div id="section1"
 					style="background-image: url('${path}/resources/images/travel.jpg'); background-size: cover; background-position: center; height: 300px;">
 					<br> 
@@ -119,9 +118,9 @@
 									<table>
 
 										<tr>
-											<th style="width:10%">작성자</th>
-											<th style="width:15%">[카테고리] 글제목 [댓글수]</th>
-											<th style="width:10%">작성일</th>
+											<th style="width:10%; border: 1px solid black;">작성자</th>
+											<th style="width:15%; border: 1px solid black;">[카테고리] 글제목 [댓글수]</th>
+											<th style="width:10%; border: 1px solid black;">작성일</th>
 											<th style="width:5%">조회수</th>
 										</tr>
 										
@@ -130,12 +129,12 @@
 										<c:forEach var="dto" items= "${travelList}">									
 										
 										<tr>
-											<td>${dto.tb_writer}</td>
-											<td>
+											<td style="border: 1px solid black;">${dto.tb_writer}</td>
+											<td style="border: 1px solid black; text-align: center;">
 												<a href="${path}/travelDetailAction.fb?tb_num=${dto.tb_num}"><span style="color:black">[${dto.tb_category}]</span> ${dto.tb_title} <span style="color: red">[${dto.tb_comment_count}]</span></a>
 											</td>
-											<td>${dto.tb_regDate}</td>
-											<td>${dto.tb_readCnt}</td>
+											<td style="border: 1px solid black;">${dto.tb_regDate}</td>
+											<td style="border: 1px solid black;">${dto.tb_readCnt}</td>
 										</tr>
 										
 										</c:forEach>

@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 @Controller
 public class travelController {
@@ -63,5 +64,26 @@ public class travelController {
 		service.travelCommentAddAction(reqeust, response, model);
 		
 		return "board/shareInfo/travelInfo/travelBoard/travel_comment_list";
+	}
+	
+	//여행정보공유 글 작성 페이지
+	@RequestMapping("travel_board_insert.tc")
+	public String travel_board_insert(HttpServletRequest reqeust, HttpServletResponse response, Model model) 
+		throws ServletException, IOException{
+		
+		logger.info("Controller - travel_board_insert.tc");
+		
+		return "board/shareInfo/travelInfo/travelBoard/travelboard_insert";
+	}
+	
+	//여행정보공유 글 작성 처리페이지
+	@RequestMapping("travel_board_insertAction.tc")
+	public String travel_board_insertAction(MultipartHttpServletRequest reqeust, HttpServletResponse response, Model model) 
+		throws ServletException, IOException{
+		
+		logger.info("Controller - travel_board_insert.tc");
+		service.travelInsertAction(reqeust, response, model);
+		
+		return "board/shareInfo/travelInfo/travelBoard/travelInsert_Action";
 	}
 }

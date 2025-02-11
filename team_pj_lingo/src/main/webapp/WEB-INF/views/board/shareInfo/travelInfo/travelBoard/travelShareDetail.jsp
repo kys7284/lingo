@@ -173,15 +173,23 @@
 									
 									<tr style="border: 1px solid;">
 										<th style="width: 200px; border-right: 1px solid;">내용</th>
-										<td colspan="3"  style="text-align:center"> ${dto.tb_content} </td>
+										<!-- 이미지가 null이 아닐때 사진과 함께 표시 -->
+										
+										<c:if test="${dto.tb_img != null}">
+										<td colspan="3"  style="text-align:center; "><div style="display:flex; flex-wrap: wrap;"><img src="${dto.tb_img}" style="width:200px; margin:0 auto;"><div style="width:100%">${dto.tb_content}</div></div></td>
+										</c:if>
+										<!-- 이미지가 null일떄 표시 -->
+										<c:if test="${dto.tb_img == null}">
+										<td colspan="3" style="text-align:center">${dto.tb_content} </td>
+										</c:if>
 									</tr>
 									
-									<tr style="border: 1px solid;">
+									<%-- <tr style="border: 1px solid;">
 										<th style="border-right: 1px solid;">이미지</th>
 										<td colspan="2" style="120px; "> 
 											<img src="${dto.tb_img}" style="width:200px;"><br>
 										</td>
-									</tr>
+									</tr> --%>
 									
 									<tr style="border: 1px solid;">
 										<th style="width: 200px; border-right: 1px solid;">작성일</th>

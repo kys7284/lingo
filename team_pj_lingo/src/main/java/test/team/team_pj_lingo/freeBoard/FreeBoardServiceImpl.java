@@ -74,7 +74,6 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		int fb_num = Integer.parseInt(request.getParameter("fb_num"));
 		String pageNum = request.getParameter("pageNum");
 		
-		String pageNum = request.getParameter("pageNum");
 		
 		// 조회수 증가
 		dao.plusReadCnt(fb_num);
@@ -153,14 +152,6 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		int hiddenPageNum = Integer.parseInt(request.getParameter("hiddenPageNum"));
 		int hidden_fb_num = Integer.parseInt(request.getParameter("hidden_fb_num"));
 		String hidden_fb_img = request.getParameter("hidden_fb_img");
-	
-		System.out.println("hidden_fb_num" + hidden_fb_num);
-		System.out.println("hidden_fb_img" + hidden_fb_img);
-		
-		String hiddenPageNum = request.getParameter("hiddenPageNum");
-		int hidden_fb_num = Integer.parseInt(request.getParameter("hidden_fb_num"));
-		String hidden_fb_img = request.getParameter("hidden_fb_img");
-		
 		
 		System.out.println("hiddenPageNum" + hiddenPageNum);
 		System.out.println("hidden_fb_num" + hidden_fb_num);
