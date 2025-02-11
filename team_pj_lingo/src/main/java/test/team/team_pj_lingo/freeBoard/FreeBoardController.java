@@ -1,6 +1,7 @@
 package test.team.team_pj_lingo.freeBoard;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +12,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 
@@ -90,6 +95,9 @@ public class FreeBoardController {
 			throws ServletException, IOException{
 		logger.info("<<url = /password_chkAction.fb>>");
 		int result = service.password_chkAction(request, response, model);
+		String pageNum = request.getParameter("hiddenPageNum");
+		model.addAttribute("pageNum", pageNum);
+		
 		
 		System.out.println(result);
 		if(result == 0) {
@@ -99,20 +107,47 @@ public class FreeBoardController {
 			viewPage = request.getContextPath() + "/freeDetailAction.fb?fb_num=" + fb_num + "&message=error";
 			response.sendRedirect(viewPage);
 			
-		}
+		}		
+		
 		return "board/freeBoard/free_board_edit";
 	}
 	
-	// 게시글 수정 처리
-	@RequestMapping("/updateFreeBoard.fb") 
-	public String updateFreeBoard(MultipartHttpServletRequest request, HttpServletResponse response, Model model) 
+	// 게시글 수정 처리	
+	@RequestMapping("/free_board_updateAction.fb")
+	public String ad_product_updateAction(MultipartHttpServletRequest request, HttpServletResponse response, Model model)
 			throws ServletException, IOException{
-		logger.info("<<url = /updateFreeBoard.fb>>");
-		service.freeUpdateAction(request, response, model);
 		
+		logger.info("<<<< url ==> /free_board_updateAction.fb  >>>>");
+		
+		
+		
+		service.freeUpdateAction(request, response, model);
+
 		return "board/freeBoard/free_board_updateAction";
 	}
 	
 	
+	
+	// 2025 02 07 금요일 검색기능 추가
+	@RequestMapping(value = "/search.fb", method = RequestMethod.GET)
+	public void getSearch(
+			
+			
+			  Model model,
+			  @RequestParam(value = "searchType", required = false, defaultValue = "")String searchType,
+			  @RequestParam(value = "keyword", required = false, defaultValue = "")String keyword
+			  ) throws Exception{
+		
+				logger.info("<<url = /search.fb>>");
+				List<FreeBoardDTO> list = null;
+				list = service.search(searchType, keyword);				
+				model.addAttribute("list", list);
+	}		  
+	
 
+	
+	
+			  
+			
+	
 }

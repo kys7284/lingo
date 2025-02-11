@@ -151,7 +151,7 @@
 					<!-- 우측 메뉴 시작 -->
 						<div id="right">
 							<div class="table_div">
-								<form name="detailForm" method="post">
+								<form name="detailForm" method="post" >
 									<table>
 									
 									<!-- hidden : 직접 input박스에서 입력받지 못한 값들을 전달할 때 사용 -->
@@ -176,7 +176,7 @@
 												<input style="width: 200px" type="password" class="input" name="fb_password" 
 													id="fb_password" size="30" placeholder="비밀번호 입력" required autofocus> 
 												<c:if test="${param.message == 'error'}">
-													<br><span style="color:red">비밀번호 불일치 ! !</span> 
+													<br><span style="color:red">비밀번호 불일치 ! !</span> 													
 												</c:if>
 													
 											</td>
@@ -201,12 +201,15 @@
 										
 										<tr>
 											<th style="width: 200px">작성일</th>
-											<td colspan="3"  style="text-align:center"> ${dto.fb_regDate} </td>
+											<td colspan="3"  style="text-align:center"> ${dto.fb_regDate} </td>								
 										</tr>
+										
 										<tr>
 											<td colspan="4" align="center">
 												<!-- 게시글번호 hidden 추가 : input이 없으므로(게시글번호는 입력받지않는다 input 없음) -->
-												<input type="hidden" name="hidden_fb_num" value="${dto.fb_num}">  
+												<input type="hidden" name="hidden_fb_num" value="${dto.fb_num}">
+												<input type="hidden" name="hiddenPageNum" value="${pageNum}">
+												<input type="hidden" name="hidden_fb_img" value="${dto.fb_img}">  												
 												<input type="button" class="inputButton" value="수정/삭제" id="btnEdit">
 												<input type="button" class="inputButton" value="목록" id="btnList">
 											</td>

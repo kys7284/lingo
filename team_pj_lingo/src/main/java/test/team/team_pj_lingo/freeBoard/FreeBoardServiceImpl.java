@@ -36,10 +36,14 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		// 화면에서 입력값 가져오기
 		String pageNum = request.getParameter("pageNum");
 		
+		System.out.println("pageNum" + pageNum);
+		
 		// 전체 게시글 갯수 카운트
-		Paging paging = new Paging(pageNum);
 		int total = dao.boardCnt();
 		System.out.println("total=> " + total);
+		
+		
+		Paging paging = new Paging(pageNum);
 		paging.setTotalCount(total);
 		
 		// 게시글목록 조회
@@ -53,6 +57,7 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		
 		List<FreeBoardDTO> list = dao.freeBoardList(map);
 		System.out.println("list: " + list);
+		
 		
 		// jsp로 처리결과 전달
 		model.addAttribute("freeBoardList", list);
@@ -69,11 +74,15 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		int fb_num = Integer.parseInt(request.getParameter("fb_num"));
 		String pageNum = request.getParameter("pageNum");
 		
+		String pageNum = request.getParameter("pageNum");
+		
 		// 조회수 증가
 		dao.plusReadCnt(fb_num);
 		
 		// 게시글 상세페이지
 		FreeBoardDTO dto = dao.freeBoardDetail(fb_num);
+		
+	
 		
 		// jsp로 처리결과 전달
 		model.addAttribute("pageNum", pageNum);
@@ -114,8 +123,10 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 			throws ServletException, IOException {
 		System.out.println("FreeBoardServiceImpl - password_chkAction()");
 		
+		
 		int fb_num = Integer.parseInt(request.getParameter("hidden_fb_num"));
 		String fb_password = request.getParameter("fb_password");
+		
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("fb_num", fb_num);
@@ -146,7 +157,16 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		System.out.println("hidden_fb_num" + hidden_fb_num);
 		System.out.println("hidden_fb_img" + hidden_fb_img);
 		
-		MultipartFile file = request.getFile("fb_img");
+		String hiddenPageNum = request.getParameter("hiddenPageNum");
+		int hidden_fb_num = Integer.parseInt(request.getParameter("hidden_fb_num"));
+		String hidden_fb_img = request.getParameter("hidden_fb_img");
+		
+		
+		System.out.println("hiddenPageNum" + hiddenPageNum);
+		System.out.println("hidden_fb_num" + hidden_fb_num);
+	    System.out.println("hidden_fb_img" + hidden_fb_img);
+		
+		MultipartFile file = request.getFile("fb_Img");
 		System.out.println("file" + file);
 	
 		//input 경로
@@ -154,7 +174,7 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		System.out.println("saveDir :" + saveDir);
 		
 		//이미지추가를위한 샘플이미지 경로(upload 폴더 생성후 우클릭 > properties > location 정보 복사후 붙여넣기),맨뒤\\추가
-		String realDir="D:\\dev\\workspace_spring_ict04\\Git\\lingo_ict04\\team_pj_lingo\\src\\main\\webapp\\resources\\fb_upload\\";
+		String realDir="D:\\DEV\\workspace_spring_ict04\\git\\lingo_ict04\\team_pj_lingo\\src\\main\\webapp\\resources\\fb_upload\\";	
 		System.out.println("realDir : " + realDir);
 		
 		FileInputStream fis = null;
@@ -163,7 +183,9 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		String fb_img1 = "";	// 추가한 부분
 		
 		// 상세페이지에 있는 이미지를 수정할 경우
-		if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
+		if(file.getOriginalFilename() != null & file.getOriginalFilename() != "") {   // 추가
+			
+
 			try {
 				file.transferTo(new File(saveDir + file.getOriginalFilename()));	//import java.io.File
 				fis = new FileInputStream(saveDir + file.getOriginalFilename());
@@ -198,12 +220,9 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		// dto 생성후 setter로 값을 담는다.
 		FreeBoardDTO dto = new FreeBoardDTO();
 		dto.setFb_num(hidden_fb_num);	// ※누락 주의※
-		dto.setFb_writer(request.getParameter("fb_writer"));
 		dto.setFb_title(request.getParameter("fb_title"));
 		dto.setFb_img(fb_img1)	;	// ※누락 주의※
 		dto.setFb_content(request.getParameter("fb_content"));
-		dto.setFb_readCnt(Integer.parseInt(request.getParameter("fb_readCnt")));
-		dto.setFb_regDate(Date.valueOf(request.getParameter("fb_regDate")));
 		
 		// 4단계. 싱글톤 방식으로 DAO 객체 생성, 다형성 적용=annotation으로 대체
 		// 5단계 상품수정 update
@@ -275,6 +294,13 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		}
 	}
 	
+	// 2025 02 07 금요일 검색기능 추가
+	@Override
+	public List<FreeBoardDTO> search(String searchType, String keyword) throws Exception{
+		return dao.search(searchType, keyword);
+
+		
+	}
 	
 
 }
