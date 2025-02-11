@@ -1,0 +1,85 @@
+@charset "UTF-8";
+/* side menu start */
+#side_menu {
+    float: inline-start;
+    padding: 20px;
+    width: 300px; 
+    text-align: center;
+    border-top: 5px solid #06BBCC;
+    border-bottom: 5px solid #06BBCC;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /*position: absolute; */
+    top: 670px;
+    list-style: none;
+}
+
+/* 화면 너비가 1646px 이하일 때 #side_menu 숨기기 */
+@media (max-width: 1646px) {
+    #side_menu {
+        display: none;
+    }
+}
+
+#side_menu > ul > li {
+	
+    list-style: none;
+    padding: 10px 0; /* 상하 패딩 조정 */
+    width: 100%; /* 너비를 100%로 설정 */
+}
+
+#side_menu > ul > li > a {
+	font-weight: bold;
+    display: block;
+    padding: 15px; /* 패딩 조정 */
+    border-bottom: 1px solid #06BBCC;
+    background-color: #f8f9fa; /* 배경색 조정 */
+    color: #333; /* 글자색 조정 */
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+    margin-bottom: 10px;
+}
+
+#side_menu > ul > li > a:hover {
+    background-color: #06BBCC; /* 호버 시 배경색 변경 */
+    color: #FFFFFF; /* 호버 시 글자색 변경 */
+}
+/* side menu end */
+
+/* 테이블시작 */
+.travel_boardList{
+	width: 50%; /* 원하는 너비 설정 */
+	margin: 0 auto; /* 수평 가운데 정렬 */
+	padding-top: 50px;
+	border: 1px solid;
+}
+
+.table_div{
+	margin-top:100px;
+	margin-right:350px; 
+	
+}
+table{
+	margin-left:auto; 
+    margin-right:auto;
+}
+
+
+table, td, th {
+    border-collapse : collapse;
+    border : 1px solid black;
+}
+
+th {
+  background-color: #06BBCC;
+  color: white;
+  border-right: 1px solid;
+}
+/* 테이블끝 */
+
+/* 댓글목록시작테이블 */
+#travelCommentList {
+	margin-left:300px; 
+}
+/* 댓글목록 끝 */

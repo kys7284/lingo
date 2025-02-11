@@ -110,7 +110,7 @@
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">정보나눔</a>
                     <div class="dropdown-menu fade-down m-0">
                         <a href="${path}/life.eq" class="dropdown-item">생활정보</a>
-                        <a href="javascript:alert('여행정보 개발중입니다.');" onfocus="this.blur()" class="dropdown-item">여행정보</a>
+                        <a href="${path}/travelInfo.tc" class="dropdown-item">여행정보</a>
                         <a href="javascript:alert('의료정보 개발중입니다.');" onfocus="this.blur()" class="dropdown-item">의료정보</a>
                         <a href="javascript:alert('법률정보 개발중입니다.');" onfocus="this.blur()" class="dropdown-item">법률정보</a>
                     </div>

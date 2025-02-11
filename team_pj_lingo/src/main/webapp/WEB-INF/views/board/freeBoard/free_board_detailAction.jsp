@@ -224,6 +224,7 @@
 									</div>
 									<hr><br><br>
 									<!-- 댓글 입력 코드 -->
+									<div style="margin-left: 800px;">
 									<table>
 										<tr>
 											<th style="width: 400px">댓글 작성자</th>
@@ -243,7 +244,7 @@
 										</tr>									
 									
 									</table>
-								
+								</div>
 								</form>
 								
 							</div>

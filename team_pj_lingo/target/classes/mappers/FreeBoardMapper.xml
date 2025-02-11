@@ -52,8 +52,6 @@
 		VALUES((SELECT NVL(MAX(fb_num)+1, 1)FROM FREE_BOARD_TBL),#{fb_title} ,#{fb_content} ,#{fb_writer}, #{fb_password}, 0, sysdate, 0, #{fb_img})
 	</insert>
 	
-<<<<<<< Updated upstream
-=======
 	<!--   게시글 수정  -->
 	<update id="updateFreeBoard" parameterType="test.team.team_pj_lingo.freeBoard.FreeBoardDTO">	 
 	 UPDATE FREE_BOARD_TBL	 
@@ -125,5 +123,4 @@
 
 	</select>
 	
->>>>>>> Stashed changes
 </mapper>
