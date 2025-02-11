@@ -131,10 +131,26 @@ public class AdminContoroller {
 		return "admin/adminNoticeInsertAction";
 	}
 	
-	// 공지사항 수정
+	// 공지사항 수정/삭제 화면
+	@RequestMapping("adminNoticeDetail.ad")
+	public String adminNoticeDetail(HttpServletRequest reqeust, HttpServletResponse response, Model model) 
+		throws ServletException, IOException{
+		
+		noticeService.noticeDetailAction(reqeust, response, model);
+		
+		return "admin/adminNoticeDetail";
+	}
 	
+	// 공지사항 수정처리
+	@RequestMapping("adminNoticeDetail.ad")
+	public String adminNoticeUpdate(HttpServletRequest reqeust, HttpServletResponse response, Model model) 
+		throws ServletException, IOException{
+		
+		
+		return "admin/adminNoticeUpdateAction";
+	}
 	
-	// 공지사항 삭제
+	// 공지사항 삭제처리
 	
 	
 	
