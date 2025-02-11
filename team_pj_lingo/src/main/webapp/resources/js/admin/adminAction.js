@@ -2,6 +2,8 @@
  * 
  */
  $(document).ready(function() {
+ 
+ 
   $("#memberBtn").click(function() {
     $.ajax({
       url: "/team_pj_lingo/adminMemberList.ad", 
@@ -84,7 +86,9 @@
         console.error("AJAX 요청 실패: " + status + " - " + error);
       }
     });
-  });    
+  }); 
+  
+     
 
 
 
