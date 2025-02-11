@@ -27,7 +27,7 @@ public interface FreeBoardService {
 			throws ServletException, IOException;
 	
 	//게시글 수정처리
-	public void freeUpdateAction(HttpServletRequest request, HttpServletResponse response, Model model)
+	public void freeUpdateAction(MultipartHttpServletRequest request, HttpServletResponse response, Model model)
 			throws ServletException, IOException;
 	
 	//게시글 삭제처리

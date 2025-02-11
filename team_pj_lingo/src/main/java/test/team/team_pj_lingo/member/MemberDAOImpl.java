@@ -75,4 +75,12 @@ public class MemberDAOImpl implements MemberDAO {
 		return deleteCnt;
 	}
 
+	@Override
+	public String statusCheck(String mem_id) {
+
+		String mem_status = sqlSession.selectOne("test.team.team_pj_lingo.member.MemberDAO.statusCheck", mem_id);
+		
+		return mem_status;
+	}
+
 }

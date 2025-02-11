@@ -25,34 +25,52 @@ public class QndboardController {
 	
 	String viewPage = "";
 	
-	
-	
-		// 생활정보
-		@RequestMapping("/life.eq")
-		public String life(HttpServletRequest request,  HttpServletResponse response, Model model)
-				throws ServletException, IOException{
-			logger.info("<<< url ==>  /life.eq >>>");
-			
-			service.qnaListAction(request, response, model);
-			
-			return "board/qnaboard/life";
-		}
+	/*
+	 * // 생활정보
+	 * 
+	 * @RequestMapping("/life.eq") public String life(HttpServletRequest request,
+	 * HttpServletResponse response, Model model) throws ServletException,
+	 * IOException{ logger.info("<<< url ==>  /life.eq >>>");
+	 * 
+	 * //service.qnaListAction(request, response, model);
+	 * 
+	 * return "board/qnaboard/life"; }
+	 * 
+	 * // 생활정보(집)
+	 * 
+	 * @RequestMapping("/lifeHome.eq") public String
+	 * lifeShareHome(HttpServletRequest request, HttpServletResponse response, Model
+	 * model) throws ServletException, IOException{
+	 * logger.info("<<< url ==>  /lifeHome.eq >>>");
+	 * 
+	 * //service.qnaListAction(request, response, model);
+	 * 
+	 * return "board/qnaboard/shareInfo/home/findHome"; } // 생활정보(깨스)
+	 * 
+	 * @RequestMapping("/lifeEGW.eq") public String lifeEGW(HttpServletRequest
+	 * request, HttpServletResponse response, Model model) throws ServletException,
+	 * IOException{ logger.info("<<< url ==>  /lifeHome.eq >>>");
+	 * 
+	 * //service.qnaListAction(request, response, model);
+	 * 
+	 * return "board/qnaboard/shareInfo/home/elecGasWater"; }
+	 */
 			
 
-		// 생활정보 문의 상세페이지
+	// 생활정보 문의 상세페이지
+	
+	@RequestMapping("/life_detailAction.eq")
+	public String life_detailAction(HttpServletRequest request,  HttpServletResponse response, Model model)
+			throws ServletException, IOException{
 		
-		@RequestMapping("/life_detailAction.eq")
-		public String life_detailAction(HttpServletRequest request,  HttpServletResponse response, Model model)
-				throws ServletException, IOException{
-			
-			logger.info("<<<< url ==> /life_detailAction.eq  >>>>");
-			
-			service.qnaDetailAction(request, response, model);
+		logger.info("<<<< url ==> /life_detailAction.eq  >>>>");
+		
+		service.qnaDetailAction(request, response, model);
 
-			return "board/qnaboard/life_detailAction";
-		}
-					
-					
+		return "board/qnaboard/life_detailAction";
+	}
+				
+				
 //			// 생활정보 목록
 //			
 //			@RequestMapping("/life_list.eq")
@@ -65,180 +83,180 @@ public class QndboardController {
 //			
 //				return "board/qnaboard/life";
 //			}
+		
+		 //생활정보 답글 목록
+		
+		@RequestMapping("/comment_list.eq")
+		public String comment_list(HttpServletRequest request,  HttpServletResponse response, Model model)
+				throws ServletException, IOException{
 			
-			 //생활정보 답글 목록
+			logger.info("<<<< url ==> /comment_list.eq  >>>>");
 			
-			@RequestMapping("/comment_list.eq")
-			public String comment_list(HttpServletRequest request,  HttpServletResponse response, Model model)
-					throws ServletException, IOException{
-				
-				logger.info("<<<< url ==> /comment_list.eq  >>>>");
-				
-				service.commentListAction(request, response, model);
-	
-				return "board/qnaboard/comment_list";
-			}
-			
-			// 생활정보 답글 처리
-			@RequestMapping("/comment_insert.eq")
-			public String comment_insert(HttpServletRequest request, HttpServletResponse response, Model model)
-					throws ServletException, IOException{
-				
-				logger.info("<<<< url ==> /comment_insert.eq  >>>>");
-				
-				service.commentAddAction(request, response, model);
-						
-				return null;
-			}
-			
-			
-			
-			
-			// 비밀번호 체크
-			@RequestMapping("/password_chkAction.eq")
-			public String password_chkAction(HttpServletRequest request,  HttpServletResponse response,  Model model)
-					throws ServletException, IOException{
-				
-				logger.info("<<<< url ==> /password_chkAction.eq  >>>>");
-				
-				int result = service.password_chkAction(request, response, model);
-				
-				if(result != 0) {
-					return "board/qnaboard/life_edit";
-					
-				}else {
-					System.out.println("비밀번호 불일치");
-					
-					int b_num = Integer.parseInt(request.getParameter("hidden_b_num"));
-					
-					viewPage = request.getContextPath()+ "/life_detailAction.eq?b_num=" + b_num + "&message=error";
-					response.sendRedirect(viewPage);
-					return null;
-				}
-			}
-				
-			
-				// 생활정보 문의하기 수정하기
-				
-				@RequestMapping("/life_updateAction.eq")
-				public String life_updateAction(HttpServletRequest request,HttpServletResponse response, Model model)
-						throws ServletException, IOException{
-					
-					logger.info("<<<< url ==> /life_updateAction.eq  >>>>");
-					
-					service.qnaUpdateAction(request, response, model);
-					
-					
-					viewPage = request.getContextPath()+ "/life.eq";
-					response.sendRedirect(viewPage);
-					return null;
-				}		
-				
-				
-				// 생활정보문의 삭제하기
-				
-				@RequestMapping("/life_deleteAction.eq")
-				public String life_deleteAction(HttpServletRequest request, HttpServletResponse response, Model model)
-						throws ServletException, IOException{
-					
-					logger.info("<<<< url ==> /life_deleteAction.eq  >>>>");
-					
-					service.qnaDeleteAction(request, response, model);
-					
-					viewPage = request.getContextPath()+ "/life.eq";
-					response.sendRedirect(viewPage);
-					return null;
-				}		
-				
-				// 생활정보문의 추가
+			service.commentListAction(request, response, model);
 
-				@RequestMapping("/life_insert.eq")
-				public String life_insert(HttpServletRequest request, HttpServletResponse response, Model model)
-						throws ServletException, IOException{
-					
-					logger.info("<<<< url ==> /life_insert.eq  >>>>");
-					
-					
-					return "board/qnaboard/life_insert";
-				}		
-				
-				
-				// 생활정보문의 추가처리
-				@RequestMapping("/life_insertAction.eq")
-				public String life_insertAction(HttpServletRequest request, HttpServletResponse response, Model model)
-						throws ServletException, IOException{
-					
-					logger.info("<<<< url ==> /life_insertAction.eq  >>>>");
-					
-					service.qnaInsertAction(request, response, model);
-					
-					viewPage = request.getContextPath()+ "/life.eq";
-					response.sendRedirect(viewPage);
-					return null;
-				}		
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-		// 여행정보
-		@RequestMapping("/travle.eq")
-		public String travle(){
-			logger.info("<<< url ==>  /travle.eq >>>");
-					
-			return "qnaboard/travle";
-		}			
-				
-
-		// 의료정보
-		@RequestMapping("/medical.eq")
-		public String medical(){
-			logger.info("<<< url ==>  /medical.eq >>>");
-			
-			return "qnaboard/medical";
+			return "board/qnaboard/comment_list";
 		}
 		
-		// 법률정보
-		@RequestMapping("/law.eq")
-		public String law(){
-			logger.info("<<< url ==>  /law.eq >>>");
+		// 생활정보 답글 처리
+		@RequestMapping("/comment_insert.eq")
+		public String comment_insert(HttpServletRequest request, HttpServletResponse response, Model model)
+				throws ServletException, IOException{
 			
-			return "qnaboard/law";
-		}		
+			logger.info("<<<< url ==> /comment_insert.eq  >>>>");
+			
+			service.commentAddAction(request, response, model);
+					
+			return null;
+		}
+		
+		
+		
+		
+		// 비밀번호 체크
+		@RequestMapping("/password_chkAction.eq")
+		public String password_chkAction(HttpServletRequest request,  HttpServletResponse response,  Model model)
+				throws ServletException, IOException{
+			
+			logger.info("<<<< url ==> /password_chkAction.eq  >>>>");
+			
+			int result = service.password_chkAction(request, response, model);
+			
+			if(result != 0) {
+				return "board/qnaboard/life_edit";
+				
+			}else {
+				System.out.println("비밀번호 불일치");
+				
+				int b_num = Integer.parseInt(request.getParameter("hidden_b_num"));
+				
+				viewPage = request.getContextPath()+ "/life_detailAction.eq?b_num=" + b_num + "&message=error";
+				response.sendRedirect(viewPage);
+				return null;
+			}
+		}
+			
+		
+			// 생활정보 문의하기 수정하기
+			
+			@RequestMapping("/life_updateAction.eq")
+			public String life_updateAction(HttpServletRequest request,HttpServletResponse response, Model model)
+					throws ServletException, IOException{
+				
+				logger.info("<<<< url ==> /life_updateAction.eq  >>>>");
+				
+				service.qnaUpdateAction(request, response, model);
+				
+				
+				viewPage = request.getContextPath()+ "/life.eq";
+				response.sendRedirect(viewPage);
+				return null;
+			}		
+			
+			
+			// 생활정보문의 삭제하기
+			
+			@RequestMapping("/life_deleteAction.eq")
+			public String life_deleteAction(HttpServletRequest request, HttpServletResponse response, Model model)
+					throws ServletException, IOException{
+				
+				logger.info("<<<< url ==> /life_deleteAction.eq  >>>>");
+				
+				service.qnaDeleteAction(request, response, model);
+				
+				viewPage = request.getContextPath()+ "/life.eq";
+				response.sendRedirect(viewPage);
+				return null;
+			}		
+			
+			// 생활정보문의 추가
 
+			@RequestMapping("/life_insert.eq")
+			public String life_insert(HttpServletRequest request, HttpServletResponse response, Model model)
+					throws ServletException, IOException{
+				
+				logger.info("<<<< url ==> /life_insert.eq  >>>>");
+				
+				
+				return "board/qnaboard/life_insert";
+			}		
+			
+			
+			// 생활정보문의 추가처리
+			@RequestMapping("/life_insertAction.eq")
+			public String life_insertAction(HttpServletRequest request, HttpServletResponse response, Model model)
+					throws ServletException, IOException{
+				
+				logger.info("<<<< url ==> /life_insertAction.eq  >>>>");
+				
+				service.qnaInsertAction(request, response, model);
+				
+				viewPage = request.getContextPath()+ "/life.eq";
+				response.sendRedirect(viewPage);
+				return null;
+			}		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	// 여행정보
+	@RequestMapping("/travle.eq")
+	public String travle(){
+		logger.info("<<< url ==>  /travle.eq >>>");
+				
+		return "qnaboard/travle";
+	}			
+			
+
+	// 의료정보
+	@RequestMapping("/medical.eq")
+	public String medical(){
+		logger.info("<<< url ==>  /medical.eq >>>");
+		
+		return "qnaboard/medical";
+	}
 	
+	// 법률정보
+	@RequestMapping("/law.eq")
+	public String law(){
+		logger.info("<<< url ==>  /law.eq >>>");
+		
+		return "qnaboard/law";
+	}		
 
 
-	
-	
+
+
+
+
 }

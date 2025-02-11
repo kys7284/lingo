@@ -42,7 +42,7 @@
     <link href="${path}/resources/css/common/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="${path}/resources/css/common/lib/style.css" rel="stylesheet">
+    <link href="${path}/resources/css/common/style.css" rel="stylesheet">
 <script src="${path}/resources/js/member/join.js" defer></script> 
 
 	<link rel="stylesheet" href="${path}/resources/css/member/login.css">

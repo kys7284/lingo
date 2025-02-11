@@ -46,13 +46,27 @@
     <link href="${path}/resources/css/common/style.css" rel="stylesheet">
 <script src="${path}/resources/js/member/join.js" defer></script> 
 
-	<%-- <link rel="stylesheet" href="${path}/resources/css/common/board.css"> --%>
 	<link rel="stylesheet" href="${path}/resources/css/common/board.css">
 
 <script type="text/javascript">
 	$(function(){
 		$("#btnInsert").click(function(){
-			location.href="${path}/free_board_insert.fb"	
+			<%
+				if(session.getAttribute("sessionId") == null)	{
+			%>
+				alert("로그인이 필요합니다 !");
+				location.href="${path}/login.do"
+			
+			<%
+				}	else {
+			%>
+			
+				location.href="${path}/free_board_insert.fb"	
+			
+			<%
+				}
+			%>
+			
 		});
 	});
 </script>

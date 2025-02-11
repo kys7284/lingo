@@ -17,13 +17,18 @@ public class MemberDTO {
 	private String mem_email;
 	private String mem_comment;
 	private Timestamp mem_regdate;
+	private String mem_status;
+	private int rn;
 	
+
+
 	public MemberDTO() {
 		super();
 	}
-
+	
 	public MemberDTO(int mem_no, String mem_id, String mem_pwd, String mem_name, String mem_country, Date mem_birthday,
-			String mem_address, String mem_hp, int mem_rank, String mem_email, String mem_comment, Timestamp mem_regdate) {
+			String mem_address, String mem_hp, int mem_rank, String mem_email, String mem_comment,
+			Timestamp mem_regdate, String mem_status,int rn) {
 		super();
 		this.mem_no = mem_no;
 		this.mem_id = mem_id;
@@ -37,9 +42,13 @@ public class MemberDTO {
 		this.mem_email = mem_email;
 		this.mem_comment = mem_comment;
 		this.mem_regdate = mem_regdate;
+		this.mem_status = mem_status;
+		this.rn = rn;
 	}
 
-	
+
+
+
 	public int getMem_no() {
 		return mem_no;
 	}
@@ -70,6 +79,14 @@ public class MemberDTO {
 
 	public void setMem_name(String mem_name) {
 		this.mem_name = mem_name;
+	}
+
+	public int getRn() {
+		return rn;
+	}
+
+	public void setRn(int rn) {
+		this.rn = rn;
 	}
 
 	public String getMem_country() {
@@ -135,14 +152,27 @@ public class MemberDTO {
 	public void setMem_regdate(Timestamp mem_regdate) {
 		this.mem_regdate = mem_regdate;
 	}
+	
+	public String getMem_status() {
+		return mem_status;
+	}
+
+	public void setMem_status(String mem_status) {
+		this.mem_status = mem_status;
+	}
 
 	@Override
 	public String toString() {
-		return "Member_DTO [mem_no=" + mem_no + ", mem_id=" + mem_id + ", mem_pwd=" + mem_pwd + ", mem_name=" + mem_name
+		return "MemberDTO [mem_no=" + mem_no + ", mem_id=" + mem_id + ", mem_pwd=" + mem_pwd + ", mem_name=" + mem_name
 				+ ", mem_country=" + mem_country + ", mem_birthday=" + mem_birthday + ", mem_address=" + mem_address
 				+ ", mem_hp=" + mem_hp + ", mem_rank=" + mem_rank + ", mem_email=" + mem_email + ", mem_comment="
-				+ mem_comment + ", mem_regdate=" + mem_regdate + "]";
+				+ mem_comment + ", mem_regdate=" + mem_regdate + ", mem_status=" + mem_status + ", rn=" + rn + "]";
 	}
+
+	
+	
+	
+
 	
 	
 }

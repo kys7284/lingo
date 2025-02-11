@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+
+#adminView { /* 테이블이 로드되는 영역 */
+  display: flex;
+  justify-content: center; /* 가로 가운데 정렬 */
+  align-items: flex-start; /* 세로 가운데 정렬 */
+  height:max-content;
+  min-height: 500px;
+}
+
+#admin{
+	display: flex;
+  	justify-content: center;
+	
+}

@@ -9,7 +9,7 @@
 <!-- 반응형 웹  -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>board_insert</title>
+<title>free_board</title>
 
 <!-- css  -->
 <!-- 기존설정 그대로 -->
@@ -47,11 +47,15 @@
 
 	<link rel="stylesheet" href="${path}/resources/css/common/board.css">
 
-<script>
-	$(function() {
-		$("#btnSave").click(function() {
-			const title = $("#b_title").val();
-			const content = $("#b_content").val();
+<script type="text/javascript">
+	$(function() {	// 상세페이지가 로딩되면
+		// [게시글 목록 버튼] 클릭시 컨트롤러의 목록으로 이동
+		$("#btnList").click(function() {
+			location.href="${path}/free_board_list.fb";
+		});
+	
+		// [게시글 수정 버튼] 클릭시 [게시글 수정 화면]버튼
+		$("#btnEdit").click(function() {
 			
 			const password = $("#fb_password").val();
 			const title = $("#fb_title").val();
@@ -65,12 +69,12 @@
 			}
 			if(title == "") {
 				alert("글 제목을 입력하세요 !");
-				$("#b_title").focus();
+				$("#fb_title").focus();
 				return false;
 			}
 			if(content == "") {
 				alert("글 내용을 입력하세요 !");
-				$("#b_content").focus();
+				$("#fb_content").focus();
 				return false;
 			}
 			
@@ -88,37 +92,49 @@
 			document.editForm.submit();
 		});
 	});
-</script>
 
+</script>
 </head>
 <body>
-<div class="wrap">
-   <!-- header 시작 -->
-   <%@include file="/WEB-INF/views/common/header.jsp" %> 
-   <!-- header 끝    -->
-
+	<div class="wrap">
+		<!-- header 시작 -->
+		<%@ include file="/WEB-INF/views/common/header.jsp"%>
+		<!-- header 끝 -->
+	
+	
 		<!-- 컨텐츠 시작 -->
 		<div id="container">
 			<div id="contents">
 				<!-- 상단 중앙1 시작 -->
 				<div>
-					<h1 align="center">게시판 작성</h1>
+					<h1 align="center">게시판 수정/삭제페이지</h1>
 				</div>
 				<!-- 상단 중앙1 종료 -->
 				
 				<!-- 상단 중앙2 시작 -->
 				<div id="section2">
-					
 					<!-- 우측 메뉴 시작 -->
 						<div id="right">
 							<div class="table_div">
 								<form name="editForm" method="post" enctype="multipart/form-data">
 									<table>
 										<tr>
+											<th style="width: 200px">글번호</th>
+											<td style="width: 200px; text-align:center">${dto.fb_num}</td>
+											
+											<th style="width: 200px">조회수</th>
+											<td style="width: 200px; text-align:center">${dto.fb_readCnt}</td>
+										
+										</tr>
+										
+										<tr>
 											<th style="width: 200px">작성자</th>
-											<td style="width: 200px; text-align:center">${sessionScope.sessionID}</td>
+											<td style="width: 200px; text-align:center">${dto.fb_writer}</td>
 											
-											
+											<th style="width: 200px">비밀번호</th>
+											<td style="width: 200px; text-align:center">
+												<input style="width:200px" type="password" class="input" name="fb_password" id="fb_password" size="30" placeholder="비밀번호 입력" required autofocus>
+											</td>
 										
 										</tr>
 										
@@ -126,17 +142,16 @@
 											<th style="width: 200px">글제목</th>
 											
 											<td colspan="3" style="text-align:center">
-												<input style="width: 700px" type="text" class="input" name="b_title" 
-														id="b_title" size="50" placeholder="글제목 입력">
+												<input style="width: 700px" type="text" class="input" name="fb_title" 
+														id="fb_title" size="50" value="${dto.fb_title}" placeholder="글제목 입력" required>
 											</td>
 										</tr>
 										
 										<tr>
 											<th style="width: 200px">글내용</th>
 											<td colspan="3" style="text-align:center">
-												<textarea rows="5" cols="93" name="b_content" id="b_content" placeholder="글내용 입력"></textarea>
+												<textarea rows="5" cols="93" name="fb_content" id="fb_content">${dto.fb_content}</textarea>
 											</td>
-											
 										</tr>
 										
 										<tr>
@@ -147,10 +162,10 @@
 												</td>
 										</tr>
 										
-											<th>첨부 파일</th>
-											<td> 
-												<input type="file" class="input" id="pdImg" name="pdImg" accept="image/*" style="width:250px; height:150px">
-											</td>
+										<tr>
+											<th style="width: 200px">작성일</th>
+											<td colspan="3" style="text-align:center">${dto.fb_regDate}</td>
+											
 										</tr>
 
 																				
@@ -181,8 +196,6 @@
 		
 		</div>
 		<!-- 컨텐츠 끝 -->
-      
-
       <!-- footer 시작 -->
       <%@include file="/WEB-INF/views/common/footer.jsp" %>
       <!-- footer 끝 -->
@@ -202,4 +215,4 @@
     <script src="${path}/resources/js/main.js"></script>
    </div>
 </body>
-</html>
+</html>	

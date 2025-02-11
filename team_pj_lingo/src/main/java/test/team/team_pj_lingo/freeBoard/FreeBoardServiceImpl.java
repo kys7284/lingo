@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -71,6 +72,7 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		
 		// get방식으로 넘긴 값 가져오기
 		int fb_num = Integer.parseInt(request.getParameter("fb_num"));
+		String pageNum = request.getParameter("pageNum");
 		
 		String pageNum = request.getParameter("pageNum");
 		
@@ -83,8 +85,37 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 	
 		
 		// jsp로 처리결과 전달
+		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("dto", dto);
 	}
+	
+	//댓글목록 처리
+	@Override
+	public void freeCommentListAction(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException {
+		System.out.println("FreeBoardServiceImpl - freeCommentListAction()");
+		
+		int fb_num = Integer.parseInt(request.getParameter("freeboard_num"));
+		
+		List<FreeBoardCommentDTO> list = dao.freeCommentList(fb_num);
+		
+		model.addAttribute("list", list);
+	}
+
+	//댓글작성 처리
+	@Override
+	public void freeCommentAddAction(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException {
+		System.out.println("FreeBoardServiceImpl - freeCommentAddAction()");
+		
+		FreeBoardCommentDTO dto = new FreeBoardCommentDTO();
+		dto.setFb_board_num(Integer.parseInt(request.getParameter("freeboard_num")));
+		dto.setFb_writer(request.getParameter("writer"));
+		dto.setFb_content(request.getParameter("content"));
+		
+		dao.insertComment(dto);
+	}
+
 
 	//게시글 수정 삭제시 비밀번호 인증
 	@Override
@@ -116,9 +147,15 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 
 	//게시글 수정처리
 	@Override
-	public void freeUpdateAction(HttpServletRequest request, HttpServletResponse response, Model model)
+	public void freeUpdateAction(MultipartHttpServletRequest request, HttpServletResponse response, Model model)
 			throws ServletException, IOException {
 		System.out.println("FreeBoardServiceImpl - freeUpdateAction()");
+		int hiddenPageNum = Integer.parseInt(request.getParameter("hiddenPageNum"));
+		int hidden_fb_num = Integer.parseInt(request.getParameter("hidden_fb_num"));
+		String hidden_fb_img = request.getParameter("hidden_fb_img");
+	
+		System.out.println("hidden_fb_num" + hidden_fb_num);
+		System.out.println("hidden_fb_img" + hidden_fb_img);
 		
 		String hiddenPageNum = request.getParameter("hiddenPageNum");
 		int hidden_fb_num = Integer.parseInt(request.getParameter("hidden_fb_num"));
@@ -265,14 +302,5 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		
 	}
 	
-
-	//댓글작성 처리
-	@Override
-	public void freeCommentAddAction(HttpServletRequest request, HttpServletResponse response, Model model)
-			throws ServletException, IOException {
-		System.out.println("FreeBoardServiceImpl - freeCommentAddAction()");
-		
-	}
-
 
 }

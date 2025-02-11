@@ -48,12 +48,12 @@
 	<link rel="stylesheet" href="${path}/resources/css/common/board.css">
 </head>
 <body>
-<div class="wrap">
-   <!-- header 시작 -->
-   <%@include file="/WEB-INF/views/common/header.jsp" %> 
-   <!-- header 끝    -->
-
-   <!-- 컨텐츠 시작 -->
+	<div class="wrap">
+		<!-- header 시작 -->
+		<%@ include file="/WEB-INF/views/common/header.jsp" %>
+		<!-- header 끝 -->
+		
+		<!-- 컨텐츠 시작 -->
 		<div id="container">
 			<div id="contents">
 				<!-- 상단 중앙1 시작 -->
@@ -64,7 +64,6 @@
 
 				<!-- 상단 중앙2 시작 -->
 				<div id="section2">
-					
 					<!-- 우측 메뉴 시작 -->
 					<c:if test="${updateCnt == 1}">
 						<script type="text/javascript">
@@ -89,9 +88,10 @@
 				<!-- 상단 중앙2 종료 -->
 			</div>
 		</div>
-      <!-- 컨텐츠 끝 -->
-      
-
+		
+		
+		<!-- 컨텐츠 끝 -->
+		
       <!-- footer 시작 -->
       <%@include file="/WEB-INF/views/common/footer.jsp" %>
       <!-- footer 끝 -->
@@ -111,4 +111,4 @@
     <script src="${path}/resources/js/main.js"></script>
    </div>
 </body>
-</html>
+</html>	

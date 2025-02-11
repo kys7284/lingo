@@ -56,8 +56,14 @@
 		DELETE FROM member_tbl
 		WHERE mem_id = #{mem_id}
 		AND mem_pwd = #{mem_pwd}
-	
 	</delete>
+	
+	<!-- 사용자권한 체크  -->
+	<select id="statusCheck" parameterType="String" resultType="String">
+		SELECT	mem_status
+		FROM	member_tbl
+		WHERE	mem_id=#{mem_id}
+	</select>
 
 
 

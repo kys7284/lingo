@@ -88,9 +88,11 @@ public class MemberServiceImpl implements MemberService {
         map.put("mem_pwd", mem_pwd);
 
         int selectCnt = dao.idPasswordChk(map);
+        String mem_status = dao.statusCheck(mem_id);
         
         if(selectCnt == 1) {
-        	request.getSession().setAttribute("sessionId", mem_id);
+        	request.getSession().setAttribute("sessionId", mem_status);
+        	request.getSession().setAttribute("hiddenId", mem_id);
         }
         else {
         	request.getSession().setAttribute("sessionId", null);

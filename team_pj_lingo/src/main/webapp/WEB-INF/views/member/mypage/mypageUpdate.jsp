@@ -13,7 +13,6 @@
 <link rel="stylesheet" href="${path }/resources/css/common/header.css">
 <link rel="stylesheet" href="${path }/resources/css/common/footer.css">
 <link rel="stylesheet" href="${path }/resources/css/member/join.css">
-<link rel="stylesheet" href="${path }/resources/css/member/login.css">
 
 <!-- js -->
 <script src="${path}/resources/js/member/join.js" defer></script>
@@ -38,7 +37,7 @@
 		<br><br>
 		<!-- 컨텐츠 시작 -->
 		<div id="container">
-			<div id="contents">
+			<div id="contents"> 
 				<!-- 상단 중앙1 시작 -->
 				<div id="section1">
 					<h1 align="center"> 회원정보 수정 </h1>
@@ -109,7 +108,7 @@
 											<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
 											<input type="text" id="sample6_address" name="sample6_address" value="${addressArr[0]}" placeholder="주소" readonly><br>
 											<input type="text" id="sample6_extraAddress" name="sample6_extraAddress" value="${addressArr[1]}" readonly>
-											<input type="text" id="sample6_detailAddress" name="sample6_detailAddress" value="${addressArr[2]}" required>
+											<input type="text" id="sample6_detailAddress" name="sample6_detailAddress" value="${addressArr[2]}" >
 										</td>
 									</tr>
 									
