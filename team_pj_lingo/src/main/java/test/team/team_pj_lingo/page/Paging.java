@@ -36,6 +36,8 @@ public class Paging {
 		System.out.println("=====================");
 		System.out.println("pageNum => " + pageNum);
 		System.out.println("currentPage => " + currentPage);
+		
+		
 	}
 
 	// getter setter ---------------

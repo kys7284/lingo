@@ -45,7 +45,7 @@
     <link href="${path}/resources/css/common/style.css" rel="stylesheet">
 <script src="${path}/resources/js/member/join.js" defer></script> 
 
-	<link rel="stylesheet" href="${path}/resources/css/member/login.css">
+	<link rel="stylesheet" href="${path}/resources/css/common/board.css">
 
 <script type="text/javascript">
 	$(function() {	// 상세페이지가 로딩되면
@@ -61,8 +61,9 @@
 			const title = $("#fb_title").val();
 			const content = $("#fb_content").val();
 			
+			
 			if(password == "") {
-				alert("비밀번호를 입력하세요 !");
+				 alert("비밀번호를 입력하세요 !"); 				
 				$("#fb_password").focus();
 				return false;
 			}
@@ -76,12 +77,17 @@
 				$("#fb_content").focus();
 				return false;
 			}
+			
+			
 			document.editForm.action="${path}/free_board_updateAction.fb";
 			document.editForm.submit();
 		});
 		
 		// [게시글 삭제 버튼] 클릭시 [게시글 삭제 화면]버튼
 		$("#btnDelete").click(function() {
+			
+			
+			
 			document.editForm.action="${path}/free_board_deleteAction.fb";
 			document.editForm.submit();
 		});
@@ -110,7 +116,7 @@
 					<!-- 우측 메뉴 시작 -->
 						<div id="right">
 							<div class="table_div">
-								<form name="editForm" method="post">
+								<form name="editForm" method="post" enctype="multipart/form-data">
 									<table>
 										<tr>
 											<th style="width: 200px">글번호</th>
@@ -152,7 +158,7 @@
 											<th>이미지</th>
 												<td colspan="2" style="120px"> 
 												<img src="${dto.fb_img}" style="width:200px"><br>
-												<input type="file" class="input" id="fbImg" name="fbImg" accept="image/*">
+												<input type="file" class="input" id="fb_Img" name="fb_Img" accept="image/*">
 												</td>
 										</tr>
 										
@@ -161,10 +167,13 @@
 											<td colspan="3" style="text-align:center">${dto.fb_regDate}</td>
 											
 										</tr>
-										
+
+																				
 										<tr>
 											<td colspan="4" align="center">
 												<input type="hidden" name="hidden_fb_num" value="${dto.fb_num}">
+												<input type="hidden" name="hiddenPageNum" value="${pageNum}">
+												<input type="hidden" name="hidden_fb_img" value="${dto.fb_img}">
 												<input type="button" class="inputButton" value="수정" id="btnEdit">
 												<input type="button" class="inputButton" value="삭제" id="btnDelete">
 												<input type="button" class="inputButton" value="목록" id="btnList">

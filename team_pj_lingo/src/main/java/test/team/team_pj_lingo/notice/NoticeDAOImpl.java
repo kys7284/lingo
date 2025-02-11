@@ -17,14 +17,20 @@ public class NoticeDAOImpl implements NoticeDAO{
 	@Override
 	public List<NoticeDTO> noticeList(Map<String, Object> map) {
 		System.out.println("DAO - noticeList");
-		return null;
+		
+		List<NoticeDTO> list = sqlSession.selectList("test.team.team_pj_lingo.notice.NoticeDAO.noticeList", map);
+		
+		return list;
 	}
 
 	//공지사항 갯수 구하기
 	@Override
 	public int noticeCnt() {
-		System.out.println("DAO - noticeCnt");
-		return 0;
+		System.out.println("DAO - boardCnt");
+		
+		int selectCnt = sqlSession.selectOne("test.team.team_pj_lingo.notice.NoticeDAO.noticeCnt");
+		
+		return selectCnt;
 	}
 
 	//조회수 증가
@@ -59,7 +65,9 @@ public class NoticeDAOImpl implements NoticeDAO{
 	@Override
 	public int insertNotice(NoticeDTO dto) {
 		System.out.println("DAO - insertNotice");
-		return 0;
+		
+		int insertCnt = sqlSession.insert("test.team.team_pj_lingo.notice.NoticeDAO.insertNotice", dto);
+		return insertCnt;
 	}
 
 }

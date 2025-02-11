@@ -1,6 +1,7 @@
 package test.team.team_pj_lingo.notice;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class NoticeDTO {
 	
@@ -9,14 +10,14 @@ public class NoticeDTO {
 	private String notice_content;		// 글내용
 	private String notice_writer; 		// 작성자
 	private int notice_readCnt; 		// 조회수
-	private Date notice_regDate; 		// 작성일
+	private Timestamp notice_regDate; 		// 작성일
 	
 	public NoticeDTO() {
 		super();
 	}
 
 	public NoticeDTO(int notice_num, String notice_title, String notice_content, String notice_writer,
-			int notice_readCnt, Date notice_regDate) {
+			int notice_readCnt, Timestamp notice_regDate) {
 		super();
 		this.notice_num = notice_num;
 		this.notice_title = notice_title;
@@ -66,11 +67,11 @@ public class NoticeDTO {
 		this.notice_readCnt = notice_readCnt;
 	}
 
-	public Date getNotice_regDate() {
+	public Timestamp getNotice_regDate() {
 		return notice_regDate;
 	}
 
-	public void setNotice_regDate(Date notice_regDate) {
+	public void setNotice_regDate(Timestamp notice_regDate) {
 		this.notice_regDate = notice_regDate;
 	}
 
