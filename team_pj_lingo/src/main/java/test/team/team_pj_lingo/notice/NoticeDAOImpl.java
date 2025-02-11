@@ -44,7 +44,10 @@ public class NoticeDAOImpl implements NoticeDAO{
 	@Override
 	public NoticeDTO noticeDetail(int notice_num) {
 		System.out.println("DAO - noticeDetail");
-		return null;
+		
+		NoticeDTO dto = sqlSession.selectOne("test.team.team_pj_lingo.notice.NoticeDAO.noticeDetail", notice_num);
+		
+		return dto;
 	}
 
 	//공지사항 수정처리
