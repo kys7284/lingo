@@ -112,7 +112,7 @@
                         <a href="${path}/life.eq" class="dropdown-item">생활정보</a>
                         <a href="${path}/travelInfo.tc" class="dropdown-item">여행정보</a>
                         <a href="javascript:alert('의료정보 개발중입니다.');" onfocus="this.blur()" class="dropdown-item">의료정보</a>
-                        <a href="javascript:alert('법률정보 개발중입니다.');" onfocus="this.blur()" class="dropdown-item">법률정보</a>
+						<a href="${path}/low.eq" class="dropdown-item">법률정보</a>
                     </div>
                 </div>
                 
