@@ -9,7 +9,7 @@
 <!-- 반응형 웹  -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>notice</title>
+<title>notice 1</title>
     
 <!-- css  -->
 <!-- 기존설정 그대로 -->
@@ -48,7 +48,7 @@
 	<link rel="stylesheet" href="${path}/resources/css/common/madang.css">
 <script type="text/javascript">
 	$(function(){	
-		// 공지사항 페이지에서 글쓰기 버튼 클릭시
+		// 공지사항 페이지에서 관리자가 글쓰기 버튼 클릭시
 		$('#btnInsert').click(function() {
 				location.href="${path}/notice_insert.no"
 			});
@@ -107,7 +107,7 @@
 
 							<div id="s2_inner">
 								<div class="join">
-										<form name="noticeList">
+									<form name="noticeList">
 									<table>
 
 										<tr>

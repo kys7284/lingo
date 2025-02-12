@@ -14,7 +14,7 @@
 <!-- css  -->
 <!-- 기존설정 그대로 -->
 	    <meta charset="utf-8">
-	    <title>Lingo</title>
+	    <title>Lingo 1</title>
 	    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 	    <meta content="" name="keywords">
 	    <meta content="" name="description">
@@ -43,17 +43,17 @@
 
     <!-- Template Stylesheet -->
     <link href="${path}/resources/css/common/style.css" rel="stylesheet">
-<script src="${path}/resources/js/member/join.js" defer></script>
+	<link rel="stylesheet" href="${path}/resources/css/common/madang.css">
 
 <script type="text/javascript">
 	$(function(){	
 		
-		 //[게시글 수정/삭제 버튼] 클릭시 [게시글 수정/삭제 화면]으로 이동
+		 // 관리자가 [게시글 수정/삭제 버튼] 클릭시 [게시글 수정/삭제 화면]으로 이동
 		$("#btnEdit").click(function() {
 			document.detailForm.action="${path}/notice_updateAction.no";
 			document.detailForm.submit();
 		});
-		//[게시글 목록 버튼] 클릭시 컨트롤러의 목록으로 이동 
+		// [게시글 목록 버튼] 클릭시 컨트롤러의 목록으로 이동 
 		$("#btnList").click(function(){
 			location.href="${path}/notice_list.no";
 		});
@@ -82,28 +82,29 @@
 				</div>
 				<!-- 상단 중앙2 시작  -->
 				<div id="section2">
+					<!-- 왼쪽메뉴시작 -->
+					<div id="side_menu">
+	
+						<h2>알림마당</h2>
+						<br> <br>
+						<ul>
+							<li><a href="${path}/notice_list.no"> 공지사항 </a></li>
+						</ul>
+						<ul>
+							<li><a href="${path}/faq_list.faq"> 자주하는 질문</a></li>
+						</ul>
+						<ul>
+							<li><a href="${path}/report.sos">신고 센터</a></li>
+						</ul>
+						<ul>
+							<li><a href="${path}/employment.eq"> 관련 기사 </a></li>
+						</ul>
+					</div>
+					<!-- 왼쪽메뉴 끝 -->
 					<div class="container">
 					
 						<div id="contents">
-						<!-- 왼쪽메뉴시작 -->
-							<div id="side_menu">
-			
-								<h2>알림마당</h2>
-								<br> <br>
-								<ul>
-									<li><a href="${path}/notice_list.no"> 공지사항 </a></li>
-								</ul>
-								<ul>
-									<li><a href="${path}/faq_list.faq"> 자주하는 질문</a></li>
-								</ul>
-								<ul>
-									<li><a href="${path}/report.sos">신고 센터</a></li>
-								</ul>
-								<ul>
-									<li><a href="${path}/employment.eq"> 관련 기사 </a></li>
-								</ul>
-							</div>
-							<!-- 왼쪽메뉴 끝 -->
+						
 						<div class="menu">
 							검색
 						</div>
@@ -112,47 +113,50 @@
 							<!-- 결과출력 위치 -->
 
 							<div id="s2_inner">
-								<div class="table_div">
-								<form name="detailForm" method="post">
-									<table>
+								<div class="join">
+									<form name="detailForm" method="post">
+								<table>
 
-										<tr>
-											<th style="width: 200px">글번호</th>
-											<td style="width: 200px" style="text-align:center"> ${dto.notice_num}</td>
-											
-											<th style="width: 200px">조회수</th>
-											<td style="width: 200px" style="text-align:center"> ${dto.notice_readCnt}</td>
-										</tr>
+									<tr>
+										<th style="width: 200px">번호</th>
+										<td style="width: 200px" style="text-align:center"> ${dto.notice_num}</td>
 										
-										<tr>
-											<th style="width: 200px">작성자</th>
-											<td style="width: 200px" style="text-align:center"> ${dto.notice_writer}</td>
-										</tr>
-										
-										<tr>
-											<th style="width: 200px">글제목</th>
-											<td colspan="3" style="text-align:center"> ${dto.notice_title} </td>
-										</tr>
-										
-										<tr>
-											<th style="width: 200px">내용</th>
-											<td colspan="3"  style="text-align:center"> ${dto.notice_content} </td>
-										</tr>
-										
-										<tr>
-											<th style="width: 200px">작성일</th>
-											<td colspan="3"  style="text-align:center"> ${dto.notice_regDate}</td>
-										</tr>
-										<tr>
-											<td colspan="4" align="center">
+										<th style="width: 200px">조회수</th>
+										<td style="width: 200px" style="text-align:center"> ${dto.notice_readCnt}</td>
+									</tr>
+									
+									<tr>
+										<th style="width: 200px">작성자</th>
+										<td colspan="3" style="width: 200px; text-align:center"> ${dto.notice_writer}</td>
+									</tr>
+									
+									<tr>
+										<th style="width: 200px">글제목</th>
+										<td colspan="3" style="text-align:center"> ${dto.notice_title} </td>
+									</tr>
+									
+									<tr>
+										<th style="width: 200px">내용</th>
+										<td colspan="3"  style="text-align:center"> ${dto.notice_content} </td>
+									</tr>
+									
+									<tr>
+										<th style="width: 200px">작성일</th>
+										<td colspan="3"  style="text-align:center"> ${dto.notice_regDate}</td>
+									</tr>
+									
+									<tr>
+										<td colspan="6" align="center">
+											<input type="button" class="inputButton" value="목록" id="btnList">
+											<c:if test="${sessionId == 'admin'}">
 												<!-- 게시글번호 hidden 추가 : input이 없으므로(게시글번호는 입력받지않는다 input 없음) -->
-												<input type="hidden" name="hidden_notice_num" value="${dto.notice_num}">  
+												<input type="hidden" name="hidden_notice_num" value="${dto.notice_num}">
 												<input type="button" class="inputButton" value="수정/삭제" id="btnEdit">
-												<input type="button" class="inputButton" value="목록" id="btnList">
-											</td>
-										</tr>
-									</table>
-								</form>
+											</c:if>
+										</td>
+									</tr>
+								</table>
+							</form>
 								</div>
 							</div>
 						</div>
@@ -161,7 +165,7 @@
 			</div>
 			<%@include file="/WEB-INF/views/common/footer.jsp"%>
 		</div>
-		</div>
+	</div>
 		<!-- 컨텐츠 끝 -->
 
 
@@ -183,7 +187,5 @@
 		<!-- Template Javascript -->
 		<script src="${path}/resources/js/main.js"></script>
 	</div>
-
-
 </body>
 </html>
