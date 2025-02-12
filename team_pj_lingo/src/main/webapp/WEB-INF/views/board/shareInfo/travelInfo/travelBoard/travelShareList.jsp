@@ -131,7 +131,7 @@
 										<tr>
 											<td style="border: 1px solid black;">${dto.tb_writer}</td>
 											<td style="border: 1px solid black; text-align: center;">
-												<a href="${path}/travelDetailAction.tc?tb_num=${dto.tb_num}"><span style="color:black">[${dto.tb_category}]</span> ${dto.tb_title} <span style="color: red">[${dto.tb_comment_count}]</span></a>
+												<a href="${path}/travelDetailAction.tc?tb_num=${dto.tb_num}&pageNum=${paging.pageNum}"><span style="color:black">[${dto.tb_category}]</span> ${dto.tb_title} <span style="color: red">[${dto.tb_comment_count}]</span></a>
 											</td>
 											<td style="border: 1px solid black;">${dto.tb_regDate}</td>
 											<td style="border: 1px solid black;">${dto.tb_readCnt}</td>

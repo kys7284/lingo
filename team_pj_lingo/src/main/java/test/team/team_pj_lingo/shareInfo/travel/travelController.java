@@ -43,6 +43,9 @@ public class travelController {
 		logger.info("Controller - travelDetailAction.tc");
 		service.travelDetailAction(request, response, model);
 		
+		String pageNum = request.getParameter("pageNum");
+		System.out.println("pageNum : " + pageNum);
+		
 		return "board/shareInfo/travelInfo/travelBoard/travelShareDetail";
 	}
 	
@@ -96,18 +99,43 @@ public class travelController {
 		
 		logger.info("Controller - password_chkAction.tc");
 		int result = service.password_chkAction(request, response, model);
+		
 		String pageNum = request.getParameter("hiddenPageNum");
 		model.addAttribute("pageNum", pageNum);
+		System.out.println("pageNum : "+ pageNum);
 		
-		System.out.println(result);
+		System.out.println("result : " + result);
 		if(result == 0) {
 			logger.info("비밀번호 불일치");
 			int tb_num = Integer.parseInt(request.getParameter("hidden_tb_num"));
-			viewPage = request.getContextPath() + "/travelDetailAction.tc?tb_num=" + tb_num + "&message=error";
+			
+			viewPage = request.getContextPath() + "/travelDetailAction.tc?tb_num=" + tb_num +"&pageNum=" + pageNum + "&message=error";
 			response.sendRedirect(viewPage);
 		}
 		
 		return "board/shareInfo/travelInfo/travelBoard/travelboard_edit";
+	}
+	
+	//여행정보공유 글 수정 처리페이지
+	@RequestMapping("travelBoard_updateAction.tc")
+	public String travelBoard_updateAction(MultipartHttpServletRequest request, HttpServletResponse response, Model model) 
+		throws ServletException, IOException{
+		
+		logger.info("Controller - travelBoard_updateAction.tc");
+		service.travelUpdateAction(request, response, model);
+		
+		return "board/shareInfo/travelInfo/travelBoard/travelUpdate_Action";
+	}
+	
+	//여행정보공유 글 수정 처리페이지
+	@RequestMapping("travelBoard_deleteAction.tc")
+	public String travelBoard_deleteAction(HttpServletRequest request, HttpServletResponse response, Model model) 
+		throws ServletException, IOException{
+		
+		logger.info("Controller - travelBoard_updateAction.tc");
+		service.travelDeleteAction(request, response, model);
+		
+		return "board/shareInfo/travelInfo/travelBoard/travelDelete_Action";
 	}
 	
 	

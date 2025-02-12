@@ -77,4 +77,22 @@
 		 WHERE tb_num = #{tb_num}
 		   AND tb_password = #{tb_password}
 	</select>
+	
+	<!-- 게시글 수정 -->
+	<update id="updateTravelBoard" parameterType="test.team.team_pj_lingo.shareInfo.travel.travelBoardDTO">
+		UPDATE travel_board_tbl
+		   SET 	tb_title = #{tb_title},
+		   		tb_password = #{tb_password},
+		   		tb_content = #{tb_content},
+		   		tb_img = #{tb_img, jdbcType=VARCHAR},
+		   		tb_category = #{tb_category}
+		 WHERE 	tb_num = #{tb_num}
+	</update>
+	
+	<!-- 게시글 삭제 -->
+	<update id="deleteTravelBoard" parameterType="int">
+		UPDATE travel_board_tbl
+		   SET tb_show = 'N'
+		 WHERE tb_num = #{tb_num}
+	</update>
 </mapper>     

@@ -66,12 +66,14 @@ public class travelBoardDAOImpl implements travelBoardDAO{
 	//게시글 수정처리
 	@Override
 	public int updateTravelBoard(travelBoardDTO dto) {
-		return 0;
+		System.out.println("DAO - updateTravelBoard");
+		return sqlSession.update("test.team.team_pj_lingo.shareInfo.travel.travelBoardDAO.updateTravelBoard", dto);
 	}
 	//게시글 삭제처리
 	@Override
-	public int deleteTravelBoard(Map<String, Object> map) {
-		return 0;
+	public int deleteTravelBoard(int tb_num) {
+		System.out.println("DAO - deleteTravelBoard");
+		return sqlSession.update("test.team.team_pj_lingo.shareInfo.travel.travelBoardDAO.deleteTravelBoard", tb_num);
 	}
 	
 

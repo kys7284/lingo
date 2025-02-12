@@ -171,7 +171,7 @@
 									</tr>
 									
 									<tr>
-										<th>첨부 파일</th>
+										<th>사진 업로드</th>
 										<td> 
 											<input type="file" class="input" id="tb_img" name="tb_img" accept="image/*" style="width:250px; height:150px; border: 1px solid black;">
 										</td>
