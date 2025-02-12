@@ -107,7 +107,7 @@ public class MemberServiceImpl implements MemberService {
 	public void mypage(HttpServletRequest request, HttpServletResponse response, Model model)
 			throws ServletException, IOException {
 		
-		String mem_id = (String)request.getSession().getAttribute("sessionId");
+		String mem_id = (String)request.getSession().getAttribute("hiddenId");
 		
 		MemberDTO dto = dao.mypage(mem_id);
 		

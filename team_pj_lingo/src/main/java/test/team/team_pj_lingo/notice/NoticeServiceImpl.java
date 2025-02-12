@@ -84,6 +84,12 @@ public class NoticeServiceImpl implements NoticeService {
 			throws ServletException, IOException {
 		System.out.println("Service - noticeDeleteAction");
 		
+		int notice_num =  Integer.parseInt(request.getParameter("notice_num"));
+		
+		int deleteCnt = dao.deleteNotice(notice_num);
+		
+		model.addAttribute("deleteCnt", deleteCnt);
+		
 	}
 
 	//공지사항 작성처리

@@ -54,14 +54,19 @@ public class NoticeDAOImpl implements NoticeDAO{
 	@Override
 	public int updateNotice(NoticeDTO dto) {
 		System.out.println("DAO - updateNotice");
-		return 0;
+		
+		int updateCnt = sqlSession.update("test.team.team_pj_lingo.notice.NoticeDAO.updateNotice",dto);
+		
+		return updateCnt;
 	}
 
 	//공지사항 삭제처리
 	@Override
 	public int deleteNotice(int notice_num) {
 		System.out.println("DAO - deleteNotice");
-		return 0;
+		
+		int deleteCnt = sqlSession.delete("test.team.team_pj_lingo.notice.NoticeDAO.deleteNotice", notice_num);
+		return deleteCnt;
 	}
 
 	//공지사항 작성처리
