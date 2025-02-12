@@ -224,7 +224,6 @@
 									</div>
 									<hr><br><br>
 									<!-- 댓글 입력 코드 -->
-									<div style="margin-left: 800px;">
 									<table>
 										 <!-- 로그인시에만 댓글입력란이 보임 -->
                           			    <c:if test="${! empty sessionScope.sessionId}">

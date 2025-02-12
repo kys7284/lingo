@@ -285,7 +285,7 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 			// 화면에서 입력받은 값 가져오기
 			// dto 생성후 setter로 값을 담는다.
 			FreeBoardDTO dto = new FreeBoardDTO();
-			dto.setFb_writer((String)request.getSession().getAttribute("sessionId"));
+			dto.setFb_writer((String)request.getSession().getAttribute("hiddenId"));
 			dto.setFb_password(request.getParameter("fb_password"));
 			dto.setFb_title(request.getParameter("fb_title"));
 			
