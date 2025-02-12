@@ -60,7 +60,8 @@ public class travelBoardDAOImpl implements travelBoardDAO{
 	//게시글 비밀번호 인증
 	@Override
 	public int password_chk(Map<String, Object> map) {
-		return 0;
+		System.out.println("DAO - password_chk");
+		return sqlSession.selectOne("test.team.team_pj_lingo.shareInfo.travel.travelBoardDAO.password_chk",map);
 	}
 	//게시글 수정처리
 	@Override

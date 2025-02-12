@@ -164,7 +164,26 @@ public class travelBoardServiceImpl implements travelBoardService{
 	//게시글 수정&삭제시 비밀번호 인증
 	@Override
 	public int password_chkAction(HttpServletRequest request, HttpServletResponse response, Model model) {
-		return 0;
+		System.out.println("travelBoardService - password_chkAction");
+
+		//파라미터 입력값 가져오기
+		int tb_num = Integer.parseInt(request.getParameter("hidden_tb_num"));
+		String tb_password = request.getParameter("tb_password");
+		
+		//map에다가 담기
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("tb_num", tb_num);
+		map.put("tb_password", tb_password);
+		
+		int result = dao.password_chk(map);
+		
+		travelBoardDTO dto = null;
+		
+		if(result != 0) {
+			dto = dao.travelBoardDetail(tb_num);
+		}
+		model.addAttribute("dto",dto);
+		return result;
 	}
 
 	//게시글 수정처리
