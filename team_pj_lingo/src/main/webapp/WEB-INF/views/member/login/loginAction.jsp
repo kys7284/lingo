@@ -108,7 +108,7 @@
 						<table>
                         <tr>
                            <th colspan="2" align="center"> 
-								<span style="color : 026892"><b>${sessionId}</b></span>님 환영합니다
+								<span style="color : 026892"><b>${hiddenId}</b></span>님 환영합니다
                         	</th>
                         </tr>
                         
