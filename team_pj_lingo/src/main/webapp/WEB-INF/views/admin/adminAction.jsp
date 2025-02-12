@@ -15,7 +15,6 @@ integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqrupt
 <link rel="stylesheet" href="${path}/resources/css/admin/admin.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="${path}/resources/js/admin/adminAction.js" defer></script>
-<script src="${path}/resources/js/admin/adminNotice.js" defer></script>
 </head>
 <body>
 	<%@ include file = "../common/header.jsp" %>

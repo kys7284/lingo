@@ -203,7 +203,7 @@
 
 							<div class="join">
 
-								<form name="loginform" action="loginAction.do" method="post">
+								<form>
 									<img src="${path}/resources/images/testlife.jpg" alt="">
 									<div class="content">
 										<br>
@@ -270,8 +270,8 @@
 										<p>외국인에게는 글로벌 부동산중개사무소를 이용하는 것이 편리합니다. 외국어 상담을 지원하며, 외국인에게
 											필요한 정보를 제공합니다.</p>
 									</div>
+								</form>
 								</div>
-							</form>
 						</div>
 					</div>
 				</div>

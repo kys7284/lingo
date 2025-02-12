@@ -32,8 +32,28 @@
 	<insert id="insertNotice" parameterType="test.team.team_pj_lingo.notice.NoticeDTO">
 		INSERT INTO	notice_tbl(notice_num,notice_title,notice_content,notice_writer,notice_regDate)
 		VALUES	((SELECT NVL(MAX(notice_num)+1, 1)FROM notice_tbl),#{notice_title},#{notice_content},#{notice_writer},sysdate)	
-	
 	</insert>
 	
+	
+	<!-- 공지사항 상제 페이지  -->
+	<select id="noticeDetail" parameterType="int" resultType="test.team.team_pj_lingo.notice.NoticeDTO">
+		SELECT	*
+		FROM	notice_tbl
+		WHERE	notice_num = #{notice_num} 
+	</select>
+	
+	<!-- 공지사항 수정처리  -->
+	<update id="updateNotice" parameterType="test.team.team_pj_lingo.notice.NoticeDTO" >
+		UPDATE notice_tbl
+		SET 	notice_title = #{notice_title}
+		  ,		notice_content = #{notice_content}	
+	
+	</update>
+	
+	<!-- 공지사항 삭제처리  -->
+	<delete id="deleteNotice" parameterType="String">
+		DELETE	FROM  notice_tbl
+		WHERE notice_num = #{notice_num}
+	</delete> 
 
 </mapper>

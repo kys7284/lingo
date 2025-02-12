@@ -53,6 +53,12 @@ public class NoticeServiceImpl implements NoticeService {
 			throws ServletException, IOException {
 		System.out.println("Service - noticeDetailAction");
 		
+		int notice_num = Integer.parseInt(request.getParameter("notice_num"));
+		
+		NoticeDTO dto = dao.noticeDetail(notice_num);
+		
+		model.addAttribute("dto", dto);
+		
 	}
 
 	//공지사항 수정처리
@@ -61,6 +67,15 @@ public class NoticeServiceImpl implements NoticeService {
 			throws ServletException, IOException {
 		System.out.println("Service - noticeUpdateAction");
 		
+		NoticeDTO dto = new NoticeDTO();
+		dto.setNotice_content(request.getParameter("notice_content"));
+		dto.setNotice_title(request.getParameter("notice_title"));
+		
+		int updateCnt = dao.updateNotice(dto);
+		
+		model.addAttribute("updateCnt", updateCnt);
+		
+		
 	}
 
 	//공지사항 삭제처리
@@ -68,6 +83,12 @@ public class NoticeServiceImpl implements NoticeService {
 	public void noticeDeleteAction(HttpServletRequest request, HttpServletResponse response, Model model)
 			throws ServletException, IOException {
 		System.out.println("Service - noticeDeleteAction");
+		
+		int notice_num =  Integer.parseInt(request.getParameter("notice_num"));
+		
+		int deleteCnt = dao.deleteNotice(notice_num);
+		
+		model.addAttribute("deleteCnt", deleteCnt);
 		
 	}
 

@@ -40,9 +40,11 @@ integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqrupt
 				      <td>${list.notice_writer }</td>
 				      <td>${list.notice_readCnt }</td>
 				      <td>${list.notice_regDate }</td>
-				      <td><input type="button" id="detailBtn"  class="btn btn-outline-primary" value="수정/삭제" onclick="location.href='${path}/adminNoticeDetail.ad?notice_num='+${list.notice_num }"></td>
+				      <td><input type="button" id="detailBtn"  class="btn btn-outline-primary" value="수정/삭제"
+				      	 onclick="location.href='${path}/adminNoticeDetail.ad?notice_num='+${list.notice_num }">
+				      </td>
 				    </tr>
-				    
+				    <!--   -->
 				    </c:forEach>
 				    </form>
 				    
