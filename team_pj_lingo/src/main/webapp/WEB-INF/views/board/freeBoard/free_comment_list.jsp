@@ -17,7 +17,6 @@
 				<form name="freeBoardList">
 					<table border="1" width="800px">
 						<tr>
-							<th style="width:10%">댓글번호</th>
 							<th style="width:10%">작성자</th>
 							<th style="width:15%">글내용</th>
 							<th style="width:10%">작성일</th>
@@ -27,7 +26,6 @@
 						
 							<c:forEach var="dto" items= "${list}">											
 								<tr>
-									<td>${dto.fb_comment_num}</td>
 									<td>${dto.fb_writer}</td>
 									<td>${dto.fb_content}</td>
 									<td>${dto.fb_regDate}</td>

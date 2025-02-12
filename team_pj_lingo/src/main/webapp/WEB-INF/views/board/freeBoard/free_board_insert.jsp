@@ -72,6 +72,7 @@
 			document.insertForm.action="${path}/free_board_insertAction.fb";
 			document.insertForm.submit();
 		});
+		
 	});
 </script>
 
@@ -101,7 +102,7 @@
 									<table>
 										<tr>
 											<th style="width: 200px">작성자</th>
-											<td style="width: 200px; text-align:center">${sessionScope.sessionId}</td>
+											<td style="width: 200px; text-align:center">${sessionScope.hiddenId}</td>
 											
 											<th style="width: 200px">비밀번호</th>
 											<td style="width: 200px; text-align:center">

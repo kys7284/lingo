@@ -91,7 +91,7 @@
 		//게시글번호, 댓글작성자,댓글 내용 파라미터로 넘김
 		let param = {
 				"freeboard_num" : ${dto.fb_num},	// key:value => 댓글번호: 게시글번호
-				"writer": $('#fb_writer').val(),
+				"writer":  $('#fb_writer').val(),
 				"content": $('#fb_content').val()
 		}
 		
@@ -187,18 +187,18 @@
 											<td colspan="3" style="text-align:center"> ${dto.fb_title} </td>
 										</tr>
 										
-										<tr>
-											<th style="width: 200px">내용</th>
-											<td colspan="3"  style="text-align:center"> ${dto.fb_content} </td>
-										</tr>
-										
-										<tr>
-											<th>이미지</th>
-											<td colspan="2" style="120px"> 
-												<img src="${dto.fb_img}" style="width:200px"><br>
-											</td>
-										</tr>
-										
+										<tr style="border: 1px solid;">
+											<th style="width: 200px; border-right: 1px solid;">내용</th>
+											<!-- 이미지가 null이 아닐때 사진과 함께 표시 -->
+											<c:if test="${dto.fb_img != null}">
+			                              		<td colspan="3"  style="text-align:center; "><div style="display:flex; flex-wrap: wrap;"><img src="${dto.fb_img}" 
+			                              			style="width:200px; margin:0 auto;"><div style="width:100%">${dto.fb_content}</div></div></td>
+											</c:if>
+				                            <!-- 이미지가 null일떄 표시 -->
+				                            <c:if test="${dto.fb_img == null}">
+				                            	<td colspan="3" style="text-align:center">${dto.fb_content} </td>
+				                            </c:if>
+			                            </tr>
 										<tr>
 											<th style="width: 200px">작성일</th>
 											<td colspan="3"  style="text-align:center"> ${dto.fb_regDate} </td>								
@@ -225,25 +225,28 @@
 									<hr><br><br>
 									<!-- 댓글 입력 코드 -->
 									<table>
+										 <!-- 로그인시에만 댓글입력란이 보임 -->
+                          			    <c:if test="${! empty sessionScope.sessionId}">
 										<tr>
-											<th style="width: 400px">댓글 작성자</th>
-											<td style="width: 200px; text-align:left"> 
-												<input style="width: 200px" type="text" class="input" 
-												name="fb_writer" id="fb_writer" size="30" placeholder="작성자 입력">
-											</td>
-											<th style="width: 40px" rowspan="2" align="right"> 
-												<center><input type="button" class="inputButton" value="작성" id="btnCommentSave"></center>
-											</th>
-										</tr>
-										<tr>
-											<th style="width: 200px"> 글 내용</th>
-											<td style="width: 170px" style="text-align:center">
-												<textarea style="width:600px" rows="5" cols="93" name="fb_content" id="fb_content" placeholder="댓글입력"></textarea>
-											</td>
-										</tr>									
-									
+			                                 <th style="width: 200px; ">아이디</th>
+			                                 <td style="width: 200px; text-align:left"> 
+			                                    <input style="width: 200px" type="text" class="input" 
+			                                    name="fb_writer" id="fb_writer" size="30" value="${sessionScope.hiddenId}" placeholder="${sessionScope.hiddenId}" readonly>
+			                                 </td>
+			                                 <th style="width: 40px" rowspan="2" align="right"> 
+			                                    <input type="button" class="inputButton" value="작성" id="btnCommentSave">
+			                                 </th>
+			                              </tr>
+			                              
+			                              <tr>
+			                                 <th style="width: 200px; border-top: 1px solid black;"> 글 내용</th>
+			                                 <td style="width: 170px" style="text-align:center">
+			                                    <textarea style="width:600px" rows="5" cols="93" name="fb_content" id="fb_content" placeholder="댓글입력"></textarea>
+			                                 </td>
+			                              </tr>   
+			                              </c:if>      
 									</table>
-								
+								<!-- 댓글 입력 코드 끝 -->
 								</form>
 								
 							</div>
