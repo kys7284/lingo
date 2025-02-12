@@ -86,4 +86,5 @@ public class travelController {
 		
 		return "board/shareInfo/travelInfo/travelBoard/travelInsert_Action";
 	}
+	
 }

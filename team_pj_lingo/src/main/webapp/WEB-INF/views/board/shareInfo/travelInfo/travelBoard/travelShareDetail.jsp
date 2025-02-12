@@ -44,6 +44,12 @@
 
 <script type="text/javascript">
 	$(function() {
+		
+		$("#btnList").click(function() {
+			alert("목록으로 이동합니다");
+			location.href="${path}/travelInfo.tc"
+		});
+		
 		travel_comment_list();
 		
 		$('#btnCommentSave').click(function() {
@@ -223,7 +229,7 @@
 											<th style="width: 200px; ">아이디</th>
 											<td style="width: 200px; text-align:left"> 
 												<input style="width: 200px" type="text" class="input" 
-												name="tb_writer" id="tb_writer" size="30" value="${sessionScope.sessionId}" placeholder="${sessionScope.sessionId}" readonly>
+												name="tb_writer" id="tb_writer" size="30" value="${sessionScope.hiddenId}" placeholder="${sessionScope.hiddenId}" readonly>
 											</td>
 											<th style="width: 40px" rowspan="2" align="right"> 
 												<input type="button" class="inputButton" value="작성" id="btnCommentSave">

@@ -68,7 +68,7 @@
 	<!-- 게시글 입력처리 -->
 	<insert id="insertTravelBoard" parameterType="test.team.team_pj_lingo.shareInfo.travel.travelBoardDTO">
 		INSERT INTO travel_board_tbl (tb_num, tb_title, tb_content, tb_writer, tb_password, tb_readCnt, tb_regDate, tb_comment_count, tb_img, tb_category)
-		VALUES ((SELECT NVL(MAX(tb_num)+1,1) FROM travel_board_tbl),#{tb_title}, #{tb_content}, #{tb_writer}, #{tb_password}, 0, sysdate, 0, #{tb_img}, #{tb_category})
+		VALUES ((SELECT NVL(MAX(tb_num)+1,1) FROM travel_board_tbl),#{tb_title}, #{tb_content}, #{tb_writer}, #{tb_password}, 0, sysdate, 0, #{tb_img, jdbcType=VARCHAR}, #{tb_category})
 	</insert>
 	
 </mapper>     
