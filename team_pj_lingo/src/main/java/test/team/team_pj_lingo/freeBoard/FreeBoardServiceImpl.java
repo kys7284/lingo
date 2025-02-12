@@ -152,7 +152,7 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		int hiddenPageNum = Integer.parseInt(request.getParameter("hiddenPageNum"));
 		int hidden_fb_num = Integer.parseInt(request.getParameter("hidden_fb_num"));
 		String hidden_fb_img = request.getParameter("hidden_fb_img");
-		
+	
 		System.out.println("hiddenPageNum" + hiddenPageNum);
 		System.out.println("hidden_fb_num" + hidden_fb_num);
 	    System.out.println("hidden_fb_img" + hidden_fb_img);
@@ -165,45 +165,50 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		System.out.println("saveDir :" + saveDir);
 		
 		//이미지추가를위한 샘플이미지 경로(upload 폴더 생성후 우클릭 > properties > location 정보 복사후 붙여넣기),맨뒤\\추가
-		String realDir="D:\\DEV\\workspace_spring_ict04\\git\\lingo_ict04\\team_pj_lingo\\src\\main\\webapp\\resources\\fb_upload\\";	
+		String realDir="D:\\DEV\\workspace_lingo\\lingo\\team_pj_lingo\\src\\main\\webapp\\resources\\fb_upload\\";	
 		System.out.println("realDir : " + realDir);
 		
 		FileInputStream fis = null;
 		FileOutputStream fos = null;
 		
-		String fb_img1 = "";	// 추가한 부분
+		String fb_img = "";	// 추가한 부분
 		
 		// 상세페이지에 있는 이미지를 수정할 경우
 		if(file.getOriginalFilename() != null & file.getOriginalFilename() != "") {   // 추가
-			
-
 			try {
-				file.transferTo(new File(saveDir + file.getOriginalFilename()));	//import java.io.File
-				fis = new FileInputStream(saveDir + file.getOriginalFilename());
-				fos = new FileOutputStream(realDir + file.getOriginalFilename());
+				fb_img = null;
 				
-				int data = 0;
-				while((data = fis.read()) != -1) {
-					fos.write(data);
+				if(file != null && !file.isEmpty()) {
+					
+					file.transferTo(new File(saveDir + file.getOriginalFilename()));	//import java.io.File
+					fis = new FileInputStream(saveDir + file.getOriginalFilename());
+					fos = new FileOutputStream(realDir + file.getOriginalFilename());
+					
+					int data = 0;
+					while((data = fis.read()) != -1) {
+						fos.write(data);
+					}
+					// 이미지 가져오기
+					fb_img = "/team_pj_lingo/resources/fb_upload/"+ file.getOriginalFilename();
+					System.out.println("fb_img : " + fb_img);
+				} else {
+					
+					System.out.println("No image uploaded");
 				}
 				
-				// 이미지 가져오기
-				fb_img1 = "/team_pj_lingo/resources/fb_upload/"+ file.getOriginalFilename();
-				System.out.println("fb_img1 : " + fb_img1);
-				
-				} catch(IOException e) {
-					e.printStackTrace();
-				} finally {
-					if(fis!=null)fis.close();
-					if(fos!=null)fos.close();
+			} catch(IOException e) {
+				e.printStackTrace();
+			} finally {
+				if(fis!=null)fis.close();
+				if(fos!=null)fos.close();
 				}
-			} 
+		} 
 
 		//----------------------- 추가 --------------------------------------------
 		else {
 			// 기존 이미지 사용(이미지 수정 안할 경우)
-			fb_img1 = hidden_fb_img;
-			System.out.println("fb_img1" + fb_img1);
+			fb_img = hidden_fb_img;
+			System.out.println("fb_img" + fb_img);
 		}
 		
 		//----------------------- 추가 --------------------------------------------
@@ -212,7 +217,7 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		FreeBoardDTO dto = new FreeBoardDTO();
 		dto.setFb_num(hidden_fb_num);	// ※누락 주의※
 		dto.setFb_title(request.getParameter("fb_title"));
-		dto.setFb_img(fb_img1)	;	// ※누락 주의※
+		dto.setFb_img(fb_img)	;	// ※누락 주의※
 		dto.setFb_content(request.getParameter("fb_content"));
 		
 		// 4단계. 싱글톤 방식으로 DAO 객체 생성, 다형성 적용=annotation으로 대체
@@ -231,6 +236,10 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 			throws ServletException, IOException {
 		System.out.println("FreeBoardServiceImpl - freeDeleteAction()");
 		
+		int fb_num = Integer.parseInt(request.getParameter("hidden_fb_num"));
+		
+		dao.deleteFreeBoard(fb_num);
+		
 	}
 
 	//게시글 작성처리
@@ -246,21 +255,33 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		System.out.println("saveDir :" + saveDir);
 		
 		//이미지추가를위한 샘플이미지 경로(upload 폴더 생성후 우클릭 > properties > location 정보 복사후 붙여넣기),맨뒤\\추가
-		String realDir="D:\\dev\\workspace_spring_ict04\\Git\\lingo_ict04\\team_pj_lingo\\src\\main\\webapp\\resources\\fb_upload\\";
+		String realDir="D:\\DEV\\workspace_lingo\\lingo\\team_pj_lingo\\src\\main\\webapp\\resources\\fb_upload\\";
 		System.out.println("realDir : " + realDir);
 		
 		FileInputStream fis = null;
 		FileOutputStream fos = null;
 		
 		try {
-			file.transferTo(new File(saveDir + file.getOriginalFilename()));	//import java.io.File
-			fis = new FileInputStream(saveDir + file.getOriginalFilename());
-			fos = new FileOutputStream(realDir + file.getOriginalFilename());
+			String fb_img = null;
 			
-			int data = 0;
-			while((data = fis.read()) != -1) {
-				fos.write(data);
+			if(file != null && !file.isEmpty()) {
+				
+				file.transferTo(new File(saveDir + file.getOriginalFilename()));	//import java.io.File
+				fis = new FileInputStream(saveDir + file.getOriginalFilename());
+				fos = new FileOutputStream(realDir + file.getOriginalFilename());
+				
+				int data = 0;
+				while((data = fis.read()) != -1) {
+					fos.write(data);
+				}
+				fb_img = "/team_pj_lingo/resources/fb_upload/"+ file.getOriginalFilename();
+				System.out.println("fb_img : " + fb_img);
+			} else {
+				
+				System.out.println("No image uploaded");
 			}
+			
+			
 			// 화면에서 입력받은 값 가져오기
 			// dto 생성후 setter로 값을 담는다.
 			FreeBoardDTO dto = new FreeBoardDTO();
@@ -269,9 +290,8 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 			dto.setFb_title(request.getParameter("fb_title"));
 			
 			// 이미지 가져오기
-			String fb_img1 = "/team_pj_lingo/resources/fb_upload/"+ file.getOriginalFilename();
-			System.out.println("fb_img1 : " + fb_img1);
-			dto.setFb_img(fb_img1);
+			
+			dto.setFb_img(fb_img);
 			
 			dto.setFb_content(request.getParameter("fb_content"));
 		

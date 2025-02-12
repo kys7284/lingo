@@ -86,7 +86,9 @@ public class FreeBoardDAOImpl implements FreeBoardDAO{
 	@Override
 	public int deleteFreeBoard(int fb_num) {
 		System.out.println("FreeBoardDAOImpl - deleteFreeBoard()");
-		return 0;
+		
+		int deleteCnt = sqlSession.update("test.team.team_pj_lingo.freeBoard.FreeBoardDAO.deleteFreeBoard", fb_num);
+		return deleteCnt;
 	}
 
 	// 게시글 작성처리

@@ -9,7 +9,7 @@
 <!-- 반응형 웹  -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>board_insert</title>
+<title>free_board</title>
 
 <!-- css  -->
 <!-- 기존설정 그대로 -->
@@ -46,123 +46,52 @@
 <script src="${path}/resources/js/member/join.js" defer></script> 
 
 	<link rel="stylesheet" href="${path}/resources/css/common/board.css">
-
-<script>
-	$(function() {
-		$("#btnSave").click(function() {
-			const password = $("#fb_password").val();
-			const title = $("#fb_title").val();
-			const content = $("#fb_content").val();
-			
-			if(password == "") {
-				alert("비밀번호를 입력하세요 !");
-				$("#fb_password").focus();
-				return false;
-			}
-			if(title == "") {
-				alert("글 제목을 입력하세요 !");
-				$("#fb_title").focus();
-				return false;
-			}
-			if(content == "") {
-				alert("글 내용을 입력하세요 !");
-				$("#fb_content").focus();
-				return false;
-			}
-			document.insertForm.action="${path}/free_board_insertAction.fb";
-			document.insertForm.submit();
-		});
-		
-	});
-</script>
-
 </head>
 <body>
-<div class="wrap">
-   <!-- header 시작 -->
-   <%@include file="/WEB-INF/views/common/header.jsp" %> 
-   <!-- header 끝    -->
-
+	<div class="wrap">
+		<!-- header 시작 -->
+		<%@ include file="/WEB-INF/views/common/header.jsp" %>
+		<!-- header 끝 -->
+		
 		<!-- 컨텐츠 시작 -->
 		<div id="container">
 			<div id="contents">
 				<!-- 상단 중앙1 시작 -->
 				<div>
-					<h1 align="center">게시판 작성</h1>
-				</div>
+					<h1 align="center">게시글 삭제 처리 </h1>
+				</div>				
 				<!-- 상단 중앙1 종료 -->
-				
+
 				<!-- 상단 중앙2 시작 -->
 				<div id="section2">
-					
 					<!-- 우측 메뉴 시작 -->
-						<div id="right">
-							<div class="table_div">
-								<form name="insertForm" method="post" action="free_board_insertAction.fb" enctype="multipart/form-data">
-									<table>
-										<tr>
-											<th style="width: 200px">작성자</th>
-											<td style="width: 200px; text-align:center">${sessionScope.hiddenId}</td>
-											
-											<th style="width: 200px">비밀번호</th>
-											<td style="width: 200px; text-align:center">
-												<input style="width:200px" type="password" class="input" name="fb_password"
-												 id="fb_password" size="30" placeholder="비밀번호 입력" autofocus>
-											</td>
-											<br><br>
-										</tr>
-										
-										<tr>
-											<th style="width: 200px">글제목</th>
-											
-											<td colspan="3" style="text-align:center">
-												<input style="width: 700px" type="text" class="input" name="fb_title" 
-														id="fb_title" size="50" placeholder="글제목 입력">
-											</td>
-										</tr>
-										
-										<tr>
-											<th style="width: 200px">글내용</th>
-											<td colspan="3" style="text-align:center">
-												<textarea rows="5" cols="93" name="fb_content" id="fb_content" placeholder="글내용 입력"></textarea>
-											</td>
-											
-										</tr>
-										
-										<tr>
-										
-											<th>첨부 파일</th>
-											<td> 
-												<input type="file" class="input" id="fb_img" name="fb_img" accept="image/*" style="width:250px; height:150px">
-											</td>
-										</tr>
-										
-										<tr>
-											<td colspan="4" align="center">
-												<input type="button" class="inputButton" value="작성" id="btnSave">
-												<input type="reset" class="inputButton" value="초기화">
-												<input class="inputButton" type="button" value="글목록" onclick="window.location='${path}/free_board_list.fb'">
-											</td>
-										
-										</tr>
-										
-									</table>
-								
-								</form>	
+					<c:if test="${deleteCnt == 1}">
+						<script type="text/javascript">
+							setTimeout(function() {
+								alert("게시글 삭제 성공");
+								window.location="${path}/free_board_list.fb";														
+							}, 1000);
 							
-							</div>
-						</div>
+						</script>	
+					</c:if>
+		
+					<c:if test="${deleteCnt != 1}">
+						<script type="text/javascript">
+							setTimeout(function() {
+							alert("게시글 삭제 실패");
+							window.location="${path}/free_board_list.fb";
+							}, 1000);
+						</script>
+					</c:if>		
 					<!-- 우측 메뉴 종료 -->
 				</div>
-				
 				<!-- 상단 중앙2 종료 -->
-			
 			</div>
-		
 		</div>
+		
+		
 		<!-- 컨텐츠 끝 -->
-      
-
+		
       <!-- footer 시작 -->
       <%@include file="/WEB-INF/views/common/footer.jsp" %>
       <!-- footer 끝 -->
@@ -182,4 +111,4 @@
     <script src="${path}/resources/js/main.js"></script>
    </div>
 </body>
-</html>
+</html>	

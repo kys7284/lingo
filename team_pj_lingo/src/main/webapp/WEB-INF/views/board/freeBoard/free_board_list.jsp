@@ -110,7 +110,6 @@ $(function(){
 											<th style="width:10%">글번호</th>
 											<th style="width:10%">작성자</th>
 											<th style="width:15%">글제목 [댓글수]</th>
-											<th style="width:10%">이미지</th>
 											<th style="width:10%">작성일</th>
 											<th style="width:5%">조회수</th>
 										</tr>									
@@ -121,9 +120,6 @@ $(function(){
 													<td>${dto.fb_writer}</td>
 													<td>
 														<a href="${path}/freeDetailAction.fb?fb_num=${dto.fb_num}&pageNum=${paging.pageNum}">${dto.fb_title} <span style="color: red">[ ${dto.fb_comment_count} ]</span></a>
-													</td>
-													<td>
-														<img src="${dto.fb_img}" width="100px"> 
 													</td>
 													<td>${dto.fb_regDate}</td>
 													<td>${dto.fb_readCnt}</td>

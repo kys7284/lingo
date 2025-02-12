@@ -9,7 +9,7 @@
 <!-- 반응형 웹  -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>login</title>
+<title>notice</title>
     
 <!-- css  -->
 <!-- 기존설정 그대로 -->
@@ -75,25 +75,29 @@
 				</div>
 				<!-- 상단 중앙2 시작  -->
 				<div id="section2">
+				<!-- 왼쪽메뉴시작 -->
+				<div id="side_menu">
+
+					<h2>알림마당</h2>
+					<br> <br>
+					<ul>
+						<li><a href="${path}/notice_list.no"> 공지사항 </a></li>
+					</ul>
+					<ul>
+						<li><a href="${path}/faq_list.faq"> 자주하는 질문</a></li>
+					</ul>
+					<ul>
+						<li><a href="${path}/report.sos">신고 센터</a></li>
+					</ul>
+					<ul>
+						<li><a href="${path}/employment.eq"> 관련 기사 </a></li>
+					</ul>
+				</div>
+				<!-- 왼쪽메뉴 끝 -->
 					<div class="container">
 					
 						<div id="contents">
-						<!-- 왼쪽메뉴시작 -->
-							<div id="side_menu">
-			
-								<h2>알림마당</h2>
-								<br> <br>
-								<ul>
-									<li><a href="${path}/life.eq"> 공지사항 </a></li>
-								</ul>
-								<ul>
-									<li><a href="${path}/culture.eq"> 자주하는 질문</a></li>
-								</ul>
-								<ul>
-									<li><a href="${path}/employment.eq"> 관련 기사 </a></li>
-								</ul>
-							</div>
-							<!-- 왼쪽메뉴 끝 -->
+						
 						<div class="menu">
 							검색
 						</div>
@@ -103,8 +107,6 @@
 
 							<div id="s2_inner">
 								<div class="join">
-									<form name="loginform" action="loginAction.do" method="post">
-										
 										<form name="noticeList">
 									<table>
 
