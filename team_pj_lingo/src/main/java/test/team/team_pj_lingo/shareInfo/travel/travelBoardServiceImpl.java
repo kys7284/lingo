@@ -119,24 +119,34 @@ public class travelBoardServiceImpl implements travelBoardService{
 		FileOutputStream fos = null;
 		
 		try {
-			file.transferTo(new File(saveDir + file.getOriginalFilename()));	//import java.io.File
-			fis = new FileInputStream(saveDir + file.getOriginalFilename());
-			fos = new FileOutputStream(realDir + file.getOriginalFilename());
+			String tb_img = null;
 			
-			int data = 0;
-			while((data = fis.read()) != -1) {
-				fos.write(data);
+			if(file != null && !file.isEmpty()) {
+				file.transferTo(new File(saveDir + file.getOriginalFilename()));	//import java.io.File
+				fis = new FileInputStream(saveDir + file.getOriginalFilename());
+				fos = new FileOutputStream(realDir + file.getOriginalFilename());
+				
+				int data = 0;
+				while((data = fis.read()) != -1) {
+					fos.write(data);
+				}
+				tb_img = "/team_pj_lingo/resources/tb_upload/"+ file.getOriginalFilename();
+				System.out.println("tb_img : " + tb_img);
+			
+			}else {
+				// 이미지가 업로드되지 않았을 경우 처리
+	            // tb_img를 null로 유지하고 데이터베이스 삽입 로직에서 null 처리
+	            System.out.println("No image uploaded.");
+				
 			}
+			
 			// 화면에서 입력받은 값 가져오기
 			// dto 생성후 setter로 값을 담는다.
 			travelBoardDTO dto = new travelBoardDTO(); 
-			dto.setTb_writer((String)request.getSession().getAttribute("sessionId"));
+			dto.setTb_writer((String)request.getSession().getAttribute("hiddenId"));
 			dto.setTb_password(request.getParameter("tb_password"));
 			dto.setTb_title(request.getParameter("tb_title"));
 			
-			// 이미지 가져오기
-			String tb_img = "/team_pj_lingo/resources/tb_upload/"+ file.getOriginalFilename();
-			System.out.println("tb_img : " + tb_img);
 			dto.setTb_img(tb_img);
 			
 			dto.setTb_content(request.getParameter("tb_content"));
@@ -150,7 +160,7 @@ public class travelBoardServiceImpl implements travelBoardService{
 			if(fos!=null)fos.close();
 		}
 	}
-		
+	
 	//게시글 수정&삭제시 비밀번호 인증
 	@Override
 	public int password_chkAction(HttpServletRequest request, HttpServletResponse response, Model model) {
