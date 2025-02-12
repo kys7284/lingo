@@ -42,5 +42,18 @@
 		WHERE	notice_num = #{notice_num} 
 	</select>
 	
+	<!-- 공지사항 수정처리  -->
+	<update id="updateNotice" parameterType="test.team.team_pj_lingo.notice.NoticeDTO" >
+		UPDATE notice_tbl
+		SET 	notice_title = #{notice_title}
+		  ,		notice_content = #{notice_content}	
+	
+	</update>
+	
+	<!-- 공지사항 삭제처리  -->
+	<delete id="deleteNotice" parameterType="String">
+		DELETE	FROM  notice_tbl
+		WHERE notice_num = #{notice_num}
+	</delete> 
 
 </mapper>
