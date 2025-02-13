@@ -32,7 +32,7 @@ public interface travelBoardDAO {
 	public int updateTravelBoard(travelBoardDTO dto);
 	
 	//게시글 삭제처리
-	public int deleteTravelBoard(Map<String,Object> map);
+	public int deleteTravelBoard(int tb_num);
 	
 	//게시글 작성처리
 	public int insertTravelBoard (travelBoardDTO dto); 

@@ -45,6 +45,11 @@
 <script type="text/javascript">
 	$(function() {
 		
+		$("#btnEdit").click(function() {
+			document.travel_detailForm.action="${path}/password_chkAction.tc";
+			document.travel_detailForm.submit();
+		});
+		
 		$("#btnList").click(function() {
 			alert("목록으로 이동합니다");
 			location.href="${path}/travelInfo.tc"
@@ -84,7 +89,7 @@
 			//alert("travel_comment_list");
 			
 			$.ajax({
-				url:'${path}/travel_comment_list.fb',
+				url:'${path}/travel_comment_list.tc',
 				type:'POST',
 				data:'tb_num=${dto.tb_num}',
 				success:function(result){
@@ -138,13 +143,9 @@
 					<!-- 우측메뉴 시작 -->
 						<div id="right">
 							<div class="table_div">
-								<form name="travel_detailForm" method="post">
+								<form name="travel_detailForm" method="GET">
 									<table class="detail_table">
-									<!-- hidden : 직접 input박스에서 입력받지 못한 값들을 전달할 때 사용 -->
-									<input type="hidden" name="hiddenPageNum" value="${pageNum}">
-									<input type="hidden" name="hidden_tb_num" value="${dto.tb_num}">
-									<input type="hidden" name="hidden_tb_img" value="${dto.tb_img}">
-										
+
 									<tr style="border: 1px solid;">
 										<th style="width: 200px; border-right: 1px solid;">글번호</th>
 										<td style="width: 200px; border-right: 1px solid;" style="text-align:center"> ${dto.tb_num} </td>
@@ -206,11 +207,19 @@
 										<td colspan="4" align="center">
 											<!-- 게시글번호 hidden 추가 : input이 없으므로(게시글번호는 입력받지않는다 input 없음) -->
 											<input type="hidden" name="hidden_tb_num" value="${dto.tb_num}">  
+											<!-- hidden : 직접 input박스에서 입력받지 못한 값들을 전달할 때 사용 -->
+											<input type="hidden" name="hiddenPageNum" value="${pageNum}">
+											<input type="hidden" name="hidden_tb_img" value="${dto.tb_img}">
+											<!-- 작성자만 수정/삭제 버튼 보임 -->
+											<c:if test="${sessionScope.hiddenId eq dto.tb_writer}">
 											<input type="button" class="inputButton" value="수정/삭제" id="btnEdit">
+											</c:if>
+											
 											<input type="button" class="inputButton" value="목록" id="btnList">
 										</td>
 									</tr>
 									</table>
+									</form>
 									</div>
 									<br><br>
 									
@@ -245,7 +254,7 @@
 										</c:if>		
 										<!--  -->						
 									</table>
-								</form>
+								
 							</div>
 						</div>
 					<!-- 우측 메뉴 종료 -->

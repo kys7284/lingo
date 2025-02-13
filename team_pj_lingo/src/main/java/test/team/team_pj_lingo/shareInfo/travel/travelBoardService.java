@@ -34,7 +34,7 @@ public interface travelBoardService {
 			throws ServletException, IOException;
 
 	//게시글 수정처리
-	public void travelUpdateAction(HttpServletRequest request, HttpServletResponse response, Model model)
+	public void travelUpdateAction(MultipartHttpServletRequest request, HttpServletResponse response, Model model)
 			throws ServletException, IOException;
 	
 	//게시글 삭제처리
