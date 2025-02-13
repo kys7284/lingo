@@ -83,4 +83,13 @@ public class MemberDAOImpl implements MemberDAO {
 		return mem_status;
 	}
 
+	// 아이디 찾기
+	@Override
+	public String findMemberId(Map<String, Object> map) {
+		System.out.println("DAO - findMemberId"); 
+		
+		String mem_name = sqlSession.selectOne("test.team.team_pj_lingo.member.MemberDAO.findMemberId", map);
+		return mem_name;
+	}
+
 }

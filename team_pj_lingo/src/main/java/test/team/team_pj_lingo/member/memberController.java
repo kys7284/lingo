@@ -141,6 +141,36 @@ public class memberController {
 		return "common/main";
 	}
 	
+    // 아이디 찾기
+    @RequestMapping("/findId.do")
+    public String findId() {
+        logger.info("<<< url ==> findId.do >>>");
+        return "member/findId/findId";
+    }
+    
+    // 아이디 찾기 처리
+    @RequestMapping("/findIdCheck.do")
+    public String findIdCheck() {
+        logger.info("<<< url ==> findIdCheck.do >>>");
+        return "";
+    }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	// 텍스트 번역 . 진행중
 	@RequestMapping("/textTranslate.do")
@@ -157,6 +187,7 @@ public class memberController {
 		
 		return "tslService/fileTranslate";
 	}
+	
 	
 	
 	

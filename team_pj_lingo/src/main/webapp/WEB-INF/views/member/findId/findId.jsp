@@ -49,63 +49,79 @@
 
 </head>
 <body>
+
 <div class="wrap">
    <!-- header 시작 -->
    <%@include file="/WEB-INF/views/common/header.jsp" %> 
    <!-- header 끝    -->
 
-   <!-- 컨텐츠 시작 -->
-   <div id="container">
+	<!-- 컨텐츠 시작 -->
+	<div id="container">
       <div id="contents">
          <!-- 상단 중앙1 시작  -->
          <div id="section1">
-            <h1 align="center"> 로그인 </h1>
+            <h1 align="center"> 아이디 찾기 </h1>
          </div>
          <!-- 상단 중앙2 시작  -->
          <div id="section2">
             <div id="s2_inner">
                <div class="join">
-                  <form name="loginform" action="loginAction.do" method="post">
-                     <table>
-                        <tr>
-                           <th> * 아이디 </th>
-                           <td>
-                              <input type="text" class="input" name="mem_id" size="30" placeholder="공백없이 20자 이내로 작성" required autofocus>
-                           </td>
-                        </tr>
-                        <tr>
-                           <th> * 비밀번호 </th>
-                           <td>
-                              <input type="password" class="input" name="mem_pwd" size="20" placeholder="공백없이 20자 이내로 작성" required>
-                           </td>
-                        </tr>
-                        
-                        <tr>
-	                        <td colspan="2" >
-	                           <div align="right">
-	                             <button type="submit" id="id-find" onclick="window.location='${path}/findId.do'">아이디 찾기</button>
-	                             <button type="submit" id="pwd-find" onclick="window.location='${path}/findPwd.do'">비밀번호 찾기</button>
+               	<form name="loginform" action="loginAction.do" method="post">
+                    <table>
+	                  <!-- 조회한 아이디가 없거나 정보가 일치하지 않을 때 -->
+					    <c:choose>
+							<c:when test="${empty findId} && ${selectCnt == 0}">
+							<script type="text/javascript">
+			                    	alert("조회결과가 없습니다.");                     	
+			                    </script>
+							</c:when>
+					        <c:otherwise>
+					            <p>${findId.id}</p>
+					        </c:otherwise>
+						</c:choose>
+						
+	                        <tr>
+	                           <th> 이름 </th>
+	                           <td>
+	                              <input type="text" class="input" name="mem_name" size="50" placeholder="이름입력" required autofocus>
+	                           </td>
+	                        </tr>
+	                        <tr>
+	                           <th> 전화번호 </th>
+	                           <td> 
+									<input type="text" class="input" name="mem_hp1" size="3" style="width:50px">
+									-
+									<input type="text" class="input" name="mem_hp2" size="4" style="width:70px">
+									-
+									<input type="text" class="input" name="mem_hp3" size="4" style="width:70px">
+								</td>
+	                        </tr>
+	                        
+	                        <tr>
+	                           <td colspan="3" style="border-bottom: none">
+	                           <br>
+	                           <div align="center">
+	                              <input class="inputButton" type="submit" value="아이디 찾기" onclick="window.location='${path}/findIdCheck.do'">
+	                              <input class="inputButton" type="button" value="회원가입" >
 	                           </div>
-	                        </td>
-                        </tr>
-                        
-                        <tr>
-                           <td colspan="2" style="border-bottom: none">
-                           <br>
-                           <div align="right">
-                              <input class="inputButton" type="submit" value="로그인">
-                              <input class="inputButton" type="reset" value="초기화">
-                              <input class="inputButton" type="button" value="회원가입" onclick="window.location='${path}/join.do'">
-                           </div>
-                           </td>
-                        </tr>   
-                     </table>
-                  </form>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
+	                           </td>
+	                        </tr>   
+	                        
+	                        <tr>
+		                        <td colspan="2">
+		                           <div>
+		                             <button type="submit" id="id-find" onclick="window.location='${path}/login.do'" style="align:left">회원가입 하기</button>
+		                             <button type="submit" id="pwd-find" onclick="window.location='${path}/findPwd.do'" style="align:right">로그인 하기</button>
+		                           </div>
+		                        </td>
+	                        </tr>
+	                     </table>
+	                  </form>
+	               </div>
+	            </div>
+	         </div>
+	      </div>
+	   </div>
       <!-- 컨텐츠 끝 -->
       
 

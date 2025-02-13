@@ -180,6 +180,33 @@ public class MemberServiceImpl implements MemberService {
 		
 	}
 
+	// 아이디 찾기 처리
+	@Override
+	public void findIdAction(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException {
+		System.out.println("서비스 - findIdAction ");
+		
+		String mem_name = request.getParameter("mem_id");
+		String hp1 = request.getParameter("mem_hp1");
+		String hp2 = request.getParameter("mem_hp2");
+		String hp3 = request.getParameter("mem_hp3");
+		String mem_hp = hp1+'-'+hp2+'-'+hp3;
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("mem_name", mem_name);
+		map.put("mem_hp", mem_hp);
+		
+		try {
+			dao.findMemberId(map);
+		}
+		catch(Exception e) {
+			
+		}
+		
+		model.addAttribute("selectCnt", );
+		
+	}
+
 
 
 }
