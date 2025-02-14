@@ -44,15 +44,16 @@
 
 <script type="text/javascript">
 	$(function() {
-
-		$("#btnSave").click(function() {
-			const pwd = $("#tb_password").val();
+		
+		$("#btnEdit").click(function() {
+			
+			const password = $("#tb_password").val();
 			const category = $("#tb_category").val();
 			const title = $("#tb_title").val();
 			const content = $("#tb_content").val();
 			
-			if(pwd == ""){
-				alert("비밀번호를 작성해주세요 ! !");
+			if(password == ""){
+				alert("수정하실 비밀번호를 입력해주세요 ! !");
 				$("#tb_password").focus();
 				return false
 			}
@@ -74,13 +75,26 @@
 				$("#tb_content").focus();
 				return false
 			}
-			document.travel_insertForm.action="${path}/travel_board_insertAction.tc"
-			document.travel_insertForm.submit();
+		
+			document.travel_detailForm.action="${path}/travelBoard_updateAction.tc";
+			document.travel_detailForm.submit();
 		});
-	});
-
+		
+		$("#btnDelete").click(function() {
+			let result = confirm("정말 해당 게시글을 삭제하시겠습니까 ?");
+			if(result){
+				document.travel_detailForm.action="${path}/travelBoard_deleteAction.tc"
+				document.travel_detailForm.submit();
+			}
+		})
+		
+		$("#btnList").click(function() {
+			alert("목록으로 이동합니다");
+			location.href="${path}/travelInfo.tc"
+		});
+	});		
 </script>
-<title>travelBoard_insert</title>
+<title>travelBoard_edit</title>
 </head>
 <body>
 <div class="wrap">
@@ -92,16 +106,9 @@
 		<div id="container">
 			<div id="contents">
 				<!-- 상단 중앙1 시작 -->
-				<!-- 상단 중앙1 시작  -->
-				<div id="section1"
-					style="background-image: url('${path}/resources/images/travel.jpg'); background-size: cover; background-position: center; height: 300px;">
-					<br> 
-					<br>
-					<h1 align="center" style="padding-bottom: 50px;">여행정보</h1>
-					
-					<span style="display: flex; justify-content: center; font-weight: bold;">여러분의 여행을 공유해주세요</span>
-				</div>
-				<!-- 상단 중앙2 시작 -->
+				<div>
+					<h1 align="center"> ${dto.tb_title}</h1>
+				</div>				
 				<!-- 상단 중앙1 종료 -->
 
 				<!-- 상단 중앙2 시작 -->
@@ -128,12 +135,22 @@
 					<!-- 우측메뉴 시작 -->
 						<div id="right">
 							<div class="table_div">
-								<form name="travel_insertForm" method="post" action="travel_board_insertAction.tc" enctype="multipart/form-data">
+								<form name="travel_detailForm" method="post" enctype="multipart/form-data">
 									<table class="detail_table">
 									<!-- hidden : 직접 input박스에서 입력받지 못한 값들을 전달할 때 사용 -->
+									
+										
+									<tr style="border: 1px solid;">
+										<th style="width: 200px; border-right: 1px solid;">글번호</th>
+										<td style="width: 200px; border-right: 1px solid;" style="text-align:center"> ${dto.tb_num} </td>
+										
+										<th style="width: 200px; border-right: 1px solid;">조회수</th>
+										<td style="width: 200px;" style="text-align:center"> ${dto.tb_readCnt} </td>
+									</tr>
+									
 									<tr style="border: 1px solid; border-right: 1px solid;">
 										<th style="width: 200px; border-right: 1px solid;">작성자</th>
-										<td style="width: 200px; border-right: 1px solid;" style="text-align:center">${sessionScope.hiddenId}</td>
+										<td style="width: 200px; border-right: 1px solid;" style="text-align:center"> ${dto.tb_writer} </td>
 										
 										<th style="width: 200px; border-right: 1px solid;">비밀번호</th>
 										<td style="width: 200px" style="text-align:center" > 
@@ -144,49 +161,63 @@
 									
 									<tr style="border: 1px solid;">
 										<th style="width: 200px; border-right: 1px solid;">카테고리</th>
-										<td colspan="3" style="text-align:center">
+										<td colspan="3" style="text-align:center"> 
 											<select name="tb_category" id="tb_category"> 
 												<option value="">카테고리선택</option>
-												<option value="여행">여행</option>
-												<option value="음식">음식</option>
-												<option value="숙소">숙소</option>
-												<option value="관광명소">관광명소</option>
-												<option value="기타">기타</option>
+												<option <c:if test="${dto.tb_category == '여행'}">selected</c:if> value="여행">여행</option>
+												<option <c:if test="${dto.tb_category == '음식'}">selected</c:if> value="음식">음식</option>
+												<option <c:if test="${dto.tb_category == '숙소'}">selected</c:if> value="숙소">숙소</option>
+												<option <c:if test="${dto.tb_category == '관광명소'}">selected</c:if> value="관광명소">관광명소</option>
+												<option <c:if test="${dto.tb_category == '기타'}">selected</c:if> value="기타">기타</option>
 											</select>
 										</td>
 									</tr>
 									
 									<tr style="border: 1px solid;">
 										<th style="width: 200px; border-right: 1px solid;">글제목</th>
-										<td colspan="3" style="text-align:center">
-											<input type="text" name="tb_title" id="tb_title">
+										<td colspan="3" style="text-align:center">  
+											<input type="text" name="tb_title" id="tb_title" value="${dto.tb_title}">
 										</td>
 									</tr>
 									
 									<tr style="border: 1px solid;">
-										<th style="width: 200px; border-right: 1px solid;">글내용</th>
-										<td colspan="3" style="text-align:center">
-										<textarea rows="10" cols="60" name="tb_content" id="tb_content"></textarea>
+										<th style="width: 200px; border-right: 1px solid;">내용</th>
+									
+										<!-- 이미지가 null이 아닐때 사진과 함께 표시 -->
+										<td colspan="3"  style="text-align:center; ">
+											<div style="display:flex; flex-wrap: wrap;">
+											<div style="width:100%">
+											<textarea rows="10" cols="60" name="tb_content" id="tb_content"> ${dto.tb_content}</textarea></div></div>
 										</td>
 									</tr>
 									
 									<tr>
-										<th>사진 업로드</th>
+										<th>사진업로드</th>
 										<td> 
-											<input type="file" class="input" id="tb_img" name="tb_img" accept="image/*" style="width:250px; height:150px; border: 1px solid black;">
+											<img src="${dto.tb_img}" style="width:200px"><br>
+											<input type="file" class="input" id="tb_img" name="tb_img" accept="image/*">
 										</td>
+									</tr>
+																		
+									<tr style="border: 1px solid;">
+										<th style="width: 200px; border-right: 1px solid;">작성일</th>
+										<td colspan="3"  style="text-align:center"> ${dto.tb_regDate} </td>
 									</tr>
 									
 									<tr style="border: 1px solid;">
 										<td colspan="4" align="center">
-											<input type="button" class="inputButton" value="작성" id="btnSave">
+											<!-- 게시글번호 hidden 추가 : input이 없으므로(게시글번호는 입력받지않는다 input 없음) -->
+											<input type="hidden" name="hiddenPageNum" value="${pageNum}">
+											<input type="hidden" name="hidden_tb_num" value="${dto.tb_num}">
+											<input type="hidden" name="hidden_tb_img" value="${dto.tb_img}">
+											<input type="button" class="inputButton" value="수정하기" id="btnEdit">
+											<input type="button" class="inputButton" value="삭제하기" id="btnDelete">
 											<input type="button" class="inputButton" value="목록으로" id="btnList">
 										</td>
 									</tr>
 									</table>
 									</form>
 									</div>
-									<br><br>
 							</div>
 						</div>
 					<!-- 우측 메뉴 종료 -->
