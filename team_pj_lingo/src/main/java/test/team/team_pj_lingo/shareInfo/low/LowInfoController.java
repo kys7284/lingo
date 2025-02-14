@@ -29,7 +29,7 @@ public class LowInfoController {
 	public String low(HttpServletRequest request,  HttpServletResponse response, Model model)
 			throws ServletException, IOException{
 		logger.info("<<< url ==>  /low.eq >>>");
-		
+
 		
 		return "board/shareInfo/lowInfo/lowQna";
 	}
@@ -74,7 +74,7 @@ public class LowInfoController {
 			logger.info("<<< url ==>  /slDetailAction.eq >>>");
 			
 			service.lowDetailAction(request, response, model);
-			
+
 			return "board/shareInfo/lowInfo/helpMe";
 		}
 		
@@ -110,24 +110,25 @@ public class LowInfoController {
 					return "board/shareInfo/lowInfo/helpMe" ;
 				}
 		
-//		// 댓글 목록 화면
-//		@RequestMapping("/free_comment_list.fb") 
-//		public String free_comment_list(HttpServletRequest request, HttpServletResponse response, Model model) 
-//				throws ServletException, IOException{
-//			logger.info("<<url = /free_comment_list.fb>>");
-//			service.freeCommentListAction(request, response, model);
-//			
-//			return "board/freeBoard/free_comment_list";
-//		}
-//		
-//		// 댓글 작성처리
-//		@RequestMapping("/insertComment.fb") 
-//		public String insertComment(HttpServletRequest request, HttpServletResponse response, Model model) 
-//				throws ServletException, IOException{
-//			logger.info("<<url = /insertComment.fb>>");
-//			service.freeCommentAddAction(request, response, model);
-//			
-//			return "board/freeBoard/free_comment_list";
-//		}
+		// 댓글 목록 화면
+		@RequestMapping("/sl_borad_comment_list.eq") 
+		public String lowCommentListAction(HttpServletRequest request, HttpServletResponse response, Model model) 
+				throws ServletException, IOException{
+			logger.info("<<url = /sl_borad_comment_list.eq>>");
+			
+			service.lowCommentListAction(request, response, model);
+
+			return "board/shareInfo/lowInfo/low_comment_list";
+		}
+		
+		// 댓글 작성처리
+		@RequestMapping("/insertComment.eq") 
+		public String insertComment(HttpServletRequest request, HttpServletResponse response, Model model) 
+				throws ServletException, IOException{
+			logger.info("<<url = /insertComment.eq>>");
+			service.lowCommentAddAction(request, response, model);
+			
+			return "board/shareInfo/lowInfo/helpMe";
+		}
 }	
 	

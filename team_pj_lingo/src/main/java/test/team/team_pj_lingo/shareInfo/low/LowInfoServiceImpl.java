@@ -19,7 +19,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import test.team.team_pj_lingo.freeBoard.FreeBoardDTO;
 import test.team.team_pj_lingo.page.Paging;
 
 @Service
@@ -166,33 +165,34 @@ public class LowInfoServiceImpl implements LowInfoService{
 
 	
 	
-//	//댓글목록 처리
-//		@Override
-//		public void freeCommentListAction(HttpServletRequest request, HttpServletResponse response, Model model)
-//				throws ServletException, IOException {
-//			System.out.println("LowInfoServiceImpl - freeCommentListAction()");
-//			
-//			int fb_num = Integer.parseInt(request.getParameter("freeboard_num"));
-//			
-//			List<LowInfoCommentDTO> list = dao.freeCommentList(fb_num);
-//			
-//			model.addAttribute("list", list);
-//		}
-//
-//		//댓글작성 처리
-//		@Override
-//		public void freeCommentAddAction(HttpServletRequest request, HttpServletResponse response, Model model)
-//				throws ServletException, IOException {
-//			System.out.println("LowInfoServiceImpl - freeCommentAddAction()");
-//			
-//			LowInfoCommentDTO dto = new LowInfoCommentDTO();
-//			dto.setFb_board_num(Integer.parseInt(request.getParameter("freeboard_num")));
-//			dto.setFb_writer(request.getParameter("writer"));
-//			dto.setFb_content(request.getParameter("content"));
-//			
-//			dao.insertComment(dto);
-//		}
-	
-	
+	//댓글목록 처리
+		@Override
+		public void lowCommentListAction(HttpServletRequest request, HttpServletResponse response, Model model)
+				throws ServletException, IOException {
+			System.out.println("LowInfoServiceImpl - lowCommentListAction()");
+			
+			// 3단계. 화면에서 입력받은 값(jQuery에서 넘긴 값)을 가져온다. => "board_num" : ${dto.b_num}
+			int slboard_num = Integer.parseInt(request.getParameter("slboard_num"));
+			
+			List<LowInfoCommentDTO> list = dao.lowInfoCommentList(slboard_num);
+			
+			model.addAttribute("list", list);
+		}
+
+		//댓글작성 처리
+		@Override
+		public void lowCommentAddAction(HttpServletRequest request, HttpServletResponse response, Model model)
+				throws ServletException, IOException {
+			System.out.println("LowInfoServiceImpl - lowCommentAddAction()");
+			
+			LowInfoCommentDTO dto = new LowInfoCommentDTO();
+			dto.setSlboard_num_fk(Integer.parseInt(request.getParameter("slboard_num_fk")));
+			dto.setSlcomment_writer(request.getParameter("writer"));
+			dto.setSlcomment_content(request.getParameter("content"));
+			
+			dao.insertComment(dto);
+			
+			response.sendRedirect(request.getContextPath() + "/helpMe.eq");
+		}
 
 }

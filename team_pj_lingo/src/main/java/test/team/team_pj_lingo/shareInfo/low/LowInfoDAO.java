@@ -20,9 +20,9 @@ public interface LowInfoDAO {
 	//게시글 삭제처리
 	public int deleteLowInfo(int slboard_num);
 
-//	//댓글목록 처리
-//	public List<LowInfoCommentDTO> lowInfoCommentList(int slboard_num);
-//	
-//	//댓글작성 처리
-//	public int insertComment(LowInfoCommentDTO dto);
+	//댓글목록 처리
+	public List<LowInfoCommentDTO> lowInfoCommentList(int slboard_num);
+	
+	//댓글작성 처리
+	public int insertComment(LowInfoCommentDTO dto);
 }
