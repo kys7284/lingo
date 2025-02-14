@@ -28,12 +28,19 @@ public interface LowInfoService {
 	public void lowDeleteAction(HttpServletRequest request, HttpServletResponse response, Model model)
 			throws ServletException, IOException;
 
-//	//댓글목록 처리
-//	public void lowCommentListAction(HttpServletRequest request, HttpServletResponse response, Model model)
-//			throws ServletException, IOException;
-//	
-//	//댓글작성 처리
-//	public void lowCommentAddAction(HttpServletRequest request, HttpServletResponse response, Model model)
-//			throws ServletException, IOException;
+	//댓글목록 처리
+	public void lowCommentListAction(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException;
+	
+	//댓글작성 처리
+	public void lowCommentAddAction(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException;
+	
+	//댓글삭제 처리
+	public void lowCommentDelectAction(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException;
+	
+	
+	
 	
 }

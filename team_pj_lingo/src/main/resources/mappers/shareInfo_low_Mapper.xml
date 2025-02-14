@@ -6,25 +6,31 @@
      
 <mapper namespace="test.team.team_pj_lingo.shareInfo.low.LowInfoDAO">
 
-	<!-- 게시글목록 -->
-	<select id="lowInfoList" parameterType="java.util.Map" resultType="test.team.team_pj_lingo.shareInfo.low.LowInfoDTO">
-		
-		<![CDATA[
-		SELECT *
-  FROM
-    (SELECT A.*,
-           rownum As rn
-      FROM 
-            (SELECT * FROM sharelow_tbl
-                WHERE slboard_show = 'Y'  
-             ORDER BY slboard_num DESC) A 
-    		)
-        WHERE rn >= #{start} 
-		  AND rn <= #{end}
-		]]>	
-			  
-	</select>
-	
+<!-- 게시글 목록 -->
+<resultMap id="BoardResultMap" type="test.team.team_pj_lingo.shareInfo.low.LowInfoDTO">
+    <result property="slboard_num" column="slboard_num"/>
+    <result property="slboard_content" column="slboard_content"/>
+    <result property="slboard_comment_count" column="comment_count"/>
+</resultMap>
+
+<select id="lowInfoList" parameterType="java.util.Map" resultMap="BoardResultMap">
+    SELECT A.*,
+           NVL(
+               (SELECT COUNT(*)
+                FROM sharelowcomment_tbl c
+                WHERE c.slboard_num_fk = A.slboard_num), 0) AS comment_count
+    FROM
+        (SELECT A.*, 
+                rownum AS rn
+        FROM
+            (SELECT *
+             FROM sharelow_tbl
+             WHERE slboard_show = 'Y'
+             ORDER BY slboard_num DESC) A
+        ) A
+    WHERE A.rn BETWEEN #{start} AND #{end}
+</select>
+
 	<!-- 게시글 갯수 구하기 -->
 	<select id="boardCnt" resultType="int">
 		SELECT COUNT(*) AS cnt
@@ -52,26 +58,31 @@
 	</update>
 	
 	<!-- 댓글 목록 -->
-	<!-- <select id="freeCommentList" parameterType="int" resultType="test.team.team_pj_lingo.freeBoard.FreeBoardCommentDTO">
-		 SELECT * 
-		   FROM (
-   				 SELECT A.*, 
-          		 ROW_NUMBER() OVER (ORDER BY A.fb_comment_num DESC) AS rn
-   				  FROM (
-       				    SELECT c.*, b.fb_num
-      					  FROM fb_comment_tbl c
-       					  JOIN free_board_tbl b 
-        					ON b.fb_num = c.fb_board_num
-        				 WHERE b.fb_num = #{fb_num} 
-   						 ) A
-				) 
-		  ORDER BY rn DESC
-	</select> -->
+	<select id="lowInfoCommentList" parameterType="int" resultType="test.team.team_pj_lingo.shareInfo.low.LowInfoCommentDTO">
+			SELECT *
+			  FROM
+			    (SELECT A.*,
+			           rownum As rn
+			      FROM 
+			            (SELECT * FROM sharelowcomment_tbl c,
+			                           sharelow_tbl b 
+			                WHERE b.slboard_num = c.slboard_num_fk
+			                  AND slboard_num = #{slboard_num}
+			             ORDER BY slcomment_num DESC) A 
+			    ) 
+			ORDER BY rn DESC
+	</select>
 	
 	<!-- 댓글 작성 -->
-	<!-- <insert id="insertComment" parameterType="test.team.team_pj_lingo.freeBoard.FreeBoardCommentDTO">
-		INSERT INTO fb_comment_tbl(fb_comment_num, fb_board_num, fb_writer, fb_content, fb_regDate) 
-		VALUES((SELECT NVL(MAX(fb_comment_num)+1, 1) FROM fb_comment_tbl), #{fb_board_num}, #{fb_writer}, #{fb_content}, sysdate)
-	</insert>  -->
+	<insert id="insertComment" parameterType="test.team.team_pj_lingo.shareInfo.low.LowInfoCommentDTO">
+		INSERT INTO sharelowcomment_tbl(slcomment_num, slboard_num_fk, slcomment_writer, slcomment_content, slcomment_regDate) 
+		VALUES((SELECT NVL(MAX(slcomment_num)+1, 1) FROM sharelowcomment_tbl), #{slboard_num_fk}, #{slcomment_writer}, #{slcomment_content}, sysdate)
+	</insert>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="deleteComment" parameterType="int" >
+		DELETE FROM sharelowcomment_tbl 
+		WHERE slcomment_num = #{slcomment_num}
+	</delete>
 	
 </mapper>
