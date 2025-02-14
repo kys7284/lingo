@@ -78,11 +78,4 @@
 		INSERT INTO sharelowcomment_tbl(slcomment_num, slboard_num_fk, slcomment_writer, slcomment_content, slcomment_regDate) 
 		VALUES((SELECT NVL(MAX(slcomment_num)+1, 1) FROM sharelowcomment_tbl), #{slboard_num_fk}, #{slcomment_writer}, #{slcomment_content}, sysdate)
 	</insert>
-	
-	<!-- 댓글 삭제 -->
-	<delete id="deleteComment" parameterType="int" >
-		DELETE FROM sharelowcomment_tbl 
-		WHERE slcomment_num = #{slcomment_num}
-	</delete>
-	
 </mapper>

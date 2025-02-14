@@ -130,26 +130,5 @@ public class LowInfoController {
 			
 			return "board/shareInfo/lowInfo/helpMe";
 		}
-		
-		// 댓글 삭제처리
-		@RequestMapping("/delectComment.eq") 
-		public String delectComment(HttpServletRequest request, HttpServletResponse response, Model model) 
-				throws ServletException, IOException{
-			logger.info("<<url = /delectComment.eq>>");
-
-			String slboardNumStr1 = request.getParameter("slcomment_num");
-
-		    // `null` 또는 빈 값이 들어올 경우 방지
-		    if (slboardNumStr1 == null || slboardNumStr1.isEmpty()) {
-		        logger.error("삭제할 게시글 번호가 전달되지 않았습니다.");
-		        return "redirect:/helpMe.eq";  // 오류 발생 시 안전하게 리다이렉트
-		    }
-
-		    int slboardNum1 = Integer.parseInt(slboardNumStr1);
-		  
-		    service.lowCommentDelectAction(request, response, model);
-			
-			return "board/shareInfo/lowInfo/low_comment_list";
-		}
 }	
 	

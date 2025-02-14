@@ -76,15 +76,5 @@ public class LowInfoDAOImpl implements LowInfoDAO{
 		int insertCnt = sqlSession.insert("test.team.team_pj_lingo.shareInfo.low.LowInfoDAO.insertComment", dto);
 		return insertCnt;
 	}
-	
-	// 댓글 삭제처리
-		@Override
-		public int deleteComment(int slcomment_num) {
-			System.out.println("LowInfoDAOImpl - deleteLowInfo()");
-
-			int deleteCnt = sqlSession.delete("test.team.team_pj_lingo.shareInfo.low.LowInfoDAO.deleteComment", slcomment_num);
-			
-			return deleteCnt;
-		}
 
 }

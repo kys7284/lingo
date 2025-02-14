@@ -194,27 +194,5 @@ public class LowInfoServiceImpl implements LowInfoService{
 			
 			response.sendRedirect(request.getContextPath() + "/helpMe.eq");
 		}
-		
-		//댓글삭제 처리
-		@Override
-		public void lowCommentDelectAction(HttpServletRequest request, HttpServletResponse response, Model model)
-				throws ServletException, IOException {
-			System.out.println("LowInfoServiceImpl - lowCommentDelectAction()");
-			
-			int slcomment_num = Integer.parseInt(request.getParameter("slcomment_num"));
-
-			// 4단계. 싱글톤 방식으로 DAO 객체 생성, 다형성 적용
-			//BoardDAO dao = BoardDAOImpl.getInstance();
-			
-			// 5-1단계. 회원정보 인증처리
-			int deleteCnt = dao.deleteComment(slcomment_num);
-			
-			// 6단계. jsp로 처리결과 전달
-			model.addAttribute("deleteCnt", deleteCnt);
-			
-			response.sendRedirect(request.getContextPath() + "/helpMe.eq");
-		}
-	
-	
 
 }

@@ -36,11 +36,5 @@ public interface LowInfoService {
 	public void lowCommentAddAction(HttpServletRequest request, HttpServletResponse response, Model model)
 			throws ServletException, IOException;
 	
-	//댓글삭제 처리
-	public void lowCommentDelectAction(HttpServletRequest request, HttpServletResponse response, Model model)
-			throws ServletException, IOException;
-	
-	
-	
 	
 }

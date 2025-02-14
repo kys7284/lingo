@@ -25,7 +25,4 @@ public interface LowInfoDAO {
 	
 	//댓글작성 처리
 	public int insertComment(LowInfoCommentDTO dto);
-	
-	//댓글 삭제처리
-	public int deleteComment(int slcomment_num);
 }

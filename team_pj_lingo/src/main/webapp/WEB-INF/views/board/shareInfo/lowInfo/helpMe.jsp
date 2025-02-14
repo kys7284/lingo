@@ -223,10 +223,10 @@
 <body>
 
 <%
-    String memStatus = (String) session.getAttribute("mem_status");
+    String memStatus = (String) session.getAttribute("sessionId");
     String hiddenId = (String) session.getAttribute("hiddenId");
-    System.out.println("🔍 [DEBUG] mem_status: " + memStatus);
-    System.out.println("🔍 [DEBUG] hiddenId: " + hiddenId);
+    System.out.println(" [DEBUG] mem_status: " + memStatus);
+    System.out.println(" [DEBUG] hiddenId: " + hiddenId);
 %>
 
 	<div class="wrap">
