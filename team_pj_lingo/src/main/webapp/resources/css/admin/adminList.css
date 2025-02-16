@@ -12,5 +12,7 @@
 #admin{
 	display: flex;
   	justify-content: center;
+  	width: 100%; /* 부모 요소의 전체 너비 차지 */
+    box-sizing: border-box; /* padding, border를 width에 포함 */
 	
 }

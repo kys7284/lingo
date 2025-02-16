@@ -37,9 +37,9 @@ public class AdminDAOImpl implements AdminDAO {
 	// 회원추방
 	@Override
 	public int adminMemberDelete(int mem_no) {
-		
+		System.out.println("DAO");
 		int deleteCnt = sql.delete("test.team.team_pj_lingo.admin.AdminDAO.adminMemberDelete", mem_no);
-		
+		System.out.println("deleteCnt : "+deleteCnt);
 		return deleteCnt;
 	}
 

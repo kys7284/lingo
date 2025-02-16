@@ -15,25 +15,11 @@
 					alert("공지사항등록처리 되었습니다.");
 				</script>
 			</c:if>
-		
-			<c:if test="${insertCnt != 1}">
-				<script type="text/javascript">
-					window.location="${path}/adminAction.ad";
-					alert("등록처리가 되지않았습니다.");
-				</script>
-			</c:if>
 			
 			<c:if test="${deleteCnt == 1}">
 				<script type="text/javascript">
 					window.location="${path}/adminAction.ad";
 					alert("삭제처리 되었습니다.");
-				</script>
-			</c:if>
-			
-			<c:if test="${deleteCnt == 1}">
-				<script type="text/javascript">
-					window.location="${path}/adminAction.ad";
-					alert("삭제등록처리 되었습니다.");
 				</script>
 			</c:if>
 			
@@ -43,6 +29,22 @@
 					alert("수정처리 되었습니다.");
 				</script>
 			</c:if>
+		
+			<c:if test="${insertCnt != 1}">
+				<script type="text/javascript">
+					window.location="${path}/adminAction.ad";
+					alert("등록처리가 되지않았습니다.");
+				</script>
+			</c:if>
+			
+			
+			<c:if test="${deleteCnt == 1}">
+				<script type="text/javascript">
+					window.location="${path}/adminAction.ad";
+					alert("삭제처리가 되지 않았습니다.");
+				</script>
+			</c:if>
+			
 		
 			<c:if test="${updateCnt != 1}">
 				<script type="text/javascript">
