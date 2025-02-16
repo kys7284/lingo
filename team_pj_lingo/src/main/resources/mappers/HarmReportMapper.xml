@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+     
+<mapper namespace="test.team.team_pj_lingo.harmReport.HarmReportDAO">
+
+	<select id="boardNumCheck" parameterType="int" resultType="java.util.Map">
+		SELECT fb_title 
+		, count(fb_title) as cnt
+		, fb_writer
+		FROM free_board_tbl
+		WHERE fb_num = #{harm_report_num}
+		GROUP BY fb_title, fb_writer
+	</select>
+	
+	<insert id="harmReportInsert" parameterType="test.team.team_pj_lingo.harmReport.HarmReportDTO">
+		INSERT INTO harm_report_tbl(harm_report_num,harm_report_title,board_writer,harm_report_writer,harm_report_content
+		,harm_report_regDate,harm_report_category)
+		VALUES ((SELECT NVL(MAX(harm_report_num)+1, 1)FROM harm_report_tbl),#{harm_report_title},#{board_writer},#{harm_report_writer}
+		,#{harm_report_content},sysdate,#{harm_report_category})
+	</insert>
+	
+	<select id="harmReportCnt" resultType="int">
+		SELECT COUNT(*)
+		FROM	harm_report_tbl
+	</select>
+	
+	
+	<select id="harmReportList" parameterType="java.util.Map" resultType="test.team.team_pj_lingo.harmReport.HarmReportDTO">
+		<![CDATA[
+			SELECT harm_report_num, harm_report_title, board_writer, harm_report_writer, harm_report_content, harm_report_regDate
+			, harm_report_category, rn
+				FROM
+	    		(SELECT A.*,
+	   				 rownum AS rn
+	  			   FROM
+	        			(SELECT * FROM harm_report_tbl	        			  
+	        			  ORDER BY harm_report_num )A
+	     			    )
+	        WHERE rn >= #{start} 
+			  AND rn <= #{end}
+		]]>	
+	</select>
+	
+	<delete id="harmReportDelete" parameterType="int">
+		DELETE  FROM harm_report_tbl
+		WHERE harm_report_title = (SELECT harm_report_title 
+                        			FROM harm_report_tbl
+                        			WHERE harm_report_num = #{harm_report_num})
+	
+	</delete>
+	
+	<delete id="harmBoadreDelete" parameterType="int">
+		DELETE FROM free_board_tbl
+		WHERE fb_title = (SELECT harm_report_title 
+                        FROM harm_report_tbl
+                        WHERE harm_report_num = #{harm_report_num})
+	</delete>
+	
+	
+	<select id="myReportList" parameterType="String" resultType="test.team.team_pj_lingo.harmReport.HarmReportDTO">
+		SELECT	*
+		FROM	harm_report_tbl
+		WHERE	harm_report_writer = #{harm_report_writer}
+	
+	</select>
+	
+
+</mapper>
