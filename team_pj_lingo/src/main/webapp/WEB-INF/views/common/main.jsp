@@ -70,7 +70,7 @@
                                 <h4 class="text-primary text-uppercase mb-3 animated slideInDown">언어로 인한 불편함 없이</h4>
                                 <h3 class="display-3 text-white animated slideInDown">다문화가족을 위한 쉽고 빠른 번역서비스</h3>
                                 <h4 class="text-light text-uppercase mb-3 animated slideInDown">언제든지 도움을 드립니다!</h4>
-                                <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">가입하기<i class="fa fa-arrow-right ms-3"></i></a>
+                                <a href="${path}/join.do" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">가입하기<i class="fa fa-arrow-right ms-3"></i></a>
                             </div>
                         </div>
                     </div>
@@ -88,7 +88,7 @@
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
-                           <a href="javascript:alert('생활정보 개발중입니다.');" onfocus="this.blur()">
+                           <a href="${path}/life.eq" onfocus="this.blur()">
                               <i class="fab fa-3x fa-slideshare text-primary mb-4"></i>
                                <h5 class="mb-3">생활정보</h5>
                                <p>생활에 유용한 다양한 정보를 쉽게 확인해보세요.</p>
@@ -99,7 +99,7 @@
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
-                          <a href="javascript:alert('여행정보 개발중입니다.');" onfocus="this.blur()">  
+                          <a href="${path}/travelInfo.tc" onfocus="this.blur()">  
                             <i class="fas fa-3x fa-suitcase-rolling text-primary mb-4"></i>
                             <h5 class="mb-3">여행정보</h5>
                             <p>국내명소, 맛집, 여행지 정보를 한 곳에서 쉽게 찾아보세요.</p>
@@ -110,7 +110,7 @@
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
-                          <a href="javascript:alert('의료정보 개발중입니다.');" onfocus="this.blur()">
+                          <a href="${path}/medi.hl" onfocus="this.blur()">
                             <i class="fas fa-3x fa-hand-holding-medical text-primary mb-4"></i>
                             <h5 class="mb-3">의료정보</h5>
                             <p>의료,건강등 유용한 정보를 한 곳에서 확인할 수 있습니다.</p>
@@ -121,7 +121,7 @@
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
-                          <a href="javascript:alert('법률정보 개발중입니다.');" onfocus="this.blur()">  
+                          <a href="${path}/low.eq" onfocus="this.blur()">  
                             <i class="fa fa-3x fa-book-open text-primary mb-4"></i>
                             <h5 class="mb-3">법률정보</h5>
                             <p>다문화 가정을 위한 법적 상담과 필요한 정보를 찾아보세요.</p>

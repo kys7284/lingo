@@ -372,12 +372,11 @@
 								</div>
 							</c:forEach>
 						</div>
-
 					</div>
-
-					<table>
+					<br>
+					<table align="center">
 						<tr>
-							<td align="center">
+							<td >
 								<!-- 페이징처리 --> <!-- 이전 버튼 활성화 --> <c:if
 									test="${paging.startPage > 10}">
 									<a href="${path}/helpMe.eq?pageNum=${paging.prev}">[이전]</a>
