@@ -73,6 +73,7 @@
 				alert("카테고리를 입력해주세요 ! !");
 				return false;
 			}
+			
 			document.travel_boardList.action="${path}/travel_search.tc"
 			document.travel_boardList.submit();
 		});
@@ -126,14 +127,16 @@
 									<div class="travel_boardList">
 									
 									<table>
+									
 										<select name="tb_category" id="tb_category"> 
 												<option value="">카테고리선택</option>
-												<option value="여행">여행</option>
-												<option value="음식">음식</option>
-												<option value="숙소">숙소</option>
-												<option value="관광명소">관광명소</option>
-												<option value="기타">기타</option>
+												<option <c:if test="${dto.tb_category == '여행'}">selected</c:if> value="여행">여행</option>
+												<option <c:if test="${dto.tb_category == '음식'}">selected</c:if> value="음식">음식</option>
+												<option <c:if test="${dto.tb_category == '숙소'}">selected</c:if> value="숙소">숙소</option>
+												<option <c:if test="${dto.tb_category == '관광명소'}">selected</c:if> value="관광명소">관광명소</option>
+												<option <c:if test="${dto.tb_category == '기타'}">selected</c:if> value="기타">기타</option>
 											</select>
+									
 										<input type="button" style="width: 50px;" value="검색" id="btnSearch">
 										<tr>
 											<th style="width:10%; border: 1px solid black;">작성자</th>
@@ -144,7 +147,7 @@
 										
 										<!-- 게시글이 있으면  -->
 										
-										<c:forEach var="dto" items= "${travelList}">									
+										<c:forEach var="dto" items= "${searchList}">									
 										
 										<tr>
 											<td style="border: 1px solid black;">${dto.tb_writer}</td>

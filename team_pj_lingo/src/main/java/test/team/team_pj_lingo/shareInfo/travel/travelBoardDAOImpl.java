@@ -76,5 +76,19 @@ public class travelBoardDAOImpl implements travelBoardDAO{
 		return sqlSession.update("test.team.team_pj_lingo.shareInfo.travel.travelBoardDAO.deleteTravelBoard", tb_num);
 	}
 	
+	//검색결과 갯수
+	@Override
+	public int searchCnt(String tb_category) {
+		System.out.println("DAO - searchCnt");
+		return sqlSession.selectOne("test.team.team_pj_lingo.shareInfo.travel.travelBoardDAO.searchCnt",tb_category);
+	}
+	
+	//검색결과리스트
+	@Override
+	public List<travelBoardDTO> searchList(Map<String, Object> map) {
+		System.out.println("DAO - searchList");
+		return sqlSession.selectList("test.team.team_pj_lingo.shareInfo.travel.travelBoardDAO.searchList", map);
+	}
+	
 
 }

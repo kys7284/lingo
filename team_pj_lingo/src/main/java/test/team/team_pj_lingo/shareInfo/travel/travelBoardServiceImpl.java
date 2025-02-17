@@ -274,7 +274,32 @@ public class travelBoardServiceImpl implements travelBoardService{
 		int updateCnt = dao.deleteTravelBoard(tb_num);
 		model.addAttribute("updateCnt", updateCnt);
 	}
-
 	
+	//카테고리별 검색
+	@Override
+	public void travelSearchAction(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException {
+		System.out.println("travelBoardService - travelSearchAction");
+
+		String tb_category = request.getParameter("tb_category");
+		System.out.println("카테고리 = "+ tb_category);
+		
+		String pageNum = request.getParameter("pageNum");
+		Paging paging = new Paging(pageNum);
+		int total = dao.searchCnt(tb_category);
+		paging.setTotalCount(total);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		int start = paging.getStartRow();
+		int end = paging.getEndRow();
+		
+		map.put("tb_category", tb_category);
+		map.put("start", start);
+		map.put("end", end);
+		
+		List<travelBoardDTO> list = dao.searchList(map);
+		model.addAttribute("paging", paging);
+		model.addAttribute("searchList",list);
+	}
 
 }
