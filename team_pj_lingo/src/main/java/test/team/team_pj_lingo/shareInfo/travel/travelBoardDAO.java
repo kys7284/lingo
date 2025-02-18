@@ -32,8 +32,14 @@ public interface travelBoardDAO {
 	public int updateTravelBoard(travelBoardDTO dto);
 	
 	//게시글 삭제처리
-	public int deleteTravelBoard(Map<String,Object> map);
+	public int deleteTravelBoard(int tb_num);
 	
 	//게시글 작성처리
-	public int insertTravelBoard (travelBoardDTO dto); 
+	public int insertTravelBoard (travelBoardDTO dto);
+	
+	//카테고리 결과갯수검색
+	public int searchCnt(String tb_category);
+	
+	//카테고리 결과 리스트
+	public List<travelBoardDTO> searchList(Map<String, Object> map);
 }

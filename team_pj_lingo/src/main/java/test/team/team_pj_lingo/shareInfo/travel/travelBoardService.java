@@ -34,7 +34,7 @@ public interface travelBoardService {
 			throws ServletException, IOException;
 
 	//게시글 수정처리
-	public void travelUpdateAction(HttpServletRequest request, HttpServletResponse response, Model model)
+	public void travelUpdateAction(MultipartHttpServletRequest request, HttpServletResponse response, Model model)
 			throws ServletException, IOException;
 	
 	//게시글 삭제처리
@@ -43,5 +43,9 @@ public interface travelBoardService {
 	
 	//게시글 작성처리
 	public void travelInsertAction(MultipartHttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException;
+	
+	//게시글 카테고리별 검색처리
+	public void travelSearchAction(HttpServletRequest request, HttpServletResponse response, Model model)
 			throws ServletException, IOException;
 }	

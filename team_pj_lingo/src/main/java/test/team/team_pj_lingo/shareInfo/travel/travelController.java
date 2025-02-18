@@ -22,53 +22,58 @@ public class travelController {
 	@Autowired
 	private travelBoardService service;
 	
+	String viewPage = "";
+	
 	// 여행정보공유 리스트
 	@RequestMapping("travelInfo.tc")
-	public String travelInfo(HttpServletRequest reqeust, HttpServletResponse response, Model model) 
+	public String travelInfo(HttpServletRequest request, HttpServletResponse response, Model model) 
 		throws ServletException, IOException{
 		
 		logger.info("Controller - travleInfo.tc");
-		service.travelListAction(reqeust, response, model);
+		service.travelListAction(request, response, model);
 		
 		return "board/shareInfo/travelInfo/travelBoard/travelShareList";
 	}
 	
 	// 여행정보공유 상세페이지
-	@RequestMapping("travelDetailAction.fb")
-	public String travelDetailAction(HttpServletRequest reqeust, HttpServletResponse response, Model model) 
+	@RequestMapping("travelDetailAction.tc")
+	public String travelDetailAction(HttpServletRequest request, HttpServletResponse response, Model model) 
 		throws ServletException, IOException{
 		
 		logger.info("Controller - travelDetailAction.tc");
-		service.travelDetailAction(reqeust, response, model);
+		service.travelDetailAction(request, response, model);
+		
+		String pageNum = request.getParameter("pageNum");
+		System.out.println("pageNum : " + pageNum);
 		
 		return "board/shareInfo/travelInfo/travelBoard/travelShareDetail";
 	}
 	
 	// 여행정보공유 댓글목록페이지
-	@RequestMapping("travel_comment_list.fb")
-	public String travel_comment_list(HttpServletRequest reqeust, HttpServletResponse response, Model model) 
+	@RequestMapping("travel_comment_list.tc")
+	public String travel_comment_list(HttpServletRequest request, HttpServletResponse response, Model model) 
 		throws ServletException, IOException{
 		
 		logger.info("Controller - travel_comment_list.tc");
-		service.travelCommentListAction(reqeust, response, model);
+		service.travelCommentListAction(request, response, model);
 		
 		return "board/shareInfo/travelInfo/travelBoard/travel_comment_list";
 	}
 	
 	// 여행정보공유 댓글작성
 	@RequestMapping("insertComment.tc")
-	public String insertComment(HttpServletRequest reqeust, HttpServletResponse response, Model model) 
+	public String insertComment(HttpServletRequest request, HttpServletResponse response, Model model) 
 		throws ServletException, IOException{
 		
 		logger.info("Controller - insertComment.tc");
-		service.travelCommentAddAction(reqeust, response, model);
+		service.travelCommentAddAction(request, response, model);
 		
 		return "board/shareInfo/travelInfo/travelBoard/travel_comment_list";
 	}
 	
 	//여행정보공유 글 작성 페이지
 	@RequestMapping("travel_board_insert.tc")
-	public String travel_board_insert(HttpServletRequest reqeust, HttpServletResponse response, Model model) 
+	public String travel_board_insert(HttpServletRequest request, HttpServletResponse response, Model model) 
 		throws ServletException, IOException{
 		
 		logger.info("Controller - travel_board_insert.tc");
@@ -78,12 +83,70 @@ public class travelController {
 	
 	//여행정보공유 글 작성 처리페이지
 	@RequestMapping("travel_board_insertAction.tc")
-	public String travel_board_insertAction(MultipartHttpServletRequest reqeust, HttpServletResponse response, Model model) 
+	public String travel_board_insertAction(MultipartHttpServletRequest request, HttpServletResponse response, Model model) 
 		throws ServletException, IOException{
 		
 		logger.info("Controller - travel_board_insert.tc");
-		service.travelInsertAction(reqeust, response, model);
+		service.travelInsertAction(request, response, model);
 		
 		return "board/shareInfo/travelInfo/travelBoard/travelInsert_Action";
 	}
+	
+	//게시글 비밀번호 인증처리
+	@RequestMapping("password_chkAction.tc")
+	public String password_chkAction(HttpServletRequest request, HttpServletResponse response, Model model) 
+		throws ServletException, IOException{
+		
+		logger.info("Controller - password_chkAction.tc");
+		int result = service.password_chkAction(request, response, model);
+		
+		String pageNum = request.getParameter("hiddenPageNum");
+		model.addAttribute("pageNum", pageNum);
+		System.out.println("pageNum : "+ pageNum);
+		
+		System.out.println("result : " + result);
+		if(result == 0) {
+			logger.info("비밀번호 불일치");
+			int tb_num = Integer.parseInt(request.getParameter("hidden_tb_num"));
+			
+			viewPage = request.getContextPath() + "/travelDetailAction.tc?tb_num=" + tb_num +"&pageNum=" + pageNum + "&message=error";
+			response.sendRedirect(viewPage);
+		}
+		
+		return "board/shareInfo/travelInfo/travelBoard/travelboard_edit";
+	}
+	
+	//여행정보공유 글 수정 처리페이지
+	@RequestMapping("travelBoard_updateAction.tc")
+	public String travelBoard_updateAction(MultipartHttpServletRequest request, HttpServletResponse response, Model model) 
+		throws ServletException, IOException{
+		
+		logger.info("Controller - travelBoard_updateAction.tc");
+		service.travelUpdateAction(request, response, model);
+		
+		return "board/shareInfo/travelInfo/travelBoard/travelUpdate_Action";
+	}
+	
+	//여행정보공유 글 수정 처리페이지
+	@RequestMapping("travelBoard_deleteAction.tc")
+	public String travelBoard_deleteAction(HttpServletRequest request, HttpServletResponse response, Model model) 
+		throws ServletException, IOException{
+		
+		logger.info("Controller - travelBoard_deleteAction.tc");
+		service.travelDeleteAction(request, response, model);
+		
+		return "board/shareInfo/travelInfo/travelBoard/travelDelete_Action";
+	}
+	
+	//카테고리별 리스트
+	@RequestMapping("travel_search.tc")
+	public String travel_search(HttpServletRequest request, HttpServletResponse response, Model model) 
+		throws ServletException, IOException{
+		
+		logger.info("Controller - travel_search.tc");
+		
+		service.travelSearchAction(request, response, model);
+		return "board/shareInfo/travelInfo/travelBoard/travelShareSearchList";
+	}
+	
 }

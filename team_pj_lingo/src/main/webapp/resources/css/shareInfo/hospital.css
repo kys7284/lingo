@@ -1,0 +1,496 @@
+@charset "UTF-8";
+
+/* side menu start */
+#side_menu {
+    float: inline-start;
+    padding: 20px;
+    width: 300px; 
+    text-align: center;
+    border-top: 5px solid #06BBCC;
+    border-bottom: 5px solid #06BBCC;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 670px;
+    list-style: none;
+}
+
+/* 화면 너비가 1646px 이하일 때 #side_menu 숨기기 */
+@media (max-width: 1646px) {
+    #side_menu {
+        display: none;
+    }
+}
+
+#side_menu > ul > li {
+	
+    list-style: none;
+    padding: 10px 0; /* 상하 패딩 조정 */
+    width: 100%; /* 너비를 100%로 설정 */
+}
+
+#side_menu > ul > li > a {
+	font-weight: bold;
+    display: block;
+    padding: 15px; /* 패딩 조정 */
+    border-bottom: 1px solid #06BBCC;
+    background-color: #f8f9fa; /* 배경색 조정 */
+    color: #333; /* 글자색 조정 */
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+    margin-bottom: 10px;
+}
+
+#side_menu > ul > li > a:hover {
+    background-color: #06BBCC; /* 호버 시 배경색 변경 */
+    color: #FFFFFF; /* 호버 시 글자색 변경 */
+}
+/* side menu end */
+
+
+/* menu 클래스 스타일 */
+.menu {
+    display: flex;
+    justify-content: space-between; /* 박스 사이의 간격을 균등하게 분배 */
+    width: 100%; /* 전체 너비를 아래의 박스와 일치시킴 */
+    height: 80px;
+    background-color: #f8f8f8; /* 메뉴바 배경색 */
+    border-bottom: 1px solid #c2c2c2; /* 메뉴바 아래 경계선 */
+    border-top: 1px solid #c2c2c2; 
+    border-left: 1px solid #c2c2c2; 
+    border-right: 1px solid #c2c2c2; 
+    align-items: center; /* 수직 가운데 정렬 */
+  	justify-content: center; /* 수평 가운데 정렬 */
+  	font-size: 20px;
+}
+
+.menu a {
+    flex: 1; /* 모든 링크가 동일한 너비를 가지도록 설정 */
+    padding: 22px 0; /* 상하 패딩 추가 */
+    text-decoration: none;
+    color: #333;
+    background-color: #f8f9fa;
+    border-right: 1px solid #c2c2c2; /* 박스 사이의 경계선 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+    transition: background-color 0.3s;
+    font-weight: bold; /* 글자 두께 */
+    
+}
+
+.menu a:last-child {
+    border-right: none; /* 마지막 박스의 오른쪽 경계선 제거 */
+}
+
+.menu a:hover {
+    background-color: #06BBCC; /* 호버 시 배경색 변경 */
+    color: #ffffff; /* 호버 시 글자색 변경 */
+}
+/* menu 클래스 스타일 끝*/
+
+
+
+/* HTML 폰드 스타일 시작 */
+.content {
+        margin: 0 auto;
+        max-width: 1000px;
+        background-color: #ffffff;
+        border-radius: 8px;
+    }
+
+
+    .content h5 {
+        font-size: 1.5em;
+        color: #06BBCC;
+        margin-bottom: 8px;
+    }
+    
+        .content h6 {
+        color: #06BBCC;
+        margin-bottom: 8px;
+    }
+    
+
+    .accordion-button-main {
+        font-size: 1.5em;
+        color: #0599a5;
+        background-color: transparent !important; /* 배경 제거 */
+        border: none !important; /* 테두리 제거 */
+        box-shadow: none !important; /* 그림자 제거 */
+        font-size: 20px; /* 글자 크기 */
+    }
+    
+    .content h2 {
+        font-size: 1.5em;
+        color: #059ba7;
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+
+    .content h3 {
+        font-size: 1.2em;
+        color: #333;
+        margin-top: 20px;
+    }
+
+    .content ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .content ul li {
+        margin: 10px 0;
+        line-height: 1.6;
+    }
+
+    .content ul li:before {
+        content: "\2022";
+        color: #059ba7;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+    }
+
+    .content .section {
+        margin-bottom: 30px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .content .sub-section {
+        margin-bottom: 20px;
+    }
+
+    .content .highlight {
+        color: #006600;
+        font-weight: bold;
+    }
+    
+/* HTML 폰드 스타일 끝 */
+
+#container {
+   width: 100%;
+    height: 100vh;
+   margin: 0 auto;
+   background-color: #F6F6F6;
+   font-family: 'Arial', sans-serif;
+}
+
+#contents {
+   max-width: auto;
+   min-width: auto;
+   width: 100%;
+   margin: 0 auto;
+   padding: 20px;
+}
+
+#section1, #section2 {
+   padding: 80px;
+   border-bottom: 5px solid #06BBCC; 
+   background-color: #FFFFFF;
+   border-radius: 10px;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.s2_inner {
+   align: left;
+   max-width: 1250px; /* 최대 너비 제한 */
+   margin: 0 auto; /* 가운데 정렬 */
+   padding: 20px; /* 내부 여백 추가 */
+   box-sizing: border-box; /* 패딩 포함 크기 계산 */
+}
+
+.join {
+   display: flex;
+   justify-content: center; /* 유연한 정렬 */
+   align-items: center;
+   max-width: 1500px;
+   margin: 40px auto;
+   padding: 20px;
+   background-color: #FFFFFF;
+   border-radius: 10px;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+   border: 1px solid #DDD;
+}
+
+.join th {
+   font-size: 16px;
+   font-weight: bold;
+   width: 140px;
+   height: 60px;
+   text-align: center; 
+   padding: 10px 20px;
+   border-bottom: 2px solid #DDD;
+   background-color: #F3F3F3;
+   border-radius: 5px;
+}
+
+.join td {
+   padding: 10px 20px;
+   border-bottom: 2px solid #DDD;
+   background-color: #FFFFFF;
+}
+
+.input {
+   width: 320px;
+   height: 45px;
+   border: 1px solid #CCC;
+   box-sizing: border-box;
+   padding: 0 10px;
+   border-radius: 5px;
+   font-size: 14px;
+}
+
+.input:focus {
+   border-color: #0056A4; 
+   outline: none;
+   box-shadow: 0 0 5px rgba(0, 86, 164, 0.5);
+}
+
+.inputButton {
+   background-color: #06BBCC;
+   font-size: 15px;
+   padding: 10px 20px;
+   border: none;
+   border-radius: 5px;
+   color: #333;
+   cursor: pointer;
+   transition: background-color 0.3s;
+}
+
+.inputButton:hover {
+   background-color: #05d3e4; 
+}
+
+.inputButton:active {
+   background-color: #0de7f9;
+}
+
+.board_table th{
+	border-radius: 5px;
+	font-size: 16px;
+   font-weight: bold;
+   width: 50%;
+}
+
+.board_table td{
+	border-radius: 5px;
+	width: 50%;
+    text-decoration: underline #06BBCC;
+    
+}
+
+
+.accordion-button {
+   width: 320px;
+   height: 45px;
+   border: 1px solid #CCC;
+   box-sizing: border-box;
+   padding: 0 10px;
+   border-radius: 5px;
+   font-size: 14px;
+    width: auto; /* 너비를 내용에 맞게 조정 */
+    max-width: 100%; /* 부모 요소의 크기를 초과하지 않도록 제한 */
+    margin: 0 auto; /* 가운데 정렬 */
+    padding: 10px 20px; /* 패딩 조정 */
+    box-sizing: border-box; /* 패딩 포함 크기 계산 */
+}
+
+.accordion-button:focus {
+   border-color: #03858f; 
+   outline: none;
+   box-shadow: 0 0 5px rgba(0, 86, 164, 0.5);
+}
+
+.accordion-button {
+   background-color: #03858f;
+   font-size: 15px;
+   padding: 10px 20px;
+   border: none;
+   border-radius: 5px;
+   color: #333;
+   cursor: pointer;
+   transition: background-color 0.3s;
+}
+
+.accordion-button-main {
+   font-size: 20px;
+   padding: 10px 20px;
+   border: none;
+   border-radius: 5px;
+   color: #048e99;
+   cursor: pointer;
+   transition: background-color 0.3s;
+}
+
+.accordion-button:hover {
+   background-color: #d2fdff; 
+}
+
+.accordion-button:active {
+   background-color: #d1fbfe;
+}
+
+.accordion-container {
+    max-width: 800px; /* 최대 너비 제한 */
+    margin: 0 auto; /* 가운데 정렬 */
+    padding: 20px; /* 내부 여백 추가 */
+    box-sizing: border-box; /* 패딩 포함 크기 계산 */
+}
+
+/* 2x2 그리드 구조로 변경 */
+.content-area {
+	display: grid;
+	grid-template-columns: 1fr 1fr; /* 왼쪽-오른쪽 2열 */
+	grid-template-rows: auto auto; /* 위-아래 2행 */
+	gap: 10px;
+	width: 100%;
+}
+
+/* 각 섹션 스타일 */
+.search-section, .hospital-list, .hospital-info, #map {
+	border: 1px solid #f0f0f0;
+	padding: 10px;
+	background: #ffffff;
+}
+
+
+/* 컨텐츠 전체 배치 */
+.container {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+
+
+/* 병원 검색 섹션 */
+.search-section {
+	display: grid;
+	grid-template-columns: 1fr 1fr; /* 2열 배치 */
+	gap: 10px;
+	border-radius: 8px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	background-color: #ffffff;
+	width: max;
+}
+
+.search-section {
+    display: flex; /* 선택 요소 가로 정렬 */
+    align-items: center; /* 수직 정렬 */
+    background-color: #ffffff; /* 배경색 설정 */
+    padding: 10px; /* 내부 여백 설정 */
+    border-radius: 10px; /* 테두리 둥글게 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 그림자 효과 추가 */
+}
+
+.search-section label {
+    font-size: 16px; /* 글자 크기 설정 */
+    font-weight: bold; /* 글자 두껍게 */
+    color: #333; /* 글자색 설정 */
+    margin-right: 8px; /* 오른쪽 여백 추가 */
+}
+
+.search-section {
+    display: flex;
+    gap: 10px; /* 요소 간 간격 */
+    align-items: center; /* 세로 정렬 */
+    width:100%;
+    justify-content: center; /* 가운데 정렬 */
+    padding: 20 300px; /* 좌우 여백 추가 */
+}
+
+.search-section label {
+    white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+}
+
+.search-section select {
+    flex: 1; /* 동일한 너비 차지 */
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+    max-width: 100%; /* 부모 요소에 맞게 조정 */
+}
+.search-section select:hover, .search-section select:focus {
+    border-color: #ffffff; /* 포커스 시 테두리 색 변경 */
+    background-color: #ffffff; /* 포커스 시 배경색 변경 */
+    outline: none; /* 기본 아웃라인 제거 */
+}
+
+/* 병원 리스트와 지도는 아래쪽에 배치 */
+.list-map-section {
+	display: grid;
+	grid-template-columns: 1fr 1fr; /* 병원 리스트 & 지도 */
+	gap: 10px;
+	
+}
+.hospital-list {
+    padding: 10px; /* 내부 여백 설정 */
+    width: 100%; /* 전체 너비 사용 */
+    border-radius: 10px; /* 테두리 둥글게 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 그림자 효과 추가 */
+}
+
+.hospital-list h3 {
+    font-size: 1.5em;
+    color: #06BBCC;
+    margin-bottom: 8px;
+}
+
+.hospital-list ul {
+    list-style: none; /* 기본 리스트 스타일 제거 */
+    padding: 0; /* 내부 패딩 제거 */
+    font-weight: bold;
+}
+
+.hospital-list li {
+    color: #606060; /* 글자색 설정 */
+    font-size: 16px; /* 글자 크기 설정 */
+    padding: 5px 0; /* 상하 여백 조정 */
+    font-weight: bold;
+    transition: color 0.3s ease, letter-spacing 0.3s ease; /* 색상 및 자간 전환 효과 */
+}
+
+.hospital-list li:hover {
+    color: #06BBCC; /* 호버 시 글자색 변경 */
+    letter-spacing: 1px; /* 호버 시 글자 간격 증가 */
+}
+
+/* 병원정보 */
+.hospital-info {
+    padding: 10px; /* 내부 여백 설정 */
+    width: 100%; /* 전체 너비 사용 */
+    border-radius: 10px; /* 테두리 둥글게 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 그림자 효과 추가 */
+}
+
+.hospital-info h3 {
+    font-size: 1.5em;
+    color: #06BBCC;
+    margin-bottom: 8px;
+}
+
+.hospital-info ul {
+    list-style: none; /* 기본 리스트 스타일 제거 */
+    padding: 0; /* 내부 패딩 제거 */
+}
+
+.hospital-info p {
+    color: #606060; /* 글자색 설정 */
+    font-weight: bold;
+    font-size: 16px; /* 글자 크기 설정 */
+    padding: 5px 0; /* 상하 여백 조정 */
+    transition: color 0.3s ease, letter-spacing 0.3s ease; /* 색상 및 자간 전환 효과 */
+}
+
+#map, #roadview {
+    flex: 1; /* 동일한 크기로 배치 */
+    height: 400px; /* 지도 및 로드뷰 높이 설정 */
+    border: 1px solid #ddd; /* 경계선 추가 */
+    border-radius: 5px;
+    min-width: 300px; /* 최소 너비 설정 */
+}

@@ -78,16 +78,12 @@
 				return false;
 			}
 			
-			
 			document.editForm.action="${path}/free_board_updateAction.fb";
 			document.editForm.submit();
 		});
 		
 		// [게시글 삭제 버튼] 클릭시 [게시글 삭제 화면]버튼
 		$("#btnDelete").click(function() {
-			
-			
-			
 			document.editForm.action="${path}/free_board_deleteAction.fb";
 			document.editForm.submit();
 		});

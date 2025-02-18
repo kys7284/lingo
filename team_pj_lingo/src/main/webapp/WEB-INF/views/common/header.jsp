@@ -111,8 +111,8 @@
                     <div class="dropdown-menu fade-down m-0">
                         <a href="${path}/life.eq" class="dropdown-item">생활정보</a>
                         <a href="${path}/travelInfo.tc" class="dropdown-item">여행정보</a>
-                        <a href="javascript:alert('의료정보 개발중입니다.');" onfocus="this.blur()" class="dropdown-item">의료정보</a>
-                        <a href="javascript:alert('법률정보 개발중입니다.');" onfocus="this.blur()" class="dropdown-item">법률정보</a>
+                        <a href="${path}/medi.hl" class="dropdown-item">의료정보</a>
+						<a href="${path}/low.eq" class="dropdown-item">법률정보</a>
                     </div>
                 </div>
                 
@@ -120,8 +120,9 @@
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">알림마당</a>
                     <div class="dropdown-menu fade-down m-0">                   
                         <a href="${path}/notice_list.no" onfocus="this.blur()" class="dropdown-item">공지사항</a>
-                        <a href="javascript:alert('자주하는질문 개발중입니다.');" onfocus="this.blur()" class="dropdown-item">자주하는질문</a>
-                        <a href="javascript:alert('꽌련기사 개발중입니다.');" onfocus="this.blur()" class="dropdown-item">관련기사</a>
+                        <a href="${path}/faq_list.faq" onfocus="this.blur()" class="dropdown-item">자주하는질문</a>
+                        <a href="javascript:alert('신고센터 개발중입니다.');" onfocus="this.blur()" class="dropdown-item">신고센터</a>
+                        <a href="javascript:alert('관련기사 개발중입니다.');" onfocus="this.blur()" class="dropdown-item">관련기사</a>
                     </div>
                 </div>
                 

@@ -119,24 +119,34 @@ public class travelBoardServiceImpl implements travelBoardService{
 		FileOutputStream fos = null;
 		
 		try {
-			file.transferTo(new File(saveDir + file.getOriginalFilename()));	//import java.io.File
-			fis = new FileInputStream(saveDir + file.getOriginalFilename());
-			fos = new FileOutputStream(realDir + file.getOriginalFilename());
+			String tb_img = null;
 			
-			int data = 0;
-			while((data = fis.read()) != -1) {
-				fos.write(data);
+			if(file != null && !file.isEmpty()) {
+				file.transferTo(new File(saveDir + file.getOriginalFilename()));	//import java.io.File
+				fis = new FileInputStream(saveDir + file.getOriginalFilename());
+				fos = new FileOutputStream(realDir + file.getOriginalFilename());
+				
+				int data = 0;
+				while((data = fis.read()) != -1) {
+					fos.write(data);
+				}
+				tb_img = "/team_pj_lingo/resources/tb_upload/"+ file.getOriginalFilename();
+				System.out.println("tb_img : " + tb_img);
+			
+			}else {
+				// 이미지가 업로드되지 않았을 경우 처리
+	            // tb_img를 null로 유지하고 데이터베이스 삽입 로직에서 null 처리
+	            System.out.println("No image uploaded.");
+				
 			}
+			
 			// 화면에서 입력받은 값 가져오기
 			// dto 생성후 setter로 값을 담는다.
 			travelBoardDTO dto = new travelBoardDTO(); 
-			dto.setTb_writer((String)request.getSession().getAttribute("sessionId"));
+			dto.setTb_writer((String)request.getSession().getAttribute("hiddenId"));
 			dto.setTb_password(request.getParameter("tb_password"));
 			dto.setTb_title(request.getParameter("tb_title"));
 			
-			// 이미지 가져오기
-			String tb_img = "/team_pj_lingo/resources/tb_upload/"+ file.getOriginalFilename();
-			System.out.println("tb_img : " + tb_img);
 			dto.setTb_img(tb_img);
 			
 			dto.setTb_content(request.getParameter("tb_content"));
@@ -150,25 +160,146 @@ public class travelBoardServiceImpl implements travelBoardService{
 			if(fos!=null)fos.close();
 		}
 	}
-		
+	
 	//게시글 수정&삭제시 비밀번호 인증
 	@Override
-	public int password_chkAction(HttpServletRequest request, HttpServletResponse response, Model model) {
-		return 0;
+	public int password_chkAction(HttpServletRequest request, HttpServletResponse response, Model model) 
+			throws ServletException,IOException {
+		System.out.println("travelBoardService - password_chkAction");
+
+		//파라미터 입력값 가져오기
+		int tb_num = Integer.parseInt(request.getParameter("hidden_tb_num"));
+		String tb_password = request.getParameter("tb_password");
+		
+		//map에다가 담기
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("tb_num", tb_num);
+		map.put("tb_password", tb_password);
+		
+		int result = dao.password_chk(map);
+		
+		travelBoardDTO dto = null;
+		
+		if(result != 0) {
+			dto = dao.travelBoardDetail(tb_num);
+		}
+		model.addAttribute("dto",dto);
+		return result;
 	}
 
 	//게시글 수정처리
 	@Override
-	public void travelUpdateAction(HttpServletRequest request, HttpServletResponse response, Model model) {
+	public void travelUpdateAction(MultipartHttpServletRequest request, HttpServletResponse response, Model model) 
+			throws ServletException,IOException {
+		System.out.println("travelBoardService - travelUpdateAction");
+		int hiddenPageNum = Integer.parseInt(request.getParameter("hiddenPageNum"));
+		int hidden_tb_num = Integer.parseInt(request.getParameter("hidden_tb_num"));
+		String hidden_tb_img = request.getParameter("hidden_tb_img");
 		
+		System.out.println("hiddenPageNum :" + hiddenPageNum);
+		System.out.println("hidden_tb_num" + hidden_tb_num);
+		System.out.println("hidden_tb_img" + hidden_tb_img);
+		
+		String tb_img = hidden_tb_img;
+		MultipartFile file = request.getFile("tb_img");
+		System.out.println("file :" + file);
+		
+		//input 경로
+		String saveDir = request.getSession().getServletContext().getRealPath("/resources/tb_upload/");
+		System.out.println("saveDir :" + saveDir);
+		
+		//이미지추가를위한 샘플이미지 경로(upload 폴더 생성후 우클릭 > properties > location 정보 복사후 붙여넣기),맨뒤\\추가
+		String realDir="D:\\DEV\\workspace_lingo\\lingo\\team_pj_lingo\\src\\main\\webapp\\resources\\tb_upload\\";
+		System.out.println("realDir : " + realDir);
+		
+		FileInputStream fis = null;
+		FileOutputStream fos = null;
+		
+		try {
+			tb_img = null;
+			
+			if(file != null && !file.isEmpty()) {
+				file.transferTo(new File(saveDir + file.getOriginalFilename()));	//import java.io.File
+				fis = new FileInputStream(saveDir + file.getOriginalFilename());
+				fos = new FileOutputStream(realDir + file.getOriginalFilename());
+				
+				int data = 0;
+				while((data = fis.read()) != -1) {
+					fos.write(data);
+				}
+				tb_img = "/team_pj_lingo/resources/tb_upload/"+ file.getOriginalFilename();
+				System.out.println("tb_img : " + tb_img);
+			
+			}else {
+				if(tb_img == null || tb_img.isEmpty()) {
+					tb_img = null;
+				}
+				
+			}
+		}catch (IOException e) {
+			e.printStackTrace();
+		}finally {
+			if(fis!=null)fis.close();
+			if(fos!=null)fos.close();
+		}
+	
+		System.out.println("tb_img : " + tb_img);
+
+		// 화면에서 입력받은 값 가져오기
+		// dto 생성후 setter로 값을 담는다.
+		travelBoardDTO dto = new travelBoardDTO(); 
+		dto.setTb_num(hidden_tb_num);
+		dto.setTb_password(request.getParameter("tb_password"));
+		dto.setTb_title(request.getParameter("tb_title"));
+		
+		dto.setTb_img(tb_img);
+		
+		dto.setTb_content(request.getParameter("tb_content"));
+		dto.setTb_category(request.getParameter("tb_category"));
+		
+		int updateCnt = dao.updateTravelBoard(dto);
+		
+		model.addAttribute("updateCnt", updateCnt);
+		model.addAttribute("hiddenPageNum", hiddenPageNum);
+		model.addAttribute("hidden_tb_num", hidden_tb_num);
 	}
 
 	//게시글 삭제처리
 	@Override
 	public void travelDeleteAction(HttpServletRequest request, HttpServletResponse response, Model model) {
+		System.out.println("travelBoardService - travelDeleteAction");
 		
+		int tb_num = Integer.parseInt(request.getParameter("hidden_tb_num"));
+		System.out.println("tb_num : " + tb_num);
+		int updateCnt = dao.deleteTravelBoard(tb_num);
+		model.addAttribute("updateCnt", updateCnt);
 	}
-
 	
+	//카테고리별 검색
+	@Override
+	public void travelSearchAction(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException {
+		System.out.println("travelBoardService - travelSearchAction");
+
+		String tb_category = request.getParameter("tb_category");
+		System.out.println("카테고리 = "+ tb_category);
+		
+		String pageNum = request.getParameter("pageNum");
+		Paging paging = new Paging(pageNum);
+		int total = dao.searchCnt(tb_category);
+		paging.setTotalCount(total);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		int start = paging.getStartRow();
+		int end = paging.getEndRow();
+		
+		map.put("tb_category", tb_category);
+		map.put("start", start);
+		map.put("end", end);
+		
+		List<travelBoardDTO> list = dao.searchList(map);
+		model.addAttribute("paging", paging);
+		model.addAttribute("searchList",list);
+	}
 
 }

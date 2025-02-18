@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+     
+     
+<mapper namespace="test.team.team_pj_lingo.shareInfo.low.LowInfoDAO">
+
+<!-- 게시글 목록 -->
+<resultMap id="BoardResultMap" type="test.team.team_pj_lingo.shareInfo.low.LowInfoDTO">
+    <result property="slboard_num" column="slboard_num"/>
+    <result property="slboard_content" column="slboard_content"/>
+    <result property="slboard_comment_count" column="comment_count"/>
+</resultMap>
+
+<select id="lowInfoList" parameterType="java.util.Map" resultMap="BoardResultMap">
+    SELECT A.*,
+           NVL(
+               (SELECT COUNT(*)
+                FROM sharelowcomment_tbl c
+                WHERE c.slboard_num_fk = A.slboard_num), 0) AS comment_count
+    FROM
+        (SELECT A.*, 
+                rownum AS rn
+        FROM
+            (SELECT *
+             FROM sharelow_tbl
+             WHERE slboard_show = 'Y'
+             ORDER BY slboard_num DESC) A
+        ) A
+    WHERE A.rn BETWEEN #{start} AND #{end}
+</select>
+
+	<!-- 게시글 갯수 구하기 -->
+	<select id="boardCnt" resultType="int">
+		SELECT COUNT(*) AS cnt
+ 		  FROM sharelow_tbl
+ 		 WHERE slboard_show = 'Y'
+	</select>
+	
+	<!-- 게시판 상세페이지 -->
+	<select id="lowInfoDetail" parameterType="int" resultType="test.team.team_pj_lingo.shareInfo.low.LowInfoDTO">
+		SELECT * FROM sharelow_tbl
+ 		 WHERE slboard_num = #{slboard_num}
+	</select>
+	
+	<!-- 게시글 작성처리 -->
+	<insert id="insertLowInfo" parameterType="test.team.team_pj_lingo.shareInfo.low.LowInfoDTO">
+		INSERT INTO sharelow_tbl (slboard_num, slboard_content, slboard_writer, slboard_readCnt, slboard_regDate, slboard_comment_count, slboard_img)
+		VALUES((SELECT NVL(MAX(slboard_num)+1, 1)FROM sharelow_tbl), #{slboard_content} ,#{slboard_writer}, 0, sysdate, 0, #{slboard_img, jdbcType=VARCHAR})
+	</insert>
+	
+	<!-- 게시글 삭제처리 -->   
+	<update id="deleteLowInfo" parameterType="int" >
+	      UPDATE sharelow_tbl 
+	       SET slboard_show = 'N' 
+	       WHERE slboard_num = #{slboard_num}
+	</update>
+	
+	<!-- 댓글 목록 -->
+	<select id="lowInfoCommentList" parameterType="int" resultType="test.team.team_pj_lingo.shareInfo.low.LowInfoCommentDTO">
+			SELECT *
+			  FROM
+			    (SELECT A.*,
+			           rownum As rn
+			      FROM 
+			            (SELECT * FROM sharelowcomment_tbl c,
+			                           sharelow_tbl b 
+			                WHERE b.slboard_num = c.slboard_num_fk
+			                  AND slboard_num = #{slboard_num}
+			             ORDER BY slcomment_num DESC) A 
+			    ) 
+			ORDER BY rn DESC
+	</select>
+	
+	<!-- 댓글 작성 -->
+	<insert id="insertComment" parameterType="test.team.team_pj_lingo.shareInfo.low.LowInfoCommentDTO">
+		INSERT INTO sharelowcomment_tbl(slcomment_num, slboard_num_fk, slcomment_writer, slcomment_content, slcomment_regDate) 
+		VALUES((SELECT NVL(MAX(slcomment_num)+1, 1) FROM sharelowcomment_tbl), #{slboard_num_fk}, #{slcomment_writer}, #{slcomment_content}, sysdate)
+	</insert>
+</mapper>

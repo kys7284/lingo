@@ -30,18 +30,16 @@ public class NoticeController {
 		
 		service.noticeListAction(request, response, model);
 		return "madang/notice/notice_list";
-				
 	}
 	
-	//공지사항 목록
+	//공지사항 상세페이지
 	@RequestMapping("/noticeDetailAction.no")
-	public String noticeDetailAction(HttpServletRequest request, HttpServletResponse response, Model model) 
-			throws ServletException, IOException{
-		logger.info("<<< url ==>  /noticeDetailAction.no >>>");
+	public String notice_detailAction(HttpServletRequest request, HttpServletResponse response, Model model) 
+		throws ServletException, IOException{
+		logger.info("<<< url ==>  /notice_detailAction.no >>>");
 		
 		service.noticeDetailAction(request, response, model);
-		
 		return "madang/notice/notice_detailAction";
-				
 	}
+	
 }

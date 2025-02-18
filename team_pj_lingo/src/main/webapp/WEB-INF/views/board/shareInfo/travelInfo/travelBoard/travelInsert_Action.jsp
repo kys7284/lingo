@@ -80,7 +80,7 @@
 						<script type="text/javascript">
 							setTimeout(function() {
 							alert("게시글등록 실패");
-							window.location="${path}/travel_board_insertAction.tc";
+							window.location="${path}/travel_board_insert.tc";
 							}, 1000);
 						</script>
 					</c:if>		
