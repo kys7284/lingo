@@ -55,5 +55,12 @@
 		DELETE	FROM  notice_tbl
 		WHERE notice_num = #{notice_num}
 	</delete> 
+	
+	<!-- 조회수증가 -->
+	<update id="plusReadCnt" parameterType="int">
+		UPDATE	notice_tbl
+		SET		notice_readCnt = notice_readCnt+1
+		WHERE   notice_num = #{notice_num}
+	</update>
 
 </mapper>
