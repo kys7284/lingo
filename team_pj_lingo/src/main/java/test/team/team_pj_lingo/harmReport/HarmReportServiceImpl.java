@@ -55,8 +55,10 @@ public class HarmReportServiceImpl implements HarmReportService {
 			dto.setHarm_report_content(request.getParameter("harm_report_content"));
 			dto.setHarm_report_writer((String)request.getSession().getAttribute("hiddenId"));
 			dto.setHarm_report_regDate(new Timestamp(System.currentTimeMillis()));
+			String mem_id = dto.getBoard_writer();
 			
 			int insertCnt = dao.HarmReportInsert(dto);
+			int reportCnt = dao.HarmReportUpdate(mem_id);
 			
 			model.addAttribute("insertCnt", insertCnt);
 	

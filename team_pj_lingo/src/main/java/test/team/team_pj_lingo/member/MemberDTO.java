@@ -19,6 +19,7 @@ public class MemberDTO {
 	private Timestamp mem_regdate;
 	private String mem_status;
 	private int rn;
+	private int member_reportCnt;
 	
 
 
@@ -27,7 +28,7 @@ public class MemberDTO {
 	}
 	
 	public MemberDTO(int mem_no, String mem_id, String mem_pwd, String mem_name, String mem_country, Date mem_birthday,
-			String mem_address, String mem_hp, int mem_rank, String mem_email, String mem_comment,
+			String mem_address, String mem_hp, int mem_rank, String mem_email, String mem_comment,int member_reportCnt,
 			Timestamp mem_regdate, String mem_status,int rn) {
 		super();
 		this.mem_no = mem_no;
@@ -44,6 +45,7 @@ public class MemberDTO {
 		this.mem_regdate = mem_regdate;
 		this.mem_status = mem_status;
 		this.rn = rn;
+		this.member_reportCnt = member_reportCnt;
 	}
 
 
@@ -161,13 +163,24 @@ public class MemberDTO {
 		this.mem_status = mem_status;
 	}
 
+	public int getMember_reportCnt() {
+		return member_reportCnt;
+	}
+
+	public void setMember_reportCnt(int member_reportCnt) {
+		this.member_reportCnt = member_reportCnt;
+	}
+
 	@Override
 	public String toString() {
 		return "MemberDTO [mem_no=" + mem_no + ", mem_id=" + mem_id + ", mem_pwd=" + mem_pwd + ", mem_name=" + mem_name
 				+ ", mem_country=" + mem_country + ", mem_birthday=" + mem_birthday + ", mem_address=" + mem_address
 				+ ", mem_hp=" + mem_hp + ", mem_rank=" + mem_rank + ", mem_email=" + mem_email + ", mem_comment="
-				+ mem_comment + ", mem_regdate=" + mem_regdate + ", mem_status=" + mem_status + ", rn=" + rn + "]";
+				+ mem_comment + ", mem_regdate=" + mem_regdate + ", mem_status=" + mem_status + ", rn=" + rn
+				+ ", member_reportCnt=" + member_reportCnt + "]";
 	}
+
+	
 
 	
 	

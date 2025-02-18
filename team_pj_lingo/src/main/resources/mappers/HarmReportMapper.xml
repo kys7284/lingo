@@ -63,8 +63,14 @@
 		SELECT	*
 		FROM	harm_report_tbl
 		WHERE	harm_report_writer = #{harm_report_writer}
-	
 	</select>
+	
+	<update id="harmReportUpdate" parameterType="String">
+			UPDATE member_tbl
+			SET member_reportCnt = member_reportCnt+1
+			WHERE mem_id = #{mem_id}
+	</update>
+	
 	
 
 </mapper>

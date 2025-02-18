@@ -25,4 +25,7 @@ public interface HarmReportDAO {
 	// 신고된 게시글 삭제
 	public int HarmBoadreDelete(int harm_report_num);
 	
+	// 게시글 작성자 신고카운팅
+	public int HarmReportUpdate(String mem_id);
+
 }

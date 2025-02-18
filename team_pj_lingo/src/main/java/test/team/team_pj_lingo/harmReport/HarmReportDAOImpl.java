@@ -66,6 +66,16 @@ public class HarmReportDAOImpl implements HarmReportDAO  {
 		return deleteCnt;
 	}
 
+	// 게시글 작성자 신고 카운팅
+	@Override
+	public int HarmReportUpdate(String mem_id) {
+
+			int reportCnt = sql.update("test.team.team_pj_lingo.harmReport.HarmReportDAO.harmReportUpdate", mem_id);
+		
+		
+		return reportCnt;
+	}
+
 
 	
 

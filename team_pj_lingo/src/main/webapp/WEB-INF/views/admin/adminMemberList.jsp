@@ -5,11 +5,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" 
-integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title> 회원목록 </title>
@@ -28,6 +26,7 @@ integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqrupt
 				      <th scope="col">이름</th>
 				      <th scope="col">국적</th>
 				      <th scope="col">생년월일</th>
+				      <th scope="col">신고 건수</th>
 				      <th scope="col">주소</th>
 				      <th scope="col">등급</th>
 				      <th scope="col">이메일</th>
@@ -46,6 +45,7 @@ integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqrupt
 				      <td>${list.mem_name }</td>
 				      <td>${list.mem_country }</td>
 				      <td>${list.mem_birthday }</td>
+				      <td>${list.member_reportCnt }</td>
 				      <td>${list.mem_address }</td>
 				      <td>
 				      	<c:choose>
@@ -68,7 +68,7 @@ integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqrupt
 				  </tbody>
 				  <tfoot>
 				  	<tr>
-				    	<td colspan="10" align="center">
+				    	<td colspan="11" align="center">
 												
 							<!-- 이전 버튼 활성화  -->
 							<c:if test="${page.startPage > 10}">
