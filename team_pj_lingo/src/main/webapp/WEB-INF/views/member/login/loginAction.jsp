@@ -70,24 +70,33 @@
                   <form name="loginform" action="loginAction.do" method="post">
                      <!-- 세션이 없는 경우 : 로그인 실패 -->
                      
-                  <%-- <c:if test="${sessionScope.sessionID == null}"> --%>
-                     <c:if test="${selectCnt == 0}">
+                     <c:if test="${selectCnt == 0} ">
                      <script type="text/javascript">
                      	alert("아이디와 비밀번호가 일치하지 않습니다~~~");                     	
-                     	</script>
+                     </script>
                      	
                      	<table>
                         <tr>
                            <th> * 아이디 </th>
                            <td>
-                              <input type="text" class="input" name="mem_id" size="30" placeholder="공백없이 20자 이내로 작성" required autofocus>
+                              <input type="text" class="input" name="mem_id" size="30" placeholder="공백없이 20자 이내로 작성" autofocus>
                            </td>
                         </tr>
                         <tr>
                            <th> * 비밀번호 </th>
                            <td>
-                              <input type="password" class="input" name="mem_pwd" size="20" placeholder="공백없이 20자 이내로 작성" required>
+                              <input type="password" class="input" name="mem_pwd" size="20" placeholder="공백없이 20자 이내로 작성">
                            </td>
+                        </tr>
+                        
+                        <tr>
+	                        <td colspan="2" >
+	                           <div align="right">
+	                             <button type="submit" id="id-find" onclick="window.location='${path}/findId.do'">아이디 찾기</button>
+	                             <button type="submit" id="pwd-find" onclick="window.location='${path}/findPwd.do'">비밀번호 찾기</button>
+	                           </div>
+	                           
+	                        </td>
                         </tr>
                         
                         <tr>

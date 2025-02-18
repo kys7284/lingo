@@ -219,6 +219,7 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		dto.setFb_title(request.getParameter("fb_title"));
 		dto.setFb_img(fb_img)	;	// ※누락 주의※
 		dto.setFb_content(request.getParameter("fb_content"));
+		dto.setFb_password(request.getParameter("fb_password"));
 		
 		// 4단계. 싱글톤 방식으로 DAO 객체 생성, 다형성 적용=annotation으로 대체
 		// 5단계 상품수정 update

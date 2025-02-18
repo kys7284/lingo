@@ -35,4 +35,12 @@ public interface MemberService {
 	public void memberDeleteAction(HttpServletRequest request, HttpServletResponse response, Model model) 
 			throws ServletException, IOException;
 	
+	// 아이디 찾기 처리
+	public void findIdAction(HttpServletRequest request, HttpServletResponse response, Model model) 
+			throws ServletException, IOException;
+	
+	// 비밀번호 찾기 처리
+	public void findPwdAction(HttpServletRequest request, HttpServletResponse response, Model model) 
+			throws ServletException, IOException;	
+	
 }

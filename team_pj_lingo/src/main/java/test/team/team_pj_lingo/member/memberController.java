@@ -141,6 +141,58 @@ public class memberController {
 		return "common/main";
 	}
 	
+    // 아이디 찾기
+    @RequestMapping("/findId.do")
+    public String findId(HttpServletRequest request, HttpServletResponse response, Model model)
+    	throws ServletException, IOException {
+        logger.info("<<< url ==> findId.do >>>");
+        return "member/findId/findId";
+    }
+    
+    // 아이디 찾기 처리
+    @RequestMapping("/findIdAction.do")
+    public String findIdAction(HttpServletRequest request, HttpServletResponse response, Model model)
+        	throws ServletException, IOException {
+        logger.info("<<< url ==> findIdAction.do >>>");
+        
+        service.findIdAction(request, response, model);
+        return "member/findId/findIdAction";
+    }
+    
+    // 비밀번호 찾기
+    @RequestMapping("/findPwd.do")
+    public String findPwd(HttpServletRequest request, HttpServletResponse response, Model model)
+    	throws ServletException, IOException {
+        logger.info("<<< url ==> findPwd.do >>>");
+        return "member/findId/findPwd";
+    }
+    
+    // 비밀번호 찾기 처리
+    @RequestMapping("/findPwdAction.do")
+    public String findPwdAction(HttpServletRequest request, HttpServletResponse response, Model model)
+        	throws ServletException, IOException {
+        logger.info("<<< url ==> findPwdAction.do >>>");
+        
+        service.findPwdAction(request, response, model);
+        return "member/findId/findPwdAction";
+    }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	// 텍스트 번역 . 진행중
 	@RequestMapping("/textTranslate.do")
@@ -157,6 +209,7 @@ public class memberController {
 		
 		return "tslService/fileTranslate";
 	}
+	
 	
 	
 	

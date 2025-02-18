@@ -57,7 +57,8 @@
 	 UPDATE FREE_BOARD_TBL	 
 	    SET FB_TITLE = #{fb_title},
 	        FB_IMG =#{fb_img},
-	        FB_CONTENT = #{fb_content}
+	        FB_CONTENT = #{fb_content},
+	        FB_PASSWORD = #{fb_password}
 	 WHERE FB_NUM = #{fb_num}
 	 </update>
 	 

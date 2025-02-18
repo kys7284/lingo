@@ -25,5 +25,11 @@ public interface MemberDAO {
     
     // 사용자권한 체크
     public String statusCheck(String mem_id);
+    
+    // 아이디 찾기
+    public String findMemberId(Map<String, Object> map);
+    
+    // 비밀번호 찾기
+    public String findMemberPwd(Map<String, Object> map);
 	
 }

@@ -9,7 +9,7 @@
 <!-- 반응형 웹  -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>login</title>
+<title>findId</title>
 
 <!-- css  -->
 <!-- 기존설정 그대로 -->
@@ -46,66 +46,108 @@
 <script src="${path}/resources/js/member/join.js" defer></script> 
 
 	<link rel="stylesheet" href="${path}/resources/css/member/login.css">
+	
+<script type="text/javascript">
+	$(function() {
+		$('#BtnFindId').click(function() {
+			
+			const name = $("#mem_name").val();
+			const hp1 = $("#mem_hp1").val();
+			const hp2 = $("#mem_hp2").val();
+			const hp3 = $("#mem_hp3").val();
+				if(name == "") {
+					 alert("이름을 입력하세요 !"); 				
+					$("#mem_name").focus();
+					return false;
+				}
+				if(hp1 == "") {
+					 alert("전화번호를 입력하세요 !"); 				
+					$("#mem_hp1").focus();
+					return false;
+				}
+				if(hp2 == "") {
+					 alert("전화번호를 입력하세요 !"); 				
+					$("#mem_hp2").focus();
+					return false;
+				}
+				if(hp3 == "") {
+					 alert("전화번호를 입력하세요 !"); 				
+					$("#mem_hp3").focus();
+					return false;
+				}
+				
+				document.findIdform.action="${path}/findIdAction.do";
+				document.findIdform.submit();
+		});
+	});
+</script>
+
+
 
 </head>
 <body>
+
 <div class="wrap">
    <!-- header 시작 -->
    <%@include file="/WEB-INF/views/common/header.jsp" %> 
    <!-- header 끝    -->
 
-   <!-- 컨텐츠 시작 -->
-   <div id="container">
+	<!-- 컨텐츠 시작 -->
+	<div id="container">
       <div id="contents">
          <!-- 상단 중앙1 시작  -->
          <div id="section1">
-            <h1 align="center"> 로그인 </h1>
+            <h1 align="center"> 아이디 찾기 </h1>
          </div>
          <!-- 상단 중앙2 시작  -->
          <div id="section2">
             <div id="s2_inner">
                <div class="join">
-                  <form name="loginform" action="loginAction.do" method="post">
-                     <table>
-                        <tr>
-                           <th> * 아이디 </th>
-                           <td>
-                              <input type="text" class="input" name="mem_id" size="30" placeholder="공백없이 20자 이내로 작성" required autofocus>
-                           </td>
-                        </tr>
-                        <tr>
-                           <th> * 비밀번호 </th>
-                           <td>
-                              <input type="password" class="input" name="mem_pwd" size="20" placeholder="공백없이 20자 이내로 작성" required>
-                           </td>
-                        </tr>
-                        
-                        <tr>
-	                        <td colspan="2" >
-	                           <div align="right">
-	                             <button type="submit" id="id-find" onclick="window.location='${path}/findId.do'">아이디 찾기</button>
-	                             <button type="submit" id="pwd-find" onclick="window.location='${path}/findPwd.do'">비밀번호 찾기</button>
+               	<form name="findIdform" action="findIdAction.do" method="post">
+                    <table>
+	                        <tr>
+	                           <th> 이름 </th>
+	                           <td>
+	                              <input type="text" class="input" id="mem_name" name="mem_name" size="50" placeholder="이름입력" autofocus>
+	                           </td>
+	                        </tr>
+	                        <tr>
+	                           <th> 전화번호 </th>
+	                           <td> 
+									<input type="text" class="input" id="mem_hp1" name="mem_hp1" size="3" style="width:50px">
+									-
+									<input type="text" class="input" id="mem_hp2" name="mem_hp2" size="4" style="width:70px">
+									-
+									<input type="text" class="input" id="mem_hp3" name="mem_hp3" size="4" style="width:70px">
+								</td>
+	                        </tr>
+	                        
+	                        <tr>
+	                           <td colspan="3" style="border-bottom: none">
+	                           <br>
+	                           <div align="center">
+	                              <input class="inputButton" id="BtnFindId" type="submit" value="아이디 찾기">
 	                           </div>
-	                        </td>
-                        </tr>
-                        
-                        <tr>
-                           <td colspan="2" style="border-bottom: none">
-                           <br>
-                           <div align="right">
-                              <input class="inputButton" type="submit" value="로그인">
-                              <input class="inputButton" type="reset" value="초기화">
-                              <input class="inputButton" type="button" value="회원가입" onclick="window.location='${path}/join.do'">
-                           </div>
-                           </td>
-                        </tr>   
-                     </table>
-                  </form>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
+	                           </td>
+	                        </tr>   
+	                        
+	                        <tr>
+		                        <td colspan="2">
+		                           <div>
+		                             <button type="submit" id="id-find" onclick="window.location='${path}/join.do'" style="width:50%; float:left">회원가입 하기</button>
+		                           </div>
+		                           <div>  
+		                             <button type="submit" id="pwd-find" onclick="window.location='${path}/login.do'" style="width:50%; float:right">로그인 하기</button>
+		                           </div>
+		                        </td>
+	                        </tr>
+	                     </table>
+	                  </form>
+	               </div>
+	            </div>
+	         </div>
+	      </div>
+	   </div>
       <!-- 컨텐츠 끝 -->
       
 
