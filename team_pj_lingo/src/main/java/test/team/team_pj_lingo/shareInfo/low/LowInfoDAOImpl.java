@@ -61,20 +61,20 @@ public class LowInfoDAOImpl implements LowInfoDAO{
 	}
 
 	
-//	// 댓글 목록 화면
-//	@Override
-//	public List<LowInfoCommentDTO> freeCommentList(int fb_num) {
-//		System.out.println("LowInfoDAOImpl - freeCommentList()");
-//		List<LowInfoCommentDTO> list = sqlSession.selectList("test.team.team_pj_lingo.freeBoard.FreeBoardDAO.freeCommentList", fb_num);
-//		return list;
-//	}
-//
-//	// 댓글 작성 처리
-//	@Override
-//	public int insertComment(LowInfoCommentDTO dto) {
-//		System.out.println("LowInfoDAOImpl - insertComment()");
-//		int insertCnt = sqlSession.insert("test.team.team_pj_lingo.freeBoard.FreeBoardDAO.insertComment", dto);
-//		return insertCnt;
-//	}
+	// 댓글 목록 화면
+	@Override
+	public List<LowInfoCommentDTO> lowInfoCommentList(int slboard_num) {
+		System.out.println("LowInfoDAOImpl - lowInfoCommentList()");
+		List<LowInfoCommentDTO> list = sqlSession.selectList("test.team.team_pj_lingo.shareInfo.low.LowInfoDAO.lowInfoCommentList", slboard_num);
+		return list;
+	}
+
+	// 댓글 작성 처리
+	@Override
+	public int insertComment(LowInfoCommentDTO dto) {
+		System.out.println("LowInfoDAOImpl - insertComment()");
+		int insertCnt = sqlSession.insert("test.team.team_pj_lingo.shareInfo.low.LowInfoDAO.insertComment", dto);
+		return insertCnt;
+	}
 
 }

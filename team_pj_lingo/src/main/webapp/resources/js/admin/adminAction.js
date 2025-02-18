@@ -1,98 +1,52 @@
-/**
- * 
- */
- $(document).ready(function() {
- 
- 
-  $("#memberBtn").click(function() {
-    $.ajax({
-      url: "/team_pj_lingo/adminMemberList.ad", 
-      type: "GET", 
-      dataType: "html", 
-      success: function(data) {
-        $("#adminView").html(data); 
-      },
-      error: function(xhr, status, error) {
-        console.error("AJAX 요청 실패: " + status + " - " + error);
+function loadContent(url) {
+  fetch(url, {cache: "no-store"}) // 캐시 방지
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("HTTP error " + response.status);
       }
+      return response.text();
+    })
+    .then(data => {
+      $("#adminView").html(data);
+    })
+    .catch(error => {
+      console.error("Fetch 요청 실패:", error);
+      alert("요청 처리 중 오류가 발생했습니다. 다시 시도해 주세요.");
     });
-  });
+}
+
+
+    $("#memberBtn").click(function() {
+        loadContent("/team_pj_lingo/adminMemberList.ad");
+    });
+
+    $("#insertBtn").click(function() {
+        loadContent("/team_pj_lingo/insertAdmin.ad");
+    });
+    
+     $("#adminBtn").click(function() {
+        loadContent("/team_pj_lingo/adminList.ad");
+    });
+    
+     $("#boardBtn").click(function() {
+        loadContent("/team_pj_lingo/adminBoardList.ad");
+    });
+    
+     $("#noticeBtn").click(function() {
+        loadContent("/team_pj_lingo/adminNoticeList.ad");
+    });
+    
+     $("#noticeInsertBtn").click(function() {
+        loadContent("/team_pj_lingo/adminNoticeInsert.ad");
+    });
+    
+    $("#noticeInsertBtn").click(function() {
+        loadContent("/team_pj_lingo/adminNoticeInsert.ad");
+    });
+    
+     $("#reportBtn").click(function() {
+        loadContent("/team_pj_lingo/adminBoardReportList.ad");
+    });
+    
   
-  $("#insertBtn").click(function() {
-	    $.ajax({
-	      url: "/team_pj_lingo/insertAdmin.ad", 
-	      type: "GET", 
-	      dataType: "html", 
-	      success: function(data) {
-	        $("#adminView").html(data);
-	      },
-	      error: function(xhr, status, error) {
-	        console.error("AJAX 요청 실패: " + status + " - " + error);
-	      }
-	    });
-	  });
-	  
- $("#adminBtn").click(function() {
-    $.ajax({
-      url: "/team_pj_lingo/adminList.ad", 
-      type: "GET", 
-      dataType: "html", 
-      success: function(data) {
-        $("#adminView").html(data);
-      },
-      error: function(xhr, status, error) {
-        console.error("AJAX 요청 실패: " + status + " - " + error);
-      }
-    });
-  }); 
-  
- $("#boardBtn").click(function() {
-    $.ajax({
-      url: "/team_pj_lingo/adminBoardList.ad", 
-      type: "GET", 
-      dataType: "html", 
-      success: function(data) {
-        $("#adminView").html(data);
-      },
-      error: function(xhr, status, error) {
-        console.error("AJAX 요청 실패: " + status + " - " + error);
-      }
-    });
-  });
- 
- $("#noticeBtn").click(function() {
-    $.ajax({
-      url: "/team_pj_lingo/adminNoticeList.ad", 
-      type: "GET", 
-      dataType: "html", 
-      success: function(data) {
-        $("#adminView").html(data);
-      },
-      error: function(xhr, status, error) {
-        console.error("AJAX 요청 실패: " + status + " - " + error);
-      }
-    });
-  });   
-  
-   $("#noticeInsertBtn").click(function() {
-    $.ajax({
-      url: "/team_pj_lingo/adminNoticeInsert.ad", 
-      type: "GET", 
-      dataType: "html", 
-      success: function(data) {
-        $("#adminView").html(data);
-      },
-      error: function(xhr, status, error) {
-        console.error("AJAX 요청 실패: " + status + " - " + error);
-      }
-    });
-  }); 
-  
-     
-
-
-
-
-
-
-});
+   

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import test.team.team_pj_lingo.freeBoard.FreeBoardService;
+import test.team.team_pj_lingo.harmReport.HarmReportService;
 import test.team.team_pj_lingo.notice.NoticeService;
 
 
@@ -24,7 +24,7 @@ public class AdminContoroller {
 	private AdminService service;
 	
 	@Autowired
-	private FreeBoardService freeService;
+	private HarmReportService harmService;
 	
 	@Autowired
 	private NoticeService noticeService;
@@ -57,7 +57,7 @@ public class AdminContoroller {
 		
 		service.adminMemberDelete(reqeust, response, model);
 		
-		return "admin/adminMemberDeleteAction";
+		return "admin/adminNoticeAction";
 	}
 	
 	// 관리자 등록화면
@@ -89,18 +89,27 @@ public class AdminContoroller {
 		return "admin/adminList";
 	}
 	
-	// 게시판목록 페이지
-	@RequestMapping("adminBoardList.ad")
-	public String adminBoardList(HttpServletRequest reqeust, HttpServletResponse response, Model model) 
+	// 게시글 신고 목록
+	@RequestMapping("adminBoardReportList.ad")
+	public String adminBoardReportList(HttpServletRequest reqeust, HttpServletResponse response, Model model) 
 		throws ServletException, IOException{
 		
-		freeService.freeListAction(reqeust, response, model);
+		harmService.HarmReportList(reqeust, response, model);
 		
-		return "admin/adminBoardList";
-	}
-	
+		return "admin/adminBoardReportList";
+	}	
+			
 	
 	// 게시글 삭제처리
+	@RequestMapping("adminBoardDelete.ad")
+	public String adminBoardDelete(HttpServletRequest reqeust, HttpServletResponse response, Model model) 
+		throws ServletException, IOException{
+		
+		
+		harmService.HarmBoardDelete(reqeust, response, model);
+		
+		return "admin/adminNoticeAction";
+	}
 	
 	
 	// 공지사항목록 페이지

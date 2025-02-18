@@ -37,6 +37,7 @@ public class NoticeDAOImpl implements NoticeDAO{
 	@Override
 	public void plusReadCnt(int notice_num) {
 		System.out.println("DAO - plusReadCnt");
+		sqlSession.update("test.team.team_pj_lingo.notice.NoticeDAO.plusReadCnt", notice_num);
 		
 	}
 

@@ -54,7 +54,7 @@ public class NoticeServiceImpl implements NoticeService {
 		System.out.println("Service - noticeDetailAction");
 		
 		int notice_num = Integer.parseInt(request.getParameter("notice_num"));
-		
+		dao.plusReadCnt(notice_num);
 		NoticeDTO dto = dao.noticeDetail(notice_num);
 		
 		model.addAttribute("dto", dto);

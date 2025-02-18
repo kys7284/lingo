@@ -115,7 +115,7 @@
 			<div id="contents">
 				<!-- 왼쪽메뉴시작 -->
 				<div id="side_menu">
-
+					<h2>법률정보</h2>
 					<h2></h2>
 					<br> <br>
 					<ul>

@@ -15,7 +15,7 @@
  <!-- 회원목록  -->
  <select id="memberList" parameterType="java.util.Map" resultType="test.team.team_pj_lingo.member.MemberDTO">
  	<![CDATA[
-		SELECT mem_no, mem_id, mem_name, mem_country, mem_birthday, mem_address, mem_hp 
+		SELECT mem_no, mem_id, mem_name, mem_country, mem_birthday, mem_address, mem_hp, member_reportCnt 
 		, mem_rank, mem_email, mem_regdate, rn
 			FROM
     		(SELECT A.*,

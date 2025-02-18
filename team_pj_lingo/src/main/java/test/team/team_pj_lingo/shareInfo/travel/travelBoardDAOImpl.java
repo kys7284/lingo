@@ -60,17 +60,34 @@ public class travelBoardDAOImpl implements travelBoardDAO{
 	//게시글 비밀번호 인증
 	@Override
 	public int password_chk(Map<String, Object> map) {
-		return 0;
+		System.out.println("DAO - password_chk");
+		return sqlSession.selectOne("test.team.team_pj_lingo.shareInfo.travel.travelBoardDAO.password_chk",map);
 	}
 	//게시글 수정처리
 	@Override
 	public int updateTravelBoard(travelBoardDTO dto) {
-		return 0;
+		System.out.println("DAO - updateTravelBoard");
+		return sqlSession.update("test.team.team_pj_lingo.shareInfo.travel.travelBoardDAO.updateTravelBoard", dto);
 	}
 	//게시글 삭제처리
 	@Override
-	public int deleteTravelBoard(Map<String, Object> map) {
-		return 0;
+	public int deleteTravelBoard(int tb_num) {
+		System.out.println("DAO - deleteTravelBoard");
+		return sqlSession.update("test.team.team_pj_lingo.shareInfo.travel.travelBoardDAO.deleteTravelBoard", tb_num);
+	}
+	
+	//검색결과 갯수
+	@Override
+	public int searchCnt(String tb_category) {
+		System.out.println("DAO - searchCnt");
+		return sqlSession.selectOne("test.team.team_pj_lingo.shareInfo.travel.travelBoardDAO.searchCnt",tb_category);
+	}
+	
+	//검색결과리스트
+	@Override
+	public List<travelBoardDTO> searchList(Map<String, Object> map) {
+		System.out.println("DAO - searchList");
+		return sqlSession.selectList("test.team.team_pj_lingo.shareInfo.travel.travelBoardDAO.searchList", map);
 	}
 	
 

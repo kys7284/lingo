@@ -9,7 +9,7 @@
 <!-- 반응형 웹  -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>login</title>
+<title>list</title>
     
 <!-- css  -->
 <!-- 기존설정 그대로 -->
@@ -66,6 +66,16 @@
 		%>
 		
 		});
+		
+		$("#btnSearch").click(function() {
+			const category = $("#tb_category").val();
+			if(category == ""){
+				alert("카테고리를 입력해주세요 ! !");
+				return false;
+			}
+			document.travel_boardList.action="${path}/travel_search.tc"
+			document.travel_boardList.submit();
+		});
 	});
 </script>
 
@@ -112,11 +122,19 @@
 					<!-- 우측 메뉴 시작 -->
 						<div id="right">
 							<div class="board_list">
-								
 								<form name="travel_boardList">
 									<div class="travel_boardList">
+									
 									<table>
-
+										<select name="tb_category" id="tb_category"> 
+												<option value="">카테고리선택</option>
+												<option value="여행">여행</option>
+												<option value="음식">음식</option>
+												<option value="숙소">숙소</option>
+												<option value="관광명소">관광명소</option>
+												<option value="기타">기타</option>
+											</select>
+										<input type="button" style="width: 50px;" value="검색" id="btnSearch">
 										<tr>
 											<th style="width:10%; border: 1px solid black;">작성자</th>
 											<th style="width:15%; border: 1px solid black;">[카테고리] 글제목 [댓글수]</th>
@@ -131,7 +149,7 @@
 										<tr>
 											<td style="border: 1px solid black;">${dto.tb_writer}</td>
 											<td style="border: 1px solid black; text-align: center;">
-												<a href="${path}/travelDetailAction.fb?tb_num=${dto.tb_num}"><span style="color:black">[${dto.tb_category}]</span> ${dto.tb_title} <span style="color: red">[${dto.tb_comment_count}]</span></a>
+												<a href="${path}/travelDetailAction.tc?tb_num=${dto.tb_num}&pageNum=${paging.pageNum}"><span style="color:black">[${dto.tb_category}]</span> ${dto.tb_title} <span style="color: red">[${dto.tb_comment_count}]</span></a>
 											</td>
 											<td style="border: 1px solid black;">${dto.tb_regDate}</td>
 											<td style="border: 1px solid black;">${dto.tb_readCnt}</td>

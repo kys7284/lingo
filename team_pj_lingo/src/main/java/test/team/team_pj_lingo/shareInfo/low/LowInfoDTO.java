@@ -10,8 +10,8 @@ public class LowInfoDTO {
 	private int slboard_readCnt; 		// 조회수
 	private Date slboard_regDate; 		// 작성일
 	private int slboard_comment_count; 	// 댓글갯수
-	private String slboard_img;			// 첨부파일
-	
+	private String slboard_img;
+
 	public LowInfoDTO() {
 		super();
 	}
@@ -25,6 +25,14 @@ public class LowInfoDTO {
 		this.slboard_readCnt = slboard_readCnt;
 		this.slboard_regDate = slboard_regDate;
 		this.slboard_comment_count = slboard_comment_count;
+		this.slboard_img = slboard_img;
+	}
+
+	public String getSlboard_img() {
+		return slboard_img;
+	}
+
+	public void setSlboard_img(String slboard_img) {
 		this.slboard_img = slboard_img;
 	}
 
@@ -76,21 +84,13 @@ public class LowInfoDTO {
 		this.slboard_comment_count = slboard_comment_count;
 	}
 
-	public String getSlboard_img() {
-		return slboard_img;
-	}
-
-	public void setSlboard_img(String slboard_img) {
-		this.slboard_img = slboard_img;
-	}
-
 	@Override
 	public String toString() {
 		return "LowInfoDTO [slboard_num=" + slboard_num + ", slboard_content=" + slboard_content + ", slboard_writer="
 				+ slboard_writer + ", slboard_readCnt=" + slboard_readCnt + ", slboard_regDate=" + slboard_regDate
 				+ ", slboard_comment_count=" + slboard_comment_count + ", slboard_img=" + slboard_img + "]";
 	}
-	
+
 	
 
 }
