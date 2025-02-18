@@ -186,24 +186,43 @@ public class MemberServiceImpl implements MemberService {
 			throws ServletException, IOException {
 		System.out.println("서비스 - findIdAction ");
 		
-		String mem_name = request.getParameter("mem_id");
+		
+		String mem_name = request.getParameter("mem_name");
 		String hp1 = request.getParameter("mem_hp1");
 		String hp2 = request.getParameter("mem_hp2");
 		String hp3 = request.getParameter("mem_hp3");
 		String mem_hp = hp1+'-'+hp2+'-'+hp3;
 		
-		Map<String, Object> map = new HashMap<>();
+		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("mem_name", mem_name);
 		map.put("mem_hp", mem_hp);
 		
-		try {
-			dao.findMemberId(map);
-		}
-		catch(Exception e) {
-			
-		}
+		String mem_id = dao.findMemberId(map);
 		
-		model.addAttribute("selectCnt", );
+		model.addAttribute("mem_id", mem_id);
+		
+	}
+
+	@Override
+	public void findPwdAction(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException {
+		System.out.println("서비스 - findPwdAction ");
+		
+		String mem_id = request.getParameter("mem_id");
+		String mem_name = request.getParameter("mem_name");
+		String hp1 = request.getParameter("mem_hp1");
+		String hp2 = request.getParameter("mem_hp2");
+		String hp3 = request.getParameter("mem_hp3");
+		String mem_hp = hp1+'-'+hp2+'-'+hp3;
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("mem_id", mem_id);
+		map.put("mem_name", mem_name);
+		map.put("mem_hp", mem_hp);
+		
+		String mem_pwd = dao.findMemberPwd(map);
+		
+		model.addAttribute("mem_pwd", mem_pwd);
 		
 	}
 

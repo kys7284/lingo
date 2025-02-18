@@ -9,7 +9,7 @@
 <!-- 반응형 웹  -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>findId</title>
+<title>findPwd</title>
 
 <!-- css  -->
 <!-- 기존설정 그대로 -->
@@ -46,15 +46,21 @@
 <script src="${path}/resources/js/member/join.js" defer></script> 
 
 	<link rel="stylesheet" href="${path}/resources/css/member/login.css">
-	
 <script type="text/javascript">
 	$(function() {
-		$('#BtnFindId').click(function() {
+		$('#BtnFindPwd').click(function() {
 			
+			const id = $("#mem_id").val();
 			const name = $("#mem_name").val();
 			const hp1 = $("#mem_hp1").val();
 			const hp2 = $("#mem_hp2").val();
 			const hp3 = $("#mem_hp3").val();
+			
+				if(id == "") {
+					 alert("아이디을 입력하세요 !"); 				
+					$("#mem_id").focus();
+					return false;
+				}
 				if(name == "") {
 					 alert("이름을 입력하세요 !"); 				
 					$("#mem_name").focus();
@@ -76,13 +82,11 @@
 					return false;
 				}
 				
-				document.findIdform.action="${path}/findIdAction.do";
-				document.findIdform.submit();
+				document.findPwdform.action="${path}/findPwdAction.do";
+				document.findPwdform.submit();
 		});
 	});
 </script>
-
-
 
 </head>
 <body>
@@ -97,14 +101,21 @@
       <div id="contents">
          <!-- 상단 중앙1 시작  -->
          <div id="section1">
-            <h1 align="center"> 아이디 찾기 </h1>
+            <h1 align="center"> 비밀번호 찾기 </h1>
          </div>
          <!-- 상단 중앙2 시작  -->
          <div id="section2">
             <div id="s2_inner">
                <div class="join">
-               	<form name="findIdform" action="findIdAction.do" method="post">
+               	<form name="findPwdform" action="findPwdAction.do" method="post">
                     <table>
+                    
+                    		<tr>
+	                           <th> 아이디 </th>
+	                           <td>
+	                              <input type="text" class="input" name="mem_id" size="30" placeholder="공백없이 20자 이내로 작성" autofocus>
+	                           </td>
+	                        </tr>
 	                        <tr>
 	                           <th> 이름 </th>
 	                           <td>
@@ -126,7 +137,7 @@
 	                           <td colspan="3" style="border-bottom: none">
 	                           <br>
 	                           <div align="center">
-	                              <input class="inputButton" id="BtnFindId" type="submit" value="아이디 찾기">
+	                              <input class="inputButton" id="BtnFindPwd" type="submit" value="비밀번호 찾기">
 	                           </div>
 	                           </td>
 	                        </tr>   

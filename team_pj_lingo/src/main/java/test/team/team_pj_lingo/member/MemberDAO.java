@@ -28,5 +28,8 @@ public interface MemberDAO {
     
     // 아이디 찾기
     public String findMemberId(Map<String, Object> map);
+    
+    // 비밀번호 찾기
+    public String findMemberPwd(Map<String, Object> map);
 	
 }

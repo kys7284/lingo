@@ -92,4 +92,12 @@ public class MemberDAOImpl implements MemberDAO {
 		return mem_name;
 	}
 
+	@Override
+	public String findMemberPwd(Map<String, Object> map) {
+		System.out.println("DAO - findMemberPwd"); 
+		
+		String mem_id = sqlSession.selectOne("test.team.team_pj_lingo.member.MemberDAO.findMemberPwd", map);
+		return mem_id;
+	}
+
 }
