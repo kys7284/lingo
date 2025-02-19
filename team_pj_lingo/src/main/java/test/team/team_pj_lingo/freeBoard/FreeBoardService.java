@@ -46,12 +46,8 @@ public interface FreeBoardService {
 	public void freeCommentAddAction(HttpServletRequest request, HttpServletResponse response, Model model)
 			throws ServletException, IOException;
 	
-	// 2025 02 07 금요일 검색기능
-	public List<FreeBoardDTO> search(String searchType, String keyword) throws Exception;
+	// 게시판 키워드 검색
+	public void searchAction(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException;
 
-	
-
-	
-
-	
 }

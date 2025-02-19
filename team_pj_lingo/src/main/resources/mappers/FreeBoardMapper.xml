@@ -100,31 +100,58 @@
 		AND fb_password = #{fb_password}
 	</select>
 	
-	<!-- 20250207 검색기능 추가 -->
-	<select id="search" parameterType="hashMap" resultType="test.team.team_pj_lingo.freeBoard.FreeBoardDTO">
-	     		<![CDATA[
-		SELECT FB_NUM, FB_TITLE, FB_CONTENT, FB_WRITER, FB_PASSWORD, FB_READCNT, FB_REGDATE, 
-		(SELECT COUNT(*) FROM FB_COMMENT_TBL WHERE FB_BOARD_NUM = FB_NUM) AS FB_COMMENT_COUNT, FB_SHOW, FB_IMG, rn
-			FROM
-    		(SELECT A.*,
-   				 rownum AS rn
-  			   FROM
-        			(SELECT * FROM FREE_BOARD_TBL
-        			  WHERE FB_SHOW = 'Y'
-        			  ORDER BY FB_NUM DESC)A
-     			    )
-        WHERE rn >= #{start} 
-		  AND rn <= #{end}
-		]]>
-		
-		<if test='searchType.equals("fb_writer")'>
-		      and fb_writer like '%#{keyword}%'
-		</if>	 
-		
-		<if test='searchType.equals("fb_title")'>
-		      and fb_title like '%#{keyword}%'
-		</if>	 
-
-	</select>
+	<!-- 검색기능 -->
+   <select id="search" resultType="test.team.team_pj_lingo.freeBoard.FreeBoardDTO">
+    
+          SELECT FB_NUM, FB_TITLE, FB_CONTENT, FB_WRITER, FB_PASSWORD, FB_READCNT, FB_REGDATE, 
+                 (SELECT COUNT(*) FROM FB_COMMENT_TBL WHERE FB_BOARD_NUM = FB_NUM) AS FB_COMMENT_COUNT, 
+                 FB_SHOW, FB_IMG, rn
+          FROM
+              (SELECT A.*, rownum AS rn
+               FROM
+                  (SELECT * FROM FREE_BOARD_TBL
+                   WHERE FB_SHOW = 'Y'             
+                   <if test="searchType != null and keyword != null and keyword != '' ">
+                      AND (
+                          <choose>
+                              <when test="searchType == 'title'">
+                                  FB_TITLE LIKE #{keyword}
+                              </when>
+                              <when test="searchType == 'writer'">
+                                  FB_WRITER LIKE #{keyword}
+                              </when>
+                          </choose>
+                      )
+                   </if>
+                   ORDER BY FB_NUM DESC
+                  ) A
+              )
+          WHERE rn BETWEEN #{start} AND #{end} 
+          
+   </select>
+  
+   
+      <!-- 검색 갯수 구하기 -->
+       <select id="searchCount" resultType="int" parameterType="map">
+         SELECT COUNT(*) 
+          FROM FREE_BOARD_TBL
+          WHERE FB_SHOW = 'Y'
+          <if test="searchType != null and keyword != null and keyword != ''">
+          AND (
+                  <choose>
+                      <when test="searchType == 'title'">
+                        FB_TITLE LIKE #{keyword} 
+                      </when>
+                      <when test="searchType == 'writer'">
+                          FB_WRITER LIKE #{keyword}
+                      </when>
+                      
+                  </choose>
+               )   
+          </if>
+      </select> 
+      
+      
+      
 	
 </mapper>
