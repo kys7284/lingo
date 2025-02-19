@@ -121,7 +121,7 @@
                     <div class="dropdown-menu fade-down m-0">                   
                         <a href="${path}/notice_list.no" onfocus="this.blur()" class="dropdown-item">공지사항</a>
                         <a href="${path}/faq_list.faq" onfocus="this.blur()" class="dropdown-item">자주하는질문</a>
-                        <a href="javascript:alert('신고센터 개발중입니다.');" onfocus="this.blur()" class="dropdown-item">신고센터</a>
+                        <a href="${path}/harmInsert.hr" onfocus="this.blur()" class="dropdown-item">신고센터</a>
                         <a href="javascript:alert('관련기사 개발중입니다.');" onfocus="this.blur()" class="dropdown-item">관련기사</a>
                     </div>
                 </div>
