@@ -46,13 +46,6 @@
 <script src="${path}/resources/js/member/join.js" defer></script> 
 
 	<link rel="stylesheet" href="${path}/resources/css/common/madang.css">
-<script type="text/javascript">
-	$(function(){	
-		// 아이디 찾기 버튼 클릭시
-		$('#btnFindId').click(function() {
-				location.href="${path}/notice_insert.no"
-			});
-</script>	
 	
 </head>
 <body>
@@ -121,7 +114,7 @@
 										       <i class="fa-solid fa-a"></i> <strong>. 아이디를 분실하셨을 경우에는 아래와 같은 방법 중에서 회원님께서 이용 가능한 방법을 통해 찾을 수 있습니다.</strong>
 										        링고 메인 우측 상단에 위치한 로그인 박스 안의 [아이디 찾기]를 선택하여,
 												회원 정보 상의 휴대폰 번호나 이메일 주소를 확인하여 아이디 찾기가 가능하며,
-												<a href="#" style="color: skyblue">[ 바로가기 ]</a> 를 클릭하시면 아이디 찾기 페이지로 이동합니다.
+												<a href="${path}/findId.do" style="color: skyblue">[ 바로가기 ]</a> 를 클릭하시면 아이디 찾기 페이지로 이동합니다.
 										      </div>
 										    </div>
 										  </div>
@@ -137,7 +130,7 @@
 										        링고 메인 우측 상단에 위치한 로그인 박스 안의 [비밀번호 찾기]를 선택하여,
 												회원 정보 상의 휴대폰 번호나 이메일 주소를 확인하여 비밀번호 재설정이 가능하며,
 												중복가입 확인 정보로 비밀번호 재설정 할 수 있습니다.
-												<a href="#" style="color: skyblue">[ 바로가기 ]</a> 를 클릭하시면 비밀번호 찾기 페이지로 이동합니다.
+												<a href="${path}/findPwd.do" style="color: skyblue">[ 바로가기 ]</a> 를 클릭하시면 비밀번호 찾기 페이지로 이동합니다.
 										      </div>
 										    </div>
 										  </div>
@@ -151,7 +144,7 @@
 										      <div class="accordion-body">
 										      	<i class="fa-solid fa-a"></i> <strong>. 이름을 개명한 경우 [마이페이지]의 회원정보 수정에서 이름을 변경할 수 있습니다.</strong>
 										      	로그아웃 상태라면, 링고 메인 우측 상단에 위치한 로그인 후 사용하실 수 있습니다. 단, 회원님의 개명 후 이름이 신용평가기관에 등록되어 있는 경우, 즉시 이름이 변경됩니다. 
-												<a href="#" style="color: skyblue">[ 바로가기 ]</a> 를 클릭하시면 회원정보 수정 페이지로 이동합니다.
+												<a href="${path}/mypageUpdate.do" style="color: skyblue">[ 바로가기 ]</a> 를 클릭하시면 회원정보 수정 페이지로 이동합니다.
 										      </div>
 										    </div>
 										  </div>

@@ -261,3 +261,9 @@
     text-decoration: underline #06BBCC;
     
 }
+
+.join button {
+   border: none;
+   background-color: white;
+   font-size: 14px;
+}

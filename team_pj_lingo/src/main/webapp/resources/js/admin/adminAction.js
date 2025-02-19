@@ -1,6 +1,3 @@
-/**
- * 
- */
 function loadContent(url) {
   fetch(url, {cache: "no-store"}) // 캐시 방지
     .then(response => {
@@ -18,7 +15,7 @@ function loadContent(url) {
     });
 }
 
-$(document).ready(function() {
+
     $("#memberBtn").click(function() {
         loadContent("/team_pj_lingo/adminMemberList.ad");
     });
@@ -52,13 +49,4 @@ $(document).ready(function() {
     });
     
   
-  }); 
-  
-  
-  
-     
-
-
-
-
-
+   

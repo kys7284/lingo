@@ -104,7 +104,7 @@ public class FreeBoardController {
 			logger.info("비밀번호 불일치 !");
 			int fb_num = Integer.parseInt(request.getParameter("hidden_fb_num"));
 			
-			viewPage = request.getContextPath() + "/freeDetailAction.fb?fb_num=" + fb_num + "&message=error";
+			viewPage = request.getContextPath() + "/freeDetailAction.fb?fb_num=" + fb_num + "&pageNum="+ pageNum + "&message=error";
 			response.sendRedirect(viewPage);
 			
 		}		

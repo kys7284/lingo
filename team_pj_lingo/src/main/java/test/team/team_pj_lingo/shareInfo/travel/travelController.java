@@ -132,11 +132,21 @@ public class travelController {
 	public String travelBoard_deleteAction(HttpServletRequest request, HttpServletResponse response, Model model) 
 		throws ServletException, IOException{
 		
-		logger.info("Controller - travelBoard_updateAction.tc");
+		logger.info("Controller - travelBoard_deleteAction.tc");
 		service.travelDeleteAction(request, response, model);
 		
 		return "board/shareInfo/travelInfo/travelBoard/travelDelete_Action";
 	}
 	
+	//카테고리별 리스트
+	@RequestMapping("travel_search.tc")
+	public String travel_search(HttpServletRequest request, HttpServletResponse response, Model model) 
+		throws ServletException, IOException{
+		
+		logger.info("Controller - travel_search.tc");
+		
+		service.travelSearchAction(request, response, model);
+		return "board/shareInfo/travelInfo/travelBoard/travelShareSearchList";
+	}
 	
 }
