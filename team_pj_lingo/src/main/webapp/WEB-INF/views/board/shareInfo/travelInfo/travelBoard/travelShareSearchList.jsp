@@ -115,7 +115,7 @@
 						</ul>
 	
 						<ul>
-							<li><a href="#"> 여행지 찾기 </a></li>
+							<li><a href="${path}/findSpot.tc"> 여행지 찾기 </a></li>
 						</ul>
 						
 					</div>
