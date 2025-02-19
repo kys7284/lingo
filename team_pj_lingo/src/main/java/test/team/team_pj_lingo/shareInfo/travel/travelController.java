@@ -149,4 +149,11 @@ public class travelController {
 		return "board/shareInfo/travelInfo/travelBoard/travelShareSearchList";
 	}
 	
+	//여행 API
+	@RequestMapping("findSpot.tc")
+	public String findSpot(HttpServletRequest request, HttpServletResponse response, Model model) 
+			throws ServletException, IOException{
+		
+		return "board/shareInfo/travelInfo/travelBoard/API";
+	}
 }
