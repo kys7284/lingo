@@ -105,9 +105,11 @@
 						<!-- 검색 영역 -->
 						<div class="search-section" style="background-image: url('${path}/resources/images/hospital_bgh.jpg'); background-size: cover;">
 							<!-- 상단: 지역 선택 -->
-							<label for="province">도시 선택:</label> <select id="province"></select>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label
-								for="city">구 선택:</label> <select id="city"></select>
+							<label for="city">도시 선택:</label> 
+							<select id="city"></select>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+							<label for="province">구 선택:</label> 
+							<select id="province"></select>
 						</div>
 
 						<!-- 병원 리스트 & 지도 -->
