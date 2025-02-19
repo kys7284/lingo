@@ -1,4 +1,4 @@
-const provinces = {
+const citys = {
         	"서울특별시": ["강남구", "강북구", "관악구", "구로구", "노원구"],	
             "부산광역시": ["해운대구", "부산진구", "서구", "동래구", "금정구"],
             "인천광역시": ["인천 중구", "인천 동구", "미추홀구", "연수구", "남동구"],
@@ -220,41 +220,42 @@ const provinces = {
         		      ]
         };
 
+       
        $(document).ready(function () {
     // 초기 선택 옵션 추가
-    $("#province").append(new Option("도시 선택", ""));
-    $("#city").append(new Option("구 선택", ""));
+    $("#city").append(new Option("도시 선택", ""));
+    $("#province").append(new Option("구 선택", ""));
 
     // 시/도 목록 추가
-    Object.keys(provinces).forEach(province => {
-        $("#province").append(new Option(province, province));
+    Object.keys(citys).forEach(city => {
+        $("#city").append(new Option(city, city));
     });
-
+                                                               
     // 시/도 선택 시 구/군 옵션 변경
-    $("#province").change(function () {
-        let selectedProvince = $(this).val();
-        $("#city").empty().append(new Option("구 선택", "")); // 첫 번째 옵션 유지
-        if (selectedProvince && provinces[selectedProvince]) {
-            provinces[selectedProvince].forEach(city => {
-                $("#city").append(new Option(city, city));
+    $("#city").change(function () {
+        let selectedCity = $(this).val();
+        $("#province").empty().append(new Option("구 선택", "")); 
+        if (selectedCity && citys[selectedCity]) {
+            citys[selectedCity].forEach(province => {
+                $("#province").append(new Option(province, province   ));
             });
         }
     });
 
     // 구 선택 시 병원 목록 변경
-    $("#city").change(function () {
-        let selectedCity = $(this).val();
+    $("#province").change(function () {
+        let selectedProvince = $(this).val();
         $("#hospital-list").empty();
-        if (selectedCity && hospitals[selectedCity]) {
-            hospitals[selectedCity].forEach(hospital => {
+        if (selectedProvince && hospitals[selectedProvince]) {
+            hospitals[selectedProvince].forEach(hospital => {
                 let li = $("<li></li>").text(hospital.name).click(() => showHospitalInfo(hospital));
                 $("#hospital-list").append(li);
-            });
-        }
-    });
-});
+               });
+           }
+       });
+   });
 
-
+      // 병원 상세정보
         function showHospitalInfo(hospital) {
             $("#hospital-name").text(hospital.name);
             $("#hospital-address").text("주소: " + hospital.address);
