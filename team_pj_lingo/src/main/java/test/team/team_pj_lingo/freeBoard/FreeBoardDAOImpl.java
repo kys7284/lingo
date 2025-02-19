@@ -99,17 +99,26 @@ public class FreeBoardDAOImpl implements FreeBoardDAO{
 		int insertCnt = sqlSession.insert("test.team.team_pj_lingo.freeBoard.FreeBoardDAO.insertFreeBoard", dto);
 		return insertCnt;
 	}
+
+	// 게시판 키워드 검색
+	@Override
+	public List<FreeBoardDTO> search(String keyword) {
+		System.out.println("FreeBoardDAOImpl - search()");
+		
+		List<FreeBoardDTO> list = sqlSession.selectList("test.team.team_pj_lingo.freeBoard.FreeBoardDAO.search", keyword);
+		return list;
+	}
 	
 	// 2025 02 07 금요일 검색기능 추가
-	@Override
-	public List<FreeBoardDTO> search(String searchType, String keyword) throws Exception {
-		
-		System.out.println("FreeBoardDAOImpl - search()");
-		HashMap<String, Object> data = new HashMap<String, Object>();
-		data.put("searchType", searchType);
-		data.put("keyword", keyword);
-		
-		return sqlSession.selectList("test.team.team_pj_lingo.freeBoard.FreeBoardDAO.insertFreeBoard" + ".search", data);
-				}
+//	@Override
+//	public List<FreeBoardDTO> search(String searchType, String keyword) throws Exception {
+//		
+//		System.out.println("FreeBoardDAOImpl - search()");
+//		HashMap<String, Object> data = new HashMap<String, Object>();
+//		data.put("searchType", searchType);
+//		data.put("keyword", keyword);
+//		
+//		return sqlSession.selectList("test.team.team_pj_lingo.freeBoard.FreeBoardDAO.insertFreeBoard" + ".search", data);
+//				}
 
 }

@@ -18,7 +18,7 @@
 		
 			<c:if test="${insertCnt != 1}">
 				<script type="text/javascript">
-					window.location="${path}/main.do";
+					window.location="${path}/harmInsert.hr";
 					alert("접수처리가 되지않았습니다.");
 				</script>
 			</c:if>

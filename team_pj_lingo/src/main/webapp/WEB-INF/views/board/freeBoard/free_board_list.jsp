@@ -72,14 +72,15 @@
 </script>
 <script>
 $(function(){
-	
+   
     $("#searchbtn").click(function(){
-    	let searchType = document.getElementsByName("searchType")[0].value;
-    	let keyword = document.getElementsByName("keyword")[0].value;
-    	
-    	let url = "freeboard/search?searchType=" + searchType + "&keyword=" + keyword;
-    	location.href = encodeURI(url);
-    	
+       let searchType = $("select[name='searchType']").val();
+       let keyword = $("input[name='keyword']").val();
+       
+       let url = "${path}/free_board_list.fb?searchType=" + searchType + "&keyword=" + encodeURIComponent(keyword);
+       
+       location.href = url;
+       
     });
     
 });
@@ -150,18 +151,13 @@ $(function(){
 											</tr>
 											
 											<div>
-											    <select name="searchType">
-											          <option value="fb_writer"<c:if test="${searchType eq 'fb_writer'}"></c:if>>작성자</option>
-											          <option value="fb_title"<c:if test="${searchType eq 'fb_title'}"></c:if>>글제목</option>											    								
-											    </select>
-											    
-											    <input type="text" name="keyword"/>
-											    
-											    <button type="button" id="searchbtn">검색</button>			
-											    
-											    								    											
-											</div>				
-												
+		                                        <select name="searchType">
+		                                            <option value="fb_title" ${searchType == 'fb_title' ? 'selected' : ''}>제목</option>
+		                                            <option value="fb_writer" ${searchType == 'fb_writer' ? 'selected' : ''}>작성자</option>
+		                                        </select>
+				                                 <input type="text" name="keyword" placeholder="검색어 입력" value="${keyword}">
+				                                 <button type="button" id="searchbtn">검색</button>
+			                               </div>
 									</table>
 								</form>
 							</div>

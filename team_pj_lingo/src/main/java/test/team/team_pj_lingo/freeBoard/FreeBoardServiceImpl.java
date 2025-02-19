@@ -305,14 +305,55 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 			if(fos!=null)fos.close();
 		}
 	}
-	
-	// 2025 02 07 금요일 검색기능 추가
-	@Override
-	public List<FreeBoardDTO> search(String searchType, String keyword) throws Exception{
-		return dao.search(searchType, keyword);
 
+	// 게시판 키워드 검색
+	@Override
+	public void searchAction(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException {
+		System.out.println("FreeBoardServiceImpl - searchAction()");
 		
+		String type = request.getParameter("type");
+		String keyword = request.getParameter("keyword");
+		String pageNum = request.getParameter("pageNum");
+		
+		// 전체 게시글 갯수 카운트
+		int total = dao.boardCnt();
+		System.out.println("total=> " + total);
+		
+		
+		Paging paging = new Paging(pageNum);
+		paging.setTotalCount(total);
+		
+		// 게시글목록 조회
+		int start = paging.getStartRow();
+		int end = paging.getEndRow();
+		
+		// HashMap 생성, key value 추가
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("start", start);
+		map.put("end", end);
+		
+		List<FreeBoardDTO> list = dao.search(keyword);
+		System.out.println("list: " + list);
+		
+		List<FreeBoardDTO> list2 = dao.search(type);
+		System.out.println("list2: " + list2);
+		
+		// jsp로 처리결과 전달
+		model.addAttribute("list", list);
+		model.addAttribute("list2", list2);
+		model.addAttribute("paging", paging);
 	}
+	
+	
+	
+	// 게시판 키워드 검색
+//	@Override
+//	public List<FreeBoardDTO> search(String searchType, String keyword) throws Exception{
+//		return dao.search(searchType, keyword);
+//
+//		
+//	}
 	
 
 }

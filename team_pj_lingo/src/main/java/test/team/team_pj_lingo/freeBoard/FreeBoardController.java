@@ -139,20 +139,14 @@ public class FreeBoardController {
 	}
 	
 	
-	// 2025 02 07 금요일 검색기능 추가
-	@RequestMapping(value = "/search.fb", method = RequestMethod.GET)
-	public void getSearch(
-			
-			
-			  Model model,
-			  @RequestParam(value = "searchType", required = false, defaultValue = "")String searchType,
-			  @RequestParam(value = "keyword", required = false, defaultValue = "")String keyword
-			  ) throws Exception{
+	// 게시판 키워드 검색
+	@RequestMapping("/keywordSearch.fb")
+	public String keywordSearch(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException{
+		logger.info("<<<< url ==> /keywordSearch.fb  >>>>");
 		
-				logger.info("<<url = /search.fb>>");
-				List<FreeBoardDTO> list = null;
-				list = service.search(searchType, keyword);				
-				model.addAttribute("list", list);
+		service.searchAction(request, response, model);
+		return "board/freeBoard/free_board_list";
 	}		  
 	
 
