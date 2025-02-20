@@ -37,4 +37,7 @@ public interface FreeBoardDAO {
 	
 	// 20250207 금요일 검색 기능 추가
 	public List<FreeBoardDTO> search(String searchType, String keyword) throws Exception;
+	
+	// 게시글or댓글 작성후 멤버 등급 카운팅
+	public void memberRankCnt(String mem_id);
 }

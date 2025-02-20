@@ -112,4 +112,10 @@ public class FreeBoardDAOImpl implements FreeBoardDAO{
 		return sqlSession.selectList("test.team.team_pj_lingo.freeBoard.FreeBoardDAO.insertFreeBoard" + ".search", data);
 				}
 
+	// 게시글or댓글 작성후 멤버 등급 카운팅
+	@Override
+	public void memberRankCnt(String mem_id) {
+		sqlSession.update("test.team.team_pj_lingo.freeBoard.FreeBoardDAO.memberRankCnt", mem_id);
+	}
+
 }

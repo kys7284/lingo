@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/common/setting.jsp" %>    
 <!DOCTYPE html>
-<html>
+<html> 
 <head>
 <meta charset="UTF-8">
 <!--  반응형웹 -->
@@ -15,6 +15,7 @@
 
 <!-- js -->
 <script src="${path}/resources/js/member/join.js" defer></script>
+<script src="https://smtpjs.com/v3/smtp.js" defer></script>
 <!-- 우편번호 API -->
 <script src="${path}/resources/js/member/address.js" defer></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -123,13 +124,12 @@
 											<input type="text" class="input" name="mem_hp3" size="4" style="width:70px">
 										</td>
 									</tr>
-									
 									<tr>
 										<th> * 이메일 </th>
 										<td> 
-											<input type="text" class="input" name="mem_email1" size="20" style="width:100px" required>
+											<input type="text" class="input" id="userEmail1" name="mem_email1" size="20" style="width:100px" required>
 											@
-											<input type="text" class="input" name="mem_email2" size="10" style="width:100px" required>
+											<input type="text" class="input" id="userEmail2" name="mem_email2" size="10" style="width:100px" required>
 											<select class="input" name="mem_email3" style="width:100px" required onchange="selectEmailChk()">
 												<option value="0">직접입력</option>
 												<option value="naver.com">네이버</option>
@@ -139,7 +139,6 @@
 											</select>
 										</td>
 									</tr>
-									
 									<tr>
 										<th>가입인사</th>
 										<td>

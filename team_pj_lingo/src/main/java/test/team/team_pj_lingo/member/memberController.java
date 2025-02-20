@@ -20,8 +20,6 @@ public class memberController {
 	
 	@Autowired
 	private MemberServiceImpl service;
-	
-	
 	// 첫페이지
 	@RequestMapping("/main.do")
 	public String main(){
@@ -159,9 +157,11 @@ public class memberController {
 	}
 	
 	
-	
-	
-	
-	
+	@RequestMapping("/test.do")
+	public String test(){
+		logger.info("<<< url ==>  /main.do >>>");
+		
+		return "member/join/testMailSend";
+	}
 	
 }

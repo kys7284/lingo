@@ -119,11 +119,20 @@
 		<if test='searchType.equals("fb_writer")'>
 		      and fb_writer like '%#{keyword}%'
 		</if>	 
-		
+		 
 		<if test='searchType.equals("fb_title")'>
 		      and fb_title like '%#{keyword}%'
 		</if>	 
 
 	</select>
+	
+	
+	<update id="memberRankCnt" parameterType="String">
+		UPDATE member_tbl
+		SET	mem_rank = mem_rank + 1
+		WHERE mem_id = #{mem_id}
+	</update>
+	
+	
 	
 </mapper>

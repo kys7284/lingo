@@ -15,7 +15,6 @@ function loadContent(url) {
     });
 }
 
-
     $("#memberBtn").click(function() {
         loadContent("/team_pj_lingo/adminMemberList.ad");
     });
@@ -48,5 +47,6 @@ function loadContent(url) {
         loadContent("/team_pj_lingo/adminBoardReportList.ad");
     });
     
+ 
   
    

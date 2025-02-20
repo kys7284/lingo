@@ -9,12 +9,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="${path}/resources/css/common/madang.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
-integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script> 
+integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
+<script src="${path}/resources/js/admin/adminAction.js" defer></script> 
 <title>Insert title here</title>
 </head>
 <body>
 <fieldset>
-		<legend>관리자목록</legend>
+		<legend>공지사항목록</legend>
 			<div >
 				<table class="table table-bordered" id="member_table">
 				  <thead>
@@ -38,7 +39,7 @@ integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIe
 				      <td>${list.notice_readCnt }</td>
 				      <td>${list.notice_regDate }</td>
 				      <td><input type="button" id="detailBtn"  class="btn btn-outline-primary" value="수정/삭제"
-				      	 onclick="location.href='${path}/adminNoticeDetail.ad?notice_num='+${list.notice_num }">
+				      	 onclick="location.href='${path}/adminNoticeDetail.ad?notice_num='+${list.notice_num}">
 				      </td>
 				    </tr>
 				    <!--   -->

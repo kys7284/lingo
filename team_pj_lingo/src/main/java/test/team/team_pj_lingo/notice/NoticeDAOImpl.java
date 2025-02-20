@@ -30,7 +30,7 @@ public class NoticeDAOImpl implements NoticeDAO{
 		
 		int selectCnt = sqlSession.selectOne("test.team.team_pj_lingo.notice.NoticeDAO.noticeCnt");
 		
-		return selectCnt;
+		return selectCnt; 
 	}
 
 	//조회수 증가

@@ -113,6 +113,7 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		dto.setFb_content(request.getParameter("content"));
 		
 		dao.insertComment(dto);
+		dao.memberRankCnt(dto.getFb_writer());
 	}
 
 
@@ -296,6 +297,7 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 			dto.setFb_content(request.getParameter("fb_content"));
 		
 			int insertCnt = dao.insertFreeBoard(dto);
+			dao.memberRankCnt(dto.getFb_writer());
 			model.addAttribute("insertCnt", insertCnt);
 		} catch (IOException e) {
 			e.printStackTrace();
