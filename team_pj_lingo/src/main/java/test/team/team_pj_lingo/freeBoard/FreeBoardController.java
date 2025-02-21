@@ -19,140 +19,146 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-
 @Controller
 public class FreeBoardController {
-	
+
 	@Autowired
 	private FreeBoardServiceImpl service;
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(FreeBoardController.class);
-	
+
 	String viewPage = "";
-	
+
 	// 게시글목록
 	@RequestMapping("/free_board_list.fb")
-	public String free_board_list(HttpServletRequest request, HttpServletResponse response, Model model) 
-		throws ServletException, IOException{
+	public String free_board_list(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException {
 		logger.info("<<< url ==>  /free_board_list.fb >>>");
 		service.freeListAction(request, response, model);
-		
+
 		return "board/freeBoard/free_board_list";
 	}
-	
+
 	// 게시글 상세페이지
 	@RequestMapping("/freeDetailAction.fb")
-	public String freeDetailAction(HttpServletRequest request, HttpServletResponse response, Model model) 
-		throws ServletException, IOException{
+	public String freeDetailAction(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException {
 		logger.info("<<< url ==>  /freeDetailAction.fb >>>");
 		service.freeDetailAction(request, response, model);
-		
+
 		return "board/freeBoard/free_board_detailAction";
 	}
-	
+
 	// 게시글 작성 화면
-	@RequestMapping("/free_board_insert.fb") 
-	public String free_board_insert(HttpServletRequest request, HttpServletResponse response, Model model) 
-			throws ServletException, IOException{
+	@RequestMapping("/free_board_insert.fb")
+	public String free_board_insert(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException {
 		logger.info("<<url = /free_board_insert.fb>>");
-		
+
 		return "board/freeBoard/free_board_insert";
 	}
-	
+
 	// 게시글 작성 처리
-	@RequestMapping("/free_board_insertAction.fb") 
-	public String free_board_insertAction(MultipartHttpServletRequest request, HttpServletResponse response, Model model) 
-			throws ServletException, IOException{
+	@RequestMapping("/free_board_insertAction.fb")
+	public String free_board_insertAction(MultipartHttpServletRequest request, HttpServletResponse response,
+			Model model) throws ServletException, IOException {
 		logger.info("<<url = /free_board_insertAction.fb>>");
 		service.freeInsertAction(request, response, model);
-		
+
 		return "board/freeBoard/free_board_insertAction";
 	}
-	
+
 	// 댓글 목록 화면
-	@RequestMapping("/free_comment_list.fb") 
-	public String free_comment_list(HttpServletRequest request, HttpServletResponse response, Model model) 
-			throws ServletException, IOException{
+	@RequestMapping("/free_comment_list.fb")
+	public String free_comment_list(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException {
 		logger.info("<<url = /free_comment_list.fb>>");
 		service.freeCommentListAction(request, response, model);
-		
+
 		return "board/freeBoard/free_comment_list";
 	}
-	
+
 	// 댓글 작성처리
-	@RequestMapping("/insertComment.fb") 
-	public String insertComment(HttpServletRequest request, HttpServletResponse response, Model model) 
-			throws ServletException, IOException{
+	@RequestMapping("/insertComment.fb")
+	public String insertComment(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException {
 		logger.info("<<url = /insertComment.fb>>");
 		service.freeCommentAddAction(request, response, model);
-		
+
 		return "board/freeBoard/free_comment_list";
 	}
-	
+
 	// [게시글 수정/삭제 버튼] 클릭시 비밀번호 인증처리
 	@RequestMapping("/password_chkAction.fb")
-	public String password_chkAction(HttpServletRequest request, HttpServletResponse response, Model model) 
-			throws ServletException, IOException{
+	public String password_chkAction(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException {
 		logger.info("<<url = /password_chkAction.fb>>");
 		int result = service.password_chkAction(request, response, model);
 		String pageNum = request.getParameter("hiddenPageNum");
 		model.addAttribute("pageNum", pageNum);
-		
-		
+
 		System.out.println(result);
-		if(result == 0) {
+		if (result == 0) {
 			logger.info("비밀번호 불일치 !");
 			int fb_num = Integer.parseInt(request.getParameter("hidden_fb_num"));
-			
-			viewPage = request.getContextPath() + "/freeDetailAction.fb?fb_num=" + fb_num + "&pageNum="+ pageNum + "&message=error";
+
+			viewPage = request.getContextPath() + "/freeDetailAction.fb?fb_num=" + fb_num + "&pageNum=" + pageNum
+					+ "&message=error";
 			response.sendRedirect(viewPage);
-			
-		}		
-		
+
+		}
+
 		return "board/freeBoard/free_board_edit";
 	}
-	
-	// 게시글 수정 처리	
+
+	// 게시글 수정 처리
 	@RequestMapping("/free_board_updateAction.fb")
-	public String ad_product_updateAction(MultipartHttpServletRequest request, HttpServletResponse response, Model model)
-			throws ServletException, IOException{
-		
+	public String ad_product_updateAction(MultipartHttpServletRequest request, HttpServletResponse response,
+			Model model) throws ServletException, IOException {
+
 		logger.info("<<<< url ==> /free_board_updateAction.fb  >>>>");
-		
+
 		service.freeUpdateAction(request, response, model);
 
 		return "board/freeBoard/free_board_updateAction";
 	}
-	
+
 	// 게시글 삭제처리
 	@RequestMapping("/free_board_deleteAction.fb")
 	public String free_board_deleteAction(HttpServletRequest request, HttpServletResponse response, Model model)
-			throws ServletException, IOException{
-		
+			throws ServletException, IOException {
+
 		logger.info("<<<< url ==> /free_board_deleteAction.fb  >>>>");
-		
+
 		service.freeDeleteAction(request, response, model);
 		viewPage = request.getContextPath() + "/free_board_list.fb";
 		response.sendRedirect(viewPage);
-		
+
 		return null;
 	}
-	
-	
+
 	// 게시판 키워드 검색
 	@RequestMapping("/keywordSearch.fb")
-	public String keywordSearch(HttpServletRequest request, HttpServletResponse response, Model model)
-			throws ServletException, IOException{
-		logger.info("<<<< url ==> /keywordSearch.fb  >>>>");
-		
+	public String searchList(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException {
+		logger.info("<<<< url ==> /searchList.fb  >>>>");
+		System.out.println("타나 안타나~~~");
 		service.searchAction(request, response, model);
-		return "board/freeBoard/free_board_list";
-	}		  
-	
+		return "board/freeBoard/free_searchResult";
+	}
 
-	
-	
-			  
-			
-	
+	 // 게시판 키워드 검색결과 처리
+	  
+//		 @RequestMapping("/free_searchResult.fb") public String
+//		 free_searchAction(HttpServletRequest request, HttpServletResponse response,Model model) 
+//			throws ServletException, IOException{
+//		 	logger.info("<<<< url ==> /free_searchAction.fb  >>>>");
+//		 
+//		  	service.searchList(request, response, model); return
+//		  	
+//			"board/freeBoard/free_searchResult"; 
+//		  }
+		 
+	 
+
 }

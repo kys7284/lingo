@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -306,20 +305,41 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		}
 	}
 
-	// 게시판 키워드 검색
+//	// 게시판 키워드 검색결과
+//	@Override
+//	public void searchList(HttpServletRequest request, HttpServletResponse response, Model model)
+//			throws ServletException, IOException {
+//		System.out.println("FreeBoardServiceImpl - searchList()");
+//		
+//		String searchType = request.getParameter("searchType");
+//		String keyword = request.getParameter("keyword");
+//		System.out.println("searchType : "+searchType+ " keyword: "+ keyword);
+//		// Map 생성, key, value 추가
+//		Map<String, Object> map = new HashMap<String, Object>();
+//		map.put("searchType", searchType);
+//		map.put("keyword", keyword);
+//		
+//		List<FreeBoardDTO> list = dao.search(map);
+//		System.out.println("list: " + list);
+//		
+//		// jsp로 처리결과 전달
+//		model.addAttribute("list", list);
+//	}
+
+	// 게시판 키워드 검색결과 리스트
 	@Override
 	public void searchAction(HttpServletRequest request, HttpServletResponse response, Model model)
 			throws ServletException, IOException {
 		System.out.println("FreeBoardServiceImpl - searchAction()");
 		
-		String type = request.getParameter("type");
-		String keyword = request.getParameter("keyword");
 		String pageNum = request.getParameter("pageNum");
-		
+		String keyword = request.getParameter("keyword");
+		String searchType = request.getParameter("searchType");
+		System.out.println("searchType : "+searchType+ " keyword: "+ keyword);
+
 		// 전체 게시글 갯수 카운트
-		int total = dao.boardCnt();
-		System.out.println("total=> " + total);
-		
+		int total = dao.searchCnt(keyword);
+		System.out.println("1total=> " + total);
 		
 		Paging paging = new Paging(pageNum);
 		paging.setTotalCount(total);
@@ -328,32 +348,19 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		int start = paging.getStartRow();
 		int end = paging.getEndRow();
 		
-		// HashMap 생성, key value 추가
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("start", start);
 		map.put("end", end);
+		map.put("keyword", keyword);
 		
-		List<FreeBoardDTO> list = dao.search(keyword);
+		List<FreeBoardDTO> list = dao.search(map);
 		System.out.println("list: " + list);
 		
-		List<FreeBoardDTO> list2 = dao.search(type);
-		System.out.println("list2: " + list2);
 		
 		// jsp로 처리결과 전달
-		model.addAttribute("list", list);
-		model.addAttribute("list2", list2);
+		model.addAttribute("searchList", list);
 		model.addAttribute("paging", paging);
+		
 	}
 	
-	
-	
-	// 게시판 키워드 검색
-//	@Override
-//	public List<FreeBoardDTO> search(String searchType, String keyword) throws Exception{
-//		return dao.search(searchType, keyword);
-//
-//		
-//	}
-	
-
 }

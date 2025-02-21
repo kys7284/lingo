@@ -1,14 +1,11 @@
 package test.team.team_pj_lingo.freeBoard;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -47,6 +44,10 @@ public interface FreeBoardService {
 			throws ServletException, IOException;
 	
 	// 게시판 키워드 검색
+//	public void searchList(HttpServletRequest request, HttpServletResponse response, Model model)
+//			throws ServletException, IOException;
+	
+	// 게시판 키워드 검색결과 처리
 	public void searchAction(HttpServletRequest request, HttpServletResponse response, Model model)
 			throws ServletException, IOException;
 

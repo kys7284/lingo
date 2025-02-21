@@ -85,9 +85,6 @@
 					<ul>
 						<li><a href="${path}/harmInsert.hr">신고 센터</a></li>
 					</ul>
-					<ul>
-						<li><a href="${path}/employment.eq"> 관련 기사 </a></li>
-					</ul>
 				</div>
 				<!-- 왼쪽메뉴 끝 -->
 				<div class="container">
@@ -138,6 +135,7 @@
 											<option value="hatePost">혐오게시글</option>
 											<option value="disInfo">허위사실유포</option>
 											<option value="illegalAd">불법광고</option>
+											<option value="serviceError">서비스장애/오류</option>
 										</select>
 									</td>
 								</tr>

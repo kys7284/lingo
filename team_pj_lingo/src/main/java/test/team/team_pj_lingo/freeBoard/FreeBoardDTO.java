@@ -13,15 +13,15 @@ public class FreeBoardDTO {
 	private Date fb_regDate; 		// 작성일
 	private int fb_comment_count; 	// 댓글갯수
 	private String fb_img;			// 첨부파일
-	private String keyword; // 검색 키워드
-	private String type; // 검색 타입
+	private String keyword;			// 검색 키워드
+	private String searchType;		// 검색 키워드
 	
 	public FreeBoardDTO() {
 		super();
 	}
 
 	public FreeBoardDTO(int fb_num, String fb_title, String fb_content, String fb_writer, String fb_password,
-			int fb_readCnt, Date fb_regDate, int fb_comment_count, String fb_img, String keyword, String type) {
+			int fb_readCnt, Date fb_regDate, int fb_comment_count, String fb_img, String keyword, String searchType) {
 		super();
 		this.fb_num = fb_num;
 		this.fb_title = fb_title;
@@ -33,7 +33,7 @@ public class FreeBoardDTO {
 		this.fb_comment_count = fb_comment_count;
 		this.fb_img = fb_img;
 		this.keyword = keyword;
-		this.type = type;
+		this.searchType = searchType;
 	}
 
 	public int getFb_num() {
@@ -116,12 +116,12 @@ public class FreeBoardDTO {
 		this.keyword = keyword;
 	}
 
-	public String getType() {
-		return type;
+	public String getSearchType() {
+		return searchType;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
 	}
 
 	@Override
@@ -129,7 +129,7 @@ public class FreeBoardDTO {
 		return "FreeBoardDTO [fb_num=" + fb_num + ", fb_title=" + fb_title + ", fb_content=" + fb_content
 				+ ", fb_writer=" + fb_writer + ", fb_password=" + fb_password + ", fb_readCnt=" + fb_readCnt
 				+ ", fb_regDate=" + fb_regDate + ", fb_comment_count=" + fb_comment_count + ", fb_img=" + fb_img
-				+ ", keyword=" + keyword + ", type=" + type + "]";
+				+ ", keyword=" + keyword + ", searchType=" + searchType + "]";
 	}
 
 }

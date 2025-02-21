@@ -82,9 +82,6 @@
 						<ul>
 							<li><a href="${path}/harmInsert.hr">신고 센터</a></li>
 						</ul>
-						<ul>
-							<li><a href="${path}/employment.eq"> 관련 기사 </a></li>
-						</ul>
 					</div>
 					<!-- 왼쪽메뉴 끝 -->
 					<div class="container">
@@ -143,8 +140,9 @@
 										    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
 										      <div class="accordion-body">
 										      	<i class="fa-solid fa-a"></i> <strong>. 이름을 개명한 경우 [마이페이지]의 회원정보 수정에서 이름을 변경할 수 있습니다.</strong>
-										      	로그아웃 상태라면, 링고 메인 우측 상단에 위치한 로그인 후 사용하실 수 있습니다. 단, 회원님의 개명 후 이름이 신용평가기관에 등록되어 있는 경우, 즉시 이름이 변경됩니다. 
-												<a href="${path}/mypageUpdate.do" style="color: skyblue">[ 바로가기 ]</a> 를 클릭하시면 회원정보 수정 페이지로 이동합니다.
+										      	로그아웃 상태라면, 링고 메인 우측 상단에 위치한 로그인 후 사용하실 수 있습니다. <c:if test="${sessionScope.sessionId == null}"><a href="${path}/login.do" style="color: skyblue">[ 로그인 바로가기 ]</a></c:if> 
+										      	단, 회원님의 개명 후 이름이 신용평가기관에 등록되어 있는 경우, 즉시 이름이 변경됩니다. 
+										      	<c:if test="${sessionScope.sessionId != null}"><a href="${path}/mypageUpdate.do" style="color: skyblue">[ 바로가기 ]</a>를 클릭하시면 회원정보 수정 페이지로 이동합니다.</c:if> 
 										      </div>
 										    </div>
 										  </div>

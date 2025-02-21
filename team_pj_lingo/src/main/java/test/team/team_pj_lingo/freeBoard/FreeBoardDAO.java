@@ -36,5 +36,9 @@ public interface FreeBoardDAO {
 	public int insertComment(FreeBoardCommentDTO dto);
 	
 	// 게시판 키워드 검색
-	public List<FreeBoardDTO> search(String keyword);
+	public List<FreeBoardDTO> search(Map<String, Object> map);
+	
+	// 검색 결과 갯수 구하기
+	public int searchCnt(String keyword);
+
 }

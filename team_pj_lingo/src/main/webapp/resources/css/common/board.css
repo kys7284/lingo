@@ -24,6 +24,15 @@
     gap: 30px;
 }
 
+.search {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    align-items: baseline;
+}
 #left {
     width: 20%;
     margin-top: 20px;
