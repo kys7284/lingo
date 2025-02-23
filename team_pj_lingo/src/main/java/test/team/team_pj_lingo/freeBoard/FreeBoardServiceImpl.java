@@ -331,6 +331,7 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 	public void searchAction(HttpServletRequest request, HttpServletResponse response, Model model)
 			throws ServletException, IOException {
 		System.out.println("FreeBoardServiceImpl - searchAction()");
+		Map<String,Object> map = new HashMap<String,Object>();
 		
 		String pageNum = request.getParameter("pageNum");
 		String keyword = request.getParameter("keyword");
@@ -348,7 +349,6 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		int start = paging.getStartRow();
 		int end = paging.getEndRow();
 		
-		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("start", start);
 		map.put("end", end);
 		map.put("keyword", keyword);

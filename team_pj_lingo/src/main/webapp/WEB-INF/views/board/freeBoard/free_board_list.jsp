@@ -97,10 +97,6 @@
 				
 				<form name="keywordSearch" action="keywordSearch.fb" method="get">
 					<div class="search">
-                           <select name="searchType">
-                               <option value="title">제목</option>
-                               <option value="writer">작성자</option>
-                           </select>
                        <input type="text" name="keyword" placeholder="검색어 입력">
                        <button type="button" id="searchbtn">검색</button>
                      </div>

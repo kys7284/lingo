@@ -112,7 +112,7 @@ public class FreeBoardDAOImpl implements FreeBoardDAO{
 	public int searchCnt(String keyword) {
 		System.out.println("FreeBoardDAOImpl - searchCnt()");
 		
-		int total = sqlSession.selectOne("test.team.team_pj_lingo.freeBoard.FreeBoardDAO.searchCnt");
+		int total = sqlSession.selectOne("test.team.team_pj_lingo.freeBoard.FreeBoardDAO.searchCnt", keyword);
 		return total;
 	}
 	

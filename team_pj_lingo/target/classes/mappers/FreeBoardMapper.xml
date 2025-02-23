@@ -102,6 +102,7 @@
 	
 	<!-- 검색기능 -->
 	  <select id="search" resultType="test.team.team_pj_lingo.freeBoard.FreeBoardDTO" parameterType="java.util.Map">
+	  <![CDATA[
 	    SELECT FB_NUM, FB_TITLE, FB_CONTENT, FB_WRITER, FB_PASSWORD, FB_READCNT, FB_REGDATE, 
 	           (SELECT COUNT(*) FROM FB_COMMENT_TBL WHERE FB_BOARD_NUM = FB_NUM) AS FB_COMMENT_COUNT, 
 	           FB_SHOW, FB_IMG, rn
@@ -110,12 +111,16 @@
 	        FROM (
 	            SELECT * FROM FREE_BOARD_TBL
 	            WHERE FB_SHOW = 'Y'  
-	                    AND FB_TITLE LIKE '%' ||#{keyword, jdbcType=VARCHAR} || '%'
-	                    AND FB_WRITER LIKE '%' ||#{keyword, jdbcType=VARCHAR} || '%'
+	                  AND (FB_TITLE LIKE '%' || #{keyword, jdbcType=VARCHAR} || '%' 
+	                       OR FB_WRITER LIKE '%' || #{keyword, jdbcType=VARCHAR} || '%') 
 	            ORDER BY FB_NUM DESC
 	        ) A
+	        WHERE ROWNUM <= #{end, jdbcType=INTEGER}  -- 최댓값 제한
 	    )
-	    WHERE rn BETWEEN #{start, jdbcType=INTEGER} AND #{end, jdbcType=INTEGER} 
+	    WHERE rn >= #{start, jdbcType=INTEGER}  -- 최소값 제한
+	  ]]>	
+
+	    
 	</select>
 
   
@@ -123,10 +128,11 @@
       <!-- 검색 갯수 구하기 -->
        <select id="searchCnt" resultType="int" parameterType="String">
 		    SELECT COUNT(*) 
-		    FROM FREE_BOARD_TBL
-		    WHERE FB_SHOW = 'Y'
-		        AND FB_TITLE LIKE '%' ||#{keyword, jdbcType=VARCHAR} || '%'
-		        AND FB_WRITER LIKE '%' ||#{keyword, jdbcType=VARCHAR} || '%'
+			FROM FREE_BOARD_TBL
+			WHERE FB_SHOW = 'Y'
+			    AND (FB_TITLE LIKE '%' || #{keyword, jdbcType=VARCHAR} || '%' 
+			         OR FB_WRITER LIKE '%' || #{keyword, jdbcType=VARCHAR} || '%')
+
 		</select> 
 		
 	
