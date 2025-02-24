@@ -45,7 +45,7 @@
     <link href="${path}/resources/css/common/style.css" rel="stylesheet">
 <script src="${path}/resources/js/member/join.js" defer></script> 
 
-	<link rel="stylesheet" href="${path}/resources/css/common/board.css">
+	<link rel="stylesheet" href="${path}/resources/css/common/madang.css">
 
 <script>
 	$(function() {
@@ -87,7 +87,9 @@
 		<div id="container">
 			<div id="contents">
 				<!-- 상단 중앙1 시작 -->
-				<div>
+				<div id="section1"
+					style="background-image: url('${path}/resources/images/to.jpg'); background-size: cover; background-position: center; height: 300px;">
+					<br> <br>
 					<h1 align="center">게시판 작성</h1>
 				</div>
 				<!-- 상단 중앙1 종료 -->
@@ -97,7 +99,7 @@
 					
 					<!-- 우측 메뉴 시작 -->
 						<div id="right">
-							<div class="table_div">
+							<div class="join">
 								<form name="insertForm" method="post" action="free_board_insertAction.fb" enctype="multipart/form-data">
 									<table>
 										<tr>
@@ -158,14 +160,14 @@
 				<!-- 상단 중앙2 종료 -->
 			
 			</div>
-		
+		<!-- footer 시작 -->
+	      <%@include file="/WEB-INF/views/common/footer.jsp" %>
+	      <!-- footer 끝 -->
 		</div>
 		<!-- 컨텐츠 끝 -->
       
 
-      <!-- footer 시작 -->
-      <%@include file="/WEB-INF/views/common/footer.jsp" %>
-      <!-- footer 끝 -->
+      
       
       	<!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>

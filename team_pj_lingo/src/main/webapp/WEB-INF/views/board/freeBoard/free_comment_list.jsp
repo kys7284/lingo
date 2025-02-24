@@ -9,6 +9,8 @@
 <!-- 반응형 웹  -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<link rel="stylesheet" href="${path}/resources/css/common/madang.css">
+
 <title>free_board</title>
 </head>
 <body>
@@ -17,18 +19,18 @@
 				<form name="freeBoardList">
 					<table border="1" width="800px">
 						<tr>
-							<th style="width:10%">작성자</th>
-							<th style="width:15%">글내용</th>
-							<th style="width:10%">작성일</th>
+							<th style="width:10%; border-right: 1px solid gray;">작성자</th>
+							<th style="width:15%; border-right: 1px solid gray;">글내용</th>
+							<th style="width:10%; border-right: 1px solid gray;">작성일</th>
 						</tr>
 						
 						<!-- 댓글이 있으면  -->
 						
 							<c:forEach var="dto" items= "${list}">											
 								<tr>
-									<td>${dto.fb_writer}</td>
-									<td>${dto.fb_content}</td>
-									<td>${dto.fb_regDate}</td>
+									<td style="width:10%; border-right: 1px solid gray;">${dto.fb_writer}</td>
+									<td style="width:10%; border-right: 1px solid gray;">${dto.fb_content}</td>
+									<td style="width:10%; border-right: 1px solid gray;">${dto.fb_regDate}</td>
 								</tr>
 							</c:forEach>
 					</table>

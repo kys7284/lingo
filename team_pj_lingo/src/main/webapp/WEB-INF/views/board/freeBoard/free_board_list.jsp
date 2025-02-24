@@ -46,7 +46,7 @@
     <link href="${path}/resources/css/common/style.css" rel="stylesheet">
 <script src="${path}/resources/js/member/join.js" defer></script> 
 
-	<link rel="stylesheet" href="${path}/resources/css/common/board.css">
+	<link rel="stylesheet" href="${path}/resources/css/common/madang.css">
 
 <script type="text/javascript">
 	$(function(){
@@ -90,13 +90,17 @@
    <!-- 컨텐츠 시작 -->
 		<div id="container">
 			<div id="contents">
+			
 				<!-- 상단 중앙1 시작 -->
-				<div>
+				<div id="section1"
+					style="background-image: url('${path}/resources/images/to.jpg'); background-size: cover; background-position: center; height: 300px;">
+					<br> <br>
 					<h1 align="center">게시판 목록</h1>
-				</div>		
+				</div>
+				<!-- 상단 중앙2 시작  -->
 				
 				<form name="keywordSearch" action="keywordSearch.fb" method="get">
-					<div class="search">
+					<div class="search" style="text-align:center; padding-top:30px;">
                        <input type="text" name="keyword" placeholder="검색어 입력">
                        <button type="button" id="searchbtn">검색</button>
                      </div>
@@ -104,27 +108,28 @@
 				<div id="section2">					
 					<!-- 우측 메뉴 시작 -->
 						<div id="right">
-							<div class="table_div">								
+							<div class="join">								
 								<form name="free_boardList">
-									<table>
+									<table style="width:1000">
 									  <thead>
-										<tr>
-											<th style="width:10%">글번호</th>
-											<th style="width:10%">작성자</th>
-											<th style="width:15%">글제목 [댓글수]</th>
-											<th style="width:10%">작성일</th>
-											<th style="width:5%">조회수</th>
-										</tr>									
+										<tr style="padding-bottom:30px;">
+											<th style="width:10%; height:70px;">글번호</th>
+											<th style="width:10%; height:70px;">작성자</th>
+											<th style="width:15%; height:70px;">글제목 [댓글수]</th>
+											<th style="width:10%; height:70px;">작성일</th>
+											<th style="width:10%; height:70px;">조회수</th>
+										</tr>
+									<hr>									
 										<!-- 게시글이 있으면  -->										
 											<c:forEach var="dto" items= "${freeBoardList}">											
 												<tr>
-													<td>${dto.fb_num}</td>
-													<td>${dto.fb_writer}</td>
-													<td>
+													<td style="text-align:center">${dto.fb_num}</td>
+													<td style="text-align:center">${dto.fb_writer}</td>
+													<td style="text-align:center">
 														<a href="${path}/freeDetailAction.fb?fb_num=${dto.fb_num}&pageNum=${paging.pageNum}">${dto.fb_title} <span style="color: red">[ ${dto.fb_comment_count} ]</span></a>
 													</td>
-													<td>${dto.fb_regDate}</td>
-													<td>${dto.fb_readCnt}</td>
+													<td style="text-align:center">${dto.fb_regDate}</td>
+													<td style="text-align:center">${dto.fb_readCnt}</td>
 												</tr>
 											</c:forEach>
 											<tr>
@@ -160,13 +165,15 @@
 				</div>
 				<!-- 상단 중앙2 종료 -->
 			</div>
+			 <!-- footer 시작 -->
+		      <%@include file="/WEB-INF/views/common/footer.jsp" %>
+		      <!-- footer 끝 -->
 		</div>
+		
       <!-- 컨텐츠 끝 -->
       
 
-      <!-- footer 시작 -->
-      <%@include file="/WEB-INF/views/common/footer.jsp" %>
-      <!-- footer 끝 -->
+     
       
       	<!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
