@@ -73,9 +73,18 @@
 				alert("카테고리를 입력해주세요 ! !");
 				return false;
 			}
+			
+			else if(category == "전체"){
+				
+				document.travel_boardList.action="${path}/travelInfo.tc"
+				document.travel_boardList.submit();
+				return;
+			}
+			
 			document.travel_boardList.action="${path}/travel_search.tc"
 			document.travel_boardList.submit();
 		});
+	
 	});
 </script>
 
@@ -128,12 +137,13 @@
 									<table>
 										<select name="tb_category" id="tb_category"> 
 												<option value="">카테고리선택</option>
+												<option value="전체">전체</option>
 												<option value="여행">여행</option>
 												<option value="음식">음식</option>
 												<option value="숙소">숙소</option>
 												<option value="관광명소">관광명소</option>
 												<option value="기타">기타</option>
-											</select>
+										</select>
 										<input type="button" style="width: 50px;" value="검색" id="btnSearch">
 										<tr>
 											<th style="width:10%; border: 1px solid black;">작성자</th>
