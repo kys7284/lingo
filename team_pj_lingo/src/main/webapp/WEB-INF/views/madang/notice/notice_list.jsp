@@ -87,10 +87,7 @@
 						<li><a href="${path}/faq_list.faq"> 자주하는 질문</a></li>
 					</ul>
 					<ul>
-						<li><a href="${path}/report.sos">신고 센터</a></li>
-					</ul>
-					<ul>
-						<li><a href="${path}/employment.eq"> 관련 기사 </a></li>
+						<li><a href="${path}/harmInsert.hr">신고 센터</a></li>
 					</ul>
 				</div>
 				<!-- 왼쪽메뉴 끝 -->

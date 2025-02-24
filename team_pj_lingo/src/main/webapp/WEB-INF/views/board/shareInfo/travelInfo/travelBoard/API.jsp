@@ -46,69 +46,26 @@
 <script src="${path}/resources/js/member/join.js" defer></script> 
 
 	<link rel="stylesheet" href="${path}/resources/css/common/board.css">
-
-<script type="text/javascript">
-	$(function() {	// 상세페이지가 로딩되면
-		// [게시글 목록 버튼] 클릭시 컨트롤러의 목록으로 이동
-		$("#btnList").click(function() {
-			location.href="${path}/free_board_list.fb";
-		});
-	
-		// [게시글 수정 버튼] 클릭시 [게시글 수정 화면]버튼
-		$("#btnEdit").click(function() {
-			
-			const password = $("#fb_password").val();
-			const title = $("#fb_title").val();
-			const content = $("#fb_content").val();
-			
-			
-			if(password == "") {
-				 alert("비밀번호를 입력하세요 !"); 				
-				$("#fb_password").focus();
-				return false;
-			}
-			if(title == "") {
-				alert("글 제목을 입력하세요 !");
-				$("#fb_title").focus();
-				return false;
-			}
-			if(content == "") {
-				alert("글 내용을 입력하세요 !");
-				$("#fb_content").focus();
-				return false;
-			}
-			
-			document.editForm.action="${path}/free_board_updateAction.fb";
-			document.editForm.submit();
-		});
-		
-		// [게시글 삭제 버튼] 클릭시 [게시글 삭제 화면]버튼
-		$("#btnDelete").click(function() {
-			document.editForm.action="${path}/free_board_deleteAction.fb";
-			document.editForm.submit();
-		});
-	});
-
-</script>
+	<link rel="stylesheet" href="${path}/resources/css/board/board.css">
 </head>
 <body>
-	<div class="wrap">
-		<!-- header 시작 -->
-		<%@ include file="/WEB-INF/views/common/header.jsp"%>
-		<!-- header 끝 -->
+	<!-- 헤더시작 -->
+	<%@ include file="/WEB-INF/views/common/header.jsp" %>
+	<!-- 헤더 끝 -->
 	
-	
-		<!-- 컨텐츠 시작 -->
-		<div id="container">
-			<div id="contents">
-				<!-- 상단 중앙1 시작 -->
-				<div>
-					<h1 align="center">게시판 수정/삭제페이지</h1>
-				</div>
-				<!-- 상단 중앙1 종료 -->
+	<!-- 상단 중앙1 시작  -->
+	<div id="section1"
+		style="background-image: url('${path}/resources/images/travel.jpg'); background-size: cover; background-position: center; height: 300px;">
+		<br> 
+		<br>
+		<h1 align="center" style="padding-bottom: 50px;">여행정보</h1>
+		
+		<span style="display: flex; justify-content: center; font-weight: bold;">여러분의 여행을 공유해주세요</span>
+	</div>
+	<!-- 상단 중앙1 종료 -->
 				
 	<!-- 검색 영역 -->
-<div class="search-section">
+<div class="search-section" style="display: flex;justify-content: center;;">
     <label for="city">도시 선택:</label> 
     <select id="city">
         <option value="">도시 선택</option>
@@ -231,13 +188,33 @@ function fetchTourismData(pageNo) {
 </script>
 
 
+					<!-- 왼쪽메뉴시작 -->
+					<div id="side_menu">
+	
+						<h2>여행정보</h2>
 
-<!-- 페이지 네비게이션 -->
-<div class="pagination">
-    <button id="prevPage">이전</button>
-    <span id="currentPage">1</span>
-    <button id="nextPage">다음</button>
-</div>
+						<br><br>
+
+						<ul>
+							<li><a href="${path}/travelInfo.tc"> 나의 여행 </a></li>
+						</ul>
+	
+						<ul>
+							<li><a href="${path}/findSpot.tc"> 여행지 찾기 </a></li>
+						</ul>
+						
+					</div>
+					<!-- 왼쪽메뉴 끝 -->
+					<div id="display">
+					<!-- 결과창 출력 -->
+					</div>
+
+			<!-- 페이지 네비게이션 -->
+			<div class="pagination" style="display: flex; justify-content: center;">
+			    <div style="width:10%;  float:right;"><button id="prevPage">이전</button></div>
+			    <span id="currentPage" style="padding:8px; width: 10%;">1</span>
+			    <div style="width:10%; float:right;"><button id="nextPage" >다음</button></div>
+			</div>
 
 		<!-- 컨텐츠 끝 -->
       <!-- footer 시작 -->
@@ -259,4 +236,10 @@ function fetchTourismData(pageNo) {
     <script src="${path}/resources/js/main.js"></script>
    </div>
 </body>
+<script src="https://cdn.staticfile.net/translate.js/3.12.0/translate.js" defer></script>
+<script>
+translate.service.use('client.edge'); 	 	//번역기 사용   참조: http://translate.zvo.cn/43086.html
+translate.selectLanguageTag.show = false;	// 기본 언어선택창 숨김  (true: 표시)
+translate.execute();//번역시작
+</script>
 </html>	
