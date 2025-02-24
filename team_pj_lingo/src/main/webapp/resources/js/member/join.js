@@ -65,7 +65,6 @@ function idConfirmCheck(){
 // self.close();  자식창 닫기
 
  function setUserId(mem_id){
-   alert(mem_id);
    opener.document.inputform.mem_id.value = mem_id;
    opener.document.inputform.hiddenUserid.value = "1";
    self.close();

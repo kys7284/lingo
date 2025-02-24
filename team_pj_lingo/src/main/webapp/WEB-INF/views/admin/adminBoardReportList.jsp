@@ -31,8 +31,7 @@ integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIe
 				  <form id="memberForm" action="#" method="post">
 				   <c:forEach var="list" items="${list}">
 				    <tr>
-				      <th scope="row"><input type="text" id="harm_report_num" style="border: none;" 
-				       value=" ${list.harm_report_num}" readonly></th>
+				      <td>${list.harm_report_num}</td>
 				      <td >${list.harm_report_title }</td>
 				      <td>${list.board_writer }</td>
 				      <td>${list.harm_report_category }</td>

@@ -69,8 +69,8 @@
                  
                   <form name="loginform" action="loginAction.do" method="post">
                      <!-- 세션이 없는 경우 : 로그인 실패 -->
-                     
-                     <c:if test="${selectCnt == 0} ">
+                                          
+                     <c:if test="${selectCnt != 1}">
                      <script type="text/javascript">
                      	alert("아이디와 비밀번호가 일치하지 않습니다~~~");                     	
                      </script>

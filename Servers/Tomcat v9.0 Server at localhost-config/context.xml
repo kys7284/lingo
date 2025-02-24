@@ -28,6 +28,15 @@
     -->
          
 	    
-	            <Resource author="Container" driverClassName="oracle.jdbc.driver.OracleDriver" maxActive="7" maxWait="1000" name="jdbc/lingo_ict04" password="tiger" type="javax.sql.DataSource" url="jdbc:oracle:thin:@192.168.0.17:1521:xe" username="lingo_ict04"/>         
+	            <Resource 
+    author="Container" 
+    driverClassName="oracle.jdbc.driver.OracleDriver" 
+    maxActive="7" 
+    maxWait="1000" 
+    name="jdbc/lingo_ict04" 
+    password="tiger" 
+    type="javax.sql.DataSource" 
+    url="jdbc:oracle:thin:@175.114.130.48:1521:xe" 
+    username="lingo_ict04"/>         
         
 </Context>
