@@ -69,21 +69,15 @@
 			
 		});
 	});
-</script>
-<script>
-$(function(){
-   
-    $("#searchbtn").click(function(){
-       let searchType = $("select[name='searchType']").val();
-       let keyword = $("input[name='keyword']").val();
-       
-       let url = "${path}/free_board_list.fb?searchType=" + searchType + "&keyword=" + encodeURIComponent(keyword);
-       
-       location.href = url;
-       
-    });
-    
-});
+
+ 
+	$(function(){
+	    $("#searchbtn").click(function(){
+	       document.keywordSearch.action = "${path}/keywordSearch.fb"
+	       document.keywordSearch.submit();
+	    });	
+	});
+
 </script>
 
 </head>
@@ -99,7 +93,14 @@ $(function(){
 				<!-- 상단 중앙1 시작 -->
 				<div>
 					<h1 align="center">게시판 목록</h1>
-				</div>				
+				</div>		
+				
+				<form name="keywordSearch" action="keywordSearch.fb" method="get">
+					<div class="search">
+                       <input type="text" name="keyword" placeholder="검색어 입력">
+                       <button type="button" id="searchbtn">검색</button>
+                     </div>
+                 </form>		
 				<div id="section2">					
 					<!-- 우측 메뉴 시작 -->
 						<div id="right">
@@ -149,19 +150,12 @@ $(function(){
 													<input type="button" class="inputButton" value="글쓰기" id="btnInsert">
 												</td>
 											</tr>
-											
-											<div>
-		                                        <select name="searchType">
-		                                            <option value="fb_title" ${searchType == 'fb_title' ? 'selected' : ''}>제목</option>
-		                                            <option value="fb_writer" ${searchType == 'fb_writer' ? 'selected' : ''}>작성자</option>
-		                                        </select>
-				                                 <input type="text" name="keyword" placeholder="검색어 입력" value="${keyword}">
-				                                 <button type="button" id="searchbtn">검색</button>
-			                               </div>
-									</table>
-								</form>
+											</thead>
+										</table>
+									</form>
+								</div>
 							</div>
-						</div>
+							
 					<!-- 우측 메뉴 종료 -->
 				</div>
 				<!-- 상단 중앙2 종료 -->
