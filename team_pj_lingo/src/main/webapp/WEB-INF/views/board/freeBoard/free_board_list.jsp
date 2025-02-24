@@ -12,7 +12,7 @@
 
 <title>free_board</title>
 
-<!-- css  -->
+
 <!-- 기존설정 그대로 -->
 	    <meta charset="utf-8">
 	    <title>Lingo</title>
@@ -46,7 +46,7 @@
     <link href="${path}/resources/css/common/style.css" rel="stylesheet">
 <script src="${path}/resources/js/member/join.js" defer></script> 
 
-	<link rel="stylesheet" href="${path}/resources/css/common/madang.css">
+	<link rel="stylesheet" href="${path}/resources/css/board/freeBoardList.css">
 
 <script type="text/javascript">
 	$(function(){
@@ -69,15 +69,21 @@
 			
 		});
 	});
-
- 
-	$(function(){
-	    $("#searchbtn").click(function(){
-	       document.keywordSearch.action = "${path}/keywordSearch.fb"
-	       document.keywordSearch.submit();
-	    });	
-	});
-
+</script>
+<script>
+$(function(){
+   
+    $("#searchbtn").click(function(){
+       let searchType = $("select[name='searchType']").val();
+       let keyword = $("input[name='keyword']").val();
+       
+       let url = "${path}/free_board_list.fb?searchType=" + searchType + "&keyword=" + encodeURIComponent(keyword);
+       
+       location.href = url;
+       
+    });
+    
+});
 </script>
 
 </head>
@@ -90,46 +96,60 @@
    <!-- 컨텐츠 시작 -->
 		<div id="container">
 			<div id="contents">
-			
 				<!-- 상단 중앙1 시작 -->
-				<div id="section1"
-					style="background-image: url('${path}/resources/images/to.jpg'); background-size: cover; background-position: center; height: 300px;">
-					<br> <br>
-					<h1 align="center">게시판 목록</h1>
-				</div>
-				<!-- 상단 중앙2 시작  -->
+				<br>
+				<br>
+				<br>
 				
-				<form name="keywordSearch" action="keywordSearch.fb" method="get">
-					<div class="search" style="text-align:center; padding-top:30px;">
-                       <input type="text" name="keyword" placeholder="검색어 입력">
-                       <button type="button" id="searchbtn">검색</button>
-                     </div>
-                 </form>		
-				<div id="section2">					
+				<div id="section1">
+					<h1 align="center">게시판 목록</h1>
+					<br>
+				</div>				
+				<br>					
 					<!-- 우측 메뉴 시작 -->
-						<div id="right">
-							<div class="join">								
+					
+						<br>
+						<div class="search-container">
+										<select name="searchType">
+											<option value="fb_title"
+												${searchType == 'fb_title' ? 'selected' : ''}>제목</option>
+											<option value="fb_writer"
+												${searchType == 'fb_writer' ? 'selected' : ''}>작성자</option>
+										</select> 
+										
+										<input class="search-input"
+											style="width: 400px; height: auto;" text" name="keyword"
+											placeholder="검색어 입력" value="${keyword}">
+										
+										<button class="search-button" type="button" id="searchbtn">
+											<i class="fa-solid fa-magnifying-glass"></i>
+										</button>
+									</div>
+							
+								<div id="section2">						
+								<div id="right">
+						<div class="table_div">	
 								<form name="free_boardList">
-									<table style="width:1000">
-									  <thead>
-										<tr style="padding-bottom:30px;">
-											<th style="width:10%; height:70px;">글번호</th>
-											<th style="width:10%; height:70px;">작성자</th>
-											<th style="width:15%; height:70px;">글제목 [댓글수]</th>
-											<th style="width:10%; height:70px;">작성일</th>
-											<th style="width:10%; height:70px;">조회수</th>
+									<table>
+									<thead >
+										<tr>
+											<th style="width:10%">글번호</th>
+											<th style="width:10%">작성자</th>
+											<th style="width:15%">글제목 [댓글수]</th>
+											<th style="width:10%">작성일</th>
+											<th style="width:5%">조회수</th>
 										</tr>
-									<hr>									
+								</thead>											
 										<!-- 게시글이 있으면  -->										
 											<c:forEach var="dto" items= "${freeBoardList}">											
 												<tr>
-													<td style="text-align:center">${dto.fb_num}</td>
-													<td style="text-align:center">${dto.fb_writer}</td>
-													<td style="text-align:center">
+													<td>${dto.fb_num}</td>
+													<td>${dto.fb_writer}</td>
+													<td>
 														<a href="${path}/freeDetailAction.fb?fb_num=${dto.fb_num}&pageNum=${paging.pageNum}">${dto.fb_title} <span style="color: red">[ ${dto.fb_comment_count} ]</span></a>
 													</td>
-													<td style="text-align:center">${dto.fb_regDate}</td>
-													<td style="text-align:center">${dto.fb_readCnt}</td>
+													<td>${dto.fb_regDate}</td>
+													<td>${dto.fb_readCnt}</td>
 												</tr>
 											</c:forEach>
 											<tr>
@@ -149,31 +169,26 @@
 														<a href="${path}/free_board_list.fb?pageNum=${paging.next}">[다음]</a>
 													</c:if>
 												</td>
-											</tr>
-											<tr>
-												<td colspan="6" align="center">
-													<input type="button" class="inputButton" value="글쓰기" id="btnInsert">
-												</td>
-											</tr>
-											</thead>
-										</table>
-									</form>
-								</div>
+									</table>
+									<br>
+									<div style="text-align: center;">
+									    <input type="button" class="inputButton" value="글쓰기" id="btnInsert">
+									</div>
+									
+								</form>
 							</div>
-							
+						</div>
 					<!-- 우측 메뉴 종료 -->
 				</div>
 				<!-- 상단 중앙2 종료 -->
 			</div>
-			 <!-- footer 시작 -->
-		      <%@include file="/WEB-INF/views/common/footer.jsp" %>
-		      <!-- footer 끝 -->
 		</div>
-		
       <!-- 컨텐츠 끝 -->
       
 
-     
+      <!-- footer 시작 -->
+      <%@include file="/WEB-INF/views/common/footer.jsp" %>
+      <!-- footer 끝 -->
       
       	<!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>

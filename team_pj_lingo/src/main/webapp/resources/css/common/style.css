@@ -147,7 +147,7 @@
     color: var(--primary);
 }
 
-@media (max-width: 991.98px) {
+@media (max-width: 1380px) {
     .navbar-light .navbar-nav .nav-link  {
         margin-right: 0;
         padding: 10px 0;
@@ -173,7 +173,7 @@
     transition: .5s;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1380px) {
     .navbar .nav-item .dropdown-menu {
         display: block;
         margin-top: 0;
@@ -377,14 +377,14 @@
     z-index: 1;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1380px) {
     .testimonial-carousel::before,
     .testimonial-carousel::after {
         width: 200px;
     }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1380px) {
     .testimonial-carousel::before,
     .testimonial-carousel::after {
         width: 300px;

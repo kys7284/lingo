@@ -65,8 +65,8 @@
 				
 				<!-- 상단 중앙1 시작  -->
 				<div id="section1"
-					style="background-image: url('${path}/resources/images/report.png'); background-size: cover; background-position: center; height: 300px;">
-					<br> <br>
+					style="background-image: url('${path}/resources/images/report.jpg');background-color: #B6EBFF; background-size:auto; background-position: top; height: 250px; background-repeat: no-repeat;">
+					<br><br><br>
 					<h1 align="center">신고 센터</h1>
 				</div>
 				<!-- 상단 중앙2 시작  -->
@@ -85,6 +85,9 @@
 					<ul>
 						<li><a href="${path}/harmInsert.hr">신고 센터</a></li>
 					</ul>
+					<ul>
+						<li><a href="${path}/employment.eq"> 관련 기사 </a></li>
+					</ul>
 				</div>
 				<!-- 왼쪽메뉴 끝 -->
 				<div class="container">
@@ -102,11 +105,11 @@
 								<div class="join">
 	
 							<form id="harmForm" action="harmReportInsert.hr" method="post">
-							<table>
-								<tr><h1>무엇이 불편하세요?</h1></tr>
+							<h1>무엇이 불편하세요?</h1>
+							<table class="join">
 								<tr>
 									<th>게시글 번호</th>
-									<td><input type="text" id="harm_report_num" name="harm_report_num" ></td>
+									<td><input class="textarea" type="text" id="harm_report_num" name="harm_report_num" ></td>
 									<td><input type="button" id="numBtn" value="입력"></td>
 								</tr>	
 								
@@ -135,7 +138,6 @@
 											<option value="hatePost">혐오게시글</option>
 											<option value="disInfo">허위사실유포</option>
 											<option value="illegalAd">불법광고</option>
-											<option value="serviceError">서비스장애/오류</option>
 										</select>
 									</td>
 								</tr>
@@ -143,7 +145,7 @@
 								<tr>
 									<th>신고내용</th>
 									<td>
-										<textarea rows="4" cols="50" name="harm_report_content" required></textarea>
+										<textarea class="textarea" rows="4" cols="50" name="harm_report_content" required></textarea>
 									</td>
 								</tr>
 							

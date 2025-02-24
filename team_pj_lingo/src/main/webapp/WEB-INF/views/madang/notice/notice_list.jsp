@@ -69,7 +69,7 @@
 				
 				<!-- 상단 중앙1 시작  -->
 				<div id="section1"
-					style="background-image: url('${path}/resources/images/megaphone.png'); background-size: cover; background-position: center; height: 300px;">
+					style="background-image: url('${path}/resources/images/megaphone.png'); background-color: #D3ECF1; background-size:50% auto; background-position: 200px center; height: 280px; background-repeat: no-repeat;">
 					<br> <br>
 					<h1 align="center">공지사항</h1>
 				</div>
@@ -89,6 +89,9 @@
 					<ul>
 						<li><a href="${path}/harmInsert.hr">신고 센터</a></li>
 					</ul>
+					<ul>
+						<li><a href="${path}/employment.eq"> 관련 기사 </a></li>
+					</ul>
 				</div>
 				<!-- 왼쪽메뉴 끝 -->
 					<div class="container">
@@ -103,9 +106,9 @@
 							<!-- 결과출력 위치 -->
 
 							<div id="s2_inner">
-								<div class="join">
+								<div>
 									<form name="noticeList">
-									<table>
+									<table class="join">
 
 										<tr>
 											<th style="width:10%">번호</th>

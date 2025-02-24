@@ -17,11 +17,22 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+#section1 {
+   border-bottom: 5px solid #06BBCC; 
+   background-color: #FFFFFF;
+   border-radius: 10px;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 #section2 {
     display: flex;
     justify-content: space-between;
     flex-wrap: nowrap;
     gap: 20px;
+       border-bottom: 5px solid #06BBCC; 
+   background-color: #FFFFFF;
+   border-radius: 10px;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 #left {

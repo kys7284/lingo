@@ -33,7 +33,7 @@
 		<!-- header 시작 -->
 		<%@ include file="/WEB-INF/views/common/header.jsp" %>
 		<!-- header 끝 -->
-		<br><br>
+		
 		<!-- 컨텐츠 시작 -->
 		<div id="container">
 			<div id="contents">
@@ -105,11 +105,11 @@
 									<tr>
 										<th> * 주소 </th>
 										<td> 
-											<input type="text" id="sample6_postcode" name="sample6_postcode" placeholder="우편번호" readonly>
-											<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-											<input type="text" id="sample6_address" name="sample6_address" placeholder="주소" readonly><br>
-											<input type="text" id="sample6_extraAddress" name="sample6_extraAddress"placeholder="참고항목" readonly>
-											<input type="text" id="sample6_detailAddress" name="sample6_detailAddress" placeholder="상세주소" required>
+											<input type="text" id="sample6_postcode" class="inputaddress" name="sample6_postcode" placeholder="우편번호" readonly>
+											<input type="button" class="inputaddress" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+											<input type="text" id="sample6_address" class="inputaddress" name="sample6_address" placeholder="주소" readonly><br>
+											<input type="text" id="sample6_extraAddress" class="inputaddress" name="sample6_extraAddress"placeholder="참고항목" readonly>
+											<input type="text" id="sample6_detailAddress" class="inputaddress" name="sample6_detailAddress" placeholder="상세주소" required>
 										</td>
 									</tr>
 									
@@ -143,7 +143,7 @@
 									<tr>
 										<th>가입인사</th>
 										<td>
-											<textarea rows="5" cols="60" id="mem_comment" name="mem_comment"></textarea>
+											<textarea class="textarea" rows="5" cols="60" id="mem_comment" name="mem_comment"></textarea>
 											<input type="hidden" id="hiddenContent" name="mem_comment">
 										</td>	
 									</tr>
@@ -160,18 +160,17 @@
 									</tr>
 								</table>
 							</form>
-							
 						</div>
 					</div>
 				</div>
 			</div>
+				<!-- footer 시작 -->
+		<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+		<!-- footer 끝 -->
 		</div>
 		<!-- 컨텐츠 끝 -->
 		
-		<!-- footer 시작 -->
-		<%@ include file="/WEB-INF/views/common/footer.jsp" %>
-		<!-- footer 끝 -->
-		
+	
 	</div>		
 </body>
 </html>

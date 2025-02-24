@@ -40,7 +40,7 @@
     <link href="${path}/resources/css/common/style.css" rel="stylesheet">
     
     <!-- 디테일 css  -->
-    <link href="${path}/resources/css/board/board.css" rel="stylesheet">
+    <link href="${path}/resources/css/shareInfo/travelDetail.css" rel="stylesheet">
 
 <script type="text/javascript">
 	$(function() {
@@ -113,8 +113,18 @@
 		<!-- 컨텐츠 시작 -->
 		<div id="container">
 			<div id="contents">
-				<!-- 상단 중앙1 시작 -->
-				<div>
+				<!-- 상단 중앙1 시작  -->
+				<div
+					style="background-image: url('${path}/resources/images/travel.jpg'); background-size: cover; background-position: center; height: 300px;">
+					<br> <br> <br>
+					<h1 align="center" style="padding-bottom: 50px;">여행정보</h1>
+
+					<span
+						style="display: flex; justify-content: center; font-weight: bold;">여러분의
+						여행을 공유해주세요</span>
+				</div>
+				<!-- 상단 중앙2 시작 -->
+				<div id="section1">
 					<h1 align="center"> ${dto.tb_title}</h1>
 				</div>				
 				<!-- 상단 중앙1 종료 -->
@@ -134,7 +144,7 @@
 						</ul>
 	
 						<ul>
-							<li><a href="#"> 여행지 찾기 </a></li>
+							<li><a href="${path}/findSpot.tc"> 여행지 찾기 </a></li>
 						</ul>
 						
 					</div>
@@ -224,19 +234,20 @@
 									<br><br>
 									
 									<!-- 댓글 목록 코드 -->
-									<div id="travelCommentList" align="center">
+									<div id="travelCommentList" style="align-items: center !important;">
 									
 									<!-- 댓글 목록 -->
 									
 									</div>
 									<hr><br><br>
 									<!-- 댓글 입력 코드 -->
+									<div class="table_div">
 									<table>
 										<!-- 로그인시에만 댓글입력란이 보임 -->
 										<c:if test="${! empty sessionScope.sessionId}">
 										<tr>
 											<th style="width: 200px; ">아이디</th>
-											<td style="width: 200px; text-align:left"> 
+			                                 <td style="width: 200px; "> 
 												<input style="width: 200px" type="text" class="input" 
 												name="tb_writer" id="tb_writer" size="30" value="${sessionScope.hiddenId}" placeholder="${sessionScope.hiddenId}" readonly>
 											</td>
@@ -248,28 +259,25 @@
 										<tr>
 											<th style="width: 200px; border-top: 1px solid black;"> 글 내용</th>
 											<td style="width: 170px" style="text-align:center">
-												<textarea style="width:600px" rows="5" cols="93" name="tb_content" id="tb_content" placeholder="댓글입력"></textarea>
+												<textarea class="textarea" style="width:600px" rows="5" cols="80" name="tb_content" id="tb_content" placeholder="댓글입력"></textarea>
 											</td>
 										</tr>	
 										</c:if>		
 										<!--  -->						
 									</table>
-								
+								</div>
 							</div>
 						</div>
 					<!-- 우측 메뉴 종료 -->
 				</div>
 				<!-- 상단 중앙2 종료 -->
-			</div>
-		</div>
-		
-		
-		<!-- 컨텐츠 끝 -->
-		
-      <!-- footer 시작 -->
+					<!-- footer 시작 -->
       <%@include file="/WEB-INF/views/common/footer.jsp" %>
       <!-- footer 끝 -->
-      
+			</div>
+		</div>
+		<!-- 컨텐츠 끝 -->
+		
       	<!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 

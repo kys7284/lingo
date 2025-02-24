@@ -12,7 +12,6 @@
 <title>free_board</title>
 </head>
 <body>
-	<div id="right">
 			<div class="table_div">
 				<form name="freeBoardList">
 					<table border="1" width="800px">
@@ -33,7 +32,6 @@
 							</c:forEach>
 					</table>
 				</form>
-			</div>
 			</div>
 </body>
 </html>

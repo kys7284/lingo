@@ -1,3 +1,5 @@
+
+// citys 도시 -> 구  메인배열  
 const citys = {
         	"서울특별시": ["강남구", "강북구", "관악구", "구로구", "노원구"],	
             "부산광역시": ["해운대구", "부산진구", "서구", "동래구", "금정구"],
@@ -14,6 +16,8 @@ const citys = {
 	        "경기도 안산시": ["상록구", "단원구"]
         };
 
+
+// 해당구 병원 리스트
         const hospitals = {
         		"강남구": [
         		    { name: "서울대병원 강남센터", address: "서울특별시 강남구 테헤란로 152", phone: "02-2112-5500", lat: 37.499995, lng: 127.036282 },
@@ -226,34 +230,50 @@ const citys = {
     $("#city").append(new Option("도시 선택", ""));
     $("#province").append(new Option("구 선택", ""));
 
-    // 시/도 목록 추가
-    Object.keys(citys).forEach(city => {
+//------------------------------------- 도시 선택 --------------------------------------
+
+    // 도시선택 (citys 메인배열에 있는 값들을 사용)
+    Object.keys(citys).forEach(city => {  			 // Object.keys   객체의 키(key) 목록을 배열(Array) 형태로 반환
         $("#city").append(new Option(city, city));
     });
+             
+
+             
+//------------------------------------- 구 선택 --------------------------------------
                                                                
-    // 시/도 선택 시 구/군 옵션 변경
+    // 구 선택 
     $("#city").change(function () {
         let selectedCity = $(this).val();
         $("#province").empty().append(new Option("구 선택", "")); 
-        if (selectedCity && citys[selectedCity]) {
+
+		// 선택된 도시가 있고, 해당 도시에 속하는 구 목록이 존재하는 경우
+        if (selectedCity && citys[selectedCity]) {			
             citys[selectedCity].forEach(province => {
-                $("#province").append(new Option(province, province   ));
+                $("#province").append(new Option(province, province   ));  	// 구 선택
             });
         }
     });
 
-    // 구 선택 시 병원 목록 변경
+
+//------------------------------------- 해당구 병원 선택 --------------------------------------
+
+    // 병원선택 (구 선택 시 해당구의 병원 목록 변경)
     $("#province").change(function () {
         let selectedProvince = $(this).val();
         $("#hospital-list").empty();
         if (selectedProvince && hospitals[selectedProvince]) {
             hospitals[selectedProvince].forEach(hospital => {
-                let li = $("<li></li>").text(hospital.name).click(() => showHospitalInfo(hospital));
+	 			
+			// 병원 이름을 목록형식으로 추가하고 클릭 시 오른쪽 상세 정보 표시
+                let li = $("<li></li>").text(hospital.name).click(() => showHospitalInfo(hospital));	 
                 $("#hospital-list").append(li);
                });
            }
        });
    });
+   
+   
+//------------------------------------- 병원 상세정보 출력 --------------------------------------
 
       // 병원 상세정보
         function showHospitalInfo(hospital) {
@@ -261,32 +281,52 @@ const citys = {
             $("#hospital-address").text("주소: " + hospital.address);
             $("#hospital-phone").text("전화: " + hospital.phone);
 
-            // 지도 표시
+
+
+            
+
+
+
+
+
+//------------------------------------- 카카오 지도 --------------------------------------
+
+ 			// 카카오 지도 표시를 위한 id 가져오기
             const mapContainer = document.getElementById("map");
             const mapOptions = {
-                center: new kakao.maps.LatLng(hospital.lat, hospital.lng),
-                level: 3
+            	// center: 지도의 중심 위치
+                center: new kakao.maps.LatLng(hospital.lat, hospital.lng),	  // hospital.lat, hospital.lng → hospital 객체에 있는 위도(lat)와 경도(lng)를 가져와 설정
+                level: 3	// 지도 확대 레벨 (3단계 확대)
             };
-            const map = new kakao.maps.Map(mapContainer, mapOptions);
+            
+			
+			const map = new kakao.maps.Map(mapContainer, mapOptions);		 //  mapContainer(jsp 요소)에 카카오 지도 생성 , mapOptions(중심 위치 및 확대 레벨 설정)을 적용
 
+			// 지도에 마커 추가
             new kakao.maps.Marker({
                 map: map,
-                position: new kakao.maps.LatLng(hospital.lat, hospital.lng)
+                position: new kakao.maps.LatLng(hospital.lat, hospital.lng)	// 마커 위치 설정 (병원 경,위도)
             });
 
-            // 로드뷰 표시
-            const roadviewContainer = document.getElementById("roadview");
-            const roadview = new kakao.maps.Roadview(roadviewContainer);
-            const roadviewClient = new kakao.maps.RoadviewClient();
+
+
+//------------------------------------- 카카오 로드뷰 --------------------------------------
+
+            // 카카오 로드뷰 표시를 위한 컨테이너 요소 가져오기
+            const roadviewContainer = document.getElementById("roadview");	// 카카오 로드뷰 표시를 위한 id 가져오기	
+            const roadview = new kakao.maps.Roadview(roadviewContainer);	// 로드뷰 객체 생성
+            const roadviewClient = new kakao.maps.RoadviewClient();			// 로드뷰 클라이언트 객체 생성
 
             // 선택한 병원의 좌표로 가장 가까운 로드뷰 ID 요청
             roadviewClient.getNearestPanoId(
                 new kakao.maps.LatLng(hospital.lat, hospital.lng), 
-                50, // 반경 50m 내에서 로드뷰 찾기
+                50, 	// 반경 50m 내에서 로드뷰 찾기
                 function(panoId) {
                     if (panoId) {
+						// 찾은 로드뷰 ID로 로드뷰 설정
                         roadview.setPanoId(panoId, new kakao.maps.LatLng(hospital.lat, hospital.lng));
                     } else {
+						// 근처에 로드뷰 데이터가 없을 경우 사용자에게 안내 메시지 표시
                         roadviewContainer.innerHTML = "<p style='color: red;'>로드뷰 없음</p>";
                     }
                 }

@@ -34,42 +34,6 @@
 	height: auto;
 }
 
-/* 1차 테스트 : 가운데 위치 테스트 */
-
-.join th {
-	font-size: 15px;
-	font-weight: bold;
-	width: 120px;
-	height: 60px;
-	text-align: center;
-	padding-right: 10px;
-	padding-left: 20px;
-	border-bottom: 1px solid #CCC;
-	background: whitesmoke;
-	margin-right: 5px;
-}
-
-.join td {	
-	padding: 10px 0 10px 10px;
-	border-bottom: 1px solid #CCC;
-}
-
-.input {
-	width: 300px;
-	height: 40px;
-	border: 1px solid gray;
-	box-sizing: border-box;
-	padding: 0 0 0 10px;
-}
-
-.inputButton {
-	background: whitesmoke;
-	font-size: 15px;
-	padding: 5px 10px 5px 10px;
-}
-
-@charset "UTF-8";
-
 /* HTML 폰드 스타일 시작 */
 .content {
         margin: 0 auto;
@@ -136,7 +100,7 @@
 
 #container {
    width: 100%;
-    height: 100vh;
+   height: 100vh;
    margin: 0 auto;
    background-color: #F6F6F6;
    font-family: 'Arial', sans-serif;
@@ -161,35 +125,36 @@
    width: 100%;
 }
 
-.join {
+.table {
    display: flex;
    justify-content: center; /* 유연한 정렬 */
    align-items: center;
    max-width: 1500px;
-   margin: 40px auto;
-   padding: 20px;
+   margin: 20px auto;
    background-color: #FFFFFF;
    border-radius: 10px;
    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
    border: 1px solid #DDD;
 }
 
-.join th {
+.table th {
    font-size: 16px;
    font-weight: bold;
    width: 140px;
    height: 60px;
    text-align: center; 
    padding: 10px 20px;
-   border-bottom: 2px solid #DDD;
-   background-color: #F3F3F3;
+   border-bottom: 2px solid #DDD !important;
+   background-color: #F3F3F3 !important;
    border-radius: 5px;
+   vertical-align: middle;
 }
 
-.join td {
+.table td {
    padding: 10px 20px;
    border-bottom: 2px solid #DDD;
    background-color: #FFFFFF;
+   vertical-align: middle;
 }
 
 .input {
@@ -217,6 +182,7 @@
    color: #333;
    cursor: pointer;
    transition: background-color 0.3s;
+   justify-content: center;
 }
 
 .inputButton:hover {
@@ -241,34 +207,6 @@
     
 }
 
-.join button {
-   border: none;
-   background-color: white;
-   font-size: 14px;
-}
-
-
-.inputaddress {
-    width: 250px;
-    height: 30px;
-    border: 1px solid #CCC;
-    padding: 0 10px;
-    border-radius: 5px;
-    font-size: 14px;
-    box-sizing: border-box;
-    background-color: #FFFFFF; /* 추가된 스타일 */
-    
-}
-.inputaddress:focus {
-    border-color: #0056A4; /* LEGO의 브랜드 블루 */
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 86, 164, 0.5);
-}
-.input:focus {
-    border-color: #0056A4; /* LEGO의 브랜드 블루 */
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 86, 164, 0.5);
-}
 
 .textarea {
     border: 1px solid #CCC;

@@ -45,7 +45,7 @@
     <link href="${path}/resources/css/common/style.css" rel="stylesheet">
 <script src="${path}/resources/js/member/join.js" defer></script> 
 
-	<link rel="stylesheet" href="${path}/resources/css/common/madang.css">
+	<link rel="stylesheet" href="${path}/resources/css/board/boardInsert.css">
 
 <script>
 	$(function() {
@@ -87,11 +87,13 @@
 		<div id="container">
 			<div id="contents">
 				<!-- 상단 중앙1 시작 -->
-				<div id="section1"
-					style="background-image: url('${path}/resources/images/to.jpg'); background-size: cover; background-position: center; height: 300px;">
-					<br> <br>
+				<br>
+				<br>
+				<div id="section1" >
 					<h1 align="center">게시판 작성</h1>
+					<br>
 				</div>
+				
 				<!-- 상단 중앙1 종료 -->
 				
 				<!-- 상단 중앙2 시작 -->
@@ -99,10 +101,10 @@
 					
 					<!-- 우측 메뉴 시작 -->
 						<div id="right">
-							<div class="join">
+							<div class="table_div">
 								<form name="insertForm" method="post" action="free_board_insertAction.fb" enctype="multipart/form-data">
 									<table>
-										<tr>
+										<tr >
 											<th style="width: 200px">작성자</th>
 											<td style="width: 200px; text-align:center">${sessionScope.hiddenId}</td>
 											
@@ -111,34 +113,29 @@
 												<input style="width:200px" type="password" class="input" name="fb_password"
 												 id="fb_password" size="30" placeholder="비밀번호 입력" autofocus>
 											</td>
-											<br><br>
 										</tr>
 										
 										<tr>
-											<th style="width: 200px">글제목</th>
-											
-											<td colspan="3" style="text-align:center">
-												<input style="width: 700px" type="text" class="input" name="fb_title" 
-														id="fb_title" size="50" placeholder="글제목 입력">
-											</td>
+										    <th style="width: 200px">글제목</th>
+										    <td style="width: 200px; height: 60px !important; padding-left: 30px; text-align: left;">
+										        <input style="width: 300px; height: 40px" type="text" class="input" name="fb_title" 
+										               id="fb_title" size="30" placeholder="글제목 입력">
+										    </td>
+										
+										    <th style="width: 200px">첨부 파일</th>
+										    <td style="width: 200px; height: 60px !important; text-align: center;">
+										        <input type="file" class="input" id="fb_img" name="fb_img" 
+										               accept="image/*" style="width: 300px; height: 40px;">
+										    </td>
 										</tr>
 										
 										<tr>
 											<th style="width: 200px">글내용</th>
-											<td colspan="3" style="text-align:center">
-												<textarea rows="5" cols="93" name="fb_content" id="fb_content" placeholder="글내용 입력"></textarea>
+											<td colspan="3" style="text-align:center; height: 150px !important; ">
+												<textarea class="textarea" rows="5" cols="95" name="fb_content" id="fb_content" placeholder="글내용 입력"></textarea>
 											</td>
 											
 										</tr>
-										
-										<tr>
-										
-											<th>첨부 파일</th>
-											<td> 
-												<input type="file" class="input" id="fb_img" name="fb_img" accept="image/*" style="width:250px; height:150px">
-											</td>
-										</tr>
-										
 										<tr>
 											<td colspan="4" align="center">
 												<input type="button" class="inputButton" value="작성" id="btnSave">
@@ -160,14 +157,14 @@
 				<!-- 상단 중앙2 종료 -->
 			
 			</div>
-		<!-- footer 시작 -->
-	      <%@include file="/WEB-INF/views/common/footer.jsp" %>
-	      <!-- footer 끝 -->
+		
 		</div>
 		<!-- 컨텐츠 끝 -->
       
 
-      
+      <!-- footer 시작 -->
+      <%@include file="/WEB-INF/views/common/footer.jsp" %>
+      <!-- footer 끝 -->
       
       	<!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>

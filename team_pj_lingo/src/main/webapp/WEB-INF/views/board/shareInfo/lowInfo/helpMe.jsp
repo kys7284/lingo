@@ -70,7 +70,7 @@
 	rel="stylesheet">
 
 <style>
-.container {
+.container{
 	max-width: 1000px;
 	background-color: #fff;
 	padding: 20px;
@@ -138,6 +138,17 @@
 
 .btn-reply:hover {
 	background-color: #05a9b8;
+}
+
+.textarea {
+    border: 1px solid #CCC;
+    padding: 0 15px;
+    font-size: 16px;
+    border-radius: 8px;
+    background-color: #F6F6F6;
+    color: #333;
+    transition: background-color 0.3s ease;	
+    height: 150px; 
 }
 </style>
 
@@ -222,6 +233,8 @@
 </head>
 <body>
 
+
+<!-- 멤버 / 관기자 세션 변수 설정 -->
 <%
     String memStatus = (String) session.getAttribute("sessionId");
     String hiddenId = (String) session.getAttribute("hiddenId");
@@ -255,7 +268,8 @@
 
 				<!-- 상단 중앙1 시작  -->
 				<div id="section1"
-					style="background-image: url('${path}/resources/images/low.png'); background-size: cover; background-position: center; height: 360px;">
+					style="background-image: url('${path}/resources/images/low.png'); background-size: cover; background-position: center; height: 360
+					px;">
 					<br> <br> <br> <br>
 					<h1 align="center">법률 도움</h1>
 				</div>
@@ -269,42 +283,47 @@
 
 							<div class="container">
 
-								<!-- 메인 글 작성 -->
+								<!-- 메인 게시글(고민) 작성 -->
 								<table class="section2">
-									<tr>
-										<th style="width: 200px">${sessionScope.hiddenId}님안녕하세요</th>
+									<tr style="height: 50px; min-height: 50px;">
+										<th style="width: 200px">&nbsp;&nbsp;&nbsp;${sessionScope.hiddenId}님 안녕하세요~</th>
 									</tr>
-
+										
 									<tr>
 										<th colspan="3" style="text-align: center;">
-											<!-- 작성창 --> <textarea rows="8" cols="160"
-												name="slboard_content" id="slboard_content"
-												placeholder="${sessionScope.hiddenId}님의 고민을 적어주세요.."></textarea>
+											
+											<!-- 작성창 --> 
+											<textarea rows="8" cols="155"
+												name="slboard_content" id="slboard_content" class="textarea"
+												placeholder="${sessionScope.hiddenId}님의 고민을 적어주세요..">
+											</textarea>
 
 											<!-- 사진첨부를 작성창과 버튼 사이에 배치 -->
 											<div style="margin: 15px 0; text-align: center;">
-												<label for="slboard_img"><strong>사진 첨부</strong></label> <input
-													type="file" id="slboard_img" name="slboard_img"
-													accept="image/*"
+												<label for="slboard_img"><strong>사진 첨부</strong></label> 
+												<input type="file" id="slboard_img" name="slboard_img" accept="image/*"
 													style="display: block; margin: 10px auto; width: 250px; height: 50px;">
-											</div> <!-- 버튼들 --> <br> <input type="button"
-											class="inputButton" value="작성" id="btnSave"> <input
-											type="reset" class="inputButton" value="초기화">
+											</div> 
+											
+											<!-- 버튼들 --> 
+											<br> 
+											<input type="button" class="inputButton" value="작성" id="btnSave"> 
+											<input type="reset" class="inputButton" value="초기화">
 										</th>
 									</tr>
 								</table>
 							</div>
 						</form>
 
-
+						<!-- 게시글 목록 -->
 						<form id="editForm" method="post">
 							<input type="hidden" id="deletePostNum" name="slboard_num"
 								value="">
 						</form>
-
+						
 						<div class="container">
-
-							<!-- 게시글 목록 -->
+							
+							<!-- 게시글 있으면 반복문으로 출력 -->
 							<c:forEach var="dto" items="${shareLowList}">
 
 								<div class="comment">
@@ -330,33 +349,28 @@
 										<button class="btn-reply2 mt-3 btnDelete"
 											data-postnum="${dto.slboard_num}">관리자 게시글 삭제</button>
 
-										<!-- Reply Button -->
-										<button type="button" class="btn-reply mt-2"
-											onclick="toggleReplyList(this)">
-											답글<span style="color: red">[
-												${dto.slboard_comment_count} ]</span>
+										<!-- 답글 버튼 -->
+										<button 
+											type="button" class="btn-reply mt-2" 
+											onclick="toggleReplyList(this)"> 답글<span style="color: red">[${dto.slboard_comment_count} ]</span>
 										</button>
 
 										<!-- 답글 Section -->
 										<div class="reply-section">
-											<!-- Reply List -->
 											<div class="reply-list mt-3">
 												<div class="comment">
-
-													<!-- 댓글 목록  -->
+													<!-- 답글있으면 ajax화룡하여 목록 출력 -->
 													<div id="commentList-${dto.slboard_num}" align="center"></div>
-
 												</div>
 											</div>
 
-											<!-- Reply Box -->
+											<!-- 답글 작성창 -->
 											<div class="reply-box mt-3">
-												<!-- 작성자 입력 필드 -->
 												<input type="text" name="slcomment_writer"
 													class="slcomment_writer" placeholder="닉네임 입력하세요~"
 													class="comment-body mb-2" style="width: 200px;">
 
-												<!-- 댓글 입력 필드 -->
+												<!-- 답글 입력 -->
 												<textarea rows="4" cols="170" name="slcomment_content"
 													class="slcomment_content" placeholder="답글 내용 입력"></textarea>
 
@@ -400,7 +414,8 @@
 	
 	
 	
-	<!-- Summernote JS -->
+	<!-- 글 작성창 에디터 js -->
+	<!-- 활용실패 (글 번호, 사용자 세션종류등 값을 가져올려면 매우 복잡함, 현재는 [답글] 버튼 클릭 이벤트만으로 사용중임 (답글 영역 보이거나 숨기기)  -->
 	<scriptsrc="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 	<scriptsrc="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
 	
@@ -538,7 +553,7 @@
         console.log("userStatus:", userStatus);
         console.log("loggedInUser:", loggedInUser);
 
-        // [관리자용] 관리자가 아닐 경우 삭제 버튼 숨기기
+        // [관리자] 관리자가 아닐 경우 [관리자 게시글 삭제] 버튼 숨기기
         $(".btn-reply2").each(function() {
             if (userStatus.trim() !== "admin") {
                 $(this).hide();
@@ -546,7 +561,7 @@
             }
         });
 
-        // [회원용] 자신의 게시글이 아닌 경우 삭제 버튼 숨기기
+        // [member] 자신의 게시글이 아닌 경우 삭제 버튼 숨기기
         $(".btnMemberDelete").each(function() {
             let postWriter = $(this).closest('.comment').find('strong').text().trim();
             
