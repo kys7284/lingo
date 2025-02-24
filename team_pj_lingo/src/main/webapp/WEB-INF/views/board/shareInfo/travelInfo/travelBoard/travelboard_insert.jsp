@@ -40,7 +40,7 @@
     <link href="${path}/resources/css/common/style.css" rel="stylesheet">
     
     <!-- 디테일 css  -->
-    <link href="${path}/resources/css/board/board.css" rel="stylesheet">
+    <link href="${path}/resources/css/shareInfo/travelInsert.css" rel="stylesheet">
 
 <script type="text/javascript">
 	$(function() {
@@ -77,7 +77,13 @@
 			document.travel_insertForm.action="${path}/travel_board_insertAction.tc"
 			document.travel_insertForm.submit();
 		});
+		
+		$("#btnList").click(function() {
+			alert("목록으로 이동합니다");
+			location.href="${path}/travelInfo.tc"
+		});
 	});
+
 
 </script>
 <title>travelBoard_insert</title>
@@ -119,7 +125,7 @@
 						</ul>
 	
 						<ul>
-							<li><a href="#"> 여행지 찾기 </a></li>
+							<li><a href="${path}/findSpot.tc"> 여행지 찾기 </a></li>
 						</ul>
 						
 					</div>
@@ -159,32 +165,29 @@
 									<tr style="border: 1px solid;">
 										<th style="width: 200px; border-right: 1px solid;">글제목</th>
 										<td colspan="3" style="text-align:center">
-											<input type="text" name="tb_title" id="tb_title">
+											<input class="textarea2" type="text" name="tb_title" id="tb_title">
 										</td>
 									</tr>
 									
 									<tr style="border: 1px solid;">
 										<th style="width: 200px; border-right: 1px solid;">글내용</th>
 										<td colspan="3" style="text-align:center">
-										<textarea rows="10" cols="60" name="tb_content" id="tb_content"></textarea>
+										<textarea class="textarea" rows="10" cols="80" name="tb_content" id="tb_content"></textarea>
 										</td>
 									</tr>
 									
 									<tr>
 										<th>사진 업로드</th>
-										<td> 
-											<input type="file" class="input" id="tb_img" name="tb_img" accept="image/*" style="width:250px; height:150px; border: 1px solid black;">
-										</td>
-									</tr>
-									
-									<tr style="border: 1px solid;">
-										<td colspan="4" align="center">
-											<input type="button" class="inputButton" value="작성" id="btnSave">
-											<input type="button" class="inputButton" value="목록으로" id="btnList">
+										<td colspan="3"> 
+											<input type="file" class="input" id="tb_img" name="tb_img" accept="image/*" style="width:250px; height:50px; border: 1px solid black;">
 										</td>
 									</tr>
 									</table>
+									<br>
+										<input type="button" class="inputButton" value="작성" id="btnSave" >
+										<input type="button" class="inputButton" value="목록으로" id="btnList">
 									</form>
+									<br>
 									</div>
 									<br><br>
 							</div>
@@ -192,16 +195,18 @@
 					<!-- 우측 메뉴 종료 -->
 				</div>
 				<!-- 상단 중앙2 종료 -->
+							      <!-- footer 시작 -->
+      <%@include file="/WEB-INF/views/common/footer.jsp" %>
+      <!-- footer 끝 -->
 			</div>
+
+      	
 		</div>
 		
 		
 		<!-- 컨텐츠 끝 -->
 		
-      <!-- footer 시작 -->
-      <%@include file="/WEB-INF/views/common/footer.jsp" %>
-      <!-- footer 끝 -->
-      
+
       	<!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 

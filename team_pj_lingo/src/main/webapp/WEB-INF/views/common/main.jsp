@@ -213,12 +213,12 @@
                <hr style="border: 1px solid #ccc;">
                     <br>
                 </div>
-                <center>  
+<%--                 <center>  
                    <img src="${path}/resources/images/notice.png" alt="">
                 </center>  
                 <div>
                  
-                </div>
+                </div> --%>
             </div>
         </div>
     </div>

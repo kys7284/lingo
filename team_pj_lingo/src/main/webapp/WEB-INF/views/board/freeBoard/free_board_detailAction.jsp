@@ -45,7 +45,7 @@
     <link href="${path}/resources/css/common/style.css" rel="stylesheet">
 <script src="${path}/resources/js/member/join.js" defer></script> 
 
-	<link rel="stylesheet" href="${path}/resources/css/common/madang.css">
+	<link rel="stylesheet" href="${path}/resources/css/board/boardDetail.css">
 
 <script type="text/javascript">
 	$(function(){	//(jQuery)상세페이지가 로딩되면
@@ -140,11 +140,12 @@
 		<div id="container">
 			<div id="contents">
 				<!-- 상단 중앙1 시작 -->
-				<div id="section1"
-					style="background-image: url('${path}/resources/images/to.jpg'); background-size: cover; background-position: center; height: 300px;">
-					<br> <br>
+				<br>
+				<br>
+				<div id="section1">
 					<h1 align="center">게시판 상세페이지</h1>
-				</div>			
+					<br>
+				</div>				
 				<!-- 상단 중앙1 종료 -->
 
 				<!-- 상단 중앙2 시작 -->
@@ -152,8 +153,9 @@
 					
 					<!-- 우측 메뉴 시작 -->
 						<div id="right">
-							<div class="join" style="width: 50%; margin: 0 auto;">
+							<div class="table_div">
 								<form name="detailForm" method="post" >
+								<br>
 									<table>
 									
 									<!-- hidden : 직접 input박스에서 입력받지 못한 값들을 전달할 때 사용 -->
@@ -189,8 +191,8 @@
 											<td colspan="3" style="text-align:center"> ${dto.fb_title} </td>
 										</tr>
 										
-										<tr>
-											<th style="width: 200px;">내용</th>
+										<tr style="border: 1px solid;">
+											<th style="width: 200px; border-right: 1px solid;">내용</th>
 											<!-- 이미지가 null이 아닐때 사진과 함께 표시 -->
 											<c:if test="${dto.fb_img != null}">
 			                              		<td colspan="3"  style="text-align:center; "><div style="display:flex; flex-wrap: wrap;"><img src="${dto.fb_img}" 
@@ -231,7 +233,7 @@
                           			    <c:if test="${! empty sessionScope.sessionId}">
 										<tr>
 			                                 <th style="width: 200px; ">아이디</th>
-			                                 <td style="width: 200px; text-align:left"> 
+			                                 <td style="width: 200px; padding-left:60px !important; text-align:left !important "> 
 			                                    <input style="width: 200px" type="text" class="input" 
 			                                    name="fb_writer" id="fb_writer" size="30" value="${sessionScope.hiddenId}" placeholder="${sessionScope.hiddenId}" readonly>
 			                                 </td>
@@ -243,29 +245,28 @@
 			                              <tr>
 			                                 <th style="width: 200px; border-top: 1px solid black;"> 글 내용</th>
 			                                 <td style="width: 170px" style="text-align:center">
-			                                    <textarea style="width:600px" rows="5" cols="93" name="fb_content" id="fb_content" placeholder="댓글입력"></textarea>
+			                                    <textarea class="textarea" style="width:600px" rows="5" cols="93" name="fb_content" id="fb_content" placeholder="댓글입력"></textarea>
 			                                 </td>
 			                              </tr>   
 			                              </c:if>      
 									</table>
 								<!-- 댓글 입력 코드 끝 -->
 								</form>
-								
+								<br>
 							</div>
 						</div>
 					<!-- 우측 메뉴 종료 -->
 				</div>
 				<!-- 상단 중앙2 종료 -->
 			</div>
-			<!-- footer 시작 -->
-		      <%@include file="/WEB-INF/views/common/footer.jsp" %>
-		      <!-- footer 끝 -->
 		</div>
 		
 		
 		<!-- 컨텐츠 끝 -->
 		
-      
+      <!-- footer 시작 -->
+      <%@include file="/WEB-INF/views/common/footer.jsp" %>
+      <!-- footer 끝 -->
       
       	<!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>

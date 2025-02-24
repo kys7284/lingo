@@ -126,7 +126,7 @@
 								<p id="hospital-address"></p>
 								<p id="hospital-phone"></p>
 							</div>
-							<!-- 하단: 지도 표시 -->
+							<!-- 하단: 지도 / 로드뷰 표시 -->
 							<div id="map"></div>
 							<div id="roadview"></div>
 						</div>

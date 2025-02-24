@@ -148,7 +148,7 @@
     color: var(--primary);
 }
 
-@media (max-width: 991.98px) {
+@media (max-width: 1380px) {
     .navbar-light .navbar-nav .nav-link  {
         margin-right: 0;
         padding: 10px 0;
@@ -174,7 +174,7 @@
     transition: .5s;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1380px) {
     .navbar .nav-item .dropdown-menu {
         display: block;
         margin-top: 0;
@@ -210,10 +210,10 @@
 /*** Header carousel ***/
 .container-fluid {
     width: 60%;
-    margin: 0 auto;  /* 居中对齐 */
+    margin: 0 auto; 
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1380px) {
     .header-carousel .owl-carousel-item {
         position: relative;
         min-height: 50px;
