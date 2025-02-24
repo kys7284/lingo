@@ -77,7 +77,7 @@
                         <tr>
                            <th> * 아이디 </th>
                            <td>
-                              <input type="text" class="input" name="mem_id" size="30" value="${sessionScope.sessionId}" readonly>
+                              <input type="text" class="input" name="mem_id" size="30" value="${hiddenId}" readonly>
                            </td>
                         </tr>
                         <tr>

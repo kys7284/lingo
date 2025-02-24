@@ -81,10 +81,10 @@
         <option value="32">강원도</option>
         <option value="33">충청북도</option>
         <option value="34">충청남도</option>
-        <option value="35">전라북도</option>
-        <option value="36">전라남도</option>
-        <option value="37">경상북도</option>
-        <option value="38">경상남도</option>
+        <option value="35">경상북도</option>
+        <option value="36">경상남도</option>
+        <option value="37">전라북도</option>
+        <option value="38">전라남도</option>
         <option value="39">제주특별자치도</option>
     </select>
     <button id="searchBtn">검색</button>

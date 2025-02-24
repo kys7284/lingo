@@ -96,11 +96,54 @@
                 </div>
                 
                 <a href="${path}/main.do" class="nav-item nav-link active">Home</a>
+               
+               
+                  <c:if test="${sessionId == 'admin'}">
+                     <a href="${path}/free_board_list.fb" class="nav-item nav-link">커뮤니티</a>
+   				   
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">정보나눔</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="${path}/life.eq" class="dropdown-item">생활정보</a>
+                        <a href="${path}/travelInfo.tc" class="dropdown-item">여행정보</a>
+                        <a href="${path}/medi.hl" class="dropdown-item">의료정보</a>
+						<a href="${path}/low.eq" class="dropdown-item">법률정보</a>
+                    </div>
+                </div>
                 
-                <c:if test="${sessionId == 'admin'}">
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">알림마당</a>
+                    <div class="dropdown-menu fade-down m-0">                   
+                        <a href="${path}/notice_list.no" onfocus="this.blur()" class="dropdown-item">공지사항</a>
+                        <a href="${path}/faq_list.faq" onfocus="this.blur()" class="dropdown-item">자주하는질문</a>
+                        <a href="${path}/harmInsert.hr" onfocus="this.blur()" class="dropdown-item">신고센터</a>                       
+                    </div>
+                </div>
+                
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">번역서비스</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="${path}/textTranslate.do" class="dropdown-item">텍스트번역</a>
+                        <a href="${path}/fileTranslate.do" class="dropdown-item">문서번역</a>                      
+                    </div>
+                </div>
+            
+                
+                <c:if test="${sessionScope.sessionId == null}">
+                	<a href="${path}/login.do" class="nav-item nav-link">로그인</a>
+                </c:if>
+                
+                <c:if test="${sessionScope.sessionId != null}">
+                	<a href="${path}/mypage.do" class="nav-item nav-link">마이페이지</a>
+                	
+                </c:if> 
+                
+                  
                 	<a href="${path}/adminAction.ad" class="nav-item nav-link">관리자</a>
                 	<a href="${path}/logout.do" class="nav-item nav-link">로그아웃</a>
-                </c:if> 
+                  </c:if>	
+            
+               
                 
    				   <c:if test="${sessionId != 'admin'}">      
    				   
@@ -142,6 +185,7 @@
                 	<a href="${path}/mypage.do" class="nav-item nav-link">마이페이지</a>
                 	<a href="${path}/logout.do" class="nav-item nav-link">로그아웃</a>
                 </c:if> 
+                
                 
    
                 
