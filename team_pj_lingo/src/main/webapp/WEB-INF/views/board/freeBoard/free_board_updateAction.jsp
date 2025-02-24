@@ -45,7 +45,7 @@
     <link href="${path}/resources/css/common/style.css" rel="stylesheet">
 <script src="${path}/resources/js/member/join.js" defer></script> 
 
-	<link rel="stylesheet" href="${path}/resources/css/common/board.css">
+	<link rel="stylesheet" href="${path}/resources/css/common/madang.css">
 </head>
 <body>
 	<div class="wrap">
@@ -56,11 +56,6 @@
 		<!-- 컨텐츠 시작 -->
 		<div id="container">
 			<div id="contents">
-				<!-- 상단 중앙1 시작 -->
-				<div>
-					<h1 align="center">게시글 수정 처리 </h1>
-				</div>				
-				<!-- 상단 중앙1 종료 -->
 
 				<!-- 상단 중앙2 시작 -->
 				<div id="section2">
@@ -86,15 +81,17 @@
 					<!-- 우측 메뉴 종료 -->
 				</div>
 				<!-- 상단 중앙2 종료 -->
+				<!-- footer 시작 -->
+		      <%@include file="/WEB-INF/views/common/footer.jsp" %>
+		      <!-- footer 끝 -->
 			</div>
+			
 		</div>
 		
 		
 		<!-- 컨텐츠 끝 -->
 		
-      <!-- footer 시작 -->
-      <%@include file="/WEB-INF/views/common/footer.jsp" %>
-      <!-- footer 끝 -->
+
       
       	<!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>

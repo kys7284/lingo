@@ -105,7 +105,7 @@
 }
 
 #section1, #section2 {
-   padding: 80px;
+   padding: 30px;
    border-bottom: 5px solid #06BBCC; 
    background-color: #FFFFFF;
    border-radius: 10px;
@@ -182,6 +182,9 @@
    background-color: #0de7f9;
 }
 
+#freeCommentList {
+	border-line: right;
+}
 /* 자주 묻는 질문 리스트 - 아코디언 */
 .accordion {
   // scss-docs-start accordion-css-vars
@@ -282,5 +285,4 @@
 .accordion-body {
   padding: var(--#{$prefix}accordion-body-padding-y) var(--#{$prefix}accordion-body-padding-x);
 }
-
 
