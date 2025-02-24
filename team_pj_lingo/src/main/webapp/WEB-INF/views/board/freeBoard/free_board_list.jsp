@@ -69,20 +69,15 @@
 			
 		});
 	});
-</script>
-<script>
-$(function(){
-	
-    $("#searchbtn").click(function(){
-    	let searchType = document.getElementsByName("searchType")[0].value;
-    	let keyword = document.getElementsByName("keyword")[0].value;
-    	
-    	let url = "freeboard/search?searchType=" + searchType + "&keyword=" + keyword;
-    	location.href = encodeURI(url);
-    	
-    });
-    
-});
+
+ 
+	$(function(){
+	    $("#searchbtn").click(function(){
+	       document.keywordSearch.action = "${path}/keywordSearch.fb"
+	       document.keywordSearch.submit();
+	    });	
+	});
+
 </script>
 
 </head>
@@ -98,7 +93,14 @@ $(function(){
 				<!-- 상단 중앙1 시작 -->
 				<div>
 					<h1 align="center">게시판 목록</h1>
-				</div>				
+				</div>		
+				
+				<form name="keywordSearch" action="keywordSearch.fb" method="get">
+					<div class="search">
+                       <input type="text" name="keyword" placeholder="검색어 입력">
+                       <button type="button" id="searchbtn">검색</button>
+                     </div>
+                 </form>		
 				<div id="section2">					
 					<!-- 우측 메뉴 시작 -->
 						<div id="right">
@@ -148,24 +150,12 @@ $(function(){
 													<input type="button" class="inputButton" value="글쓰기" id="btnInsert">
 												</td>
 											</tr>
-											
-											<div>
-											    <select name="searchType">
-											          <option value="fb_writer"<c:if test="${searchType eq 'fb_writer'}"></c:if>>작성자</option>
-											          <option value="fb_title"<c:if test="${searchType eq 'fb_title'}"></c:if>>글제목</option>											    								
-											    </select>
-											    
-											    <input type="text" name="keyword"/>
-											    
-											    <button type="button" id="searchbtn">검색</button>			
-											    
-											    								    											
-											</div>				
-												
-									</table>
-								</form>
+											</thead>
+										</table>
+									</form>
+								</div>
 							</div>
-						</div>
+							
 					<!-- 우측 메뉴 종료 -->
 				</div>
 				<!-- 상단 중앙2 종료 -->

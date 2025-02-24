@@ -1,5 +1,13 @@
 package test.team.team_pj_lingo.page;
 
+import java.io.UnsupportedEncodingException;
+
+import org.apache.catalina.util.URLEncoder;
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import test.team.team_pj_lingo.freeBoard.FreeBoardDTO;
+
 public class Paging {
 	
 	private int pageSize = 10;	// 1page당 게시글의 갯수를 지정
@@ -196,4 +204,5 @@ public class Paging {
 				
 		}
 	}
+
 }
