@@ -46,7 +46,8 @@
 	<update id="updateNotice" parameterType="test.team.team_pj_lingo.notice.NoticeDTO" >
 		UPDATE notice_tbl
 		SET 	notice_title = #{notice_title}
-		  ,		notice_content = #{notice_content}	
+		  ,		notice_content = #{notice_content}
+		WHERE   notice_num = #{notice_num}  	
 	
 	</update>
 	
