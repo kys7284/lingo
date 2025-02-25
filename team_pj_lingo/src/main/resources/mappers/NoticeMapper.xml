@@ -52,7 +52,7 @@
 	</update>
 	
 	<!-- 공지사항 삭제처리  -->
-	<delete id="deleteNotice" parameterType="String">
+	<delete id="deleteNotice" parameterType="int">
 		DELETE	FROM  notice_tbl
 		WHERE notice_num = #{notice_num}
 	</delete> 

@@ -45,7 +45,7 @@
     <link href="${path}/resources/css/common/style.css" rel="stylesheet">
 <script src="${path}/resources/js/member/join.js" defer></script> 
 
-	<link rel="stylesheet" href="${path}/resources/css/common/board.css">
+	<link rel="stylesheet" href="${path}/resources/css/board/boardDetail.css">
 
 <script type="text/javascript">
 	$(function() {	// 상세페이지가 로딩되면
@@ -103,7 +103,10 @@
 			<div id="contents">
 				<!-- 상단 중앙1 시작 -->
 				<div>
-					<h1 align="center">게시판 수정/삭제페이지</h1>
+					<div id="section1"
+					style="background-image: url('${path}/resources/images/to.jpg'); background-size: 117%; background-position: center; height: 300px;">
+					<br> <br><br><br><br>
+					<h1 align="center"  style="color:white">게시판 수정/삭제 페이지</h1>
 				</div>
 				<!-- 상단 중앙1 종료 -->
 				
@@ -146,13 +149,13 @@
 										<tr>
 											<th style="width: 200px">글내용</th>
 											<td colspan="3" style="text-align:center">
-												<textarea rows="5" cols="93" name="fb_content" id="fb_content">${dto.fb_content}</textarea>
+												<textarea class="textarea" rows="5" cols="93" name="fb_content" id="fb_content">${dto.fb_content}</textarea>
 											</td>
 										</tr>
 										
 										<tr>
 											<th>이미지</th>
-												<td colspan="2" style="120px"> 
+												<td  colspan="3"  style="text-align:center; "> 
 												<img src="${dto.fb_img}" style="width:200px"><br>
 												<input type="file" class="input" id="fb_Img" name="fb_Img" accept="image/*">
 												</td>

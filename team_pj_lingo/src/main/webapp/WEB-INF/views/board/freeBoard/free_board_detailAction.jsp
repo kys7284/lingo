@@ -140,10 +140,10 @@
 		<div id="container">
 			<div id="contents">
 				<!-- 상단 중앙1 시작 -->
-				<br>
-				<br>
-				<div id="section1">
-					<h1 align="center">게시판 상세페이지</h1>
+				<div id="section1"
+				style="background-image: url('${path}/resources/images/to.jpg'); background-size: 117%; background-position: center; height: 300px;">
+					<br> <br><br><br><br>
+					<h1 align="center"  style="color:white">게시판 상세페이지</h1>
 					<br>
 				</div>				
 				<!-- 상단 중앙1 종료 -->

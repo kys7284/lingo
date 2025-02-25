@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@include file="/WEB-INF/views/common/setting.jsp" %>    
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@include file="/WEB-INF/views/common/setting.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,87 +13,162 @@
 
 <!-- css  -->
 <!-- 기존설정 그대로 -->
-	    <meta charset="utf-8">
-	    <title>Lingo</title>
-	    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-	    <meta content="" name="keywords">
-	    <meta content="" name="description">
-	
-	    <!-- Favicon -->
-	    <link href="img/favicon.ico" rel="icon">
-	
-		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-	
-	    <!-- Google Web Fonts -->
-	    <link rel="preconnect" href="https://fonts.googleapis.com">
-	    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
-	
-	    <!-- Icon Font Stylesheet -->
-	    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-	    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-	<!-- 기존설정 그대로 끝-->
+<meta charset="utf-8">
+<title>Lingo</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="" name="keywords">
+<meta content="" name="description">
 
-    <!-- Libraries Stylesheet -->
-    <link href="${path}/resources/css/common/lib/animate/animate.min.css" rel="stylesheet">
-    <link href="${path}/resources/css/common/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+<!-- Favicon -->
+<link href="img/favicon.ico" rel="icon">
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="${path}/resources/css/common/bootstrap.min.css" rel="stylesheet">
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+	rel="stylesheet">
 
-    <!-- Template Stylesheet -->
-    <link href="${path}/resources/css/common/style.css" rel="stylesheet">
-<script src="${path}/resources/js/member/join.js" defer></script> 
+<!-- Google Web Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap"
+	rel="stylesheet">
 
-	<link rel="stylesheet" href="${path}/resources/css/common/board.css">
-	<link rel="stylesheet" href="${path}/resources/css/board/board.css">
+<!-- Icon Font Stylesheet -->
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+	rel="stylesheet">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+	rel="stylesheet">
+<!-- 기존설정 그대로 끝-->
+
+<!-- Libraries Stylesheet -->
+<link href="${path}/resources/css/common/lib/animate/animate.min.css"
+	rel="stylesheet">
+<link
+	href="${path}/resources/css/common/lib/owlcarousel/assets/owl.carousel.min.css"
+	rel="stylesheet">
+
+<!-- Customized Bootstrap Stylesheet -->
+<link href="${path}/resources/css/common/bootstrap.min.css"
+	rel="stylesheet">
+
+<!-- Template Stylesheet -->
+<link href="${path}/resources/css/common/style.css" rel="stylesheet">
+<script src="${path}/resources/js/member/join.js" defer></script>
+
+<link rel="stylesheet"
+	href="${path}/resources/css/shareInfo/travelAPI.css">
 </head>
 <body>
 	<!-- 헤더시작 -->
-	<%@ include file="/WEB-INF/views/common/header.jsp" %>
+	<%@ include file="/WEB-INF/views/common/header.jsp"%>
 	<!-- 헤더 끝 -->
-	
+
 	<!-- 상단 중앙1 시작  -->
 	<div id="section1"
 		style="background-image: url('${path}/resources/images/travel.jpg'); background-size: cover; background-position: center; height: 300px;">
-		<br> 
-		<br>
+		<br> <br>
 		<h1 align="center" style="padding-bottom: 50px;">여행정보</h1>
-		
-		<span style="display: flex; justify-content: center; font-weight: bold;">여러분의 여행을 공유해주세요</span>
+
+		<span
+			style="display: flex; justify-content: center; font-weight: bold;">여러분의
+			여행을 공유해주세요</span>
 	</div>
 	<!-- 상단 중앙1 종료 -->
-				
-	<!-- 검색 영역 -->
-<div class="search-section" style="display: flex;justify-content: center;;">
-    <label for="city">도시 선택:</label> 
-    <select id="city">
-        <option value="">도시 선택</option>
-        <option value="1">서울특별시</option>
-        <option value="2">인천광역시</option>
-        <option value="3">대전광역시</option>
-        <option value="4">대구광역시</option>
-        <option value="5">광주광역시</option>
-        <option value="6">부산광역시</option>
-        <option value="7">울산광역시</option>
-        <option value="8">세종특별자치시</option>
-        <option value="31">경기도</option>
-        <option value="32">강원도</option>
-        <option value="33">충청북도</option>
-        <option value="34">충청남도</option>
-        <option value="35">경상북도</option>
-        <option value="36">경상남도</option>
-        <option value="37">전라북도</option>
-        <option value="38">전라남도</option>
-        <option value="39">제주특별자치도</option>
-    </select>
-    <button id="searchBtn">검색</button>
-</div>
 
-<script>
+	<!-- 왼쪽메뉴시작 -->
+	<div id="side_menu">
+
+		<h2>여행정보</h2>
+
+		<br> <br>
+
+		<ul>
+			<li><a href="${path}/travelInfo.tc"> 나의 여행 </a></li>
+		</ul>
+
+		<ul>
+			<li><a href="${path}/findSpot.tc"> 여행지 찾기 </a></li>
+		</ul>
+
+	</div>
+	<!-- 왼쪽메뉴 끝 -->
+
+	<!-- 검색 영역 -->
+	<div id="right">
+			<br>
+				<div class="travel_boardList">
+					<div class="search-container">
+						<div class="search-section"
+							style="display: flex; justify-content: center;">
+							 <select id="city">
+								<option value="">도시 선택</option>
+								<option value="1">서울특별시</option>
+								<option value="2">인천광역시</option>
+								<option value="3">대전광역시</option>
+								<option value="4">대구광역시</option>
+								<option value="5">광주광역시</option>
+								<option value="6">부산광역시</option>
+								<option value="7">울산광역시</option>
+								<option value="8">세종특별자치시</option>
+								<option value="31">경기도</option>
+								<option value="32">강원도</option>
+								<option value="33">충청북도</option>
+								<option value="34">충청남도</option>
+								<option value="35">경상북도</option>
+								<option value="36">경상남도</option>
+								<option value="37">전라북도</option>
+								<option value="38">전라남도</option>
+								<option value="39">제주특별자치도</option>
+							</select>
+							<button class="search-button" type="button" value="검색"
+								id="searchBtn">
+								<i class="fa-solid fa-magnifying-glass"></i>
+							</button>
+						</div>
+					</div>
+					
+						
+					<div id="display" style="min-height: 600px;">
+						<!-- 결과창 출력 -->
+					</div>
+
+
+
+					<!-- 페이지 네비게이션 -->
+					<div class="pagination"
+						style="display: flex; justify-content: center !important;">
+						<div style="width: 10%; float: right;">
+							<button class="inputButton" id="prevPage">이전</button>
+						</div>
+						<span id="currentPage" style="padding: 8px; width: 7%;">1</span>
+						<div style="width: 10%; float: right;">
+							<button class="inputButton" id="nextPage">다음</button>
+						</div>
+					</div>
+					<br>
+				</div>
+			</form>
+		</div>
+		<!-- footer 시작 -->
+		<%@include file="/WEB-INF/views/common/footer.jsp"%>
+		<!-- footer 끝 -->
+	</div>
+	<!-- 컨텐츠 끝 -->
+
+
+
+	<script>
 let currentPage = 1;  // 현재 페이지 번호
 
 $(document).ready(function() {
+	// 페이지 로드 시 기본값 "서울특별시" (value=1)로 설정
+    $("#city").val("1");
+
+    // 기본 검색 실행 (1페이지 데이터 불러오기)
+    fetchTourismData(1);
+	
     $("#searchBtn").click(function() {
         currentPage = 1; // 새로운 검색 시 페이지 번호 초기화
         fetchTourismData(currentPage);
@@ -130,7 +205,7 @@ function fetchTourismData(pageNo) {
                 let msg = typeof response === "string" ? JSON.parse(response) : response;
                 if (msg.response && msg.response.body && msg.response.body.items) {
                     var myItem = msg.response.body.items.item;
-                    var output = '<table border="1" style="width:60%; border-collapse:collapse; text-align:center;">';
+                    var output = '<table class="table_div" border="1" style="width:60%; border-collapse:collapse; text-align:center;">';
 
                     // 테이블 헤더 추가
                     output += `
@@ -188,58 +263,32 @@ function fetchTourismData(pageNo) {
 </script>
 
 
-					<!-- 왼쪽메뉴시작 -->
-					<div id="side_menu">
-	
-						<h2>여행정보</h2>
 
-						<br><br>
+	<!-- Back to Top -->
+	<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i
+		class="bi bi-arrow-up"></i></a>
 
-						<ul>
-							<li><a href="${path}/travelInfo.tc"> 나의 여행 </a></li>
-						</ul>
-	
-						<ul>
-							<li><a href="${path}/findSpot.tc"> 여행지 찾기 </a></li>
-						</ul>
-						
-					</div>
-					<!-- 왼쪽메뉴 끝 -->
-					<div id="display">
-					<!-- 결과창 출력 -->
-					</div>
+	<!-- JavaScript Libraries -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="${path}/resources/css/common/lib/wow/wow.min.js"></script>
+	<script src="${path}/resources/css/common/lib/easing/easing.min.js"></script>
+	<script
+		src="${path}/resources/css/common/lib/waypoints/waypoints.min.js"></script>
+	<script
+		src="${path}/resources/css/common/lib/owlcarousel/owl.carousel.min.js"></script>
 
-			<!-- 페이지 네비게이션 -->
-			<div class="pagination" style="display: flex; justify-content: center;">
-			    <div style="width:10%;  float:right;"><button id="prevPage">이전</button></div>
-			    <span id="currentPage" style="padding:8px; width: 10%;">1</span>
-			    <div style="width:10%; float:right;"><button id="nextPage" >다음</button></div>
-			</div>
+	<!-- Template Javascript -->
+	<script src="${path}/resources/js/main.js"></script>
 
-		<!-- 컨텐츠 끝 -->
-      <!-- footer 시작 -->
-      <%@include file="/WEB-INF/views/common/footer.jsp" %>
-      <!-- footer 끝 -->
-      
-      	<!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="${path}/resources/css/common/lib/wow/wow.min.js"></script>
-    <script src="${path}/resources/css/common/lib/easing/easing.min.js"></script>
-    <script src="${path}/resources/css/common/lib/waypoints/waypoints.min.js"></script>
-    <script src="${path}/resources/css/common/lib/owlcarousel/owl.carousel.min.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="${path}/resources/js/main.js"></script>
-   </div>
 </body>
-<script src="https://cdn.staticfile.net/translate.js/3.12.0/translate.js" defer></script>
+<script
+	src="https://cdn.staticfile.net/translate.js/3.12.0/translate.js" defer></script>
 <script>
 translate.service.use('client.edge'); 	 	//번역기 사용   참조: http://translate.zvo.cn/43086.html
 translate.selectLanguageTag.show = false;	// 기본 언어선택창 숨김  (true: 표시)
 translate.execute();//번역시작
 </script>
-</html>	
+</html>

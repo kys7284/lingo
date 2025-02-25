@@ -87,6 +87,13 @@
 				return false;
 			}
 			
+	         else if(category == "전체"){
+	             
+	             document.travel_boardList.action="${path}/travelInfo.tc"
+	             document.travel_boardList.submit();
+	             return;
+	          }			
+			
 			document.travel_boardList.action="${path}/travel_search.tc"
 			document.travel_boardList.submit();
 		});
@@ -144,6 +151,9 @@
 									<div class="search-container">
 										<select name="tb_category" id="tb_category">
 											<option value="">카테고리선택</option>
+											<option 
+											    <c:if test="${dto.tb_category == '전체'}">selected</c:if> 
+											    value="전체">전체</option>
 											<option
 												<c:if test="${dto.tb_category == '여행'}">selected</c:if>
 												value="여행">여행</option>
