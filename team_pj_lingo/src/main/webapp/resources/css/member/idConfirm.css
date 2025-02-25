@@ -1,0 +1,109 @@
+@charset "UTF-8";
+/* join.css (LEGO 스타일 적용) */
+
+#container {
+    width: 650px;
+    margin: 0 auto;
+    background-color: #F6F6F6;
+    font-family: 'Arial', sans-serif;
+}
+
+#contents {
+    width: 600px;;
+    margin: left;
+    padding: 20px;
+}
+
+#section1, #section2 {
+    padding: 7px;
+    border-bottom: 5px solid #06BBCC; /* LEGO 테마의 밝은 노란색 */
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#s2_inner {
+    width: 650px;
+}
+
+.join {
+    display: flex;
+    justify-content: space-between; /* 유연한 정렬 */
+    align-items: center;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #DDD;
+}
+
+.join th {
+    font-size: 16px;
+    font-weight: bold;
+    width: 240px;
+    height: 60px;
+    text-align: left; /* LEGO의 사용자 친화적인 스타일 */
+    padding: 10px 20px;
+    border-bottom: 2px solid #DDD;
+    background-color: #F3F3F3;
+    border-radius: 5px;
+}
+
+.join td {
+    padding: 10px 20px;
+    border-bottom: 2px solid #DDD;
+    background-color: #FFFFFF;
+}
+
+.input {
+    width: 220px;
+    height: 45px;
+    border: 1px solid #CCC;
+    box-sizing: border-box;
+    padding: 0 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.inputaddress {
+    width: 250px;
+    height: 30px;
+    border: 1px solid #CCC;
+    padding: 0 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+    background-color: #FFFFFF; /* 추가된 스타일 */
+    
+}
+.inputaddress:focus {
+    border-color: #06BBCC; /* LEGO의 브랜드 블루 */
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 86, 164, 0.5);
+}
+.input:focus {
+    border-color: #06BBCC; /* LEGO의 브랜드 블루 */
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 86, 164, 0.5);
+}
+
+.inputButton {
+    background-color: #06BBCC; 
+    font-size: 15px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.inputButton:hover {
+    background-color: #06BBCC; /* 약간 진한 노란색 */
+}
+
+.inputButton:active {
+    background-color: #06BBCC;
+}

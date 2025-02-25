@@ -70,8 +70,10 @@ public class NoticeServiceImpl implements NoticeService {
 		NoticeDTO dto = new NoticeDTO();
 		dto.setNotice_content(request.getParameter("notice_content"));
 		dto.setNotice_title(request.getParameter("notice_title"));
+		dto.setNotice_num(Integer.parseInt(request.getParameter("notice_num")));
 		
 		int updateCnt = dao.updateNotice(dto);
+		System.out.println(updateCnt);
 		
 		model.addAttribute("updateCnt", updateCnt);
 		
