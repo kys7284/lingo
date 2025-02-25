@@ -48,11 +48,6 @@
 <script type="text/javascript">
 	$(function(){	
 		
-		 // 관리자가 [게시글 수정/삭제 버튼] 클릭시 [게시글 수정/삭제 화면]으로 이동
-		$("#btnEdit").click(function() {
-			document.detailForm.action="${path}/notice_updateAction.no";
-			document.detailForm.submit();
-		});
 		// [게시글 목록 버튼] 클릭시 컨트롤러의 목록으로 이동 
 		$("#btnList").click(function(){
 			location.href="${path}/notice_list.no";
@@ -146,11 +141,7 @@
 									<tr>
 										<td colspan="6" align="center">
 											<input type="button" class="inputButton" value="목록" id="btnList">
-											<c:if test="${sessionId == 'admin'}">
-												<!-- 게시글번호 hidden 추가 : input이 없으므로(게시글번호는 입력받지않는다 input 없음) -->
-												<input type="hidden" name="hidden_notice_num" value="${dto.notice_num}">
-												<input type="button" class="inputButton" value="수정/삭제" id="btnEdit">
-											</c:if>
+                                            <input type="hidden" name="hidden_notice_num" value="${dto.notice_num}">
 										</td>
 									</tr>
 								</table>

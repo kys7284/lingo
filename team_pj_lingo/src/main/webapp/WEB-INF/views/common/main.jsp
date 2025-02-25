@@ -168,7 +168,7 @@
                             <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>취업 및 경제활동 지원 문서 번역</p>
                         </div>
                     </div>
-                    <a class="btn btn-primary py-3 px-5 mt-2" href="{path}/fileTranslate.do" target="_blank">자세히 알아보기<i class="fa fa-arrow-right ms-3"></i></a>
+                    <a class="btn btn-primary py-3 px-5 mt-2"  href="${path}/fileTranslate.do">자세히 알아보기<i class="fa fa-arrow-right ms-3"></i></a>
                 </div>
             </div>
         </div>

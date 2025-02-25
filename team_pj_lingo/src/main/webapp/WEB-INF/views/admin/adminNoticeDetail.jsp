@@ -21,8 +21,14 @@ $(function() {
 		      window.location.href = "${path}/adminNoticeDelete.ad?notice_num=${dto.notice_num}";
 		    } 
 		  });
+		  $("#edtiBtn").click(function(){
+			  document.detailForm.action="${path}/adminNoticeUpdate.ad";
+			  document.detailForm.submit();
+		  });		  
 		});
-})
+});
+
+
 
 </script>
 </head>
@@ -67,7 +73,7 @@ $(function() {
 					<td colspan="4" align="center">
 						<!-- 게시글번호 hidden 추가 : input이 없으므로(게시글번호는 입력받지않는다 input 없음) -->
 						<input type="hidden" name="notice_num" id="notice_num" value="${dto.notice_num}">  
-						<input type="submit" class="btn btn-outline-primary" value="수정" >
+						<input type="button" class="btn btn-outline-primary" value="수정" id="edtiBtn">
 						<input type="button" class="btn btn-outline-primary" value="삭제" id="deleteBtn">
 						<input type="button" class="btn btn-outline-primary" value="관리자페이지" onclick="location.href='${path}/adminAction.ad'">
 					</td>

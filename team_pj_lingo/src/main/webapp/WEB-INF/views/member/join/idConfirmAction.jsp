@@ -7,9 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>ID 중복확인</title>
-
 <!-- css -->
-<link rel="stylesheet" href="${path}/resources/css/member/join.css">
+<link rel="stylesheet" href="${path}/resources/css/member/idConfirm.css">
 <!-- js -->
 <script src="${path}/resources/js/member/join.js" defer></script>
 </head>
@@ -24,7 +23,6 @@
 		
 				<div id="section2">
 					<div id="s2_inner">
-						<div class="join">
 							
 							<form name="confirmform" action="idConfirmAction.do" method="post">
 								<c:if test="${selectCnt == 1}">	
@@ -44,10 +42,10 @@
 									</tr>
 									
 									<tr>
-										<td style="border-bottom:none">
+										<td style="border-bottom:none" colspan="2">
 											<br>
-											<div align="right">
-												<input class="inputButton" type="submit" value="확인">
+											<div align="center">
+											    <input class="inputButton" type="submit" value="확인">
 												<input class="inputButton" type="reset" value="초기화">
 											</div>
 										</td>
@@ -77,7 +75,7 @@
 								
 							</form>
 						</div>
-					</div>
+				
 				</div>
 			</div>
 		</div>
