@@ -46,13 +46,6 @@
 <script src="${path}/resources/js/member/join.js" defer></script> 
 
 	<link rel="stylesheet" href="${path}/resources/css/common/madang.css">
-<script type="text/javascript">
-	$(function(){	
-		// 공지사항 페이지에서 관리자가 글쓰기 버튼 클릭시
-		$('#btnInsert').click(function() {
-				location.href="${path}/notice_insert.no"
-			});
-</script>	
 	
 </head>
 <body>
@@ -70,7 +63,7 @@
 				<!-- 상단 중앙1 시작  -->
 				<div id="section1"
 					style="background-image: url('${path}/resources/images/megaphone.png'); background-color: #D3ECF1; background-size:50% auto; background-position: 200px center; height: 280px; background-repeat: no-repeat;">
-					<br> <br>
+					<br><br><br><br>
 					<h1 align="center">공지사항</h1>
 				</div>
 				<!-- 상단 중앙2 시작  -->
@@ -89,18 +82,13 @@
 					<ul>
 						<li><a href="${path}/harmInsert.hr">신고 센터</a></li>
 					</ul>
-					<ul>
-						<li><a href="${path}/employment.eq"> 관련 기사 </a></li>
-					</ul>
 				</div>
 				<!-- 왼쪽메뉴 끝 -->
 					<div class="container">
 					
 						<div id="contents">
 						
-						<div class="menu">
-							검색
-						</div>
+						
 
 						<div id="display">
 							<!-- 결과출력 위치 -->
@@ -146,13 +134,6 @@
 													<!-- 다음 버튼 활성화 -->
 													<c:if test="${paging.endPage < paging.pageCount}">
 														<a href="${path}/notice_list.no?pageNum=${paging.next}">[다음]</a>
-													</c:if>
-												</td>
-											</tr>
-											<tr>
-												<td colspan="6" align="center">
-													<c:if test="${sessionId == 'admin'}">
-														<input type="button" class="inputButton" value="글쓰기" id="btnInsert">
 													</c:if>
 												</td>
 											</tr>

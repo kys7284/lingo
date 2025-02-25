@@ -8,14 +8,14 @@
 <meta charset="UTF-8">
 <!-- 반응형 웹  -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<link rel="stylesheet" href="${path}/resources/css/board/boardDetail.css">
 <title>free_board</title>
 </head>
 <body>
 	<div id="right">
-			<div class="table_div">
+			
 				<form name="freeBoardList">
-					<table border="1" width="800px">
+					<table class="table_div" border="1">
 						<tr>
 							<th style="width:10%">작성자</th>
 							<th style="width:15%">글내용</th>
@@ -33,7 +33,7 @@
 							</c:forEach>
 					</table>
 				</form>
-			</div>
+			
 			</div>
 </body>
 </html>

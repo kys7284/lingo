@@ -69,21 +69,13 @@
 			
 		});
 	});
-</script>
-<script>
-$(function(){
-   
-    $("#searchbtn").click(function(){
-       let searchType = $("select[name='searchType']").val();
-       let keyword = $("input[name='keyword']").val();
-       
-       let url = "${path}/free_board_list.fb?searchType=" + searchType + "&keyword=" + encodeURIComponent(keyword);
-       
-       location.href = url;
-       
-    });
-    
-});
+	
+	$(function(){
+	    $("#searchbtn").click(function(){
+	       document.keywordSearch.action = "${path}/keywordSearch.fb"
+	       document.keywordSearch.submit();
+	    });	
+	});
 </script>
 
 </head>
@@ -97,36 +89,30 @@ $(function(){
 		<div id="container">
 			<div id="contents">
 				<!-- 상단 중앙1 시작 -->
-				<br>
-				<br>
-				<br>
 				
-				<div id="section1">
-					<h1 align="center">게시판 목록</h1>
+				<div id="section1"
+					style="background-image: url('${path}/resources/images/to.jpg'); background-size: 117%; background-position: center; height: 300px;">
+					<br> <br><br><br><br>
+					<h1 align="center"  style="color:white">게시판 목록</h1>
 					<br>
 				</div>				
-				<br>					
-					<!-- 우측 메뉴 시작 -->
-					
-						<br>
-						<div class="search-container">
-										<select name="searchType">
-											<option value="fb_title"
-												${searchType == 'fb_title' ? 'selected' : ''}>제목</option>
-											<option value="fb_writer"
-												${searchType == 'fb_writer' ? 'selected' : ''}>작성자</option>
-										</select> 
-										
-										<input class="search-input"
-											style="width: 400px; height: auto;" text" name="keyword"
-											placeholder="검색어 입력" value="${keyword}">
-										
-										<button class="search-button" type="button" id="searchbtn">
-											<i class="fa-solid fa-magnifying-glass"></i>
-										</button>
-									</div>
-							
-								<div id="section2">						
+				<br>
+				<!-- 우측 메뉴 시작 -->
+
+				<br>
+				<form name="keywordSearch" action="keywordSearch.fb" method="get">
+					<div class="search-container">
+						
+						 <input class="search-input" type="text" name="keyword"
+							placeholder="검색어 입력">
+						<button class="search-button" type="button" id="searchbtn">
+							<i class="fa-solid fa-magnifying-glass"></i>
+						</button>
+					</div>
+				</form>
+
+				<div id="section2">	
+													
 								<div id="right">
 						<div class="table_div">	
 								<form name="free_boardList">
@@ -180,15 +166,17 @@ $(function(){
 						</div>
 					<!-- 우측 메뉴 종료 -->
 				</div>
+					<!-- footer 시작 -->
+      <%@include file="/WEB-INF/views/common/footer.jsp" %>
+      <!-- footer 끝 -->
 				<!-- 상단 중앙2 종료 -->
 			</div>
+
 		</div>
       <!-- 컨텐츠 끝 -->
       
 
-      <!-- footer 시작 -->
-      <%@include file="/WEB-INF/views/common/footer.jsp" %>
-      <!-- footer 끝 -->
+
       
       	<!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>

@@ -58,7 +58,7 @@
 			<div id="contents">
 				<!-- 상단 중앙1 시작 -->
 				<div>
-					<h1 align="center">게시글 삭제 처리 </h1>
+					<h1 align="center" >게시글 삭제 처리 </h1>
 				</div>				
 				<!-- 상단 중앙1 종료 -->
 

@@ -46,7 +46,7 @@
     <link href="${path}/resources/css/common/style.css" rel="stylesheet">
 <script src="${path}/resources/js/member/join.js" defer></script> 
 
-	<link rel="stylesheet" href="${path}/resources/css/common/madang.css">
+	<link rel="stylesheet" href="${path}/resources/css/board/freeBoardList.css">
 
 <script type="text/javascript">
 	$(function(){
@@ -92,24 +92,28 @@
 			<div id="contents">
 				<!-- 상단 중앙1 시작 -->
 				<div id="section1"
-					style="background-image: url('${path}/resources/images/to.jpg'); background-size: cover; background-position: center; height: 300px;">
-					<br> <br>
-					<h1 align="center">검색 결과창</h1>
+					style="background-image: url('${path}/resources/images/to.jpg'); background-size: 117%; background-position: center; height: 300px;">
+					<br> <br><br><br><br>
+					<h1 align="center"  style="color:white">검색 결과창</h1>
 				</div>
 				<!-- 상단 중앙2 시작  -->
-				
+				<br>
 				<form name="keywordSearch" action="keywordSearch.fb" method="get">
-					<div class="search" style="text-align:center; padding-top:30px;">
-                       <input type="text" name="keyword" placeholder="검색어 입력">
-                       <button type="button" id="searchbtn">검색</button>
-                     </div>
-                 </form>		
+					<div class="search-container">
+						
+						 <input class="search-input" type="text" name="keyword"
+							placeholder="검색어 입력">
+						<button class="search-button" type="button" id="searchbtn">
+							<i class="fa-solid fa-magnifying-glass"></i>
+						</button>
+					</div>
+				</form>		
 				<div id="section2">					
 					<!-- 우측 메뉴 시작 -->
 						<div id="right">
-							<div class="join">								
+							<div class="table_div">								
 								<form name="free_boardList">
-									<table style="width:1000">
+									<table >
 									  <thead>
 										<tr style="padding-bottom:30px;">
 											<th style="width:10%; height:70px;">글번호</th>
@@ -150,6 +154,7 @@
 											</tr>
 											</thead>
 										</table>
+										<br>
 									</form>
 								</div>
 							</div>
@@ -157,14 +162,16 @@
 					<!-- 우측 메뉴 종료 -->
 				</div>
 				<!-- 상단 중앙2 종료 -->
+				<!-- footer 시작 -->
+      <%@include file="/WEB-INF/views/common/footer.jsp" %>
+      <!-- footer 끝 -->
 			</div>
+			
 		</div>
       <!-- 컨텐츠 끝 -->
       
 
-      <!-- footer 시작 -->
-      <%@include file="/WEB-INF/views/common/footer.jsp" %>
-      <!-- footer 끝 -->
+      
       
       	<!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>

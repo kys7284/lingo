@@ -97,9 +97,6 @@
 						<ul>
 							<li><a href="${path}/harmInsert.hr">신고 센터</a></li>
 						</ul>
-						<ul>
-							<li><a href="${path}/employment.eq"> 관련 기사 </a></li>
-						</ul>
 					</div>
 					<!-- 왼쪽메뉴 끝 -->
 					<div class="container">
