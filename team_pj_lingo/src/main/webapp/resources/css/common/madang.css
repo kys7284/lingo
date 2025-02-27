@@ -24,15 +24,15 @@
     }
 }
 
-#side_menu > ul > li {	
-	
+#side_menu > ul > li {   
+   
     list-style: none;
     padding: 10px 0; /* 상하 패딩 조정 */
     width: 100%; /* 너비를 100%로 설정 */
 }
 
 #side_menu > ul > li > a {
-	font-weight: bold;
+   font-weight: bold;
     display: block;
     padding: 15px; /* 패딩 조정 */
     border-bottom: 1px solid #06BBCC;
@@ -61,10 +61,10 @@
     border-left: 1px solid #c2c2c2; 
     border-right: 1px solid #c2c2c2; 
     align-items: center; /* 수직 가운데 정렬 */
-  	justify-content: center; /* 수평 가운데 정렬 */
-  	font-size: 20px;
-  	margin-left: 60px;
-  	
+     justify-content: center; /* 수평 가운데 정렬 */
+     font-size: 20px;
+     margin-left: 60px;
+     
 }
 
 .menu a {
@@ -121,16 +121,16 @@ min-height: 800px;
 
 #s2_inner {
    width: 100%;
-   margin-left: 60px;	
+   margin-left: 60px;   
    width: 95%;
 }
 
 .join {
-	width: 100%;
+   width: 100%;
    display: flex;
    justify-content: center; /* 유연한 정렬 */
    align-items: center;
-   max-width: 1500px;
+   max-width: 2000px;
    margin: 20px auto;
    padding: 10px;
    background-color: #FFFFFF;
@@ -142,7 +142,7 @@ min-height: 800px;
 .join th {
    font-size: 16px;
    font-weight: bold;
-   width: 140px;
+   width: 200px;
    height: 60px;
    text-align: center; 
    padding: 10px 20px;
@@ -152,6 +152,8 @@ min-height: 800px;
 }
 
 .join td {
+   text-align: center; 
+   width: 200px;   
    padding: 20px 10px;
    border-bottom: 2px solid #DDD;
    background-color: #FFFFFF;
@@ -294,5 +296,5 @@ min-height: 800px;
 }
 
 #freeCommentList {
-	border-line: right;
+   border-line: right;
 }
